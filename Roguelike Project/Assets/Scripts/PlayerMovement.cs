@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     private float moveSpeedAux;
     public float boost;
-
     // Use this for initialization
     void Start()
     {

@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour {
     public float bulletSpeed;
     public float bulletDamage;
     string creator;
-    EnemyAttacked enemyHit;
+    ObjectAttacked objectHit;
     public GameObject bloodImpact, wallImpact;
     public float bulletDuration;
     // Use this for initialization
@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour {
            
 	}
 
-    public void setVals (Vector3 dir, string name)
+    public void SetVals (Vector3 dir, string name)
     {
         direction = dir;
         creator = name;
@@ -36,15 +36,15 @@ public class Bullet : MonoBehaviour {
     {
         if (col.gameObject.tag == "Enemy")
         {
-            enemyHit = col.gameObject.GetComponent<EnemyAttacked>();
-            enemyHit.BulletHit(bulletDamage);
+            objectHit = col.gameObject.GetComponent<ObjectAttacked>();
+            objectHit.BulletHit(bulletDamage);
             //enemyHit.killBullet(); esto es despues para la animacion de muerte
             //Instantiate (bloodImpact, this.transform.position, this.transform.rotation);
             Destroy (this.gameObject);
 
 
         }
-        else if (col.gameObject.tag == "Wall")
+        else if (col.gameObject.tag == "BulletWall")
         {
             //Instantiate (wallImpact, this.transform.position, this.transform.rotation);
             Destroy (this.gameObject);

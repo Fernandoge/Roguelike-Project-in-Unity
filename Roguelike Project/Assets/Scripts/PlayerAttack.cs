@@ -14,13 +14,13 @@ public class PlayerAttack : MonoBehaviour {
 	void Start () {
         timerReset = timer;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         if (timer > 0)
             timer -= Time.deltaTime;
 
-        if (Input.GetMouseButton(0) && timer <= 0)
+        if (Input.GetMouseButton(0) && timer <= 0 && curWeapon != null)
             Shoot();
 
 	}
@@ -58,7 +58,7 @@ public class PlayerAttack : MonoBehaviour {
         dir.x = Vector2.right.x;
         dir.y = Vector2.right.y;
         dir.z = 0;
-        bl.setVals(dir, "Player");
+        bl.SetVals(dir, "Player");
         Instantiate(bullet, bulletSpawn.transform.position, this.transform.rotation);
         timer = timerReset;
         
