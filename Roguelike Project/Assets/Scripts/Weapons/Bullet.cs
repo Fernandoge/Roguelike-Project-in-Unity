@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour {
 
 
         }
-        else if (col.gameObject.tag == "BulletWall")
+        else if (col.gameObject.tag == "Wall")
         {
             //Instantiate (wallImpact, this.transform.position, this.transform.rotation);
             Destroy (this.gameObject);

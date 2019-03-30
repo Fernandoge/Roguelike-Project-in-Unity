@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour {
     public Vector3 playerLastPos;
     RaycastHit2D hit;
     float speed = 2.0f; //changed bullets to be kenimatic
-    int layerMask = 1 << 0; //explain layermask for tutorial (how it works + changes to weapon attack)
+    int layerMask = 1 << 8; //explain layermask for tutorial (how it works + changes to weapon attack)
 
 
     // Use this for initialization
@@ -27,12 +27,12 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        movement();
-        playerDetect();
+        Movement();
+        PlayerDetect();
 		
 	}
 
-    void movement()
+    void Movement()
     {
         float dist = Vector3.Distance(player.transform.position, this.transform.position);
         Vector3 dir = player.transform.position - transform.position;
@@ -59,7 +59,7 @@ public class EnemyMovement : MonoBehaviour {
                 if (hit2.collider.gameObject.tag == "Wall")
                 {
                     //Quaternion rot = this.transform.rotation;
-
+                    Debug.Log("aaaaaaa");
                     if (clockwise == false)
                     {
                         transform.Rotate(0, 0, 90);
@@ -89,7 +89,7 @@ public class EnemyMovement : MonoBehaviour {
 
     }
 
-    void playerDetect()
+    void PlayerDetect()
     {
         Vector3 pos = this.transform.InverseTransformPoint(player.transform.position);
         //Debug.Log (pos.x); //more than 1.2
