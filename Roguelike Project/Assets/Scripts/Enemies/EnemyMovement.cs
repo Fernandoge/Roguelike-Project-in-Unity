@@ -59,6 +59,7 @@ public class EnemyMovement : MonoBehaviour {
                 if (hit2.collider.gameObject.tag == "Wall")
                 {
                     //Quaternion rot = this.transform.rotation;
+                    Debug.Log(hit2.collider);
                     Debug.Log("aaaaaaa");
                     if (clockwise == false)
                     {
