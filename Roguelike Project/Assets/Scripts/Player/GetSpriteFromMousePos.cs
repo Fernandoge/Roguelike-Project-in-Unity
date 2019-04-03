@@ -7,6 +7,7 @@ public class GetSpriteFromMousePos : MonoBehaviour {
 	public Sprite spLeft, spRight, spUp, spDown;
     float mouseRatioX;
     float mouseRatioY;
+    public SpriteRenderer SprRender;
 
     // Use this for initialization
     void Start () {
@@ -29,37 +30,37 @@ public class GetSpriteFromMousePos : MonoBehaviour {
             if (mouseRatioY < 0.515)
             {
                 if (mouseRatioX < 0.49)
-                    GetComponent<SpriteRenderer>().sprite = spLeft;
+                    SprRender.sprite = spLeft;
                 else if (mouseRatioX > 0.51)
-                    GetComponent<SpriteRenderer>().sprite = spRight;
+                    SprRender.sprite = spRight;
                 else
-                    GetComponent<SpriteRenderer>().sprite = spUp;
+                    SprRender.sprite = spUp;
             }
             else if (mouseRatioY < 0.55)
             {
                 if (mouseRatioX < 0.48)
-                    GetComponent<SpriteRenderer>().sprite = spLeft;
+                    SprRender.sprite = spLeft;
                 else if (mouseRatioX > 0.52)
-                    GetComponent<SpriteRenderer>().sprite = spRight;
+                    SprRender.sprite = spRight;
                 else
-                    GetComponent<SpriteRenderer>().sprite = spUp;
+                    SprRender.sprite = spUp;
             }
             else if (mouseRatioX > 0.25 && mouseRatioX < 0.75 && mouseRatioY < 0.7)
             {
                 if (mouseRatioX < 0.3)
-                    GetComponent<SpriteRenderer>().sprite = spLeft;
+                    SprRender.sprite = spLeft;
                 else if (mouseRatioX > 0.7)
-                    GetComponent<SpriteRenderer>().sprite = spRight;
+                    SprRender.sprite = spRight;
                 else
-                    GetComponent<SpriteRenderer>().sprite = spUp;
+                    SprRender.sprite = spUp;
 
             }
             else if (mouseRatioX > 0.75)
-                GetComponent<SpriteRenderer>().sprite = spRight;
+                SprRender.sprite = spRight;
             else if (mouseRatioX < 0.25)
-                GetComponent<SpriteRenderer>().sprite = spLeft;
+                SprRender.sprite = spLeft;
             else
-                GetComponent<SpriteRenderer>().sprite = spUp;
+                SprRender.sprite = spUp;
 
        }
 
@@ -68,36 +69,36 @@ public class GetSpriteFromMousePos : MonoBehaviour {
            if (mouseRatioY > 0.485)
            {
                if (mouseRatioX < 0.49)
-                   GetComponent<SpriteRenderer>().sprite = spLeft;
+                   SprRender.sprite = spLeft;
                else if (mouseRatioX > 0.51)
-                   GetComponent<SpriteRenderer>().sprite = spRight;
+                   SprRender.sprite = spRight;
                else
-                   GetComponent<SpriteRenderer>().sprite = spUp;
+                   SprRender.sprite = spUp;
            }        
            else if (mouseRatioY > 0.45)
            {
                if (mouseRatioX < 0.48)
-                   GetComponent<SpriteRenderer>().sprite = spLeft;
+                   SprRender.sprite = spLeft;
                else if (mouseRatioX > 0.52)
-                   GetComponent<SpriteRenderer>().sprite = spRight;
+                   SprRender.sprite = spRight;
                else
-                   GetComponent<SpriteRenderer>().sprite = spDown;
+                   SprRender.sprite = spDown;
            }
            else if (mouseRatioX > 0.25 && mouseRatioX < 0.75 && mouseRatioY > 0.3)
            {
                if (mouseRatioX < 0.3)
-                   GetComponent<SpriteRenderer>().sprite = spLeft;
+                   SprRender.sprite = spLeft;
                else if (mouseRatioX > 0.7)
-                   GetComponent<SpriteRenderer>().sprite = spRight;
+                   SprRender.sprite = spRight;
                else
-                   GetComponent<SpriteRenderer>().sprite = spDown;
+                   SprRender.sprite = spDown;
            }
            else if (mouseRatioX > 0.75)
-               GetComponent<SpriteRenderer>().sprite = spRight;
+               SprRender.sprite = spRight;
            else if (mouseRatioX < 0.25)
-               GetComponent<SpriteRenderer>().sprite = spLeft;
+               SprRender.sprite = spLeft;
            else
-               GetComponent<SpriteRenderer>().sprite = spDown;
+               SprRender.sprite = spDown;
        }
 
     }

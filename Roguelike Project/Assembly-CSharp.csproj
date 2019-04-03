@@ -62,15 +62,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Enemies\EnemyAttacked.cs" />
+    <Compile Include="Assets\Scripts\Enemies\ChangeEnemySprite.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyFollow.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\Enemies\FollowEnemy.cs" />
     <Compile Include="Assets\Scripts\Player\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Player\GetSpriteFromMousePos.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerWeapon.cs" />
     <Compile Include="Assets\Scripts\Player\RotateToCursor.cs" />
+    <Compile Include="Assets\Scripts\System\DontDestroyOnLoad.cs" />
+    <Compile Include="Assets\Scripts\System\ShowFPS.cs" />
     <Compile Include="Assets\Scripts\Weapons\Bullet.cs" />
-    <Compile Include="Assets\Scripts\Weapons\ObjectAttacked.cs" />
+    <Compile Include="Assets\Scripts\Weapons\BulletHit.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponPickup.cs" />
     <None Include="Assets\Asset Store\Backyard - Free\Readme.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
