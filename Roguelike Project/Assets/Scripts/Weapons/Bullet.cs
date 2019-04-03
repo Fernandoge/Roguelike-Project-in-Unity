@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour {
     public float bulletSpeed;
     public float bulletDamage;
     public string creator;
-    ObjectAttacked objectHit;
+    BulletHit clsBulletHit;
     public GameObject bloodImpact, wallImpact;
     public float bulletDuration;
     // Use this for initialization
@@ -36,8 +36,8 @@ public class Bullet : MonoBehaviour {
     {
         if (col.gameObject.tag == "Enemy")
         {
-            objectHit = col.gameObject.GetComponent<ObjectAttacked>();
-            objectHit.BulletHit(bulletDamage);
+            clsBulletHit = col.gameObject.GetComponent<BulletHit>();
+            clsBulletHit.DamageDone(bulletDamage);
             //enemyHit.killBullet(); esto es despues para la animacion de muerte
             //Instantiate (bloodImpact, this.transform.position, this.transform.rotation);
             Destroy (this.gameObject);
