@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeEnemySprite : MonoBehaviour
+public class EnemySpriteManager : MonoBehaviour
 {
     public EnemyMovement clsEnemyMovement;
     public Sprite up, down, left, right;
@@ -32,10 +32,9 @@ public class ChangeEnemySprite : MonoBehaviour
 
         if (clsEnemyMovement.pursuingPlayer)
         {
-            Vector2 v = clsEnemyMovement.player.transform.position - clsEnemyMovement.transform.position;
-            float a = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-            int index = (int)((Mathf.Round(a / 90f) + 4) % 4); //add a modulo over 4 to get a normalized index
-            Debug.Log(index);
+            Vector2 direction = clsEnemyMovement.player.transform.position - clsEnemyMovement.transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            int index = (int)((Mathf.Round(angle / 90f) + 4) % 4); //add a modulo over 4 to get a normalized index
             switch (index)
             {
                 case 0:
