@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateToCursor : MonoBehaviour {
-    Vector3 mousePos;
-    Camera cam;
-    Rigidbody2D rid;
+    private Vector3 mousePos;
+    public Camera cam;
+    public Rigidbody2D rid;
 
 
 	// Use this for initialization
