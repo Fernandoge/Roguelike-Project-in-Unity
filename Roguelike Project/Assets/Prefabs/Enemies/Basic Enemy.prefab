@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7522946407310716662}
   - component: {fileID: 1739860221270947853}
   - component: {fileID: 485676596}
-  - component: {fileID: 5405321636855793161}
   - component: {fileID: 7657540961684136507}
   m_Layer: 0
   m_Name: Enemy Sprites
@@ -49,8 +48,9 @@ MonoBehaviour:
   clsEnemyMovement: {fileID: 190120077144803765}
   up: {fileID: 21300086, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   down: {fileID: 21300014, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  left: {fileID: 21300038, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
+  left: {fileID: 21300040, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   right: {fileID: 21300062, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
+  deathSprite: {fileID: 21300000, guid: 012c103e34163be409c2dbe6996b8a7d, type: 3}
   SprRender: {fileID: 485676596}
 --- !u!212 &485676596
 SpriteRenderer:
@@ -94,30 +94,12 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5405321636855793161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293767741088767083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd2989051b979aa4fab4b32130724cf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clsEnemyMovement: {fileID: 190120077144803765}
-  up: {fileID: 21300086, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  down: {fileID: 21300014, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  left: {fileID: 21300038, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  right: {fileID: 21300064, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  SprRender: {fileID: 485676596}
 --- !u!114 &7657540961684136507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +125,7 @@ GameObject:
   - component: {fileID: 7652445354712255650}
   - component: {fileID: 1332046721811290307}
   - component: {fileID: 190120077144803765}
+  - component: {fileID: 8802549347646168770}
   - component: {fileID: 5321503236256192883}
   m_Layer: 0
   m_Name: Enemy Scripts
@@ -161,7 +144,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1203731600789849306}
   m_Father: {fileID: 3914512871002406623}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -211,7 +195,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &190120077144803765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,15 +209,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  speed: 0
+  patrolSpeed: 4
+  pursuingSpeed: 12
+  stopDistance: 8
+  distanceBetweenPlayer: 0
   patrol: 1
-  gaurd: 0
   clockwise: 0
   pursuingPlayer: 0
-  goingToLastLoc: 0
   spriteOrder: 0
-  stopDistance: 1.5
-  speed: 8
   playerLastPos: {x: 0, y: 0, z: 0}
+--- !u!114 &8802549347646168770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3157833502323035567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f6c6dea18714e74381f41e945c1c6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToShoot: 10
+  fireRate: 0.7
+  bulletSpawn: {fileID: 4669940616076824588}
+  equippedWeapon: {fileID: 4542940918164105755, guid: bfeeecd152986cf4c822e7d9d421c046,
+    type: 3}
+  weaponBullet: {fileID: 1952973253268562, guid: a4b2f4ff477ce7149976df82e37e3b45,
+    type: 3}
+  clsEnemyMovement: {fileID: 190120077144803765}
 --- !u!114 &5321503236256192883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,8 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82d7965bffcb1324fa93bfc250115750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 20
-  objectToDestroy: {fileID: 3914512871002406622}
+  hitpoints: 40
+  objectToDestroy: {fileID: 3157833502323035567}
+  spriteManager: {fileID: 1293767741088767083}
 --- !u!1 &3914512871002406622
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,5 +284,35 @@ Transform:
   - {fileID: 7522946407310716662}
   - {fileID: 5536518072643994747}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4669940616076824588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203731600789849306}
+  m_Layer: 0
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1203731600789849306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4669940616076824588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.58, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5536518072643994747}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

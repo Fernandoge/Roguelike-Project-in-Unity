@@ -2,73 +2,81 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyMovement : MonoBehaviour
+{
 
-    GameObject player;
-    public bool patrol = true, gaurd = false, clockwise = false;
-    public bool moving = true;
-    public bool pursuingPlayer = false, goingToLastLoc = false;
-    Vector3 target;
-    Rigidbody2D rid;
+    public GameObject player;
+    public float speed;
+    public float patrolSpeed;
+    public float pursuingSpeed;
+    public float stopDistance;
+    public float distanceBetweenPlayer;
+    public bool patrol = true, clockwise = false, pursuingPlayer = false;
+    public int spriteOrder = 0;
+    Rigidbody2D rigBody;
     public Vector3 playerLastPos;
-    RaycastHit2D hit;
-    float speed = 2.0f; //changed bullets to be kenimatic
+    RaycastHit2D DetectionRaycast;
+    private Vector2 velocity;
     int layerMask = 1 << 8; //explain layermask for tutorial (how it works + changes to weapon attack)
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerLastPos = this.transform.position;
         //hit=Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(dir.x, dir.y));
-        rid = this.GetComponent<Rigidbody2D>();
+        rigBody = this.GetComponent<Rigidbody2D>();
         layerMask = ~layerMask;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        speed = patrolSpeed;
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         Movement();
-        PlayerDetect();
-		
-	}
+        if (patrol == true)
+        {
+            PlayerDetect();
+        }
+
+    }
 
     void Movement()
     {
         float dist = Vector3.Distance(player.transform.position, this.transform.position);
         Vector3 dir = player.transform.position - transform.position;
-        hit = Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(dir.x, dir.y), dist, layerMask);
+        DetectionRaycast = Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(dir.x, dir.y), dist, layerMask);
         Debug.DrawRay(transform.position, dir, Color.red);
-
+        
         Vector3 fwt = this.transform.TransformDirection(Vector3.right);
-        RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(dir.x, dir.y), dist, layerMask);
+        RaycastHit2D ColliderRaycast = Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(fwt.x, fwt.y), 1.0f, layerMask);
         Debug.DrawRay(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(fwt.x, fwt.y), Color.cyan);
-
-        if (moving == true)
-        {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
-        }
 
         if (patrol == true)
         {
-            Debug.Log("Patrolling normally");
-            speed = 2.0f;
-
-            if (hit2.collider != null)
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            if (ColliderRaycast.collider != null)
             {
                 //Debug2.LogError(hit2.collider.tag);
-                if (hit2.collider.gameObject.tag == "Wall")
+                if (ColliderRaycast.collider.gameObject.tag == "Wall" || ColliderRaycast.collider.gameObject.tag == "Destroyable")
                 {
                     //Quaternion rot = this.transform.rotation;
-                    Debug.Log(hit2.collider);
-                    Debug.Log("aaaaaaa");
                     if (clockwise == false)
                     {
                         transform.Rotate(0, 0, 90);
-
+                        if (spriteOrder == 0)
+                            spriteOrder = 3;
+                        else
+                            spriteOrder--;
                     }
                     else
                     {
                         transform.Rotate(0, 0, -90);
+                        if (spriteOrder == 3)
+                            spriteOrder = 0;
+                        else
+                            spriteOrder++;
                     }
                 }
             }
@@ -76,43 +84,32 @@ public class EnemyMovement : MonoBehaviour {
 
         if (pursuingPlayer == true)
         {
-            //transform.Translate(Vector3.right * speed * Time.deltaTime);
-            Debug.Log("Pursuing Player");
-            speed = 3.5f;
-            rid.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((playerLastPos.y - transform.position.y), (playerLastPos.x - transform.position.x)) * Mathf.Rad2Deg);
-            if (Vector3.Distance(this.transform.position, playerLastPos) < 1.5f)
+            velocity = new Vector2(speed, speed);
+            distanceBetweenPlayer = Vector2.Distance(transform.position, player.transform.position);
+            //Debug.Log(distanceBetweenPlayer);
+            rigBody.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((player.transform.position.y - transform.position.y), (player.transform.position.x - transform.position.x)) * Mathf.Rad2Deg);
+            if (distanceBetweenPlayer > stopDistance)
             {
-                //not found player, return to patrol
-                patrol = true;
-                goingToLastLoc = false;
+                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             }
         }
-
     }
 
     void PlayerDetect()
     {
         Vector3 pos = this.transform.InverseTransformPoint(player.transform.position);
-        //Debug.Log (pos.x); //more than 1.2
-
-        if(hit.collider!=null)
+        //Debug.Log (Vector3.Distance(transform.position, player.transform.position)); //more than 1.2
+        if (DetectionRaycast.collider != null)
         {
             //Debug.LogError(hit.collider.tag);
-            if(hit.collider.gameObject.tag == "Player" && pos.x >1.2f && Vector3.Distance(this.transform.position, player.transform.position) < 9)
+            if (DetectionRaycast.collider.gameObject.tag == "Player" && pos.x > 1.2f && (Vector3.Distance(transform.position, player.transform.position) < 13))
             {
+                speed = pursuingSpeed;
+                rigBody.bodyType = RigidbodyType2D.Dynamic;
+                rigBody.simulated = true;
                 patrol = false;
                 pursuingPlayer = true;
             }
-            else
-            {
-                if (pursuingPlayer==true)
-                {
-                    goingToLastLoc = true;
-                    pursuingPlayer = false;
-                }
-                //pursuingPlayer = false;
-            }
         }
     }
-
 }

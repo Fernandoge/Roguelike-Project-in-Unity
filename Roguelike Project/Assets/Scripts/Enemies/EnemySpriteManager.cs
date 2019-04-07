@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpriteManager : MonoBehaviour
 {
     public EnemyMovement clsEnemyMovement;
-    public Sprite up, down, left, right;
+    public Sprite up, down, left, right, deathSprite;
     public SpriteRenderer SprRender;
 
     // Update is called once per frame
@@ -52,5 +52,11 @@ public class EnemySpriteManager : MonoBehaviour
             }
         }
         
+    }
+
+    public void DeathAnimation()
+    {
+        clsEnemyMovement.pursuingPlayer = false;
+        SprRender.sprite = deathSprite;
     }
 }
