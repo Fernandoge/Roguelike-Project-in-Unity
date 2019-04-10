@@ -9,7 +9,11 @@ public class PlayerSpriteManager : MonoBehaviour
     public SpriteRenderer playerSprRender;
     public Animator animator;
     public PlayerMovement clsPlayerMovement;
-    public SpriteRenderer playerWeaponSprRender;
+    public SpriteRenderer PlayerWeaponRightSprRender,PlayerWeaponLeftSprRender;
+    private Sprite _weaponSprite;
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -17,7 +21,6 @@ public class PlayerSpriteManager : MonoBehaviour
         Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         int index = (int)((Mathf.Round(angle / 90f) + 4) % 4); //add a modulo over 4 to get a normalized index
-
         if (clsPlayerMovement.moving)
             animator.enabled = true;
         else
@@ -43,4 +46,22 @@ public class PlayerSpriteManager : MonoBehaviour
                 break;
         }
         
+        if (angle > -90 && angle < 90)
+        {
+            PlayerWeaponLeftSprRender.sprite = null;
+            PlayerWeaponRightSprRender.sprite = _weaponSprite;
+        }
+        else
+        {
+            PlayerWeaponRightSprRender.sprite = null;
+            PlayerWeaponLeftSprRender.sprite = _weaponSprite;
+        }
+
+    }
+
+    public void UpdateWeaponSprite(Sprite weaponSprite)
+    {
+        _weaponSprite = weaponSprite;
+
+    }
 }

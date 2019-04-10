@@ -7,6 +7,8 @@ public class PlayerWeapon : MonoBehaviour {
     [SerializeField]
     private GameObject weaponBullet;
     private BulletConfig clsBulletConfig;
+    public PlayerSpriteManager clsPlayerSpriteManager;
+    
     //bool gun = false;
     public float timer;
     float timerReset;
@@ -29,7 +31,7 @@ public class PlayerWeapon : MonoBehaviour {
 
 	}
 
-    public void SetWeapon(GameObject cur, string name, float fireRate, GameObject TypeOfBullet)
+    public void SetWeapon(GameObject cur, string name, float fireRate, GameObject TypeOfBullet, Sprite weaponSprite)
     {
         //changingWeapon = true;
         equippedWeapon = cur;
@@ -38,6 +40,9 @@ public class PlayerWeapon : MonoBehaviour {
         timer = timerReset;
         weaponBullet = TypeOfBullet;
         clsBulletConfig = weaponBullet.GetComponent<BulletConfig>();
+        clsPlayerSpriteManager.UpdateWeaponSprite(weaponSprite);
+
+
 
     }
 
@@ -50,7 +55,7 @@ public class PlayerWeapon : MonoBehaviour {
     {
         equippedWeapon.transform.position = this.transform.position;
         equippedWeapon.SetActive(true);
-        SetWeapon(null,"", 0.5f, null);
+        SetWeapon(null,"", 0.5f, null, null);
     }
 
 
