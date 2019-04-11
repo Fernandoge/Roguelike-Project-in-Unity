@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class EnemySpriteManager : MonoBehaviour
 {
-    public EnemyMovement clsEnemyMovement;
+    public GameObject enemyScriptsObject;
+    private EnemyMovement clsEnemyMovement;
+    private EnemyWeapon clsEnemyweapon;
     public Sprite up, down, left, right, deathSprite;
     public SpriteRenderer SprRender;
+    public SpriteRenderer EnemyWeaponRightSprRender, EnemyWeaponLeftSprRender;
+    private Sprite _weaponSprite;
+
+    void Start()
+    {
+        clsEnemyMovement = enemyScriptsObject.GetComponent<EnemyMovement>();
+        clsEnemyweapon = enemyScriptsObject.GetComponent<EnemyWeapon>();
+        _weaponSprite = clsEnemyweapon.equippedWeapon.GetComponent<SpriteRenderer>().sprite;
+    }
 
     // Update is called once per frame
     void Update()
@@ -35,6 +46,7 @@ public class EnemySpriteManager : MonoBehaviour
             Vector2 direction = clsEnemyMovement.player.transform.position - clsEnemyMovement.transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             int index = (int)((Mathf.Round(angle / 90f) + 4) % 4); //add a modulo over 4 to get a normalized index
+
             switch (index)
             {
                 case 0:
@@ -50,8 +62,19 @@ public class EnemySpriteManager : MonoBehaviour
                     SprRender.sprite = down;
                     break;
             }
+          
+            if (angle > -90 && angle < 90)
+            {
+                EnemyWeaponLeftSprRender.sprite = null;
+                EnemyWeaponRightSprRender.sprite = _weaponSprite;
+            }
+            else
+            {
+                EnemyWeaponRightSprRender.sprite = null;
+                EnemyWeaponLeftSprRender.sprite = _weaponSprite;
+            }
         }
-        
+
     }
 
     public void DeathAnimation()
