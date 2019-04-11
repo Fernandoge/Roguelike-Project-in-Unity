@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpriteManager : MonoBehaviour
 {
     public GameObject enemyScriptsObject;
+    public Animator animator;
     private EnemyMovement clsEnemyMovement;
     private EnemyWeapon clsEnemyweapon;
     public Sprite up, down, left, right, deathSprite;
@@ -28,15 +29,19 @@ public class EnemySpriteManager : MonoBehaviour
             {
                 case 0:
                     SprRender.sprite = right;
+                    animator.SetInteger("Direction", 0);
                     break;
                 case 1:
                     SprRender.sprite = down;
+                    animator.SetInteger("Direction", 1);
                     break;
                 case 2:
                     SprRender.sprite = left;
+                    animator.SetInteger("Direction", 2);
                     break;
                 case 3:
                     SprRender.sprite = up;
+                    animator.SetInteger("Direction", 3);
                     break;
             }
         }
@@ -51,15 +56,19 @@ public class EnemySpriteManager : MonoBehaviour
             {
                 case 0:
                     SprRender.sprite = right;
+                    animator.SetInteger("Direction", 0);
                     break;
                 case 1:
                     SprRender.sprite = up;
+                    animator.SetInteger("Direction", 1);
                     break;
                 case 2:
                     SprRender.sprite = left;
+                    animator.SetInteger("Direction", 2);
                     break;
                 case 3:
                     SprRender.sprite = down;
+                    animator.SetInteger("Direction", 3);
                     break;
             }
           
@@ -79,7 +88,9 @@ public class EnemySpriteManager : MonoBehaviour
 
     public void DeathAnimation()
     {
+        animator.enabled = false;
         clsEnemyMovement.pursuingPlayer = false;
         SprRender.sprite = deathSprite;
     }
 }
+    

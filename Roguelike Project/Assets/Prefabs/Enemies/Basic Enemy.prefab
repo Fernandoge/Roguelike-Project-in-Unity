@@ -52,7 +52,7 @@ MonoBehaviour:
   down: {fileID: 21300014, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   left: {fileID: 21300040, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   right: {fileID: 21300062, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  deathSprite: {fileID: 21300000, guid: 012c103e34163be409c2dbe6996b8a7d, type: 3}
+  deathSprite: {fileID: 21300146, guid: 1c40a47d9ac1fdf4c94f38c50a6d2353, type: 3}
   SprRender: {fileID: 485676596}
   EnemyWeaponRightSprRender: {fileID: 4676392600362603941}
   EnemyWeaponLeftSprRender: {fileID: 2150515960138168098}
