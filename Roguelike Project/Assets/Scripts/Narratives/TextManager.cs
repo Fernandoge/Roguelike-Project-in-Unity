@@ -11,15 +11,18 @@ public class TextManager : MonoBehaviour
     public Text theText;
     public Text OptionText;
     public TextAsset textFile;
-    public PlayerMovement player;
-    public GameVariables Variables;
-    public ActivateTextAtLine ATAL;
+    public PlayerMovement clsPlayerMovement;
+    public NarrativesManager clsNarrativesManager;
+    public Narrative clsNarrative;
+    //public GameVariables Variables;
+    public int narrativeID;
     public string[] textLines;
     public int currentLine;
     public int endAtLine;
-    public int optionAtLine;
+    public int optionTriggerLine;
     public int optionLine;
-    public int ChatNum;
+    public int timesTalked;
+    public int timesResponded;
     public bool isActive;
     public bool optionsIsActive;
     private bool isTyping = false;
@@ -32,8 +35,8 @@ public class TextManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
-        Variables = GameObject.Find("GameVariables").GetComponent<GameVariables>();
+        //player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        //Variables = GameObject.Find("GameVariables").GetComponent<GameVariables>();
         if (textFile != null)
         {
             textLines = (textFile.text.Split('\n'));
@@ -65,27 +68,29 @@ public class TextManager : MonoBehaviour
                 ChatLinesSystem();
             }
         }
+        
         if (isActive && optionsIsActive)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                ChoiceMade(ChatNum, 1);
+                clsNarrativesManager.ManageText(narrativeID, 1);
                 DisableOptionsBox();
                 ChatLinesSystem();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                ChoiceMade(ChatNum, 2);
+                clsNarrativesManager.ManageText(narrativeID, 2);
                 DisableOptionsBox();
                 ChatLinesSystem();
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                ChoiceMade(ChatNum, 3);
+                clsNarrativesManager.ManageText(narrativeID, 3);
                 DisableOptionsBox();
                 ChatLinesSystem();
             }
         }
+        
     }
 
     private IEnumerator isActiveWithWait()
@@ -97,9 +102,9 @@ public class TextManager : MonoBehaviour
     private IEnumerator NPCMovement()
     {
         yield return new WaitForSecondsRealtime(5);
-        
-    }   
-     
+
+    }
+
     private IEnumerator TextScroll(string lineOfText)
     {
         int letter = 0;
@@ -115,7 +120,7 @@ public class TextManager : MonoBehaviour
         theText.text = lineOfText;
         isTyping = false;
         cancelTyping = false;
-        if (optionAtLine == currentLine)
+        if (optionTriggerLine == currentLine)
         {
             EnableOptionsBox();
         }
@@ -130,6 +135,7 @@ public class TextManager : MonoBehaviour
             if (currentLine > endAtLine)
             {
                 DisableTextBox();
+                clsNarrative.timesTalked += 1;
             }
             else
             {
@@ -148,8 +154,8 @@ public class TextManager : MonoBehaviour
     {
         isActive = true;
         textBox.SetActive(true);
-        player.canMove = false;
-        player.myRigidbody.velocity = Vector2.zero;
+        clsPlayerMovement.canMove = false;
+        clsPlayerMovement.myRigidbody.velocity = Vector2.zero;
         StartCoroutine(TextScroll(textLines[currentLine]));
 
     }
@@ -159,7 +165,7 @@ public class TextManager : MonoBehaviour
         StartCoroutine(isActiveWithWait());
         textBox.SetActive(false);
         optionsBox.SetActive(false);
-        player.canMove = true;
+        clsPlayerMovement.canMove = true;
     }
 
     public void EnableOptionsBox()
@@ -173,6 +179,7 @@ public class TextManager : MonoBehaviour
     {
         optionsIsActive = false;
         optionsBox.SetActive(false);
+        clsNarrative.timesResponded += 1;
     }
 
     public void ReloadScript(TextAsset theText)
@@ -184,57 +191,33 @@ public class TextManager : MonoBehaviour
         }
     }
 
-    void ChangeLines(int cl, int el, int atal_sl)                                    //We change the startline to decide at what line the chat will begin                                                                       
+    public void GetNarrativeValues()
     {
-        currentLine = cl;                                   // currentLine must be 2 less than the wanted because the +1 addition and text starting with Element 0                                
-        endAtLine = el;                                     // endAtLine must be 1 less because the text starting with Element 0    
-        ATAL.startLine = atal_sl;                           // ATAL.startline must be 1 less because the text starting with Element 0
-    }
-
-    void ChangeOptionPanel(int otl, int orl)
-    {
-        optionAtLine = otl;
-        optionLine = orl;
-        ATAL.optionReadLine = orl;
-        ATAL.optionTriggerLine = otl;
-    }
-
-
-    //**********************************************************************************************************************************************************************//
-    //**********************************************************************************************************************************************************************//
-    //**********************************************************************************************************************************************************************//
-    //**********************************************************************************************************************************************************************//
-    //**********************************************************************************************************************************************************************//
-    //**********************************************************************************************************************************************************************//
-    //**********************************************************************************************************************************************************************//
-    //**********************************************************************************************************************************************************************//
-    //**********************************************************************************************************************************************************************//
-
-
-
-
-    public void ChoiceMade(int n, int c)                                                                           // n = Chat Number | c = Option choiced                        
-    {
-        if (n == 0) //Chicorita                                                                                                     
+        if (clsNarrative != null)
         {
-            ATAL = GameObject.Find("Chicorita").GetComponent<ActivateTextAtLine>();     //We control the ATAL script for this NPC
-            Chicorita = GameObject.Find("Chicorita");
-            if (c == 1)                 //hacer switch aca
-            {
-                Variables.PrimeraVariable = true;
-                ChangeLines(12, 14, 19);
-            }
-            else if (c == 2)
-            {
-                Variables.SegundaVariable = false;
-                ChangeLines(15, 17, ATAL.startLine);
-            }
-        }
-
-        if (n == 1) //otro chat
-        {
-
-
+            ReloadScript(clsNarrative.theText);
+            narrativeID = clsNarrative.narrativeID;
+            currentLine = clsNarrative.startLine - 1;
+            endAtLine = clsNarrative.endLine - 1;
+            optionTriggerLine = clsNarrative.optionTriggerLine - 1;
+            optionLine = clsNarrative.optionReadLine - 1;
+            timesTalked = clsNarrative.timesTalked;
+            timesResponded = clsNarrative.timesResponded;
+            EnableTextBox();
         }
     }
+
+
+
+
+    //**********************************************************************************************************************************************************************//
+    //**********************************************************************************************************************************************************************//
+    //**********************************************************************************************************************************************************************//
+    //**********************************************************************************************************************************************************************//
+    //**********************************************************************************************************************************************************************//
+    //**********************************************************************************************************************************************************************//
+    //**********************************************************************************************************************************************************************//
+    //**********************************************************************************************************************************************************************//
+    //**********************************************************************************************************************************************************************//
+
 }
