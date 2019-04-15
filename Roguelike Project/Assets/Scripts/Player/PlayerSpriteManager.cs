@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PlayerSpriteManager : MonoBehaviour
 {
+    [Header("Sprites")]
 
-    public Sprite spLeft, spRight, spUp, spDown;
+    public Sprite spLeft;
+    public Sprite spRight;
+    public Sprite spUp;
+    public Sprite spDown;
+    [Header("Components")]
     public SpriteRenderer playerSprRender;
     public Animator animator;
     public PlayerMovement clsPlayerMovement;

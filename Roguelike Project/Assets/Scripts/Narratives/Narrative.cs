@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Narrative : MonoBehaviour {
 
+    public Sprite[] sprites = new Sprite[4];
     public int narrativeID;
     public TextAsset theText;
+    [Header("Starter Lines")]
     public int startLine;
     public int endLine;
     public int optionTriggerLine;
     public int optionReadLine;
+    [Header("Variables")]
     public int timesTalked = 0;
     public int timesResponded = 0;
     private TextManager _clsTextManager;
@@ -18,17 +21,20 @@ public class Narrative : MonoBehaviour {
     public bool requireButtonPress;
     private GameObject _chatIndicator;
     private GameObject _player;
-    private SpriteRenderer _SprRender;
-    public Sprite[] sprites = new Sprite[4];
-    
+    [System.NonSerialized]
+    public SpriteRenderer _SprRender;
+    [System.NonSerialized]
+    public Sprite _nonTalkingSprite;
 
-	// Use this for initialization
-	void Start ()
+
+    // Use this for initialization
+    void Start ()
     {
         _clsTextManager = FindObjectOfType<TextManager>();
         _chatIndicator = gameObject.transform.GetChild(0).gameObject;
         _player = GameObject.FindGameObjectWithTag("Player");
         _SprRender = gameObject.GetComponent<SpriteRenderer>();
+        _nonTalkingSprite = _SprRender.sprite;
     }
 	
 	// Update is called once per frame

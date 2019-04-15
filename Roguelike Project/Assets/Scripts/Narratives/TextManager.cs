@@ -29,8 +29,6 @@ public class TextManager : MonoBehaviour
     private bool cancelTyping = false;
     public float typeSpeed;
 
-    public GameObject Chicorita;
-
 
     // Use this for initialization
     void Start()
@@ -166,6 +164,7 @@ public class TextManager : MonoBehaviour
         textBox.SetActive(false);
         optionsBox.SetActive(false);
         clsPlayerMovement.canMove = true;
+        clsNarrative._SprRender.sprite = clsNarrative._nonTalkingSprite;
     }
 
     public void EnableOptionsBox()

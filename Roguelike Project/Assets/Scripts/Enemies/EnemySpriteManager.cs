@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class EnemySpriteManager : MonoBehaviour
 {
+    [Header("Sprites")]
+    public Sprite up;
+    public Sprite down;
+    public Sprite left;
+    public Sprite right;
+    public Sprite deathSprite;
+    [Header("Components")]
     public GameObject enemyScriptsObject;
     public Animator animator;
     private EnemyMovement clsEnemyMovement;
     private EnemyWeapon clsEnemyweapon;
-    public Sprite up, down, left, right, deathSprite;
     public SpriteRenderer SprRender;
     public SpriteRenderer EnemyWeaponRightSprRender, EnemyWeaponLeftSprRender;
     private Sprite _weaponSprite;
@@ -86,7 +92,7 @@ public class EnemySpriteManager : MonoBehaviour
 
     }
 
-    public void DeathAnimation()
+    public void EnemyDeathAnimation()
     {
         animator.enabled = false;
         clsEnemyMovement.pursuingPlayer = false;
