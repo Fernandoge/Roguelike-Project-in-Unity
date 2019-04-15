@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 50900092150353122}
   - component: {fileID: 61591242539695634}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Main Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,11 +95,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 1, y: 0, z: 0}
-  bulletSpeed: 15
+  bulletSpeed: 12
   bulletDamage: 1
+  creator: {fileID: 0}
   bloodImpact: {fileID: 0}
   wallImpact: {fileID: 0}
-  bulletDuration: 2
+  bulletDuration: 10
+  target: {fileID: 0}
 --- !u!50 &50900092150353122
 Rigidbody2D:
   serializedVersion: 4
@@ -108,7 +110,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952973253268562}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
