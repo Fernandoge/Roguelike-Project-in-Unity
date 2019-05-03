@@ -29,10 +29,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 moving = true;
                 myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
-                /*if (Input.GetAxisRaw("Horizontal") > 0.5f)
-                    GetComponent<SpriteRenderer>().sprite = spRight;
-                if (Input.GetAxisRaw("Horizontal") < -0.5f)
-                    GetComponent<SpriteRenderer>().sprite = spLeft;*/
             }
             else
                 myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
@@ -42,10 +38,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 moving = true;
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, Input.GetAxisRaw("Vertical") * moveSpeed);
-                /*if (Input.GetAxisRaw("Vertical") > 0.5f)
-                    GetComponent<SpriteRenderer>().sprite = spUp;
-                if (Input.GetAxisRaw("Vertical") < -0.5f)
-                    GetComponent<SpriteRenderer>().sprite = spDown;*/
             }
             else
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0f);
@@ -76,5 +68,10 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    
+    /* For future interactions in case something push the player
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject);
+    }
+    */
 }
