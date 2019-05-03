@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     public Vector3 playerLastPos;
     RaycastHit2D DetectionRaycast;
     private Vector2 velocity;
+    public bool moving;
     int layerMask = 1 << 8; //explain layermask for tutorial (how it works + changes to weapon attack)
 
 
@@ -65,18 +66,18 @@ public class EnemyMovement : MonoBehaviour
                     if (clockwise == false)
                     {
                         transform.Rotate(0, 0, 90);
-                        if (spriteOrder == 0)
-                            spriteOrder = 3;
-                        else
-                            spriteOrder--;
-                    }
-                    else
-                    {
-                        transform.Rotate(0, 0, -90);
                         if (spriteOrder == 3)
                             spriteOrder = 0;
                         else
                             spriteOrder++;
+                    }
+                    else
+                    {
+                        transform.Rotate(0, 0, -90);
+                        if (spriteOrder == 0)
+                            spriteOrder = 3;
+                        else
+                            spriteOrder--;
                     }
                 }
             }
@@ -91,6 +92,11 @@ public class EnemyMovement : MonoBehaviour
             if (distanceBetweenPlayer > stopDistance)
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                moving = true;
+            }
+            else
+            {
+                moving = false;
             }
         }
     }

@@ -29,6 +29,12 @@ public class EnemySpriteManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (clsEnemyMovement.moving)
+            animator.enabled = true;
+        else
+            animator.enabled = false;
+
         if (clsEnemyMovement.patrol)
         {
             switch (clsEnemyMovement.spriteOrder)
@@ -38,7 +44,7 @@ public class EnemySpriteManager : MonoBehaviour
                     animator.SetInteger("Direction", 0);
                     break;
                 case 1:
-                    SprRender.sprite = down;
+                    SprRender.sprite = up;
                     animator.SetInteger("Direction", 1);
                     break;
                 case 2:
@@ -46,7 +52,7 @@ public class EnemySpriteManager : MonoBehaviour
                     animator.SetInteger("Direction", 2);
                     break;
                 case 3:
-                    SprRender.sprite = up;
+                    SprRender.sprite = down;
                     animator.SetInteger("Direction", 3);
                     break;
             }
