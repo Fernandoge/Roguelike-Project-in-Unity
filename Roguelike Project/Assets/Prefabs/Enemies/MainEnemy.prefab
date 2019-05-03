@@ -291,7 +291,7 @@ Rigidbody2D:
   m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -323,6 +323,7 @@ MonoBehaviour:
   pursuingPlayer: 0
   spriteOrder: 0
   playerLastPos: {x: 0, y: 0, z: 0}
+  moving: 0
 --- !u!114 &8802549347646168770
 MonoBehaviour:
   m_ObjectHideFlags: 0

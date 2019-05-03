@@ -44,15 +44,7 @@ public class TextManager : MonoBehaviour
         {
             endAtLine = textLines.Length - 1;
         }
-
-        if (isActive)
-        {
-            EnableTextBox();
-        }
-        else
-        {
-            DisableTextBox();
-        }
+        
     }
 
 
