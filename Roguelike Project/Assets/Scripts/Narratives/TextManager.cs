@@ -164,7 +164,7 @@ public class TextManager : MonoBehaviour
         textBox.SetActive(false);
         optionsBox.SetActive(false);
         clsPlayerMovement.canMove = true;
-        clsNarrative._SprRender.sprite = clsNarrative._nonTalkingSprite;
+        clsNarrative.SprRender.sprite = clsNarrative.nonTalkingSprite;
     }
 
     public void EnableOptionsBox()

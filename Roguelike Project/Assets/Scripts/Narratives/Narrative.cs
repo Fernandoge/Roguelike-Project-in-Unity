@@ -22,9 +22,9 @@ public class Narrative : MonoBehaviour {
     private GameObject _chatIndicator;
     private GameObject _player;
     [System.NonSerialized]
-    public SpriteRenderer _SprRender;
+    public SpriteRenderer SprRender;
     [System.NonSerialized]
-    public Sprite _nonTalkingSprite;
+    public Sprite nonTalkingSprite;
 
 
     // Use this for initialization
@@ -33,8 +33,8 @@ public class Narrative : MonoBehaviour {
         _clsTextManager = FindObjectOfType<TextManager>();
         _chatIndicator = gameObject.transform.GetChild(0).gameObject;
         _player = GameObject.FindGameObjectWithTag("Player");
-        _SprRender = gameObject.GetComponent<SpriteRenderer>();
-        _nonTalkingSprite = _SprRender.sprite;
+        SprRender = gameObject.GetComponent<SpriteRenderer>();
+        nonTalkingSprite = SprRender.sprite;
     }
 	
 	// Update is called once per frame
@@ -94,16 +94,16 @@ public class Narrative : MonoBehaviour {
         switch (index)
         {
             case 0:
-                _SprRender.sprite = sprites[0];
+                SprRender.sprite = sprites[0];
                 break;
             case 1:
-                _SprRender.sprite = sprites[1];
+                SprRender.sprite = sprites[1];
                 break;
             case 2:
-                _SprRender.sprite = sprites[2];
+                SprRender.sprite = sprites[2];
                 break;
             case 3:
-                _SprRender.sprite = sprites[3];
+                SprRender.sprite = sprites[3];
                 break;
         }
     }
