@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2989051b979aa4fab4b32130724cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyScriptsObject: {fileID: 3157833502323035567}
-  animator: {fileID: 9185067217559258014}
   up: {fileID: 21300086, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   down: {fileID: 21300014, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   left: {fileID: 21300040, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   right: {fileID: 21300062, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   deathSprite: {fileID: 21300146, guid: 1c40a47d9ac1fdf4c94f38c50a6d2353, type: 3}
+  enemyScriptsObject: {fileID: 3157833502323035567}
+  animator: {fileID: 9185067217559258014}
   SprRender: {fileID: 485676596}
   EnemyWeaponRightSprRender: {fileID: 4676392600362603941}
   EnemyWeaponLeftSprRender: {fileID: 2150515960138168098}
@@ -299,7 +299,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &190120077144803765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3914512871002406623}
   m_Layer: 0
-  m_Name: Basic Enemy
+  m_Name: MainEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
