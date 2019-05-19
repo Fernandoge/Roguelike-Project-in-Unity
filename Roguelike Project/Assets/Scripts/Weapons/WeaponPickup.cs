@@ -7,13 +7,16 @@ public class WeaponPickup : MonoBehaviour {
     public new string name;
     public float fireRate;
     public bool onPositionToPickUp;
+    private GameObject _pickUpIndicator;
     //public bool gun;
     public GameObject weaponBullet;
     private Sprite weaponEquippedSprite;
 
     void Start()
     {
+        clsPlayerWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerWeapon>();
         weaponEquippedSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+        _pickUpIndicator = gameObject.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -34,13 +37,20 @@ public class WeaponPickup : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
+        {
             onPositionToPickUp = true;
+            _pickUpIndicator.SetActive(true);
+        }
+           
         
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
+        {
             onPositionToPickUp = false;
+            _pickUpIndicator.SetActive(false);
+        }
     }
 }
