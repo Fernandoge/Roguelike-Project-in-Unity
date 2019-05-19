@@ -4,7 +4,7 @@ public class FollowObject : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject objectToFollow;
+    private GameObject objectToFollow = null;
     bool followingObject = true;
 
     // Update is called once per frame
