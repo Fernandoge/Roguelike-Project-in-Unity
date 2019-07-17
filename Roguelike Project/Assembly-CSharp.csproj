@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\System\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\System\FollowObject.cs" />
     <Compile Include="Assets\Scripts\System\ShowFPS.cs" />
+    <Compile Include="Assets\Scripts\System\SpriteManager.cs" />
     <Compile Include="Assets\Scripts\Weapons\BulletConfig.cs" />
     <Compile Include="Assets\Scripts\Weapons\HitpointsManager.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponPickup.cs" />

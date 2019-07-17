@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Sprite spLeft, spRight, spUp, spDown;
     public Rigidbody2D myRigidbody;
     public bool canMove;
     public bool moving;

@@ -2,107 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpriteManager : MonoBehaviour
+public class EnemySpriteManager : SpriteManager
 {
-    [Header("Sprites")]
-    public Sprite up;
-    public Sprite down;
-    public Sprite left;
-    public Sprite right;
-    public Sprite deathSprite;
-    [Header("Components")]
-    public GameObject enemyScriptsObject;
-    public Animator animator;
-    private EnemyMovement clsEnemyMovement;
-    private EnemyWeapon clsEnemyweapon;
-    public SpriteRenderer SprRender;
-    public SpriteRenderer EnemyWeaponRightSprRender, EnemyWeaponLeftSprRender;
-    private Sprite _weaponSprite;
 
-    void Start()
+    [Header("This Components")]
+    [SerializeField]
+    private EnemyMovement _clsEnemyMovement = default;
+    [SerializeField]
+    private EnemyWeapon _clsEnemyWeapon = default;
+
+    private void Start()
     {
-        clsEnemyMovement = enemyScriptsObject.GetComponent<EnemyMovement>();
-        clsEnemyweapon = enemyScriptsObject.GetComponent<EnemyWeapon>();
-        _weaponSprite = clsEnemyweapon.equippedWeapon.GetComponent<SpriteRenderer>().sprite;
+        UpdateWeaponSprite(_clsEnemyWeapon.equippedWeapon.GetComponent<SpriteRenderer>().sprite);
     }
 
-    // Update is called once per frame
-    void Update()
+    new void Update()
     {
-
-        if (clsEnemyMovement.moving)
+        if (_clsEnemyMovement.moving)
             animator.enabled = true;
         else
             animator.enabled = false;
 
-        if (clsEnemyMovement.patrol)
+        if (_clsEnemyMovement.patrol)
         {
-            switch (clsEnemyMovement.spriteOrder)
+            switch (_clsEnemyMovement.spriteOrder)
             {
                 case 0:
-                    SprRender.sprite = right;
+                    sprRender.sprite = spRight;
                     animator.SetInteger("Direction", 0);
                     break;
                 case 1:
-                    SprRender.sprite = up;
+                    sprRender.sprite = spUp;
                     animator.SetInteger("Direction", 1);
                     break;
                 case 2:
-                    SprRender.sprite = left;
+                    sprRender.sprite = spLeft;
                     animator.SetInteger("Direction", 2);
                     break;
                 case 3:
-                    SprRender.sprite = down;
+                    sprRender.sprite = spDown;
                     animator.SetInteger("Direction", 3);
                     break;
             }
         }
 
-        if (clsEnemyMovement.pursuingPlayer)
+        if (_clsEnemyMovement.pursuingPlayer)
         {
-            Vector2 direction = clsEnemyMovement.player.transform.position - clsEnemyMovement.transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            int index = (int)((Mathf.Round(angle / 90f) + 4) % 4); //add a modulo over 4 to get a normalized index
-
-            switch (index)
-            {
-                case 0:
-                    SprRender.sprite = right;
-                    animator.SetInteger("Direction", 0);
-                    break;
-                case 1:
-                    SprRender.sprite = up;
-                    animator.SetInteger("Direction", 1);
-                    break;
-                case 2:
-                    SprRender.sprite = left;
-                    animator.SetInteger("Direction", 2);
-                    break;
-                case 3:
-                    SprRender.sprite = down;
-                    animator.SetInteger("Direction", 3);
-                    break;
-            }
-          
-            if (angle > -90 && angle < 90)
-            {
-                EnemyWeaponLeftSprRender.sprite = null;
-                EnemyWeaponRightSprRender.sprite = _weaponSprite;
-            }
-            else
-            {
-                EnemyWeaponRightSprRender.sprite = null;
-                EnemyWeaponLeftSprRender.sprite = _weaponSprite;
-            }
+            direction = _clsEnemyMovement.player.transform.position - _clsEnemyMovement.transform.position;
+            base.Update();
         }
-
     }
 
-    public void EnemyDeathAnimation()
+    public void Death()
     {
+        _clsEnemyMovement.moving = false;
+        _clsEnemyMovement.pursuingPlayer = false;
         animator.enabled = false;
-        clsEnemyMovement.pursuingPlayer = false;
-        SprRender.sprite = deathSprite;
+        sprRender.sprite = spDeath;
     }
 }
     

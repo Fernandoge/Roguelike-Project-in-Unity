@@ -46,16 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2989051b979aa4fab4b32130724cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  up: {fileID: 21300086, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  down: {fileID: 21300014, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  left: {fileID: 21300040, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  right: {fileID: 21300062, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  deathSprite: {fileID: 21300146, guid: 1c40a47d9ac1fdf4c94f38c50a6d2353, type: 3}
-  enemyScriptsObject: {fileID: 3157833502323035567}
+  spUp: {fileID: 21300086, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
+  spDown: {fileID: 21300014, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
+  spLeft: {fileID: 21300038, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
+  spRight: {fileID: 21300062, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
+  spDeath: {fileID: 21300146, guid: 1c40a47d9ac1fdf4c94f38c50a6d2353, type: 3}
   animator: {fileID: 9185067217559258014}
-  SprRender: {fileID: 485676596}
-  EnemyWeaponRightSprRender: {fileID: 4676392600362603941}
-  EnemyWeaponLeftSprRender: {fileID: 2150515960138168098}
+  sprRender: {fileID: 485676596}
+  weaponRightSprRender: {fileID: 4676392600362603941}
+  weaponLeftSprRender: {fileID: 2150515960138168098}
+  _clsEnemyMovement: {fileID: 190120077144803765}
+  _clsEnemyWeapon: {fileID: 8802549347646168770}
 --- !u!212 &485676596
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -323,7 +324,7 @@ MonoBehaviour:
   pursuingPlayer: 0
   spriteOrder: 0
   playerLastPos: {x: 0, y: 0, z: 0}
-  moving: 0
+  moving: 1
 --- !u!114 &8802549347646168770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 40
   objectToDestroy: {fileID: 3157833502323035567}
-  spriteManager: {fileID: 1293767741088767083}
+  spriteManager: {fileID: 1739860221270947853}
 --- !u!1 &3914512871002406622
 GameObject:
   m_ObjectHideFlags: 0

@@ -395,15 +395,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7851c38115f684e0ea101d5838aaa5d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spLeft: {fileID: 21300134, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  spRight: {fileID: 21300158, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   spUp: {fileID: 21300182, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   spDown: {fileID: 21300110, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  playerSprRender: {fileID: 7941783385480897350}
+  spLeft: {fileID: 21300134, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
+  spRight: {fileID: 21300158, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
+  spDeath: {fileID: 0}
   animator: {fileID: 7941783385480897351}
-  clsPlayerMovement: {fileID: 7941783383899892013}
-  PlayerWeaponRightSprRender: {fileID: 7941783385174788768}
-  PlayerWeaponLeftSprRender: {fileID: 7941783383853911881}
+  sprRender: {fileID: 7941783385480897350}
+  weaponRightSprRender: {fileID: 7941783385174788768}
+  weaponLeftSprRender: {fileID: 7941783383853911881}
+  _clsPlayerMovement: {fileID: 7941783383899892013}
 --- !u!114 &7941783385480897369
 MonoBehaviour:
   m_ObjectHideFlags: 0
