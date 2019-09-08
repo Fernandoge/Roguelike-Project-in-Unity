@@ -63,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Dungeon\DungeonController.cs" />
+    <Compile Include="Assets\Scripts\Dungeon\DungeonEntrance.cs" />
+    <Compile Include="Assets\Scripts\Dungeon\RoomController.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySpriteManager.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyWeapon.cs" />
