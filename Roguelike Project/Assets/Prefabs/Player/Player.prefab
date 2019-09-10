@@ -56,6 +56,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -116,7 +117,7 @@ Transform:
   - {fileID: 7941783383853911880}
   - {fileID: 7941783385716262081}
   m_Father: {fileID: 7941783385590199136}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &7941783383899892008
 CapsuleCollider2D:
@@ -167,10 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9030b996d9edd488684fa2bea04f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spLeft: {fileID: 21300134, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  spRight: {fileID: 21300158, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  spUp: {fileID: 21300182, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
-  spDown: {fileID: 21300110, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   myRigidbody: {fileID: 7941783383899892010}
   canMove: 1
   moving: 0
@@ -220,8 +217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoints: 99999
-  objectToDestroy: {fileID: 7941783385590199139}
-  spriteManager: {fileID: 0}
 --- !u!1 &7941783385174788770
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +273,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -333,7 +329,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7941783385590199136}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7941783385480897350
 SpriteRenderer:
@@ -360,6 +356,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -464,8 +461,8 @@ Transform:
   m_LocalPosition: {x: -11.81, y: -5.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7941783385480897371}
   - {fileID: 7941783383899892015}
+  - {fileID: 7941783385480897371}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

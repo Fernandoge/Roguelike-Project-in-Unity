@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7522946407310716662}
   - component: {fileID: 1739860221270947853}
   - component: {fileID: 485676596}
-  - component: {fileID: 7657540961684136507}
   - component: {fileID: 9185067217559258014}
+  - component: {fileID: 7657540961684136507}
   m_Layer: 0
   m_Name: Enemy Sprites
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3914512871002406623}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1739860221270947853
 MonoBehaviour:
@@ -82,6 +82,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -105,19 +106,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7657540961684136507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293767741088767083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88a5dcd2393beb942b0f9027c98484ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToFollow: {fileID: 3157833502323035567}
 --- !u!95 &9185067217559258014
 Animator:
   serializedVersion: 3
@@ -137,6 +125,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7657540961684136507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293767741088767083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a5dcd2393beb942b0f9027c98484ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToFollow: {fileID: 3157833502323035567}
 --- !u!1 &2195516256719784869
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +194,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -225,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5536518072643994747}
-  - component: {fileID: 7652445354712255650}
+  - component: {fileID: 8838922028502865587}
   - component: {fileID: 1332046721811290307}
   - component: {fileID: 190120077144803765}
   - component: {fileID: 8802549347646168770}
@@ -252,10 +254,10 @@ Transform:
   - {fileID: 6627188518012402687}
   - {fileID: 1203731600789849306}
   m_Father: {fileID: 3914512871002406623}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &7652445354712255650
-BoxCollider2D:
+--- !u!70 &8838922028502865587
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -267,19 +269,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0015792847, y: -0.07827282}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7646208, y: 1.0335522}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 1
 --- !u!50 &1332046721811290307
 Rigidbody2D:
   serializedVersion: 4
@@ -289,7 +281,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3157833502323035567}
   m_BodyType: 1
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1000
@@ -319,9 +311,9 @@ MonoBehaviour:
   pursuingSpeed: 2
   stopDistance: 8
   distanceBetweenPlayer: 0
-  patrol: 1
+  patrol: 0
   clockwise: 0
-  pursuingPlayer: 0
+  pursuingPlayer: 1
   spriteOrder: 0
   playerLastPos: {x: 0, y: 0, z: 0}
   moving: 1
@@ -358,8 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoints: 40
-  objectToDestroy: {fileID: 3157833502323035567}
-  spriteManager: {fileID: 1739860221270947853}
+  clsRoomController: {fileID: 0}
 --- !u!1 &3914512871002406622
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,8 +378,8 @@ Transform:
   m_LocalPosition: {x: 0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7522946407310716662}
   - {fileID: 5536518072643994747}
+  - {fileID: 7522946407310716662}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -478,6 +469,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

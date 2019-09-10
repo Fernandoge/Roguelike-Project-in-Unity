@@ -6,15 +6,18 @@ public class DungeonController : MonoBehaviour {
     [Header("Config")]
     public int boardRows;
     public int boardColumns;
-    public int minRoomSize,maxRoomSize;
+    public int minRoomSize, maxRoomSize;
     [Header("Assets")]
     public GameObject dungeonRoomFloor;
     public GameObject dungeonWalls;
     public GameObject dungeonCorridorFloor;
     public GameObject dungeonGateway;
-    [Header ("Holders")]
+    [Header("Elements")]
+    public GameObject player;
     public GameObject roomHolder;
     public GameObject corridorHolder;
+    [Header("Enemies")]
+    public GameObject[] enemies;
     [Header("Gameplay Info")]
     public int currentRoom;
     public int roomsCompleted;
@@ -271,9 +274,7 @@ public class DungeonController : MonoBehaviour {
                 dungeonWallsPosition[(int)subDungeon.room.xMax, i] = instance;
                 dungeonFloors.Add(instance.transform);
             }
-            
-
-		}
+        }
         else
         {
 			DrawRooms (subDungeon.leftDungeon);
@@ -362,6 +363,14 @@ public class DungeonController : MonoBehaviour {
         }
     }
 
+    public void SpawnPlayer()
+    {
+        //Spawn at first room with room already completed
+        GameObject room = transform.GetChild(0).GetChild(0).gameObject;
+        room.GetComponent<RoomController>().isCompleted = true;
+        Instantiate(player, room.transform.position, Quaternion.identity);
+    }
+
     void Start() {
 
 		SubDungeon rootSubDungeon = new SubDungeon (new Rect (0, 0, boardRows, boardColumns));
@@ -371,6 +380,6 @@ public class DungeonController : MonoBehaviour {
 		dungeonWallsPosition = new GameObject[boardRows + 1, boardColumns + 1];
 		DrawRooms (rootSubDungeon);
 		DrawCorridors (rootSubDungeon);
-
+        SpawnPlayer();
 	}
 }
