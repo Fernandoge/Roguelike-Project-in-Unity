@@ -10,10 +10,10 @@ public class RoomController : MonoBehaviour
     private DungeonController clsDungeonController;
     private GameObject[] roomGateways;
     private Transform roomGatewaysHolder;
-    private GameObject[] roomEnemies;
+    private List<DungeonEnemy> roomEnemies = new List<DungeonEnemy>();
     public int enemiesAlive;
 
-    private void Start()
+    private void Awake()
     {
         clsDungeonController = GameObject.FindGameObjectWithTag("Dungeon").GetComponent<DungeonController>();
         roomEnemies = clsDungeonController.enemies;
@@ -22,10 +22,15 @@ public class RoomController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isCompleted && collision.tag == "Player")
+        if (collision.tag == "Player")
         {
-            ActivateGateways();
-            Invoke("SpawnEnemies", 2f);
+            clsDungeonController.currentRoom = id;
+            if (!isCompleted)
+            {
+                ActivateGateways();
+                Invoke("SpawnEnemies", 2f);
+            }
+            
         }
     }
 
@@ -46,11 +51,14 @@ public class RoomController : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        foreach (GameObject enemy in roomEnemies)
-        {
-            enemiesAlive++;
-            enemy.transform.GetChild(0).GetComponent<HitpointsManager>().SetRoomController(this);
-            GameObject enemyInstance = Instantiate(enemy, transform.position, Quaternion.identity);
+        foreach (DungeonEnemy enemy in roomEnemies)
+        {  
+            for (int i = 0; i < enemy.quantity; i++)
+            {
+                enemiesAlive++;
+                enemy.enemyType.transform.GetChild(0).GetComponent<HitpointsManager>().SetRoomController(this);
+                GameObject enemyInstance = Instantiate(enemy.enemyType, transform.position, Quaternion.identity);
+            }    
         }
     }
 
@@ -60,12 +68,13 @@ public class RoomController : MonoBehaviour
         if (enemiesAlive == 0)
         {
             isCompleted = true;
-            RemoveGateways();
+            CompleteRoom();
         }
     }
 
-    private void RemoveGateways()
+    private void CompleteRoom()
     {
+        clsDungeonController.roomsCompleted++;
         foreach (GameObject gateway in roomGateways)
         {
             Destroy(gateway);

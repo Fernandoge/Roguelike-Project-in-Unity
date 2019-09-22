@@ -14,17 +14,9 @@ public class BulletConfig : MonoBehaviour {
     Rigidbody2D rb;
     Vector2 moveDirection;
     // Use this for initialization
-    void Start () {
-        if (creator.tag == "Enemy")
-        {
-            target = GameObject.FindGameObjectWithTag("Player");
-            //rb = GetComponent<Rigidbody2D>();
-            //moveDirection = (target.transform.position - transform.position).normalized * bulletSpeed;
-            //rb.velocity = new Vector2(moveDirection.x, moveDirection.y);     
-
-        }
+    void Start ()
+    {
         Destroy(gameObject, bulletDuration);
-
 	}
 
     // Update is called once per frame
@@ -32,13 +24,6 @@ public class BulletConfig : MonoBehaviour {
     {
 
         transform.Translate(direction * bulletSpeed * Time.deltaTime);
-        /*
-        bulletDuration -= Time.deltaTime;
-        if(bulletDuration <= 0)
-        {
-            Destroy (this.gameObject);
-        }
-        */
     }
 
     public void SetVals (Vector3 dir, GameObject shooterName)

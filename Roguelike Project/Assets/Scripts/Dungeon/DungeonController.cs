@@ -14,10 +14,9 @@ public class DungeonController : MonoBehaviour {
     public GameObject dungeonGateway;
     [Header("Elements")]
     public GameObject player;
-    public GameObject roomHolder;
-    public GameObject corridorHolder;
-    [Header("Enemies")]
-    public GameObject[] enemies;
+    private GameObject roomHolder;
+    private GameObject corridorHolder;
+    public List<DungeonEnemy> enemies = new List<DungeonEnemy>();
     [Header("Gameplay Info")]
     public int currentRoom;
     public int roomsCompleted;
@@ -372,8 +371,9 @@ public class DungeonController : MonoBehaviour {
     }
 
     void Start() {
-
-		SubDungeon rootSubDungeon = new SubDungeon (new Rect (0, 0, boardRows, boardColumns));
+        roomHolder = Resources.Load<GameObject>("Room");
+        corridorHolder = Resources.Load<GameObject>("Corridor");
+        SubDungeon rootSubDungeon = new SubDungeon (new Rect (0, 0, boardRows, boardColumns));
 		SpacePartition (rootSubDungeon);
 		rootSubDungeon.CreateRoom ();
 		dungeonFloorsPosition = new GameObject[boardRows, boardColumns];
