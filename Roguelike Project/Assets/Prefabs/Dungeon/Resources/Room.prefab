@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6835110494936190043}
   - component: {fileID: 3831099838538452095}
-  - component: {fileID: 3142079971653569669}
   m_Layer: 0
   m_Name: Room
   m_TagString: DungeonRoom
@@ -61,26 +60,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3142079971653569669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3765310212196063117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78030a6ffc3d6d54093bf7dec6dbfd3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  roomRectangle:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  isCompleted: 0
 --- !u!1 &3859286870581886482
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,10 +7,10 @@ public class RoomController : MonoBehaviour
     public int id;
     public Rect roomRectangle;
     public bool isCompleted;
-    private DungeonController clsDungeonController;
-    private GameObject[] roomGateways;
-    private Transform roomGatewaysHolder;
-    private List<DungeonEnemy> roomEnemies = new List<DungeonEnemy>();
+    protected DungeonController clsDungeonController;
+    protected GameObject[] roomGateways;
+    protected Transform roomGatewaysHolder;
+    protected List<DungeonEnemy> roomEnemies = new List<DungeonEnemy>();
     public int enemiesAlive;
 
     private void Awake()
@@ -20,21 +20,9 @@ public class RoomController : MonoBehaviour
         roomGatewaysHolder = transform.GetChild(0);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            clsDungeonController.currentRoom = id;
-            if (!isCompleted)
-            {
-                ActivateGateways();
-                Invoke("SpawnEnemies", 2f);
-            }
-            
-        }
-    }
+    public virtual void DrawRoomInteriors(){}
 
-    private void ActivateGateways()
+    protected void ActivateGateways()
     {
         roomGateways = new GameObject[roomGatewaysHolder.childCount];
 
@@ -49,7 +37,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    private void SpawnEnemies()
+    protected void SpawnEnemies()
     {
         foreach (DungeonEnemy enemy in roomEnemies)
         {  
@@ -72,7 +60,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    private void CompleteRoom()
+    protected void CompleteRoom()
     {
         clsDungeonController.roomsCompleted++;
         foreach (GameObject gateway in roomGateways)

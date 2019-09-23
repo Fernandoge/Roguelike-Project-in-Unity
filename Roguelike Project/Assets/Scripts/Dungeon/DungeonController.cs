@@ -14,15 +14,17 @@ public class DungeonController : MonoBehaviour {
     public GameObject dungeonGateway;
     [Header("Elements")]
     public GameObject player;
-    private GameObject roomHolder;
-    private GameObject corridorHolder;
     public List<DungeonEnemy> enemies = new List<DungeonEnemy>();
     [Header("Gameplay Info")]
     public int currentRoom;
     public int roomsCompleted;
 
+    private GameObject roomHolder;
+    private GameObject corridorHolder;
+    public List<DungeonRoom> dungeonRooms = new List<DungeonRoom>();
     public GameObject[,] dungeonFloorsPosition;
     public GameObject[,] dungeonWallsPosition;
+
 
 	public class SubDungeon {
 		public SubDungeon leftDungeon, rightDungeon;
@@ -197,9 +199,13 @@ public class DungeonController : MonoBehaviour {
             //room prefab
             GameObject roomParent = Instantiate(roomHolder, transform.GetChild(0));
             //Room controller
+            /*
             RoomController clsRoomController = roomParent.GetComponent<RoomController>();
             clsRoomController.roomRectangle = subDungeon.room;
             clsRoomController.id = transform.GetChild(0).childCount;
+            */
+            DungeonRoom thisRoom = new DungeonRoom(roomParent, transform.GetChild(0).childCount, subDungeon.room);
+            dungeonRooms.Add(thisRoom);
             //floor holder of room prefab
             Transform roomFloorHolder = roomParent.transform.GetChild(1);
             List<Transform> dungeonFloors = new List<Transform>();
@@ -362,9 +368,38 @@ public class DungeonController : MonoBehaviour {
         }
     }
 
+    public void DefineRooms()
+    {
+        RoomController roomComponent = null;
+        foreach (DungeonRoom dungeonRoom in dungeonRooms)
+        {
+            int roomChance = Random.Range(1, 4);
+            
+            switch (roomChance)
+            {
+                //enemy room
+                case 1:
+                    roomComponent = dungeonRoom.room.AddComponent(typeof(EnemiesRoom)) as EnemiesRoom;
+                    break;
+                //treasure room
+                case 2:
+                    roomComponent = dungeonRoom.room.AddComponent(typeof(TreasureRoom)) as TreasureRoom;
+                    break;
+                //boss room
+                case 3:
+                    roomComponent = dungeonRoom.room.AddComponent(typeof(BossRoom)) as BossRoom;
+                    break;
+            }
+
+            roomComponent.id = dungeonRoom.id;
+            roomComponent.roomRectangle = dungeonRoom.roomRectangle;
+            roomComponent.DrawRoomInteriors();
+        }
+    }
+
     public void SpawnPlayer()
     {
-        //Spawn at first room with room already completed
+        //Spawn at the first room with the room already completed
         GameObject room = transform.GetChild(0).GetChild(0).gameObject;
         room.GetComponent<RoomController>().isCompleted = true;
         Instantiate(player, room.transform.position, Quaternion.identity);
@@ -375,11 +410,12 @@ public class DungeonController : MonoBehaviour {
         corridorHolder = Resources.Load<GameObject>("Corridor");
         SubDungeon rootSubDungeon = new SubDungeon (new Rect (0, 0, boardRows, boardColumns));
 		SpacePartition (rootSubDungeon);
-		rootSubDungeon.CreateRoom ();
+		rootSubDungeon.CreateRoom();
 		dungeonFloorsPosition = new GameObject[boardRows, boardColumns];
 		dungeonWallsPosition = new GameObject[boardRows + 1, boardColumns + 1];
 		DrawRooms (rootSubDungeon);
 		DrawCorridors (rootSubDungeon);
+        DefineRooms();
         SpawnPlayer();
 	}
 }
