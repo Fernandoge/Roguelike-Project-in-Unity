@@ -110,16 +110,25 @@ MonoBehaviour:
   minRoomSize: 20
   maxRoomSize: 40
   dungeonRoomFloor: {fileID: 170492, guid: 28001a04ae420419387a894c9d751a06, type: 3}
-  dungeonWalls: {fileID: 7010966846032589401, guid: c3ea2cc89a46d0b4e964036c4853b0de,
-    type: 3}
   dungeonCorridorFloor: {fileID: 165786, guid: f3a83d91bc5344f559d46efc6ffa7689, type: 3}
   dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
+  dungeonWalls:
+    top: {fileID: 7010966846032589401, guid: 07551ecda75f9a14a912a0b1c50fa262, type: 3}
+    bottom: {fileID: 7010966846032589401, guid: 11ca31ee7b7cec54fa72ee7118bbcbc7,
+      type: 3}
+    left: {fileID: 7010966846032589401, guid: eae3a5be01e65874398f01677263d61c, type: 3}
+    right: {fileID: 7010966846032589401, guid: c5a46db4ac818d549bd49266976acf68, type: 3}
+    topLeftCorner: {fileID: 7010966846032589401, guid: cdb41cb55465dae4aba7cbc25c235866,
+      type: 3}
+    topRightCorner: {fileID: 7010966846032589401, guid: 591dfbae95d51fd4498b14fcc2b98272,
+      type: 3}
+    bottomLeftCorner: {fileID: 7010966846032589401, guid: d7da2f512236c9a49a8f9f4cd8b319a2,
+      type: 3}
+    bottomRightCorner: {fileID: 7010966846032589401, guid: 107e027d428369148bbf04b34ef57339,
+      type: 3}
   player: {fileID: 7941783385590199139, guid: 0f8f9b3a088fb8a45bc2127a5eb33c14, type: 3}
   enemies:
   - enemyType: {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
-      type: 3}
-    quantity: 3
-  - enemyType: {fileID: 7318080954582039609, guid: 23d5e4d942b1f9e49981b6d20709d7d4,
       type: 3}
     quantity: 3
   currentRoom: 0

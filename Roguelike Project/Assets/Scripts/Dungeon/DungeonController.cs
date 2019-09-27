@@ -9,9 +9,10 @@ public class DungeonController : MonoBehaviour {
     public int minRoomSize, maxRoomSize;
     [Header("Assets")]
     public GameObject dungeonRoomFloor;
-    public GameObject dungeonWalls;
     public GameObject dungeonCorridorFloor;
     public GameObject dungeonGateway;
+    [SerializeField]
+    private Walls dungeonWalls;
     [Header("Elements")]
     public GameObject player;
     public List<DungeonEnemy> enemies = new List<DungeonEnemy>();
@@ -25,6 +26,18 @@ public class DungeonController : MonoBehaviour {
     public GameObject[,] dungeonFloorsPosition;
     public GameObject[,] dungeonWallsPosition;
 
+    [System.Serializable]
+    private struct Walls
+    {
+        public GameObject top;
+        public GameObject bottom;
+        public GameObject left;
+        public GameObject right;
+        public GameObject topLeftCorner;
+        public GameObject topRightCorner;
+        public GameObject bottomLeftCorner;
+        public GameObject bottomRightCorner;
+    }
 
 	public class SubDungeon {
 		public SubDungeon leftDungeon, rightDungeon;
@@ -198,12 +211,6 @@ public class DungeonController : MonoBehaviour {
             //first we create holders for the rooms 
             //room prefab
             GameObject roomParent = Instantiate(roomHolder, transform.GetChild(0));
-            //Room controller
-            /*
-            RoomController clsRoomController = roomParent.GetComponent<RoomController>();
-            clsRoomController.roomRectangle = subDungeon.room;
-            clsRoomController.id = transform.GetChild(0).childCount;
-            */
             DungeonRoom thisRoom = new DungeonRoom(roomParent, transform.GetChild(0).childCount, subDungeon.room);
             dungeonRooms.Add(thisRoom);
             //floor holder of room prefab
@@ -216,7 +223,7 @@ public class DungeonController : MonoBehaviour {
             //we loop the tiles to instantiate floors
             for (int i = (int)subDungeon.room.x; i < subDungeon.room.xMax; i++)
             {
-                for (int j = (int)subDungeon.room.y; j < subDungeon.room.yMax; j++)
+                for (int j = (int)subDungeon.room.y; j < subDungeon.room.yMax - 2; j++)
                 {
                     floorPosition = new Vector3(i, j, 0f);
                     instance = Instantiate(dungeonRoomFloor, floorPosition, Quaternion.identity, roomFloorHolder);
@@ -247,38 +254,33 @@ public class DungeonController : MonoBehaviour {
 
             //add walls to the room
             Transform roomWallHolder = roomParent.transform.GetChild(2);
+            //room top walls
+            for (int i = (int)subDungeon.room.x; i < subDungeon.room.xMax; i++)
+            {
+                DrawWall(dungeonWalls.top, i, (int)subDungeon.room.yMax - 2, roomWallHolder);
+            }
             //room bottom walls
-            for (int i = (int)subDungeon.room.x - 1; i < subDungeon.room.xMax + 1; i++)
+            for (int i = (int)subDungeon.room.x; i < subDungeon.room.xMax; i++)
             {
-                floorPosition = new Vector3(i, (int)subDungeon.room.y - 1, 0f);
-                instance = Instantiate(dungeonWalls, floorPosition, Quaternion.identity, roomWallHolder);
-                dungeonWallsPosition[i, (int)subDungeon.room.y - 1] = instance;
-                dungeonFloors.Add(instance.transform);
+                DrawWall(dungeonWalls.bottom, i, (int)subDungeon.room.y - 1, roomWallHolder);
             }         
-            //room upper walls
-            for (int i = (int)subDungeon.room.x - 1; i < subDungeon.room.xMax + 1; i++)
-            {
-                floorPosition = new Vector3(i, (int)subDungeon.room.yMax, 0f);
-                instance = Instantiate(dungeonWalls, floorPosition, Quaternion.identity, roomWallHolder);
-                dungeonWallsPosition[i, (int)subDungeon.room.yMax] = instance;
-                dungeonFloors.Add(instance.transform);
-            }
-            //room left walls, two iterations less because upper and lower tile have already been instantiated
+            //room left walls
             for (int i = (int)subDungeon.room.y; i < subDungeon.room.yMax; i++)
             {
-                floorPosition = new Vector3((int)subDungeon.room.x - 1, i, 0f);
-                instance = Instantiate(dungeonWalls, floorPosition, Quaternion.identity, roomWallHolder);
-                dungeonWallsPosition[(int)subDungeon.room.x - 1, i] = instance;
-                dungeonFloors.Add(instance.transform);
+                DrawWall(dungeonWalls.left, (int)subDungeon.room.x - 1, i, roomWallHolder);
             }
-            //room right walls, two iterations less because upper and lower tile have already been instantiated
+            //room right walls
             for (int i = (int)subDungeon.room.y; i < subDungeon.room.yMax; i++)
             {
-                floorPosition = new Vector3((int)subDungeon.room.xMax, i, 0f);
-                instance = Instantiate(dungeonWalls, floorPosition, Quaternion.identity, roomWallHolder);
-                dungeonWallsPosition[(int)subDungeon.room.xMax, i] = instance;
-                dungeonFloors.Add(instance.transform);
+                DrawWall(dungeonWalls.right, (int)subDungeon.room.xMax, i, roomWallHolder);
             }
+
+            //room corner walls
+            DrawWall(dungeonWalls.topLeftCorner, (int)subDungeon.room.x - 1, (int)subDungeon.room.yMax, roomWallHolder);
+            DrawWall(dungeonWalls.topRightCorner, (int)subDungeon.room.xMax, (int)subDungeon.room.yMax, roomWallHolder);
+            DrawWall(dungeonWalls.bottomLeftCorner, (int)subDungeon.room.x - 1, (int)subDungeon.room.y - 1, roomWallHolder); 
+            DrawWall(dungeonWalls.bottomRightCorner, (int)subDungeon.room.xMax, (int)subDungeon.room.y - 1, roomWallHolder);
+
         }
         else
         {
@@ -287,6 +289,14 @@ public class DungeonController : MonoBehaviour {
 		}
 	}
 
+    
+    public void DrawWall(GameObject wall, int x, int y, Transform wallParent)
+    {
+        Vector3 floorPosition = new Vector3(x, y, 0f);
+        GameObject instance = Instantiate(wall, floorPosition, Quaternion.identity, wallParent);
+        dungeonWallsPosition[x, y] = instance;
+    }
+    
     public void DrawCorridors(SubDungeon subDungeon)
     {
         if (subDungeon == null)
@@ -352,17 +362,19 @@ public class DungeonController : MonoBehaviour {
                 {
                     floor.position -= newCorridorPosition;
                     //instantiate corridor walls
+                    /*
                     for (int i = (int)floor.position.x - 1; i < (int)floor.position.x + 2; i++)
                     {
                         for (int j = (int)floor.position.y - 1; j < (int)floor.position.y + 2; j++)
                         {
                             if (dungeonFloorsPosition[i, j] == null && dungeonWallsPosition[i, j] == null)
                             {
-                                GameObject instance = Instantiate(dungeonWalls, new Vector3(i, j, 0f), Quaternion.identity, corridorWallHolder);
+                                GameObject instance = Instantiate(dungeonWalls.bottom, new Vector3(i, j, 0f), Quaternion.identity, corridorWallHolder);
                                 dungeonWallsPosition[i, j] = instance;
                             }
                         }
                     }
+                    */
                 }
             }
         }
