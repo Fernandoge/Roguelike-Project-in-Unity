@@ -89,7 +89,6 @@
     <Compile Include="Assets\Scripts\Weapons\HitpointsManager.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponPickup.cs" />
     <None Include="Assets\Texts\Test.txt" />
-    <None Include="Assets\Asset Store\Backyard - Free\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/!GitHub/Roguelike-Project-in-Unity/Roguelike Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
