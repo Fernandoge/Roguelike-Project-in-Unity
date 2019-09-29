@@ -12,7 +12,7 @@ public class DungeonController : MonoBehaviour {
     public GameObject dungeonCorridorFloor;
     public GameObject dungeonGateway;
     [SerializeField]
-    private Walls dungeonWalls;
+    private Walls dungeonWalls = default;
     [Header("Elements")]
     public GameObject player;
     public List<DungeonEnemy> enemies = new List<DungeonEnemy>();
@@ -27,7 +27,7 @@ public class DungeonController : MonoBehaviour {
     public GameObject[,] dungeonWallsPosition;
 
     [System.Serializable]
-    private struct Walls
+    public struct Walls
     {
         public GameObject top;
         public GameObject bottom;
@@ -117,8 +117,8 @@ public class DungeonController : MonoBehaviour {
 			Rect rroom = right.GetRoom ();
 
 			// attach the corridor to a random point in each room
-			Vector2 lpoint = new Vector2 ((int)Random.Range (lroom.x, lroom.xMax), (int)Random.Range (lroom.y, lroom.yMax));
-			Vector2 rpoint = new Vector2 ((int)Random.Range (rroom.x, rroom.xMax), (int)Random.Range (rroom.y, rroom.yMax));
+			Vector2 lpoint = new Vector2 ((int)Random.Range (lroom.x + 1, lroom.xMax - 1), (int)Random.Range (lroom.y + 1, lroom.yMax - 1));
+			Vector2 rpoint = new Vector2 ((int)Random.Range (rroom.x + 1, rroom.xMax - 1), (int)Random.Range (rroom.y + 1, rroom.yMax - 1));
 
 			// Be sure that left point is on the left to simplify the code
 			if (lpoint.x > rpoint.x) {
@@ -232,7 +232,19 @@ public class DungeonController : MonoBehaviour {
                     newRoomPosition += floorPosition;
                 }
             }
-
+            
+            //we don't add this instance to floor positions so they will appear if a corridor tile destroys a top wall
+            for (int i = (int)subDungeon.room.x; i < subDungeon.room.xMax; i++)
+            {
+                for (int j = (int)subDungeon.room.yMax - 2; j < subDungeon.room.yMax; j++)
+                {
+                    floorPosition = new Vector3(i, j, 0f);
+                    instance = Instantiate(dungeonRoomFloor, floorPosition, Quaternion.identity, roomFloorHolder);
+                    dungeonFloors.Add(instance.transform);
+                    newRoomPosition += floorPosition;
+                }
+            }
+            
             //adjust roomHolder position to the center of the floors calculating the average position
             newRoomPosition /= roomFloorHolder.childCount;
             roomParent.transform.position = newRoomPosition;
@@ -257,7 +269,10 @@ public class DungeonController : MonoBehaviour {
             //room top walls
             for (int i = (int)subDungeon.room.x; i < subDungeon.room.xMax; i++)
             {
-                DrawWall(dungeonWalls.top, i, (int)subDungeon.room.yMax - 2, roomWallHolder);
+                instance = Instantiate(dungeonWalls.top, new Vector3(i, (int)subDungeon.room.yMax, 0f), Quaternion.identity, roomWallHolder);
+                dungeonWallsPosition[i, (int)subDungeon.room.yMax] = instance;
+                dungeonWallsPosition[i, (int)subDungeon.room.yMax - 1] = instance;
+                dungeonWallsPosition[i, (int)subDungeon.room.yMax - 2] = instance;
             }
             //room bottom walls
             for (int i = (int)subDungeon.room.x; i < subDungeon.room.xMax; i++)
