@@ -21,11 +21,11 @@ TagManager:
   - 
   - People
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
+  - TopWall
+  - BottomWall
+  - RightWall
+  - LeftWall
+  - BigTopWall
   - 
   - 
   - 

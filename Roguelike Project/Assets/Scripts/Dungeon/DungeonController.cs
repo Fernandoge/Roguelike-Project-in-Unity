@@ -37,6 +37,10 @@ public class DungeonController : MonoBehaviour {
         public GameObject topRightCorner;
         public GameObject bottomLeftCorner;
         public GameObject bottomRightCorner;
+        public GameObject corridorTop;
+        public GameObject corridorTopLeft;
+        public GameObject corridorTopRight;
+        public GameObject corridorTopMiddle;
     }
 
 	public class SubDungeon {
@@ -307,8 +311,11 @@ public class DungeonController : MonoBehaviour {
     
     public void DrawWall(GameObject wall, int x, int y, Transform wallParent)
     {
-        Vector3 floorPosition = new Vector3(x, y, 0f);
-        GameObject instance = Instantiate(wall, floorPosition, Quaternion.identity, wallParent);
+        if (dungeonWallsPosition[x,y] != null && dungeonWallsPosition[x, y].layer != LayerMask.NameToLayer("BigTopWall"))
+        {
+            Destroy(dungeonWallsPosition[x, y]);
+        }
+        GameObject instance = Instantiate(wall, new Vector3(x, y, 0f), Quaternion.identity, wallParent);
         dungeonWallsPosition[x, y] = instance;
     }
     
@@ -370,26 +377,93 @@ public class DungeonController : MonoBehaviour {
                 Destroy(corridorParent);
             else
             {
-                //revert the floor positions since we moved their parent
                 newCorridorPosition /= corridorFloorHolder.childCount;
                 corridorParent.transform.position = newCorridorPosition;
-                foreach (Transform floor in corridorFloors)
+                //revert the floor positions since we moved their parent and then create walls
+                //in case the corridor is horizontal
+                if (corridor.width != 1)
                 {
-                    floor.position -= newCorridorPosition;
-                    //instantiate corridor walls
-                    /*
-                    for (int i = (int)floor.position.x - 1; i < (int)floor.position.x + 2; i++)
+                    foreach (Transform floor in corridorFloors)
                     {
-                        for (int j = (int)floor.position.y - 1; j < (int)floor.position.y + 2; j++)
+                        floor.position -= newCorridorPosition;
+
+                        // ************** top walls **************************
+                        if (dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y] != null && 
+                            dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y].layer == LayerMask.NameToLayer("BigTopWall") &&
+                            (dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 3] == null))
                         {
-                            if (dungeonFloorsPosition[i, j] == null && dungeonWallsPosition[i, j] == null)
+                            GameObject instance = Instantiate(dungeonWalls.top, new Vector3((int)floor.position.x, (int)floor.position.y + 3, 0f), Quaternion.identity, corridorWallHolder);
+                            dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 3] = instance;
+                            dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 2] = instance;
+                            dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 1] = instance;
+                        }
+
+                        else if (dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 1] != null)
+                        {
+                            if (dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 1].layer == LayerMask.NameToLayer("RightWall"))
                             {
-                                GameObject instance = Instantiate(dungeonWalls.bottom, new Vector3(i, j, 0f), Quaternion.identity, corridorWallHolder);
-                                dungeonWallsPosition[i, j] = instance;
+                                DrawWall(dungeonWalls.corridorTopLeft, (int)floor.position.x, (int)floor.position.y + 1, corridorWallHolder);
+                            }
+                            else if (dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 1].layer == LayerMask.NameToLayer("LeftWall"))
+                            {
+                                DrawWall(dungeonWalls.corridorTopRight, (int)floor.position.x, (int)floor.position.y + 1, corridorWallHolder);
+                            }
+                            else if (dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 1].layer == LayerMask.NameToLayer("BottomWall"))
+                            {
+                                DrawWall(dungeonWalls.corridorTopMiddle, (int)floor.position.x, (int)floor.position.y + 1, corridorWallHolder);
+                            }
+                        }
+
+                        else if (dungeonFloorsPosition[(int)floor.position.x, (int)floor.position.y + 1] == null && dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 1] == null)
+                        {
+                            DrawWall(dungeonWalls.corridorTop, (int)floor.position.x, (int)floor.position.y + 1, corridorWallHolder);
+                        }
+                    }
+
+                    //second pass to compare walls
+                    foreach (Transform floor in corridorFloors)
+                    {
+                        // ************** top walls **************************
+                        //top walls connection
+                        if (dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 3] != null && 
+                            dungeonWallsPosition[(int)floor.position.x, (int)floor.position.y + 3].layer == LayerMask.NameToLayer("BigTopWall"))
+                        {
+                            if (dungeonWallsPosition[(int)floor.position.x - 1, (int)floor.position.y + 3] == null && dungeonFloorsPosition[(int)floor.position.x - 1, (int)floor.position.y + 3] == null)
+                            {
+                                DrawWall(dungeonWalls.topLeftCorner, (int)floor.position.x - 1, (int)floor.position.y + 3, corridorWallHolder);
+                                int i = (int)floor.position.y + 2;
+                                while ((dungeonWallsPosition[(int)floor.position.x - 1, i] == null || dungeonWallsPosition[(int)floor.position.x - 1, i].layer != LayerMask.NameToLayer("BigTopWall"))
+                                    && dungeonFloorsPosition[(int)floor.position.x - 1, i - 1] == null && (((int)floor.position.y + 2) - i) < 5)
+                                {
+                                    DrawWall(dungeonWalls.left, (int)floor.position.x - 1, i, corridorWallHolder);
+                                    i--;
+                                }
+                                DrawWall(dungeonWalls.corridorTopRight, (int)floor.position.x - 1, i, corridorWallHolder);
+                            }
+
+                            else if (dungeonWallsPosition[(int)floor.position.x + 1, (int)floor.position.y + 3] == null && dungeonFloorsPosition[(int)floor.position.x + 1, (int)floor.position.y + 3] == null)
+                            {
+                                DrawWall(dungeonWalls.topRightCorner, (int)floor.position.x + 1, (int)floor.position.y + 3, corridorWallHolder);
+                                int i = (int)floor.position.y + 2;
+                                while ((dungeonWallsPosition[(int)floor.position.x + 1, i] == null || dungeonWallsPosition[(int)floor.position.x + 1, i].layer != LayerMask.NameToLayer("BigTopWall"))
+                                    && dungeonFloorsPosition[(int)floor.position.x + 1, i - 1] == null && (((int)floor.position.y + 2) - i) < 5)
+                                {
+                                    DrawWall(dungeonWalls.right, (int)floor.position.x + 1, i, corridorWallHolder);
+                                    i--;
+                                }
+                                DrawWall(dungeonWalls.corridorTopLeft, (int)floor.position.x + 1, i, corridorWallHolder);
                             }
                         }
                     }
-                    */
+                }
+
+                //in case the corridor is vertical
+                else
+                {
+                    foreach (Transform floor in corridorFloors)
+                    {
+                        floor.position -= newCorridorPosition;
+                    }
                 }
             }
         }

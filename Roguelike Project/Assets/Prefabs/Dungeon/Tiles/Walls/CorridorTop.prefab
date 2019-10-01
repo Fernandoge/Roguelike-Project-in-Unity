@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7459011167722533473}
   - component: {fileID: 8662901260970231379}
   - component: {fileID: 8096358668841147250}
-  m_Layer: 13
-  m_Name: LeftWallTile
+  m_Layer: 10
+  m_Name: CorridorTop
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: edcf8818ddb62004ba6f0dadace8d4e0, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 1ec0722b10092f543ab3c931521d9fc2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
