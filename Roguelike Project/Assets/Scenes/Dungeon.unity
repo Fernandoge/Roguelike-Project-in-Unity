@@ -286,12 +286,12 @@ PrefabInstance:
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
       propertyPath: boardRows
-      value: 120
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
       propertyPath: boardColumns
-      value: 120
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
@@ -302,7 +302,7 @@ PrefabInstance:
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
       propertyPath: minRoomSize
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
@@ -345,6 +345,59 @@ PrefabInstance:
       propertyPath: dungeonWalls.corridorTop
       value: 
       objectReference: {fileID: 7010966846032589401, guid: dc12f92675759d042a1c835cce88b76a,
+        type: 3}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: maxRoomSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonWalls.corridorBottomLeft
+      value: 
+      objectReference: {fileID: 7010966846032589401, guid: 52a031f121e901c428cea35e3746ee3d,
+        type: 3}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonWalls.corridorBottomRight
+      value: 
+      objectReference: {fileID: 7010966846032589401, guid: fbf24c099ef3d624d84ea1788649e401,
+        type: 3}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonWalls.topLeft
+      value: 
+      objectReference: {fileID: 7010966846032589401, guid: 499c27dc697fe47428701b1f8a705763,
+        type: 3}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonWalls.topRight
+      value: 
+      objectReference: {fileID: 7010966846032589401, guid: a2b8bc975bb798549a4c0a29bffb2d99,
+        type: 3}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonWalls.corridorMiddle
+      value: 
+      objectReference: {fileID: 7010966846032589401, guid: 0b3ddc6546b4a57459d0a0c27dee04b9,
+        type: 3}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonWalls.corridorRightClosed
+      value: 
+      objectReference: {fileID: 7010966846032589401, guid: 824cc4c509b680c48bc7aa0a9ea7d2d9,
+        type: 3}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonWalls.corridorLeftClosed
+      value: 
+      objectReference: {fileID: 7010966846032589401, guid: c8ffdc234cc7d6a4faeddc22676683ed,
+        type: 3}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonWalls.corridorClosed
+      value: 
+      objectReference: {fileID: 7010966846032589401, guid: c8ffdc234cc7d6a4faeddc22676683ed,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c178e7d8eb75fb045aa79858a2364b69, type: 3}
