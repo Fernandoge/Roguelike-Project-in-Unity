@@ -8,8 +8,8 @@ TagManager:
   - Wall
   - Destroyable
   - Dungeon
-  - DungeonCorridor
   - DungeonRoom
+  - ValidCorridor
   layers:
   - Default
   - TransparentFX
@@ -22,11 +22,11 @@ TagManager:
   - People
   - Player
   - TopWall
-  - BottomWall
-  - RightWall
-  - LeftWall
-  - BigTopWall
-  - CorridorBigTopWall
+  - TopLeftCorner
+  - TopRightCorner
+  - BottomLeftCorner
+  - BottomRightCorner
+  - 
   - 
   - 
   - 

@@ -174,7 +174,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -286,12 +286,12 @@ PrefabInstance:
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
       propertyPath: boardRows
-      value: 80
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
       propertyPath: boardColumns
-      value: 80
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
@@ -302,7 +302,7 @@ PrefabInstance:
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
       propertyPath: minRoomSize
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
@@ -349,7 +349,7 @@ PrefabInstance:
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
       propertyPath: maxRoomSize
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
@@ -399,5 +399,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7010966846032589401, guid: c8ffdc234cc7d6a4faeddc22676683ed,
         type: 3}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonCorridorFloor
+      value: 
+      objectReference: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c178e7d8eb75fb045aa79858a2364b69, type: 3}
