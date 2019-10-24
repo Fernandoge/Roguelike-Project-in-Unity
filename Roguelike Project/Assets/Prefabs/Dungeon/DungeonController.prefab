@@ -105,12 +105,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fae29c79084e42cf983d71a943f4735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardRows: 120
-  boardColumns: 120
-  minRoomSize: 20
-  maxRoomSize: 40
+  boardRows: 150
+  boardColumns: 150
+  minRoomSize: 12
+  maxRoomSize: 12
   dungeonRoomFloor: {fileID: 170492, guid: 28001a04ae420419387a894c9d751a06, type: 3}
-  dungeonCorridorFloor: {fileID: 165786, guid: f3a83d91bc5344f559d46efc6ffa7689, type: 3}
+  dungeonCorridorFloor: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
   dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
   dungeonWalls:
     top: {fileID: 7010966846032589401, guid: 07551ecda75f9a14a912a0b1c50fa262, type: 3}
@@ -131,5 +131,7 @@ MonoBehaviour:
   - enemyType: {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
       type: 3}
     quantity: 3
+  corridorSpeed: 15
   currentRoom: 0
   roomsCompleted: 0
+  dungeonCorridors: []

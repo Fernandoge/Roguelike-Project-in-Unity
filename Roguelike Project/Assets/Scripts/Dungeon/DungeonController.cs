@@ -17,6 +17,8 @@ public class DungeonController : MonoBehaviour
     [Header("Elements")]
     public GameObject player;
     public List<DungeonEnemy> enemies = new List<DungeonEnemy>();
+    [Header("Values")]
+    public float corridorSpeed;
     [Header("Gameplay Info")]
     public int currentRoom;
     public int roomsCompleted;
@@ -335,17 +337,17 @@ public class DungeonController : MonoBehaviour
                 dungeonWallsPosition[i, (int)subDungeon.room.yMax - 3] = instance;
             }
             //room bottom walls
-            for (int i = (int)subDungeon.room.x; i < subDungeon.room.xMax; i++)
+            for (int i = (int)subDungeon.room.x + 1; i < subDungeon.room.xMax - 1; i++)
             {
                 DrawWall(dungeonWalls.bottom, i, (int)subDungeon.room.y, roomWallHolder);
             }
             //room left walls
-            for (int i = (int)subDungeon.room.y; i < subDungeon.room.yMax - 1; i++)
+            for (int i = (int)subDungeon.room.y + 1; i < subDungeon.room.yMax - 1; i++)
             {
                 DrawWall(dungeonWalls.left, (int)subDungeon.room.x, i, roomWallHolder);
             }
             //room right walls
-            for (int i = (int)subDungeon.room.y; i < subDungeon.room.yMax - 1; i++)
+            for (int i = (int)subDungeon.room.y + 1; i < subDungeon.room.yMax - 1; i++)
             {
                 DrawWall(dungeonWalls.right, (int)subDungeon.room.xMax - 1, i, roomWallHolder);
             }
@@ -473,12 +475,11 @@ public class DungeonController : MonoBehaviour
     }
 
 
-    public void GeneratePortals()
+    public void GenerateGateways()
     {
         foreach (GameObject corridor in dungeonCorridors)
         {
             Transform corridorFloorHolder = corridor.transform.GetChild(0);
-            Transform corridorGatewaysHolder = corridor.transform.GetChild(1);
             foreach (Transform child in corridorFloorHolder)
             {
                 if (child.tag != "ValidCorridor")
@@ -528,28 +529,37 @@ public class DungeonController : MonoBehaviour
 
                 if (neighboursCount < 2)
                 {
+                    GameObject gateway;
                     if (dungeonWallsPosition[posX, posY + 1] != null)
                     {
-                        
-                        Instantiate(dungeonGateway, new Vector3(posX, posY + 1, 0f), Quaternion.identity, corridorGatewaysHolder);
+
+                        gateway = Instantiate(dungeonGateway, new Vector3(posX, posY + 1, 0f), Quaternion.identity, dungeonFloorsPosition[posX, posY + 1].transform.parent.parent.GetChild(0));
+                        gateway.GetComponent<GatewayPortal>().firstDirection = 0;
+                        dungeonFloorsPosition[posX, posY + 1].tag = "Gateway";
                         if (dungeonWallsPosition[posX, posY + 1].layer == LayerMask.NameToLayer("Default") || dungeonWallsPosition[posX, posY + 1].layer == LayerMask.NameToLayer("TopWall"))
                             Destroy(dungeonWallsPosition[posX, posY + 1]);
                     }
                     if (dungeonWallsPosition[posX, posY - 1] != null)
                     {
-                        Instantiate(dungeonGateway, new Vector3(posX, posY - 1, 0f), Quaternion.identity, corridorGatewaysHolder);
+                        gateway = Instantiate(dungeonGateway, new Vector3(posX, posY - 1, 0f), Quaternion.identity, dungeonFloorsPosition[posX, posY - 1].transform.parent.parent.GetChild(0));
+                        gateway.GetComponent<GatewayPortal>().firstDirection = 2;
+                        dungeonFloorsPosition[posX, posY - 1].tag = "Gateway";
                         if (dungeonWallsPosition[posX, posY - 1].layer == LayerMask.NameToLayer("Default") || dungeonWallsPosition[posX, posY - 1].layer == LayerMask.NameToLayer("TopWall"))
                             Destroy(dungeonWallsPosition[posX, posY - 1]);
                     }
                     if (dungeonWallsPosition[posX + 1, posY] != null)
                     {
-                        Instantiate(dungeonGateway, new Vector3(posX + 1, posY, 0f), Quaternion.identity, corridorGatewaysHolder);
+                        gateway = Instantiate(dungeonGateway, new Vector3(posX + 1, posY, 0f), Quaternion.identity, dungeonFloorsPosition[posX + 1, posY].transform.parent.parent.GetChild(0));
+                        gateway.GetComponent<GatewayPortal>().firstDirection = 3;
+                        dungeonFloorsPosition[posX + 1, posY].tag = "Gateway";
                         if (dungeonWallsPosition[posX + 1, posY].layer == LayerMask.NameToLayer("Default") || dungeonWallsPosition[posX + 1, posY].layer == LayerMask.NameToLayer("TopWall"))
                             Destroy(dungeonWallsPosition[posX + 1, posY]);
                     }
                     if (dungeonWallsPosition[posX - 1, posY] != null)
                     {
-                        Instantiate(dungeonGateway, new Vector3(posX - 1, posY, 0f), Quaternion.identity, corridorGatewaysHolder);
+                        gateway = Instantiate(dungeonGateway, new Vector3(posX - 1, posY, 0f), Quaternion.identity, dungeonFloorsPosition[posX - 1, posY].transform.parent.parent.GetChild(0));
+                        gateway.GetComponent<GatewayPortal>().firstDirection = 1;
+                        dungeonFloorsPosition[posX - 1, posY].tag = "Gateway";
                         if (dungeonWallsPosition[posX - 1, posY].layer == LayerMask.NameToLayer("Default") || dungeonWallsPosition[posX - 1, posY].layer == LayerMask.NameToLayer("TopWall"))
                             Destroy(dungeonWallsPosition[posX - 1, posY]);
                     }
@@ -605,9 +615,9 @@ public class DungeonController : MonoBehaviour
         dungeonFloorsPosition = new GameObject[boardRows, boardColumns];
         dungeonWallsPosition = new GameObject[boardRows, boardColumns];
         DrawRooms(rootSubDungeon);
-        DrawCorridors(rootSubDungeon);
-        GeneratePortals();
         DefineRooms();
         SpawnPlayer();
+        DrawCorridors(rootSubDungeon);
+        GenerateGateways();
     }
 }

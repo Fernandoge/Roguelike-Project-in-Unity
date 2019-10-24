@@ -10,6 +10,7 @@ TagManager:
   - Dungeon
   - DungeonRoom
   - ValidCorridor
+  - Gateway
   layers:
   - Default
   - TransparentFX

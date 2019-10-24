@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
                 moveSpeed = moveSpeedAux;
 
             //Boost
+            /*
             if (Input.GetKeyDown("space"))          
             {
                 moveSpeedAux = moveSpeedAux * boost;
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 moveSpeedAux = moveSpeedAux / boost; 
             }
+            */
 
         }
 

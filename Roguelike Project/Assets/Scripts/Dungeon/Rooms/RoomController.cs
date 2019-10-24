@@ -24,6 +24,8 @@ public class RoomController : MonoBehaviour
 
     protected void ActivateGateways()
     {
+        Debug.Log("Activate gateways is disabled");
+        /*
         roomGateways = new GameObject[roomGatewaysHolder.childCount];
 
         for (int i = 0; i < roomGatewaysHolder.childCount; i++)
@@ -35,10 +37,12 @@ public class RoomController : MonoBehaviour
         {
             gateway.SetActive(true);
         }
+        */
     }
 
     protected void SpawnEnemies()
     {
+        /*
         foreach (DungeonEnemy enemy in roomEnemies)
         {  
             for (int i = 0; i < enemy.quantity; i++)
@@ -48,6 +52,7 @@ public class RoomController : MonoBehaviour
                 GameObject enemyInstance = Instantiate(enemy.enemyType, transform.position, Quaternion.identity);
             }    
         }
+        */
     }
 
     public void EnemyKilled()

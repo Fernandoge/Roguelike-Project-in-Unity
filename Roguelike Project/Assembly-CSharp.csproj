@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Dungeon\DungeonEnemy.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonEntrance.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonRoom.cs" />
+    <Compile Include="Assets\Scripts\Dungeon\GatewayPortal.cs" />
     <Compile Include="Assets\Scripts\Dungeon\Rooms\BossRoom.cs" />
     <Compile Include="Assets\Scripts\Dungeon\Rooms\EnemiesRoom.cs" />
     <Compile Include="Assets\Scripts\Dungeon\Rooms\RoomController.cs" />
