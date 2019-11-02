@@ -1,107 +1,297 @@
 fileFormatVersion: 2
 guid: 96e6d57c268b17b4b9693c7b020181d8
-timeCreated: 1497300745
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Monster_0
-    21300002: Monster_1
-    21300004: Monster_2
-    21300006: Monster_3
-    21300008: Monster_4
-    21300010: Monster_5
-    21300012: Monster_6
-    21300014: Monster_7
-    21300016: Monster_8
-    21300018: Monster_9
-    21300020: Monster_10
-    21300022: Monster_11
-    21300024: Monster_12
-    21300026: Monster_13
-    21300028: Monster_14
-    21300030: Monster_15
-    21300032: Monster_16
-    21300034: Monster_17
-    21300036: Monster_18
-    21300038: Monster_19
-    21300040: Monster_20
-    21300042: Monster_21
-    21300044: Monster_22
-    21300046: Monster_23
-    21300048: Monster_24
-    21300050: Monster_25
-    21300052: Monster_26
-    21300054: Monster_27
-    21300056: Monster_28
-    21300058: Monster_29
-    21300060: Monster_30
-    21300062: Monster_31
-    21300064: Monster_32
-    21300066: Monster_33
-    21300068: Monster_34
-    21300070: Monster_35
-    21300072: Monster_36
-    21300074: Monster_37
-    21300076: Monster_38
-    21300078: Monster_39
-    21300080: Monster_40
-    21300082: Monster_41
-    21300084: Monster_42
-    21300086: Monster_43
-    21300088: Monster_44
-    21300090: Monster_45
-    21300092: Monster_46
-    21300094: Monster_47
-    21300096: Monster_48
-    21300098: Monster_49
-    21300100: Monster_50
-    21300102: Monster_51
-    21300104: Monster_52
-    21300106: Monster_53
-    21300108: Monster_54
-    21300110: Monster_55
-    21300112: Monster_56
-    21300114: Monster_57
-    21300116: Monster_58
-    21300118: Monster_59
-    21300120: Monster_60
-    21300122: Monster_61
-    21300124: Monster_62
-    21300126: Monster_63
-    21300128: Monster_64
-    21300130: Monster_65
-    21300132: Monster_66
-    21300134: Monster_67
-    21300136: Monster_68
-    21300138: Monster_69
-    21300140: Monster_70
-    21300142: Monster_71
-    21300144: Monster_72
-    21300146: Monster_73
-    21300148: Monster_74
-    21300150: Monster_75
-    21300152: Monster_76
-    21300154: Monster_77
-    21300156: Monster_78
-    21300158: Monster_79
-    21300160: Monster_80
-    21300162: Monster_81
-    21300164: Monster_82
-    21300166: Monster_83
-    21300168: Monster_84
-    21300170: Monster_85
-    21300172: Monster_86
-    21300174: Monster_87
-    21300176: Monster_88
-    21300178: Monster_89
-    21300180: Monster_90
-    21300182: Monster_91
-    21300184: Monster_92
-    21300186: Monster_93
-    21300188: Monster_94
-    21300190: Monster_95
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Monster_0
+  - first:
+      213: 21300002
+    second: Monster_1
+  - first:
+      213: 21300004
+    second: Monster_2
+  - first:
+      213: 21300006
+    second: Monster_3
+  - first:
+      213: 21300008
+    second: Monster_4
+  - first:
+      213: 21300010
+    second: Monster_5
+  - first:
+      213: 21300012
+    second: Monster_6
+  - first:
+      213: 21300014
+    second: Monster_7
+  - first:
+      213: 21300016
+    second: Monster_8
+  - first:
+      213: 21300018
+    second: Monster_9
+  - first:
+      213: 21300020
+    second: Monster_10
+  - first:
+      213: 21300022
+    second: Monster_11
+  - first:
+      213: 21300024
+    second: Monster_12
+  - first:
+      213: 21300026
+    second: Monster_13
+  - first:
+      213: 21300028
+    second: Monster_14
+  - first:
+      213: 21300030
+    second: Monster_15
+  - first:
+      213: 21300032
+    second: Monster_16
+  - first:
+      213: 21300034
+    second: Monster_17
+  - first:
+      213: 21300036
+    second: Monster_18
+  - first:
+      213: 21300038
+    second: Monster_19
+  - first:
+      213: 21300040
+    second: Monster_20
+  - first:
+      213: 21300042
+    second: Monster_21
+  - first:
+      213: 21300044
+    second: Monster_22
+  - first:
+      213: 21300046
+    second: Monster_23
+  - first:
+      213: 21300048
+    second: Monster_24
+  - first:
+      213: 21300050
+    second: Monster_25
+  - first:
+      213: 21300052
+    second: Monster_26
+  - first:
+      213: 21300054
+    second: Monster_27
+  - first:
+      213: 21300056
+    second: Monster_28
+  - first:
+      213: 21300058
+    second: Monster_29
+  - first:
+      213: 21300060
+    second: Monster_30
+  - first:
+      213: 21300062
+    second: Monster_31
+  - first:
+      213: 21300064
+    second: Monster_32
+  - first:
+      213: 21300066
+    second: Monster_33
+  - first:
+      213: 21300068
+    second: Monster_34
+  - first:
+      213: 21300070
+    second: Monster_35
+  - first:
+      213: 21300072
+    second: Monster_36
+  - first:
+      213: 21300074
+    second: Monster_37
+  - first:
+      213: 21300076
+    second: Monster_38
+  - first:
+      213: 21300078
+    second: Monster_39
+  - first:
+      213: 21300080
+    second: Monster_40
+  - first:
+      213: 21300082
+    second: Monster_41
+  - first:
+      213: 21300084
+    second: Monster_42
+  - first:
+      213: 21300086
+    second: Monster_43
+  - first:
+      213: 21300088
+    second: Monster_44
+  - first:
+      213: 21300090
+    second: Monster_45
+  - first:
+      213: 21300092
+    second: Monster_46
+  - first:
+      213: 21300094
+    second: Monster_47
+  - first:
+      213: 21300096
+    second: Monster_48
+  - first:
+      213: 21300098
+    second: Monster_49
+  - first:
+      213: 21300100
+    second: Monster_50
+  - first:
+      213: 21300102
+    second: Monster_51
+  - first:
+      213: 21300104
+    second: Monster_52
+  - first:
+      213: 21300106
+    second: Monster_53
+  - first:
+      213: 21300108
+    second: Monster_54
+  - first:
+      213: 21300110
+    second: Monster_55
+  - first:
+      213: 21300112
+    second: Monster_56
+  - first:
+      213: 21300114
+    second: Monster_57
+  - first:
+      213: 21300116
+    second: Monster_58
+  - first:
+      213: 21300118
+    second: Monster_59
+  - first:
+      213: 21300120
+    second: Monster_60
+  - first:
+      213: 21300122
+    second: Monster_61
+  - first:
+      213: 21300124
+    second: Monster_62
+  - first:
+      213: 21300126
+    second: Monster_63
+  - first:
+      213: 21300128
+    second: Monster_64
+  - first:
+      213: 21300130
+    second: Monster_65
+  - first:
+      213: 21300132
+    second: Monster_66
+  - first:
+      213: 21300134
+    second: Monster_67
+  - first:
+      213: 21300136
+    second: Monster_68
+  - first:
+      213: 21300138
+    second: Monster_69
+  - first:
+      213: 21300140
+    second: Monster_70
+  - first:
+      213: 21300142
+    second: Monster_71
+  - first:
+      213: 21300144
+    second: Monster_72
+  - first:
+      213: 21300146
+    second: Monster_73
+  - first:
+      213: 21300148
+    second: Monster_74
+  - first:
+      213: 21300150
+    second: Monster_75
+  - first:
+      213: 21300152
+    second: Monster_76
+  - first:
+      213: 21300154
+    second: Monster_77
+  - first:
+      213: 21300156
+    second: Monster_78
+  - first:
+      213: 21300158
+    second: Monster_79
+  - first:
+      213: 21300160
+    second: Monster_80
+  - first:
+      213: 21300162
+    second: Monster_81
+  - first:
+      213: 21300164
+    second: Monster_82
+  - first:
+      213: 21300166
+    second: Monster_83
+  - first:
+      213: 21300168
+    second: Monster_84
+  - first:
+      213: 21300170
+    second: Monster_85
+  - first:
+      213: 21300172
+    second: Monster_86
+  - first:
+      213: 21300174
+    second: Monster_87
+  - first:
+      213: 21300176
+    second: Monster_88
+  - first:
+      213: 21300178
+    second: Monster_89
+  - first:
+      213: 21300180
+    second: Monster_90
+  - first:
+      213: 21300182
+    second: Monster_91
+  - first:
+      213: 21300184
+    second: Monster_92
+  - first:
+      213: 21300186
+    second: Monster_93
+  - first:
+      213: 21300188
+    second: Monster_94
+  - first:
+      213: 21300190
+    second: Monster_95
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -119,6 +309,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -129,7 +321,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: -1
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -141,18 +333,21 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -162,7 +357,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: Standalone
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -172,6 +369,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -189,6 +387,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_1
       rect:
@@ -203,6 +408,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_2
       rect:
@@ -217,6 +429,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_3
       rect:
@@ -231,6 +450,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_4
       rect:
@@ -245,6 +471,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_5
       rect:
@@ -259,6 +492,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_6
       rect:
@@ -273,6 +513,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_7
       rect:
@@ -287,6 +534,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_8
       rect:
@@ -301,6 +555,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_9
       rect:
@@ -315,6 +576,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_10
       rect:
@@ -329,6 +597,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_11
       rect:
@@ -343,6 +618,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_12
       rect:
@@ -357,6 +639,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_13
       rect:
@@ -371,6 +660,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_14
       rect:
@@ -385,6 +681,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_15
       rect:
@@ -399,6 +702,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_16
       rect:
@@ -413,6 +723,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_17
       rect:
@@ -427,6 +744,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_18
       rect:
@@ -441,6 +765,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_19
       rect:
@@ -455,6 +786,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_20
       rect:
@@ -469,6 +807,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_21
       rect:
@@ -483,6 +828,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_22
       rect:
@@ -497,6 +849,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_23
       rect:
@@ -511,6 +870,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_24
       rect:
@@ -525,6 +891,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_25
       rect:
@@ -539,6 +912,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_26
       rect:
@@ -553,6 +933,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_27
       rect:
@@ -567,6 +954,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_28
       rect:
@@ -581,6 +975,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_29
       rect:
@@ -595,6 +996,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_30
       rect:
@@ -609,6 +1017,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_31
       rect:
@@ -623,6 +1038,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_32
       rect:
@@ -637,6 +1059,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_33
       rect:
@@ -651,6 +1080,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_34
       rect:
@@ -665,6 +1101,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_35
       rect:
@@ -679,6 +1122,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_36
       rect:
@@ -693,6 +1143,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_37
       rect:
@@ -707,6 +1164,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_38
       rect:
@@ -721,6 +1185,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_39
       rect:
@@ -735,6 +1206,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_40
       rect:
@@ -749,6 +1227,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_41
       rect:
@@ -763,6 +1248,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_42
       rect:
@@ -777,6 +1269,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_43
       rect:
@@ -791,6 +1290,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_44
       rect:
@@ -805,6 +1311,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_45
       rect:
@@ -819,6 +1332,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_46
       rect:
@@ -833,6 +1353,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_47
       rect:
@@ -847,6 +1374,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_48
       rect:
@@ -861,6 +1395,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 08305410000000000800000000000000
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_49
       rect:
@@ -875,6 +1416,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_50
       rect:
@@ -889,6 +1437,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_51
       rect:
@@ -903,6 +1458,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 68305410000000000800000000000000
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_52
       rect:
@@ -917,6 +1479,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 88305410000000000800000000000000
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_53
       rect:
@@ -931,6 +1500,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a8305410000000000800000000000000
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_54
       rect:
@@ -945,6 +1521,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c8305410000000000800000000000000
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_55
       rect:
@@ -959,6 +1542,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e8305410000000000800000000000000
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_56
       rect:
@@ -973,6 +1563,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 09305410000000000800000000000000
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_57
       rect:
@@ -987,6 +1584,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 29305410000000000800000000000000
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_58
       rect:
@@ -1001,6 +1605,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 49305410000000000800000000000000
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_59
       rect:
@@ -1015,6 +1626,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 69305410000000000800000000000000
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_60
       rect:
@@ -1029,6 +1647,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 89305410000000000800000000000000
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_61
       rect:
@@ -1043,6 +1668,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a9305410000000000800000000000000
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_62
       rect:
@@ -1057,6 +1689,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c9305410000000000800000000000000
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_63
       rect:
@@ -1071,6 +1710,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e9305410000000000800000000000000
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_64
       rect:
@@ -1085,6 +1731,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0a305410000000000800000000000000
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_65
       rect:
@@ -1099,6 +1752,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2a305410000000000800000000000000
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_66
       rect:
@@ -1113,6 +1773,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4a305410000000000800000000000000
+      internalID: 21300132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_67
       rect:
@@ -1127,6 +1794,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6a305410000000000800000000000000
+      internalID: 21300134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_68
       rect:
@@ -1141,6 +1815,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8a305410000000000800000000000000
+      internalID: 21300136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_69
       rect:
@@ -1155,6 +1836,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: aa305410000000000800000000000000
+      internalID: 21300138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_70
       rect:
@@ -1169,6 +1857,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ca305410000000000800000000000000
+      internalID: 21300140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_71
       rect:
@@ -1183,6 +1878,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ea305410000000000800000000000000
+      internalID: 21300142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_72
       rect:
@@ -1197,6 +1899,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0b305410000000000800000000000000
+      internalID: 21300144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_73
       rect:
@@ -1211,6 +1920,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2b305410000000000800000000000000
+      internalID: 21300146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_74
       rect:
@@ -1225,6 +1941,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4b305410000000000800000000000000
+      internalID: 21300148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_75
       rect:
@@ -1239,6 +1962,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6b305410000000000800000000000000
+      internalID: 21300150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_76
       rect:
@@ -1253,6 +1983,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8b305410000000000800000000000000
+      internalID: 21300152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_77
       rect:
@@ -1267,6 +2004,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ab305410000000000800000000000000
+      internalID: 21300154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_78
       rect:
@@ -1281,6 +2025,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cb305410000000000800000000000000
+      internalID: 21300156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_79
       rect:
@@ -1295,6 +2046,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: eb305410000000000800000000000000
+      internalID: 21300158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_80
       rect:
@@ -1309,6 +2067,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0c305410000000000800000000000000
+      internalID: 21300160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_81
       rect:
@@ -1323,6 +2088,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2c305410000000000800000000000000
+      internalID: 21300162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_82
       rect:
@@ -1337,6 +2109,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4c305410000000000800000000000000
+      internalID: 21300164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_83
       rect:
@@ -1351,6 +2130,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6c305410000000000800000000000000
+      internalID: 21300166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_84
       rect:
@@ -1365,6 +2151,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8c305410000000000800000000000000
+      internalID: 21300168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_85
       rect:
@@ -1379,6 +2172,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ac305410000000000800000000000000
+      internalID: 21300170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_86
       rect:
@@ -1393,6 +2193,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cc305410000000000800000000000000
+      internalID: 21300172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_87
       rect:
@@ -1407,6 +2214,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ec305410000000000800000000000000
+      internalID: 21300174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_88
       rect:
@@ -1421,6 +2235,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0d305410000000000800000000000000
+      internalID: 21300176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_89
       rect:
@@ -1435,6 +2256,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2d305410000000000800000000000000
+      internalID: 21300178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_90
       rect:
@@ -1449,6 +2277,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4d305410000000000800000000000000
+      internalID: 21300180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_91
       rect:
@@ -1463,6 +2298,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6d305410000000000800000000000000
+      internalID: 21300182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_92
       rect:
@@ -1477,6 +2319,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8d305410000000000800000000000000
+      internalID: 21300184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_93
       rect:
@@ -1491,6 +2340,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ad305410000000000800000000000000
+      internalID: 21300186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_94
       rect:
@@ -1505,6 +2361,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cd305410000000000800000000000000
+      internalID: 21300188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Monster_95
       rect:
@@ -1519,9 +2382,26 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ed305410000000000800000000000000
+      internalID: 21300190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

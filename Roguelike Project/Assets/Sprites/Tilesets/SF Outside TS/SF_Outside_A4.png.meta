@@ -1,251 +1,729 @@
 fileFormatVersion: 2
 guid: 60eb5abbd04fcaa448fe63509334f519
-timeCreated: 1496883325
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: SF_Outside_A4_0
-    21300002: SF_Outside_A4_1
-    21300004: SF_Outside_A4_2
-    21300006: SF_Outside_A4_3
-    21300008: SF_Outside_A4_4
-    21300010: SF_Outside_A4_5
-    21300012: SF_Outside_A4_6
-    21300014: SF_Outside_A4_7
-    21300016: SF_Outside_A4_8
-    21300018: SF_Outside_A4_9
-    21300020: SF_Outside_A4_10
-    21300022: SF_Outside_A4_11
-    21300024: SF_Outside_A4_12
-    21300026: SF_Outside_A4_13
-    21300028: SF_Outside_A4_14
-    21300030: SF_Outside_A4_15
-    21300032: SF_Outside_A4_16
-    21300034: SF_Outside_A4_17
-    21300036: SF_Outside_A4_18
-    21300038: SF_Outside_A4_19
-    21300040: SF_Outside_A4_20
-    21300042: SF_Outside_A4_21
-    21300044: SF_Outside_A4_22
-    21300046: SF_Outside_A4_23
-    21300048: SF_Outside_A4_24
-    21300050: SF_Outside_A4_25
-    21300052: SF_Outside_A4_26
-    21300054: SF_Outside_A4_27
-    21300056: SF_Outside_A4_28
-    21300058: SF_Outside_A4_29
-    21300060: SF_Outside_A4_30
-    21300062: SF_Outside_A4_31
-    21300064: SF_Outside_A4_32
-    21300066: SF_Outside_A4_33
-    21300068: SF_Outside_A4_34
-    21300070: SF_Outside_A4_35
-    21300072: SF_Outside_A4_36
-    21300074: SF_Outside_A4_37
-    21300076: SF_Outside_A4_38
-    21300078: SF_Outside_A4_39
-    21300080: SF_Outside_A4_40
-    21300082: SF_Outside_A4_41
-    21300084: SF_Outside_A4_42
-    21300086: SF_Outside_A4_43
-    21300088: SF_Outside_A4_44
-    21300090: SF_Outside_A4_45
-    21300092: SF_Outside_A4_46
-    21300094: SF_Outside_A4_47
-    21300096: SF_Outside_A4_48
-    21300098: SF_Outside_A4_49
-    21300100: SF_Outside_A4_50
-    21300102: SF_Outside_A4_51
-    21300104: SF_Outside_A4_52
-    21300106: SF_Outside_A4_53
-    21300108: SF_Outside_A4_54
-    21300110: SF_Outside_A4_55
-    21300112: SF_Outside_A4_56
-    21300114: SF_Outside_A4_57
-    21300116: SF_Outside_A4_58
-    21300118: SF_Outside_A4_59
-    21300120: SF_Outside_A4_60
-    21300122: SF_Outside_A4_61
-    21300124: SF_Outside_A4_62
-    21300126: SF_Outside_A4_63
-    21300128: SF_Outside_A4_64
-    21300130: SF_Outside_A4_65
-    21300132: SF_Outside_A4_66
-    21300134: SF_Outside_A4_67
-    21300136: SF_Outside_A4_68
-    21300138: SF_Outside_A4_69
-    21300140: SF_Outside_A4_70
-    21300142: SF_Outside_A4_71
-    21300144: SF_Outside_A4_72
-    21300146: SF_Outside_A4_73
-    21300148: SF_Outside_A4_74
-    21300150: SF_Outside_A4_75
-    21300152: SF_Outside_A4_76
-    21300154: SF_Outside_A4_77
-    21300156: SF_Outside_A4_78
-    21300158: SF_Outside_A4_79
-    21300160: SF_Outside_A4_80
-    21300162: SF_Outside_A4_81
-    21300164: SF_Outside_A4_82
-    21300166: SF_Outside_A4_83
-    21300168: SF_Outside_A4_84
-    21300170: SF_Outside_A4_85
-    21300172: SF_Outside_A4_86
-    21300174: SF_Outside_A4_87
-    21300176: SF_Outside_A4_88
-    21300178: SF_Outside_A4_89
-    21300180: SF_Outside_A4_90
-    21300182: SF_Outside_A4_91
-    21300184: SF_Outside_A4_92
-    21300186: SF_Outside_A4_93
-    21300188: SF_Outside_A4_94
-    21300190: SF_Outside_A4_95
-    21300192: SF_Outside_A4_96
-    21300194: SF_Outside_A4_97
-    21300196: SF_Outside_A4_98
-    21300198: SF_Outside_A4_99
-    21300200: SF_Outside_A4_100
-    21300202: SF_Outside_A4_101
-    21300204: SF_Outside_A4_102
-    21300206: SF_Outside_A4_103
-    21300208: SF_Outside_A4_104
-    21300210: SF_Outside_A4_105
-    21300212: SF_Outside_A4_106
-    21300214: SF_Outside_A4_107
-    21300216: SF_Outside_A4_108
-    21300218: SF_Outside_A4_109
-    21300220: SF_Outside_A4_110
-    21300222: SF_Outside_A4_111
-    21300224: SF_Outside_A4_112
-    21300226: SF_Outside_A4_113
-    21300228: SF_Outside_A4_114
-    21300230: SF_Outside_A4_115
-    21300232: SF_Outside_A4_116
-    21300234: SF_Outside_A4_117
-    21300236: SF_Outside_A4_118
-    21300238: SF_Outside_A4_119
-    21300240: SF_Outside_A4_120
-    21300242: SF_Outside_A4_121
-    21300244: SF_Outside_A4_122
-    21300246: SF_Outside_A4_123
-    21300248: SF_Outside_A4_124
-    21300250: SF_Outside_A4_125
-    21300252: SF_Outside_A4_126
-    21300254: SF_Outside_A4_127
-    21300256: SF_Outside_A4_128
-    21300258: SF_Outside_A4_129
-    21300260: SF_Outside_A4_130
-    21300262: SF_Outside_A4_131
-    21300264: SF_Outside_A4_132
-    21300266: SF_Outside_A4_133
-    21300268: SF_Outside_A4_134
-    21300270: SF_Outside_A4_135
-    21300272: SF_Outside_A4_136
-    21300274: SF_Outside_A4_137
-    21300276: SF_Outside_A4_138
-    21300278: SF_Outside_A4_139
-    21300280: SF_Outside_A4_140
-    21300282: SF_Outside_A4_141
-    21300284: SF_Outside_A4_142
-    21300286: SF_Outside_A4_143
-    21300288: SF_Outside_A4_144
-    21300290: SF_Outside_A4_145
-    21300292: SF_Outside_A4_146
-    21300294: SF_Outside_A4_147
-    21300296: SF_Outside_A4_148
-    21300298: SF_Outside_A4_149
-    21300300: SF_Outside_A4_150
-    21300302: SF_Outside_A4_151
-    21300304: SF_Outside_A4_152
-    21300306: SF_Outside_A4_153
-    21300308: SF_Outside_A4_154
-    21300310: SF_Outside_A4_155
-    21300312: SF_Outside_A4_156
-    21300314: SF_Outside_A4_157
-    21300316: SF_Outside_A4_158
-    21300318: SF_Outside_A4_159
-    21300320: SF_Outside_A4_160
-    21300322: SF_Outside_A4_161
-    21300324: SF_Outside_A4_162
-    21300326: SF_Outside_A4_163
-    21300328: SF_Outside_A4_164
-    21300330: SF_Outside_A4_165
-    21300332: SF_Outside_A4_166
-    21300334: SF_Outside_A4_167
-    21300336: SF_Outside_A4_168
-    21300338: SF_Outside_A4_169
-    21300340: SF_Outside_A4_170
-    21300342: SF_Outside_A4_171
-    21300344: SF_Outside_A4_172
-    21300346: SF_Outside_A4_173
-    21300348: SF_Outside_A4_174
-    21300350: SF_Outside_A4_175
-    21300352: SF_Outside_A4_176
-    21300354: SF_Outside_A4_177
-    21300356: SF_Outside_A4_178
-    21300358: SF_Outside_A4_179
-    21300360: SF_Outside_A4_180
-    21300362: SF_Outside_A4_181
-    21300364: SF_Outside_A4_182
-    21300366: SF_Outside_A4_183
-    21300368: SF_Outside_A4_184
-    21300370: SF_Outside_A4_185
-    21300372: SF_Outside_A4_186
-    21300374: SF_Outside_A4_187
-    21300376: SF_Outside_A4_188
-    21300378: SF_Outside_A4_189
-    21300380: SF_Outside_A4_190
-    21300382: SF_Outside_A4_191
-    21300384: SF_Outside_A4_192
-    21300386: SF_Outside_A4_193
-    21300388: SF_Outside_A4_194
-    21300390: SF_Outside_A4_195
-    21300392: SF_Outside_A4_196
-    21300394: SF_Outside_A4_197
-    21300396: SF_Outside_A4_198
-    21300398: SF_Outside_A4_199
-    21300400: SF_Outside_A4_200
-    21300402: SF_Outside_A4_201
-    21300404: SF_Outside_A4_202
-    21300406: SF_Outside_A4_203
-    21300408: SF_Outside_A4_204
-    21300410: SF_Outside_A4_205
-    21300412: SF_Outside_A4_206
-    21300414: SF_Outside_A4_207
-    21300416: SF_Outside_A4_208
-    21300418: SF_Outside_A4_209
-    21300420: SF_Outside_A4_210
-    21300422: SF_Outside_A4_211
-    21300424: SF_Outside_A4_212
-    21300426: SF_Outside_A4_213
-    21300428: SF_Outside_A4_214
-    21300430: SF_Outside_A4_215
-    21300432: SF_Outside_A4_216
-    21300434: SF_Outside_A4_217
-    21300436: SF_Outside_A4_218
-    21300438: SF_Outside_A4_219
-    21300440: SF_Outside_A4_220
-    21300442: SF_Outside_A4_221
-    21300444: SF_Outside_A4_222
-    21300446: SF_Outside_A4_223
-    21300448: SF_Outside_A4_224
-    21300450: SF_Outside_A4_225
-    21300452: SF_Outside_A4_226
-    21300454: SF_Outside_A4_227
-    21300456: SF_Outside_A4_228
-    21300458: SF_Outside_A4_229
-    21300460: SF_Outside_A4_230
-    21300462: SF_Outside_A4_231
-    21300464: SF_Outside_A4_232
-    21300466: SF_Outside_A4_233
-    21300468: SF_Outside_A4_234
-    21300470: SF_Outside_A4_235
-    21300472: SF_Outside_A4_236
-    21300474: SF_Outside_A4_237
-    21300476: SF_Outside_A4_238
-    21300478: SF_Outside_A4_239
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: SF_Outside_A4_0
+  - first:
+      213: 21300002
+    second: SF_Outside_A4_1
+  - first:
+      213: 21300004
+    second: SF_Outside_A4_2
+  - first:
+      213: 21300006
+    second: SF_Outside_A4_3
+  - first:
+      213: 21300008
+    second: SF_Outside_A4_4
+  - first:
+      213: 21300010
+    second: SF_Outside_A4_5
+  - first:
+      213: 21300012
+    second: SF_Outside_A4_6
+  - first:
+      213: 21300014
+    second: SF_Outside_A4_7
+  - first:
+      213: 21300016
+    second: SF_Outside_A4_8
+  - first:
+      213: 21300018
+    second: SF_Outside_A4_9
+  - first:
+      213: 21300020
+    second: SF_Outside_A4_10
+  - first:
+      213: 21300022
+    second: SF_Outside_A4_11
+  - first:
+      213: 21300024
+    second: SF_Outside_A4_12
+  - first:
+      213: 21300026
+    second: SF_Outside_A4_13
+  - first:
+      213: 21300028
+    second: SF_Outside_A4_14
+  - first:
+      213: 21300030
+    second: SF_Outside_A4_15
+  - first:
+      213: 21300032
+    second: SF_Outside_A4_16
+  - first:
+      213: 21300034
+    second: SF_Outside_A4_17
+  - first:
+      213: 21300036
+    second: SF_Outside_A4_18
+  - first:
+      213: 21300038
+    second: SF_Outside_A4_19
+  - first:
+      213: 21300040
+    second: SF_Outside_A4_20
+  - first:
+      213: 21300042
+    second: SF_Outside_A4_21
+  - first:
+      213: 21300044
+    second: SF_Outside_A4_22
+  - first:
+      213: 21300046
+    second: SF_Outside_A4_23
+  - first:
+      213: 21300048
+    second: SF_Outside_A4_24
+  - first:
+      213: 21300050
+    second: SF_Outside_A4_25
+  - first:
+      213: 21300052
+    second: SF_Outside_A4_26
+  - first:
+      213: 21300054
+    second: SF_Outside_A4_27
+  - first:
+      213: 21300056
+    second: SF_Outside_A4_28
+  - first:
+      213: 21300058
+    second: SF_Outside_A4_29
+  - first:
+      213: 21300060
+    second: SF_Outside_A4_30
+  - first:
+      213: 21300062
+    second: SF_Outside_A4_31
+  - first:
+      213: 21300064
+    second: SF_Outside_A4_32
+  - first:
+      213: 21300066
+    second: SF_Outside_A4_33
+  - first:
+      213: 21300068
+    second: SF_Outside_A4_34
+  - first:
+      213: 21300070
+    second: SF_Outside_A4_35
+  - first:
+      213: 21300072
+    second: SF_Outside_A4_36
+  - first:
+      213: 21300074
+    second: SF_Outside_A4_37
+  - first:
+      213: 21300076
+    second: SF_Outside_A4_38
+  - first:
+      213: 21300078
+    second: SF_Outside_A4_39
+  - first:
+      213: 21300080
+    second: SF_Outside_A4_40
+  - first:
+      213: 21300082
+    second: SF_Outside_A4_41
+  - first:
+      213: 21300084
+    second: SF_Outside_A4_42
+  - first:
+      213: 21300086
+    second: SF_Outside_A4_43
+  - first:
+      213: 21300088
+    second: SF_Outside_A4_44
+  - first:
+      213: 21300090
+    second: SF_Outside_A4_45
+  - first:
+      213: 21300092
+    second: SF_Outside_A4_46
+  - first:
+      213: 21300094
+    second: SF_Outside_A4_47
+  - first:
+      213: 21300096
+    second: SF_Outside_A4_48
+  - first:
+      213: 21300098
+    second: SF_Outside_A4_49
+  - first:
+      213: 21300100
+    second: SF_Outside_A4_50
+  - first:
+      213: 21300102
+    second: SF_Outside_A4_51
+  - first:
+      213: 21300104
+    second: SF_Outside_A4_52
+  - first:
+      213: 21300106
+    second: SF_Outside_A4_53
+  - first:
+      213: 21300108
+    second: SF_Outside_A4_54
+  - first:
+      213: 21300110
+    second: SF_Outside_A4_55
+  - first:
+      213: 21300112
+    second: SF_Outside_A4_56
+  - first:
+      213: 21300114
+    second: SF_Outside_A4_57
+  - first:
+      213: 21300116
+    second: SF_Outside_A4_58
+  - first:
+      213: 21300118
+    second: SF_Outside_A4_59
+  - first:
+      213: 21300120
+    second: SF_Outside_A4_60
+  - first:
+      213: 21300122
+    second: SF_Outside_A4_61
+  - first:
+      213: 21300124
+    second: SF_Outside_A4_62
+  - first:
+      213: 21300126
+    second: SF_Outside_A4_63
+  - first:
+      213: 21300128
+    second: SF_Outside_A4_64
+  - first:
+      213: 21300130
+    second: SF_Outside_A4_65
+  - first:
+      213: 21300132
+    second: SF_Outside_A4_66
+  - first:
+      213: 21300134
+    second: SF_Outside_A4_67
+  - first:
+      213: 21300136
+    second: SF_Outside_A4_68
+  - first:
+      213: 21300138
+    second: SF_Outside_A4_69
+  - first:
+      213: 21300140
+    second: SF_Outside_A4_70
+  - first:
+      213: 21300142
+    second: SF_Outside_A4_71
+  - first:
+      213: 21300144
+    second: SF_Outside_A4_72
+  - first:
+      213: 21300146
+    second: SF_Outside_A4_73
+  - first:
+      213: 21300148
+    second: SF_Outside_A4_74
+  - first:
+      213: 21300150
+    second: SF_Outside_A4_75
+  - first:
+      213: 21300152
+    second: SF_Outside_A4_76
+  - first:
+      213: 21300154
+    second: SF_Outside_A4_77
+  - first:
+      213: 21300156
+    second: SF_Outside_A4_78
+  - first:
+      213: 21300158
+    second: SF_Outside_A4_79
+  - first:
+      213: 21300160
+    second: SF_Outside_A4_80
+  - first:
+      213: 21300162
+    second: SF_Outside_A4_81
+  - first:
+      213: 21300164
+    second: SF_Outside_A4_82
+  - first:
+      213: 21300166
+    second: SF_Outside_A4_83
+  - first:
+      213: 21300168
+    second: SF_Outside_A4_84
+  - first:
+      213: 21300170
+    second: SF_Outside_A4_85
+  - first:
+      213: 21300172
+    second: SF_Outside_A4_86
+  - first:
+      213: 21300174
+    second: SF_Outside_A4_87
+  - first:
+      213: 21300176
+    second: SF_Outside_A4_88
+  - first:
+      213: 21300178
+    second: SF_Outside_A4_89
+  - first:
+      213: 21300180
+    second: SF_Outside_A4_90
+  - first:
+      213: 21300182
+    second: SF_Outside_A4_91
+  - first:
+      213: 21300184
+    second: SF_Outside_A4_92
+  - first:
+      213: 21300186
+    second: SF_Outside_A4_93
+  - first:
+      213: 21300188
+    second: SF_Outside_A4_94
+  - first:
+      213: 21300190
+    second: SF_Outside_A4_95
+  - first:
+      213: 21300192
+    second: SF_Outside_A4_96
+  - first:
+      213: 21300194
+    second: SF_Outside_A4_97
+  - first:
+      213: 21300196
+    second: SF_Outside_A4_98
+  - first:
+      213: 21300198
+    second: SF_Outside_A4_99
+  - first:
+      213: 21300200
+    second: SF_Outside_A4_100
+  - first:
+      213: 21300202
+    second: SF_Outside_A4_101
+  - first:
+      213: 21300204
+    second: SF_Outside_A4_102
+  - first:
+      213: 21300206
+    second: SF_Outside_A4_103
+  - first:
+      213: 21300208
+    second: SF_Outside_A4_104
+  - first:
+      213: 21300210
+    second: SF_Outside_A4_105
+  - first:
+      213: 21300212
+    second: SF_Outside_A4_106
+  - first:
+      213: 21300214
+    second: SF_Outside_A4_107
+  - first:
+      213: 21300216
+    second: SF_Outside_A4_108
+  - first:
+      213: 21300218
+    second: SF_Outside_A4_109
+  - first:
+      213: 21300220
+    second: SF_Outside_A4_110
+  - first:
+      213: 21300222
+    second: SF_Outside_A4_111
+  - first:
+      213: 21300224
+    second: SF_Outside_A4_112
+  - first:
+      213: 21300226
+    second: SF_Outside_A4_113
+  - first:
+      213: 21300228
+    second: SF_Outside_A4_114
+  - first:
+      213: 21300230
+    second: SF_Outside_A4_115
+  - first:
+      213: 21300232
+    second: SF_Outside_A4_116
+  - first:
+      213: 21300234
+    second: SF_Outside_A4_117
+  - first:
+      213: 21300236
+    second: SF_Outside_A4_118
+  - first:
+      213: 21300238
+    second: SF_Outside_A4_119
+  - first:
+      213: 21300240
+    second: SF_Outside_A4_120
+  - first:
+      213: 21300242
+    second: SF_Outside_A4_121
+  - first:
+      213: 21300244
+    second: SF_Outside_A4_122
+  - first:
+      213: 21300246
+    second: SF_Outside_A4_123
+  - first:
+      213: 21300248
+    second: SF_Outside_A4_124
+  - first:
+      213: 21300250
+    second: SF_Outside_A4_125
+  - first:
+      213: 21300252
+    second: SF_Outside_A4_126
+  - first:
+      213: 21300254
+    second: SF_Outside_A4_127
+  - first:
+      213: 21300256
+    second: SF_Outside_A4_128
+  - first:
+      213: 21300258
+    second: SF_Outside_A4_129
+  - first:
+      213: 21300260
+    second: SF_Outside_A4_130
+  - first:
+      213: 21300262
+    second: SF_Outside_A4_131
+  - first:
+      213: 21300264
+    second: SF_Outside_A4_132
+  - first:
+      213: 21300266
+    second: SF_Outside_A4_133
+  - first:
+      213: 21300268
+    second: SF_Outside_A4_134
+  - first:
+      213: 21300270
+    second: SF_Outside_A4_135
+  - first:
+      213: 21300272
+    second: SF_Outside_A4_136
+  - first:
+      213: 21300274
+    second: SF_Outside_A4_137
+  - first:
+      213: 21300276
+    second: SF_Outside_A4_138
+  - first:
+      213: 21300278
+    second: SF_Outside_A4_139
+  - first:
+      213: 21300280
+    second: SF_Outside_A4_140
+  - first:
+      213: 21300282
+    second: SF_Outside_A4_141
+  - first:
+      213: 21300284
+    second: SF_Outside_A4_142
+  - first:
+      213: 21300286
+    second: SF_Outside_A4_143
+  - first:
+      213: 21300288
+    second: SF_Outside_A4_144
+  - first:
+      213: 21300290
+    second: SF_Outside_A4_145
+  - first:
+      213: 21300292
+    second: SF_Outside_A4_146
+  - first:
+      213: 21300294
+    second: SF_Outside_A4_147
+  - first:
+      213: 21300296
+    second: SF_Outside_A4_148
+  - first:
+      213: 21300298
+    second: SF_Outside_A4_149
+  - first:
+      213: 21300300
+    second: SF_Outside_A4_150
+  - first:
+      213: 21300302
+    second: SF_Outside_A4_151
+  - first:
+      213: 21300304
+    second: SF_Outside_A4_152
+  - first:
+      213: 21300306
+    second: SF_Outside_A4_153
+  - first:
+      213: 21300308
+    second: SF_Outside_A4_154
+  - first:
+      213: 21300310
+    second: SF_Outside_A4_155
+  - first:
+      213: 21300312
+    second: SF_Outside_A4_156
+  - first:
+      213: 21300314
+    second: SF_Outside_A4_157
+  - first:
+      213: 21300316
+    second: SF_Outside_A4_158
+  - first:
+      213: 21300318
+    second: SF_Outside_A4_159
+  - first:
+      213: 21300320
+    second: SF_Outside_A4_160
+  - first:
+      213: 21300322
+    second: SF_Outside_A4_161
+  - first:
+      213: 21300324
+    second: SF_Outside_A4_162
+  - first:
+      213: 21300326
+    second: SF_Outside_A4_163
+  - first:
+      213: 21300328
+    second: SF_Outside_A4_164
+  - first:
+      213: 21300330
+    second: SF_Outside_A4_165
+  - first:
+      213: 21300332
+    second: SF_Outside_A4_166
+  - first:
+      213: 21300334
+    second: SF_Outside_A4_167
+  - first:
+      213: 21300336
+    second: SF_Outside_A4_168
+  - first:
+      213: 21300338
+    second: SF_Outside_A4_169
+  - first:
+      213: 21300340
+    second: SF_Outside_A4_170
+  - first:
+      213: 21300342
+    second: SF_Outside_A4_171
+  - first:
+      213: 21300344
+    second: SF_Outside_A4_172
+  - first:
+      213: 21300346
+    second: SF_Outside_A4_173
+  - first:
+      213: 21300348
+    second: SF_Outside_A4_174
+  - first:
+      213: 21300350
+    second: SF_Outside_A4_175
+  - first:
+      213: 21300352
+    second: SF_Outside_A4_176
+  - first:
+      213: 21300354
+    second: SF_Outside_A4_177
+  - first:
+      213: 21300356
+    second: SF_Outside_A4_178
+  - first:
+      213: 21300358
+    second: SF_Outside_A4_179
+  - first:
+      213: 21300360
+    second: SF_Outside_A4_180
+  - first:
+      213: 21300362
+    second: SF_Outside_A4_181
+  - first:
+      213: 21300364
+    second: SF_Outside_A4_182
+  - first:
+      213: 21300366
+    second: SF_Outside_A4_183
+  - first:
+      213: 21300368
+    second: SF_Outside_A4_184
+  - first:
+      213: 21300370
+    second: SF_Outside_A4_185
+  - first:
+      213: 21300372
+    second: SF_Outside_A4_186
+  - first:
+      213: 21300374
+    second: SF_Outside_A4_187
+  - first:
+      213: 21300376
+    second: SF_Outside_A4_188
+  - first:
+      213: 21300378
+    second: SF_Outside_A4_189
+  - first:
+      213: 21300380
+    second: SF_Outside_A4_190
+  - first:
+      213: 21300382
+    second: SF_Outside_A4_191
+  - first:
+      213: 21300384
+    second: SF_Outside_A4_192
+  - first:
+      213: 21300386
+    second: SF_Outside_A4_193
+  - first:
+      213: 21300388
+    second: SF_Outside_A4_194
+  - first:
+      213: 21300390
+    second: SF_Outside_A4_195
+  - first:
+      213: 21300392
+    second: SF_Outside_A4_196
+  - first:
+      213: 21300394
+    second: SF_Outside_A4_197
+  - first:
+      213: 21300396
+    second: SF_Outside_A4_198
+  - first:
+      213: 21300398
+    second: SF_Outside_A4_199
+  - first:
+      213: 21300400
+    second: SF_Outside_A4_200
+  - first:
+      213: 21300402
+    second: SF_Outside_A4_201
+  - first:
+      213: 21300404
+    second: SF_Outside_A4_202
+  - first:
+      213: 21300406
+    second: SF_Outside_A4_203
+  - first:
+      213: 21300408
+    second: SF_Outside_A4_204
+  - first:
+      213: 21300410
+    second: SF_Outside_A4_205
+  - first:
+      213: 21300412
+    second: SF_Outside_A4_206
+  - first:
+      213: 21300414
+    second: SF_Outside_A4_207
+  - first:
+      213: 21300416
+    second: SF_Outside_A4_208
+  - first:
+      213: 21300418
+    second: SF_Outside_A4_209
+  - first:
+      213: 21300420
+    second: SF_Outside_A4_210
+  - first:
+      213: 21300422
+    second: SF_Outside_A4_211
+  - first:
+      213: 21300424
+    second: SF_Outside_A4_212
+  - first:
+      213: 21300426
+    second: SF_Outside_A4_213
+  - first:
+      213: 21300428
+    second: SF_Outside_A4_214
+  - first:
+      213: 21300430
+    second: SF_Outside_A4_215
+  - first:
+      213: 21300432
+    second: SF_Outside_A4_216
+  - first:
+      213: 21300434
+    second: SF_Outside_A4_217
+  - first:
+      213: 21300436
+    second: SF_Outside_A4_218
+  - first:
+      213: 21300438
+    second: SF_Outside_A4_219
+  - first:
+      213: 21300440
+    second: SF_Outside_A4_220
+  - first:
+      213: 21300442
+    second: SF_Outside_A4_221
+  - first:
+      213: 21300444
+    second: SF_Outside_A4_222
+  - first:
+      213: 21300446
+    second: SF_Outside_A4_223
+  - first:
+      213: 21300448
+    second: SF_Outside_A4_224
+  - first:
+      213: 21300450
+    second: SF_Outside_A4_225
+  - first:
+      213: 21300452
+    second: SF_Outside_A4_226
+  - first:
+      213: 21300454
+    second: SF_Outside_A4_227
+  - first:
+      213: 21300456
+    second: SF_Outside_A4_228
+  - first:
+      213: 21300458
+    second: SF_Outside_A4_229
+  - first:
+      213: 21300460
+    second: SF_Outside_A4_230
+  - first:
+      213: 21300462
+    second: SF_Outside_A4_231
+  - first:
+      213: 21300464
+    second: SF_Outside_A4_232
+  - first:
+      213: 21300466
+    second: SF_Outside_A4_233
+  - first:
+      213: 21300468
+    second: SF_Outside_A4_234
+  - first:
+      213: 21300470
+    second: SF_Outside_A4_235
+  - first:
+      213: 21300472
+    second: SF_Outside_A4_236
+  - first:
+      213: 21300474
+    second: SF_Outside_A4_237
+  - first:
+      213: 21300476
+    second: SF_Outside_A4_238
+  - first:
+      213: 21300478
+    second: SF_Outside_A4_239
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -263,6 +741,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -273,7 +753,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: -1
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -285,18 +765,21 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -306,7 +789,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: Standalone
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -316,6 +801,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -333,6 +819,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_1
       rect:
@@ -347,6 +840,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_2
       rect:
@@ -361,6 +861,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_3
       rect:
@@ -375,6 +882,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_4
       rect:
@@ -389,6 +903,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_5
       rect:
@@ -403,6 +924,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_6
       rect:
@@ -417,6 +945,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_7
       rect:
@@ -431,6 +966,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_8
       rect:
@@ -445,6 +987,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_9
       rect:
@@ -459,6 +1008,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_10
       rect:
@@ -473,6 +1029,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_11
       rect:
@@ -487,6 +1050,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_12
       rect:
@@ -501,6 +1071,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_13
       rect:
@@ -515,6 +1092,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_14
       rect:
@@ -529,6 +1113,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_15
       rect:
@@ -543,6 +1134,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_16
       rect:
@@ -557,6 +1155,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_17
       rect:
@@ -571,6 +1176,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_18
       rect:
@@ -585,6 +1197,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_19
       rect:
@@ -599,6 +1218,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_20
       rect:
@@ -613,6 +1239,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_21
       rect:
@@ -627,6 +1260,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_22
       rect:
@@ -641,6 +1281,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_23
       rect:
@@ -655,6 +1302,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_24
       rect:
@@ -669,6 +1323,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_25
       rect:
@@ -683,6 +1344,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_26
       rect:
@@ -697,6 +1365,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_27
       rect:
@@ -711,6 +1386,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_28
       rect:
@@ -725,6 +1407,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_29
       rect:
@@ -739,6 +1428,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_30
       rect:
@@ -753,6 +1449,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_31
       rect:
@@ -767,6 +1470,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_32
       rect:
@@ -781,6 +1491,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_33
       rect:
@@ -795,6 +1512,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_34
       rect:
@@ -809,6 +1533,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_35
       rect:
@@ -823,6 +1554,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_36
       rect:
@@ -837,6 +1575,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_37
       rect:
@@ -851,6 +1596,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_38
       rect:
@@ -865,6 +1617,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_39
       rect:
@@ -879,6 +1638,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_40
       rect:
@@ -893,6 +1659,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_41
       rect:
@@ -907,6 +1680,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 27305410000000000800000000000000
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_42
       rect:
@@ -921,6 +1701,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 47305410000000000800000000000000
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_43
       rect:
@@ -935,6 +1722,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 67305410000000000800000000000000
+      internalID: 21300086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_44
       rect:
@@ -949,6 +1743,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_45
       rect:
@@ -963,6 +1764,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_46
       rect:
@@ -977,6 +1785,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_47
       rect:
@@ -991,6 +1806,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_48
       rect:
@@ -1005,6 +1827,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 08305410000000000800000000000000
+      internalID: 21300096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_49
       rect:
@@ -1019,6 +1848,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 28305410000000000800000000000000
+      internalID: 21300098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_50
       rect:
@@ -1033,6 +1869,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 48305410000000000800000000000000
+      internalID: 21300100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_51
       rect:
@@ -1047,6 +1890,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 68305410000000000800000000000000
+      internalID: 21300102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_52
       rect:
@@ -1061,6 +1911,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 88305410000000000800000000000000
+      internalID: 21300104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_53
       rect:
@@ -1075,6 +1932,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a8305410000000000800000000000000
+      internalID: 21300106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_54
       rect:
@@ -1089,6 +1953,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c8305410000000000800000000000000
+      internalID: 21300108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_55
       rect:
@@ -1103,6 +1974,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e8305410000000000800000000000000
+      internalID: 21300110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_56
       rect:
@@ -1117,6 +1995,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 09305410000000000800000000000000
+      internalID: 21300112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_57
       rect:
@@ -1131,6 +2016,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 29305410000000000800000000000000
+      internalID: 21300114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_58
       rect:
@@ -1145,6 +2037,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 49305410000000000800000000000000
+      internalID: 21300116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_59
       rect:
@@ -1159,6 +2058,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 69305410000000000800000000000000
+      internalID: 21300118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_60
       rect:
@@ -1173,6 +2079,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 89305410000000000800000000000000
+      internalID: 21300120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_61
       rect:
@@ -1187,6 +2100,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a9305410000000000800000000000000
+      internalID: 21300122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_62
       rect:
@@ -1201,6 +2121,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c9305410000000000800000000000000
+      internalID: 21300124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_63
       rect:
@@ -1215,6 +2142,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e9305410000000000800000000000000
+      internalID: 21300126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_64
       rect:
@@ -1229,6 +2163,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0a305410000000000800000000000000
+      internalID: 21300128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_65
       rect:
@@ -1243,6 +2184,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2a305410000000000800000000000000
+      internalID: 21300130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_66
       rect:
@@ -1257,6 +2205,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4a305410000000000800000000000000
+      internalID: 21300132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_67
       rect:
@@ -1271,6 +2226,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6a305410000000000800000000000000
+      internalID: 21300134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_68
       rect:
@@ -1285,6 +2247,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8a305410000000000800000000000000
+      internalID: 21300136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_69
       rect:
@@ -1299,6 +2268,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: aa305410000000000800000000000000
+      internalID: 21300138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_70
       rect:
@@ -1313,6 +2289,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ca305410000000000800000000000000
+      internalID: 21300140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_71
       rect:
@@ -1327,6 +2310,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ea305410000000000800000000000000
+      internalID: 21300142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_72
       rect:
@@ -1341,6 +2331,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0b305410000000000800000000000000
+      internalID: 21300144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_73
       rect:
@@ -1355,6 +2352,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2b305410000000000800000000000000
+      internalID: 21300146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_74
       rect:
@@ -1369,6 +2373,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4b305410000000000800000000000000
+      internalID: 21300148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_75
       rect:
@@ -1383,6 +2394,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6b305410000000000800000000000000
+      internalID: 21300150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_76
       rect:
@@ -1397,6 +2415,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8b305410000000000800000000000000
+      internalID: 21300152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_77
       rect:
@@ -1411,6 +2436,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ab305410000000000800000000000000
+      internalID: 21300154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_78
       rect:
@@ -1425,6 +2457,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cb305410000000000800000000000000
+      internalID: 21300156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_79
       rect:
@@ -1439,6 +2478,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: eb305410000000000800000000000000
+      internalID: 21300158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_80
       rect:
@@ -1453,6 +2499,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0c305410000000000800000000000000
+      internalID: 21300160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_81
       rect:
@@ -1467,6 +2520,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2c305410000000000800000000000000
+      internalID: 21300162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_82
       rect:
@@ -1481,6 +2541,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4c305410000000000800000000000000
+      internalID: 21300164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_83
       rect:
@@ -1495,6 +2562,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6c305410000000000800000000000000
+      internalID: 21300166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_84
       rect:
@@ -1509,6 +2583,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8c305410000000000800000000000000
+      internalID: 21300168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_85
       rect:
@@ -1523,6 +2604,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ac305410000000000800000000000000
+      internalID: 21300170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_86
       rect:
@@ -1537,6 +2625,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cc305410000000000800000000000000
+      internalID: 21300172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_87
       rect:
@@ -1551,6 +2646,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ec305410000000000800000000000000
+      internalID: 21300174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_88
       rect:
@@ -1565,6 +2667,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0d305410000000000800000000000000
+      internalID: 21300176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_89
       rect:
@@ -1579,6 +2688,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2d305410000000000800000000000000
+      internalID: 21300178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_90
       rect:
@@ -1593,6 +2709,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4d305410000000000800000000000000
+      internalID: 21300180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_91
       rect:
@@ -1607,6 +2730,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6d305410000000000800000000000000
+      internalID: 21300182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_92
       rect:
@@ -1621,6 +2751,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8d305410000000000800000000000000
+      internalID: 21300184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_93
       rect:
@@ -1635,6 +2772,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ad305410000000000800000000000000
+      internalID: 21300186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_94
       rect:
@@ -1649,6 +2793,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cd305410000000000800000000000000
+      internalID: 21300188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_95
       rect:
@@ -1663,6 +2814,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ed305410000000000800000000000000
+      internalID: 21300190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_96
       rect:
@@ -1677,6 +2835,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0e305410000000000800000000000000
+      internalID: 21300192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_97
       rect:
@@ -1691,6 +2856,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2e305410000000000800000000000000
+      internalID: 21300194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_98
       rect:
@@ -1705,6 +2877,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4e305410000000000800000000000000
+      internalID: 21300196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_99
       rect:
@@ -1719,6 +2898,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6e305410000000000800000000000000
+      internalID: 21300198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_100
       rect:
@@ -1733,6 +2919,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8e305410000000000800000000000000
+      internalID: 21300200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_101
       rect:
@@ -1747,6 +2940,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ae305410000000000800000000000000
+      internalID: 21300202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_102
       rect:
@@ -1761,6 +2961,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ce305410000000000800000000000000
+      internalID: 21300204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_103
       rect:
@@ -1775,6 +2982,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ee305410000000000800000000000000
+      internalID: 21300206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_104
       rect:
@@ -1789,6 +3003,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0f305410000000000800000000000000
+      internalID: 21300208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_105
       rect:
@@ -1803,6 +3024,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2f305410000000000800000000000000
+      internalID: 21300210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_106
       rect:
@@ -1817,6 +3045,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4f305410000000000800000000000000
+      internalID: 21300212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_107
       rect:
@@ -1831,6 +3066,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6f305410000000000800000000000000
+      internalID: 21300214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_108
       rect:
@@ -1845,6 +3087,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8f305410000000000800000000000000
+      internalID: 21300216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_109
       rect:
@@ -1859,6 +3108,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: af305410000000000800000000000000
+      internalID: 21300218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_110
       rect:
@@ -1873,6 +3129,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cf305410000000000800000000000000
+      internalID: 21300220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_111
       rect:
@@ -1887,6 +3150,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ef305410000000000800000000000000
+      internalID: 21300222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_112
       rect:
@@ -1901,6 +3171,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 00405410000000000800000000000000
+      internalID: 21300224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_113
       rect:
@@ -1915,6 +3192,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 20405410000000000800000000000000
+      internalID: 21300226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_114
       rect:
@@ -1929,6 +3213,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 40405410000000000800000000000000
+      internalID: 21300228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_115
       rect:
@@ -1943,6 +3234,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 60405410000000000800000000000000
+      internalID: 21300230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_116
       rect:
@@ -1957,6 +3255,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 80405410000000000800000000000000
+      internalID: 21300232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_117
       rect:
@@ -1971,6 +3276,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a0405410000000000800000000000000
+      internalID: 21300234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_118
       rect:
@@ -1985,6 +3297,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c0405410000000000800000000000000
+      internalID: 21300236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_119
       rect:
@@ -1999,6 +3318,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e0405410000000000800000000000000
+      internalID: 21300238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_120
       rect:
@@ -2013,6 +3339,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 01405410000000000800000000000000
+      internalID: 21300240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_121
       rect:
@@ -2027,6 +3360,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 21405410000000000800000000000000
+      internalID: 21300242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_122
       rect:
@@ -2041,6 +3381,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 41405410000000000800000000000000
+      internalID: 21300244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_123
       rect:
@@ -2055,6 +3402,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 61405410000000000800000000000000
+      internalID: 21300246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_124
       rect:
@@ -2069,6 +3423,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 81405410000000000800000000000000
+      internalID: 21300248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_125
       rect:
@@ -2083,6 +3444,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a1405410000000000800000000000000
+      internalID: 21300250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_126
       rect:
@@ -2097,6 +3465,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c1405410000000000800000000000000
+      internalID: 21300252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_127
       rect:
@@ -2111,6 +3486,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e1405410000000000800000000000000
+      internalID: 21300254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_128
       rect:
@@ -2125,6 +3507,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 02405410000000000800000000000000
+      internalID: 21300256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_129
       rect:
@@ -2139,6 +3528,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 22405410000000000800000000000000
+      internalID: 21300258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_130
       rect:
@@ -2153,6 +3549,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 42405410000000000800000000000000
+      internalID: 21300260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_131
       rect:
@@ -2167,6 +3570,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 62405410000000000800000000000000
+      internalID: 21300262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_132
       rect:
@@ -2181,6 +3591,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 82405410000000000800000000000000
+      internalID: 21300264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_133
       rect:
@@ -2195,6 +3612,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a2405410000000000800000000000000
+      internalID: 21300266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_134
       rect:
@@ -2209,6 +3633,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c2405410000000000800000000000000
+      internalID: 21300268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_135
       rect:
@@ -2223,6 +3654,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e2405410000000000800000000000000
+      internalID: 21300270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_136
       rect:
@@ -2237,6 +3675,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 03405410000000000800000000000000
+      internalID: 21300272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_137
       rect:
@@ -2251,6 +3696,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 23405410000000000800000000000000
+      internalID: 21300274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_138
       rect:
@@ -2265,6 +3717,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 43405410000000000800000000000000
+      internalID: 21300276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_139
       rect:
@@ -2279,6 +3738,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 63405410000000000800000000000000
+      internalID: 21300278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_140
       rect:
@@ -2293,6 +3759,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 83405410000000000800000000000000
+      internalID: 21300280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_141
       rect:
@@ -2307,6 +3780,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a3405410000000000800000000000000
+      internalID: 21300282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_142
       rect:
@@ -2321,6 +3801,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c3405410000000000800000000000000
+      internalID: 21300284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_143
       rect:
@@ -2335,6 +3822,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e3405410000000000800000000000000
+      internalID: 21300286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_144
       rect:
@@ -2349,6 +3843,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 04405410000000000800000000000000
+      internalID: 21300288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_145
       rect:
@@ -2363,6 +3864,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 24405410000000000800000000000000
+      internalID: 21300290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_146
       rect:
@@ -2377,6 +3885,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 44405410000000000800000000000000
+      internalID: 21300292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_147
       rect:
@@ -2391,6 +3906,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 64405410000000000800000000000000
+      internalID: 21300294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_148
       rect:
@@ -2405,6 +3927,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 84405410000000000800000000000000
+      internalID: 21300296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_149
       rect:
@@ -2419,6 +3948,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a4405410000000000800000000000000
+      internalID: 21300298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_150
       rect:
@@ -2433,6 +3969,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c4405410000000000800000000000000
+      internalID: 21300300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_151
       rect:
@@ -2447,6 +3990,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e4405410000000000800000000000000
+      internalID: 21300302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_152
       rect:
@@ -2461,6 +4011,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 05405410000000000800000000000000
+      internalID: 21300304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_153
       rect:
@@ -2475,6 +4032,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 25405410000000000800000000000000
+      internalID: 21300306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_154
       rect:
@@ -2489,6 +4053,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 45405410000000000800000000000000
+      internalID: 21300308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_155
       rect:
@@ -2503,6 +4074,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 65405410000000000800000000000000
+      internalID: 21300310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_156
       rect:
@@ -2517,6 +4095,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 85405410000000000800000000000000
+      internalID: 21300312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_157
       rect:
@@ -2531,6 +4116,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a5405410000000000800000000000000
+      internalID: 21300314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_158
       rect:
@@ -2545,6 +4137,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c5405410000000000800000000000000
+      internalID: 21300316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_159
       rect:
@@ -2559,6 +4158,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e5405410000000000800000000000000
+      internalID: 21300318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_160
       rect:
@@ -2573,6 +4179,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 06405410000000000800000000000000
+      internalID: 21300320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_161
       rect:
@@ -2587,6 +4200,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 26405410000000000800000000000000
+      internalID: 21300322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_162
       rect:
@@ -2601,6 +4221,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 46405410000000000800000000000000
+      internalID: 21300324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_163
       rect:
@@ -2615,6 +4242,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 66405410000000000800000000000000
+      internalID: 21300326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_164
       rect:
@@ -2629,6 +4263,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 86405410000000000800000000000000
+      internalID: 21300328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_165
       rect:
@@ -2643,6 +4284,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a6405410000000000800000000000000
+      internalID: 21300330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_166
       rect:
@@ -2657,6 +4305,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c6405410000000000800000000000000
+      internalID: 21300332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_167
       rect:
@@ -2671,6 +4326,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e6405410000000000800000000000000
+      internalID: 21300334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_168
       rect:
@@ -2685,6 +4347,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 07405410000000000800000000000000
+      internalID: 21300336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_169
       rect:
@@ -2699,6 +4368,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 27405410000000000800000000000000
+      internalID: 21300338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_170
       rect:
@@ -2713,6 +4389,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 47405410000000000800000000000000
+      internalID: 21300340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_171
       rect:
@@ -2727,6 +4410,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 67405410000000000800000000000000
+      internalID: 21300342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_172
       rect:
@@ -2741,6 +4431,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 87405410000000000800000000000000
+      internalID: 21300344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_173
       rect:
@@ -2755,6 +4452,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a7405410000000000800000000000000
+      internalID: 21300346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_174
       rect:
@@ -2769,6 +4473,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c7405410000000000800000000000000
+      internalID: 21300348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_175
       rect:
@@ -2783,6 +4494,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e7405410000000000800000000000000
+      internalID: 21300350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_176
       rect:
@@ -2797,6 +4515,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 08405410000000000800000000000000
+      internalID: 21300352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_177
       rect:
@@ -2811,6 +4536,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 28405410000000000800000000000000
+      internalID: 21300354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_178
       rect:
@@ -2825,6 +4557,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 48405410000000000800000000000000
+      internalID: 21300356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_179
       rect:
@@ -2839,6 +4578,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 68405410000000000800000000000000
+      internalID: 21300358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_180
       rect:
@@ -2853,6 +4599,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 88405410000000000800000000000000
+      internalID: 21300360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_181
       rect:
@@ -2867,6 +4620,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a8405410000000000800000000000000
+      internalID: 21300362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_182
       rect:
@@ -2881,6 +4641,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c8405410000000000800000000000000
+      internalID: 21300364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_183
       rect:
@@ -2895,6 +4662,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e8405410000000000800000000000000
+      internalID: 21300366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_184
       rect:
@@ -2909,6 +4683,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 09405410000000000800000000000000
+      internalID: 21300368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_185
       rect:
@@ -2923,6 +4704,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 29405410000000000800000000000000
+      internalID: 21300370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_186
       rect:
@@ -2937,6 +4725,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 49405410000000000800000000000000
+      internalID: 21300372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_187
       rect:
@@ -2951,6 +4746,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 69405410000000000800000000000000
+      internalID: 21300374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_188
       rect:
@@ -2965,6 +4767,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 89405410000000000800000000000000
+      internalID: 21300376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_189
       rect:
@@ -2979,6 +4788,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a9405410000000000800000000000000
+      internalID: 21300378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_190
       rect:
@@ -2993,6 +4809,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c9405410000000000800000000000000
+      internalID: 21300380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_191
       rect:
@@ -3007,6 +4830,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e9405410000000000800000000000000
+      internalID: 21300382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_192
       rect:
@@ -3021,6 +4851,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0a405410000000000800000000000000
+      internalID: 21300384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_193
       rect:
@@ -3035,6 +4872,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2a405410000000000800000000000000
+      internalID: 21300386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_194
       rect:
@@ -3049,6 +4893,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4a405410000000000800000000000000
+      internalID: 21300388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_195
       rect:
@@ -3063,6 +4914,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6a405410000000000800000000000000
+      internalID: 21300390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_196
       rect:
@@ -3077,6 +4935,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8a405410000000000800000000000000
+      internalID: 21300392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_197
       rect:
@@ -3091,6 +4956,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: aa405410000000000800000000000000
+      internalID: 21300394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_198
       rect:
@@ -3105,6 +4977,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ca405410000000000800000000000000
+      internalID: 21300396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_199
       rect:
@@ -3119,6 +4998,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ea405410000000000800000000000000
+      internalID: 21300398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_200
       rect:
@@ -3133,6 +5019,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0b405410000000000800000000000000
+      internalID: 21300400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_201
       rect:
@@ -3147,6 +5040,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2b405410000000000800000000000000
+      internalID: 21300402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_202
       rect:
@@ -3161,6 +5061,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4b405410000000000800000000000000
+      internalID: 21300404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_203
       rect:
@@ -3175,6 +5082,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6b405410000000000800000000000000
+      internalID: 21300406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_204
       rect:
@@ -3189,6 +5103,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8b405410000000000800000000000000
+      internalID: 21300408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_205
       rect:
@@ -3203,6 +5124,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ab405410000000000800000000000000
+      internalID: 21300410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_206
       rect:
@@ -3217,6 +5145,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cb405410000000000800000000000000
+      internalID: 21300412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_207
       rect:
@@ -3231,6 +5166,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: eb405410000000000800000000000000
+      internalID: 21300414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_208
       rect:
@@ -3245,6 +5187,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0c405410000000000800000000000000
+      internalID: 21300416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_209
       rect:
@@ -3259,6 +5208,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2c405410000000000800000000000000
+      internalID: 21300418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_210
       rect:
@@ -3273,6 +5229,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4c405410000000000800000000000000
+      internalID: 21300420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_211
       rect:
@@ -3287,6 +5250,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6c405410000000000800000000000000
+      internalID: 21300422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_212
       rect:
@@ -3301,6 +5271,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8c405410000000000800000000000000
+      internalID: 21300424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_213
       rect:
@@ -3315,6 +5292,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ac405410000000000800000000000000
+      internalID: 21300426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_214
       rect:
@@ -3329,6 +5313,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cc405410000000000800000000000000
+      internalID: 21300428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_215
       rect:
@@ -3343,6 +5334,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ec405410000000000800000000000000
+      internalID: 21300430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_216
       rect:
@@ -3357,6 +5355,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0d405410000000000800000000000000
+      internalID: 21300432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_217
       rect:
@@ -3371,6 +5376,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2d405410000000000800000000000000
+      internalID: 21300434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_218
       rect:
@@ -3385,6 +5397,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4d405410000000000800000000000000
+      internalID: 21300436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_219
       rect:
@@ -3399,6 +5418,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6d405410000000000800000000000000
+      internalID: 21300438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_220
       rect:
@@ -3413,6 +5439,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8d405410000000000800000000000000
+      internalID: 21300440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_221
       rect:
@@ -3427,6 +5460,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ad405410000000000800000000000000
+      internalID: 21300442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_222
       rect:
@@ -3441,6 +5481,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cd405410000000000800000000000000
+      internalID: 21300444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_223
       rect:
@@ -3455,6 +5502,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ed405410000000000800000000000000
+      internalID: 21300446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_224
       rect:
@@ -3469,6 +5523,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0e405410000000000800000000000000
+      internalID: 21300448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_225
       rect:
@@ -3483,6 +5544,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2e405410000000000800000000000000
+      internalID: 21300450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_226
       rect:
@@ -3497,6 +5565,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4e405410000000000800000000000000
+      internalID: 21300452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_227
       rect:
@@ -3511,6 +5586,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6e405410000000000800000000000000
+      internalID: 21300454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_228
       rect:
@@ -3525,6 +5607,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8e405410000000000800000000000000
+      internalID: 21300456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_229
       rect:
@@ -3539,6 +5628,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ae405410000000000800000000000000
+      internalID: 21300458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_230
       rect:
@@ -3553,6 +5649,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ce405410000000000800000000000000
+      internalID: 21300460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_231
       rect:
@@ -3567,6 +5670,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ee405410000000000800000000000000
+      internalID: 21300462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_232
       rect:
@@ -3581,6 +5691,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0f405410000000000800000000000000
+      internalID: 21300464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_233
       rect:
@@ -3595,6 +5712,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2f405410000000000800000000000000
+      internalID: 21300466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_234
       rect:
@@ -3609,6 +5733,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4f405410000000000800000000000000
+      internalID: 21300468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_235
       rect:
@@ -3623,6 +5754,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6f405410000000000800000000000000
+      internalID: 21300470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_236
       rect:
@@ -3637,6 +5775,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8f405410000000000800000000000000
+      internalID: 21300472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_237
       rect:
@@ -3651,6 +5796,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: af405410000000000800000000000000
+      internalID: 21300474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_238
       rect:
@@ -3665,6 +5817,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: cf405410000000000800000000000000
+      internalID: 21300476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: SF_Outside_A4_239
       rect:
@@ -3679,6 +5838,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ef405410000000000800000000000000
+      internalID: 21300478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline:
     - - {x: -384, y: 360}
       - {x: -384, y: -360}
@@ -3689,7 +5855,17 @@ TextureImporter:
       - {x: -384, y: -360}
       - {x: 384, y: -360}
       - {x: 384, y: 360}
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
