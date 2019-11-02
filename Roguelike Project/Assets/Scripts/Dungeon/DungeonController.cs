@@ -9,14 +9,14 @@ public class DungeonController : MonoBehaviour
     public int boardColumns;
     public int minRoomSize, maxRoomSize;
     [Header("Assets")]
-    public GameObject dungeonRoomFloor;
+    public RandomTools.WeightedObject[] dungeonRoomFloors; 
     public GameObject dungeonCorridorFloor;
     public GameObject dungeonGateway;
     [SerializeField]
     private Walls dungeonWalls = default;
     [Header("Elements")]
     public GameObject player;
-    public List<DungeonEnemy> enemies = new List<DungeonEnemy>();
+    public DungeonEnemy[] enemies;
     [Header("Values")]
     public float corridorSpeed;
     [Header("Gameplay Info")]
@@ -25,19 +25,18 @@ public class DungeonController : MonoBehaviour
 
     private GameObject roomHolder;
     private GameObject corridorHolder;
-    [System.NonSerialized]
-    private static int totalCorridorIdCount = 0;
     public List<DungeonRoom> dungeonRooms = new List<DungeonRoom>();
     public List<GameObject> dungeonCorridors = new List<GameObject>();
     public GameObject[,] dungeonFloorsPosition;
     public GameObject[,] dungeonWallsPosition;
 
-
+    private static int _totalCorridorIdCount = 0;
+    private readonly RandomTools _clsRandomTools = new RandomTools();
 
     [System.Serializable]
     public struct Walls
     {
-        public GameObject top;
+        public RandomTools.WeightedObject[] top;
         public GameObject bottom;
         public GameObject left;
         public GameObject right;
@@ -66,7 +65,6 @@ public class DungeonController : MonoBehaviour
         public Rect rectangle;
         public Rect room = new Rect(-1, -1, 0, 0);
         public List<DungeonCorridor> corridors = new List<DungeonCorridor>();
-
 
         public SubDungeon(Rect mrect)
         {
@@ -153,7 +151,7 @@ public class DungeonController : MonoBehaviour
 
         public void CreateCorridorBetween(SubDungeon left, SubDungeon right)
         {
-            totalCorridorIdCount++;
+            _totalCorridorIdCount++;
             Rect lroom = left.GetRoom();
             Rect rroom = right.GetRoom();
 
@@ -179,16 +177,16 @@ public class DungeonController : MonoBehaviour
                 if (Random.Range(0, 1) > 2)
                 {
                     // add a corridor to the right
-                    corridors.Add(new DungeonCorridor(new Rect(lpoint.x, lpoint.y, Mathf.Abs(w) + 1, 1), totalCorridorIdCount));
+                    corridors.Add(new DungeonCorridor(new Rect(lpoint.x, lpoint.y, Mathf.Abs(w) + 1, 1), _totalCorridorIdCount));
                     // if left point is below right point go up
                     // otherwise go down
                     if (h < 0)
                     {
-                        corridors.Add(new DungeonCorridor(new Rect(rpoint.x, lpoint.y, 1, Mathf.Abs(h)), totalCorridorIdCount));
+                        corridors.Add(new DungeonCorridor(new Rect(rpoint.x, lpoint.y, 1, Mathf.Abs(h)), _totalCorridorIdCount));
                     }
                     else
                     {
-                        corridors.Add(new DungeonCorridor(new Rect(rpoint.x, lpoint.y, 1, -Mathf.Abs(h)), totalCorridorIdCount));
+                        corridors.Add(new DungeonCorridor(new Rect(rpoint.x, lpoint.y, 1, -Mathf.Abs(h)), _totalCorridorIdCount));
                     }
                 }
                 else
@@ -196,15 +194,15 @@ public class DungeonController : MonoBehaviour
                     // go up or down
                     if (h < 0)
                     {
-                        corridors.Add(new DungeonCorridor(new Rect(lpoint.x, lpoint.y, 1, Mathf.Abs(h)), totalCorridorIdCount));
+                        corridors.Add(new DungeonCorridor(new Rect(lpoint.x, lpoint.y, 1, Mathf.Abs(h)), _totalCorridorIdCount));
                     }
                     else
                     {
-                        corridors.Add(new DungeonCorridor(new Rect(lpoint.x, rpoint.y, 1, Mathf.Abs(h)), totalCorridorIdCount));
+                        corridors.Add(new DungeonCorridor(new Rect(lpoint.x, rpoint.y, 1, Mathf.Abs(h)), _totalCorridorIdCount));
                     }
 
                     // then go right
-                    corridors.Add(new DungeonCorridor(new Rect(lpoint.x, rpoint.y, Mathf.Abs(w) + 1, 1), totalCorridorIdCount));
+                    corridors.Add(new DungeonCorridor(new Rect(lpoint.x, rpoint.y, Mathf.Abs(w) + 1, 1), _totalCorridorIdCount));
                 }
             }
             else
@@ -213,11 +211,11 @@ public class DungeonController : MonoBehaviour
                 // go up or down depending on the positions
                 if (h < 0)
                 {
-                    corridors.Add(new DungeonCorridor(new Rect((int)lpoint.x, (int)lpoint.y, 1, Mathf.Abs(h)), totalCorridorIdCount));
+                    corridors.Add(new DungeonCorridor(new Rect((int)lpoint.x, (int)lpoint.y, 1, Mathf.Abs(h)), _totalCorridorIdCount));
                 }
                 else
                 {
-                    corridors.Add(new DungeonCorridor(new Rect((int)rpoint.x, (int)rpoint.y, 1, Mathf.Abs(h)), totalCorridorIdCount));
+                    corridors.Add(new DungeonCorridor(new Rect((int)rpoint.x, (int)rpoint.y, 1, Mathf.Abs(h)), _totalCorridorIdCount));
                 }
             }
         }
@@ -293,7 +291,7 @@ public class DungeonController : MonoBehaviour
                 for (int j = (int)subDungeon.room.y; j < subDungeon.room.yMax; j++)
                 {
                     floorPosition = new Vector3(i, j, 0f);
-                    instance = Instantiate(dungeonRoomFloor, floorPosition, Quaternion.identity, roomFloorHolder);
+                    instance = Instantiate(_clsRandomTools.PickOne(dungeonRoomFloors), floorPosition, Quaternion.identity, roomFloorHolder);
                     dungeonFloorsPosition[i, j] = instance;
                     dungeonFloors.Add(instance.transform);
                     newRoomPosition += floorPosition;
@@ -331,7 +329,7 @@ public class DungeonController : MonoBehaviour
             //room top walls
             for (int i = (int)subDungeon.room.x + 1; i < subDungeon.room.xMax - 1; i++)
             {
-                instance = Instantiate(dungeonWalls.top, new Vector3(i, (int)subDungeon.room.yMax - 1, 0f), Quaternion.identity, roomWallHolder);
+                instance = Instantiate(_clsRandomTools.PickOne(dungeonWalls.top), new Vector3(i, (int)subDungeon.room.yMax - 1, 0f), Quaternion.identity, roomWallHolder);
                 dungeonWallsPosition[i, (int)subDungeon.room.yMax - 1] = instance;
                 dungeonWallsPosition[i, (int)subDungeon.room.yMax - 2] = instance;
                 dungeonWallsPosition[i, (int)subDungeon.room.yMax - 3] = instance;
@@ -610,10 +608,13 @@ public class DungeonController : MonoBehaviour
         roomHolder = Resources.Load<GameObject>("Room");
         corridorHolder = Resources.Load<GameObject>("Corridor");
         SubDungeon rootSubDungeon = new SubDungeon(new Rect(0, 0, boardRows, boardColumns));
-        SpacePartition(rootSubDungeon);
-        rootSubDungeon.CreateRoom();
         dungeonFloorsPosition = new GameObject[boardRows, boardColumns];
         dungeonWallsPosition = new GameObject[boardRows, boardColumns];
+        dungeonRoomFloors = _clsRandomTools.CreateWeightedObjectsArray(dungeonRoomFloors);
+        dungeonWalls.top = _clsRandomTools.CreateWeightedObjectsArray(dungeonWalls.top);
+
+        SpacePartition(rootSubDungeon);
+        rootSubDungeon.CreateRoom();
         DrawRooms(rootSubDungeon);
         DefineRooms();
         SpawnPlayer();

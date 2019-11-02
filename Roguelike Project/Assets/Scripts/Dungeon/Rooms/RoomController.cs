@@ -10,7 +10,7 @@ public class RoomController : MonoBehaviour
     protected DungeonController clsDungeonController;
     protected GameObject[] roomGateways;
     protected Transform roomGatewaysHolder;
-    protected List<DungeonEnemy> roomEnemies = new List<DungeonEnemy>();
+    protected DungeonEnemy[] roomEnemies;
     public int enemiesAlive;
 
     private void Awake()
