@@ -81,7 +81,7 @@ public class GatewayPortal : MonoBehaviour
             else
             {
                 choosingDirection = false;
-                clsPlayerSpriteManager._directionSelector.SetActive(false);
+                clsPlayerSpriteManager.directionSelector.SetActive(false);
                 SetTargetFloor(availableNeighbours[currentDirection]);
             }
         }
@@ -95,7 +95,7 @@ public class GatewayPortal : MonoBehaviour
             SetTargetFloor(gameObject);
             destinyReached = false;
             choosingDirection = false;
-            _directionSelectorChanged = false;
+            ResetDirectionSelector();
             clsPlayerMovement.canMove = false;
             clsPlayerMovement.myRigidbody.velocity = Vector2.zero;
             enabled = true;
@@ -138,17 +138,17 @@ public class GatewayPortal : MonoBehaviour
 
     private void DirectionSelector()
     {
-        clsPlayerSpriteManager._directionSelector.SetActive(true);
+        clsPlayerSpriteManager.directionSelector.SetActive(true);
         for (int i = 0; i < 4; i++)
         {
-            if (availableNeighbours[i] != null && !clsPlayerSpriteManager._directionSelector.transform.GetChild(i).gameObject.activeSelf)
+            if (availableNeighbours[i] != null && !clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.activeSelf)
             {
-                clsPlayerSpriteManager._directionSelector.transform.GetChild(i).gameObject.SetActive(true);
+                clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(true);
                 _directionSelectorChanged = true;
             }
-            else if(availableNeighbours[i] == null && clsPlayerSpriteManager._directionSelector.transform.GetChild(i).gameObject.activeSelf)
+            else if(availableNeighbours[i] == null && clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.activeSelf)
             {
-                clsPlayerSpriteManager._directionSelector.transform.GetChild(i).gameObject.SetActive(false);
+                clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(false);
                 _directionSelectorChanged = true;
             }
                 
@@ -156,12 +156,20 @@ public class GatewayPortal : MonoBehaviour
         choosingDirection = true;
     }
 
+    private void ResetDirectionSelector()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
     private void SelectDirection(int direction)
     {
         currentDirection = direction;
         SetTargetFloor(availableNeighbours[direction]);
         choosingDirection = false;
-        clsPlayerSpriteManager._directionSelector.SetActive(false);
+        clsPlayerSpriteManager.directionSelector.SetActive(false);
         _directionSelectorChanged = false;
     }
 

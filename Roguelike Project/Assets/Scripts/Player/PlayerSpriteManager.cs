@@ -7,7 +7,7 @@ public class PlayerSpriteManager : SpriteManager
     [Header("This Components")]
     [SerializeField]
     private PlayerMovement _clsPlayerMovement = default;
-    public GameObject _directionSelector = default;
+    public GameObject directionSelector = default;
 
     new void Update()
     {

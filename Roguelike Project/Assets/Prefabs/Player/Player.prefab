@@ -678,7 +678,7 @@ MonoBehaviour:
   weaponRightSprRender: {fileID: 7941783385174788768}
   weaponLeftSprRender: {fileID: 7941783383853911881}
   _clsPlayerMovement: {fileID: 7941783383899892013}
-  _directionSelector: {fileID: 1702820693399759986}
+  directionSelector: {fileID: 1702820693399759986}
 --- !u!114 &7941783385480897369
 MonoBehaviour:
   m_ObjectHideFlags: 0

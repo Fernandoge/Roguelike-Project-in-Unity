@@ -33,6 +33,7 @@ public class DungeonController : MonoBehaviour
     private static int _totalCorridorIdCount = 0;
     private readonly RandomTools _clsRandomTools = new RandomTools();
 
+    #region Dungeon Components
     [System.Serializable]
     public struct Walls
     {
@@ -57,8 +58,9 @@ public class DungeonController : MonoBehaviour
             this.totalCorridorId = totalCorridorId;
         }
     }
+    #endregion Dungeon Components
 
-
+    #region Dungeon BSP
     public class SubDungeon
     {
         public SubDungeon leftDungeon, rightDungeon;
@@ -263,7 +265,9 @@ public class DungeonController : MonoBehaviour
             }
         }
     }
+    #endregion Dungeon BSP
 
+    #region Drawers
     public void DrawRooms(SubDungeon subDungeon)
     {
         if (subDungeon == null)
@@ -324,7 +328,7 @@ public class DungeonController : MonoBehaviour
             roomCollider.size = newColliderSize;
             roomCollider.offset += newColliderOffset;
 
-            //add walls to the room
+            #region Room Walls
             Transform roomWallHolder = roomParent.transform.GetChild(2);
             //room top walls
             for (int i = (int)subDungeon.room.x + 1; i < subDungeon.room.xMax - 1; i++)
@@ -362,6 +366,7 @@ public class DungeonController : MonoBehaviour
             DrawRooms(subDungeon.leftDungeon);
             DrawRooms(subDungeon.rightDungeon);
         }
+        #endregion Room Walls
     }
 
 
@@ -385,11 +390,10 @@ public class DungeonController : MonoBehaviour
         Transform corridorFloorHolder = null;
         Transform corridorFloorHolderAux = null;
         DungeonCorridor corridorAux = new DungeonCorridor(new Rect(-1, -1, 0, 0), 0);
-        Vector3 corridorFloorPosition = new Vector3(0f, 0f, 0f);
 
         foreach (DungeonCorridor corridor in subDungeon.corridors)
         {
-            //create new holder if it's a different corridors
+            //create new holder if it's a different corridor
             if (corridor.totalCorridorId != corridorAux.totalCorridorId)
             {
                 corridorParent = Instantiate(corridorHolder, transform.GetChild(1));
@@ -406,13 +410,9 @@ public class DungeonController : MonoBehaviour
                     //check if there isn't a room tile
                     if (dungeonFloorsPosition[i, j] == null)
                     {
-                        corridorFloorPosition = new Vector3(i, j, 0f);
-                        //instantiate corridor tile          
-                        GameObject instance = Instantiate(dungeonCorridorFloor, corridorFloorPosition, Quaternion.identity, corridorFloorHolder);
-                        instance.tag = CorridorValidator(i, j);
-                        dungeonFloorsPosition[i, j] = instance;
-
+                        InstantiateCorridorTile(i, j, corridorFloorHolder);
                         //check if the corridor tile collides with a corner or top wall, in this case we add extra tiles so when we generate the portals the player don't have the path to it blocked
+
                         //corridor collision with top walls from left and right
                         int k = j;
                         while (dungeonWallsPosition[i + 2, k] != null && dungeonWallsPosition[i + 2, k].layer == LayerMask.NameToLayer("TopWall") ||
@@ -420,47 +420,42 @@ public class DungeonController : MonoBehaviour
                         {
                             k--;
                             if (dungeonFloorsPosition[i, k] == null)
-                            {
-                                instance = Instantiate(dungeonCorridorFloor, new Vector3(i, k, 0f), Quaternion.identity, corridorFloorHolder);
-                                instance.tag = CorridorValidator(i, k);
-                                dungeonFloorsPosition[i, k] = instance;
-                            }
+                                InstantiateCorridorTile(i, k, corridorFloorHolder);
                         }
 
                         //corridor collision with bottom corners from left and right
                         if (((dungeonWallsPosition[i + 1, j] != null && dungeonWallsPosition[i + 1, j].layer == LayerMask.NameToLayer("BottomLeftCorner")) ||
                             (dungeonWallsPosition[i - 1, j] != null && dungeonWallsPosition[i - 1, j].layer == LayerMask.NameToLayer("BottomRightCorner"))) && dungeonFloorsPosition[i, j + 1] == null)
                         {
-                            instance = Instantiate(dungeonCorridorFloor, new Vector3(i, j + 1, 0f), Quaternion.identity, corridorFloorHolder);
-                            instance.tag = CorridorValidator(i, j);
-                            dungeonFloorsPosition[i, j + 1] = instance;
+                            InstantiateCorridorTile(i, j + 1, corridorFloorHolder);
                         }
 
                         //corridor collision with left corners from top and bottom
                         if (((dungeonWallsPosition[i, j + 1] != null && dungeonWallsPosition[i, j + 1].layer == LayerMask.NameToLayer("BottomLeftCorner")) ||
                             (dungeonWallsPosition[i, j - 1] != null && dungeonWallsPosition[i, j - 1].layer == LayerMask.NameToLayer("TopLeftCorner"))) && dungeonFloorsPosition[i + 1, j] == null)
                         {
-
-                            instance = Instantiate(dungeonCorridorFloor, new Vector3(i + 1, j, 0f), Quaternion.identity, corridorFloorHolder);
-                            instance.tag = CorridorValidator(i, j);
-                            dungeonFloorsPosition[i + 1, j] = instance;
+                            InstantiateCorridorTile(i + 1, j, corridorFloorHolder);
                         }
 
                         //corridor collision with right corners from top and bottom
                         if (((dungeonWallsPosition[i, j + 1] != null && dungeonWallsPosition[i, j + 1].layer == LayerMask.NameToLayer("BottomRightCorner")) ||
                             (dungeonWallsPosition[i, j - 1] != null && dungeonWallsPosition[i, j - 1].layer == LayerMask.NameToLayer("TopRightCorner"))) && dungeonFloorsPosition[i - 1, j] == null)
                         {
-                            instance = Instantiate(dungeonCorridorFloor, new Vector3(i - 1, j, 0f), Quaternion.identity, corridorFloorHolder);
-                            instance.tag = CorridorValidator(i, j);
-                            dungeonFloorsPosition[i - 1, j] = instance;
+                            InstantiateCorridorTile(i - 1, j, corridorFloorHolder);
                         }
-
                     }
                 }
             }
             if (!dungeonCorridors.Contains(corridorParent))
                 dungeonCorridors.Add(corridorParent);
         }
+    }
+
+    public void InstantiateCorridorTile(int x, int y, Transform corridorFloorHolder)
+    {
+        GameObject instance = Instantiate(dungeonCorridorFloor, new Vector3(x, y, 0f), Quaternion.identity, corridorFloorHolder);
+        instance.tag = CorridorValidator(x, y);
+        dungeonFloorsPosition[x, y] = instance;
     }
 
     public string CorridorValidator(int x, int y)
@@ -472,7 +467,9 @@ public class DungeonController : MonoBehaviour
             return "ValidCorridor";
     }
 
+    #endregion Drawers
 
+    #region Gateways
     public void GenerateGateways()
     {
         foreach (GameObject corridor in dungeonCorridors)
@@ -525,47 +522,33 @@ public class DungeonController : MonoBehaviour
                         neighboursCount++;
                 }
 
+                //If the neighbours are less than two it means this is the last corridor tile that generates the gateway
                 if (neighboursCount < 2)
                 {
-                    GameObject gateway;
-                    if (dungeonWallsPosition[posX, posY + 1] != null)
-                    {
-
-                        gateway = Instantiate(dungeonGateway, new Vector3(posX, posY + 1, 0f), Quaternion.identity, dungeonFloorsPosition[posX, posY + 1].transform.parent.parent.GetChild(0));
-                        gateway.GetComponent<GatewayPortal>().firstDirection = 0;
-                        dungeonFloorsPosition[posX, posY + 1].tag = "Gateway";
-                        if (dungeonWallsPosition[posX, posY + 1].layer == LayerMask.NameToLayer("Default") || dungeonWallsPosition[posX, posY + 1].layer == LayerMask.NameToLayer("TopWall"))
-                            Destroy(dungeonWallsPosition[posX, posY + 1]);
-                    }
-                    if (dungeonWallsPosition[posX, posY - 1] != null)
-                    {
-                        gateway = Instantiate(dungeonGateway, new Vector3(posX, posY - 1, 0f), Quaternion.identity, dungeonFloorsPosition[posX, posY - 1].transform.parent.parent.GetChild(0));
-                        gateway.GetComponent<GatewayPortal>().firstDirection = 2;
-                        dungeonFloorsPosition[posX, posY - 1].tag = "Gateway";
-                        if (dungeonWallsPosition[posX, posY - 1].layer == LayerMask.NameToLayer("Default") || dungeonWallsPosition[posX, posY - 1].layer == LayerMask.NameToLayer("TopWall"))
-                            Destroy(dungeonWallsPosition[posX, posY - 1]);
-                    }
-                    if (dungeonWallsPosition[posX + 1, posY] != null)
-                    {
-                        gateway = Instantiate(dungeonGateway, new Vector3(posX + 1, posY, 0f), Quaternion.identity, dungeonFloorsPosition[posX + 1, posY].transform.parent.parent.GetChild(0));
-                        gateway.GetComponent<GatewayPortal>().firstDirection = 3;
-                        dungeonFloorsPosition[posX + 1, posY].tag = "Gateway";
-                        if (dungeonWallsPosition[posX + 1, posY].layer == LayerMask.NameToLayer("Default") || dungeonWallsPosition[posX + 1, posY].layer == LayerMask.NameToLayer("TopWall"))
-                            Destroy(dungeonWallsPosition[posX + 1, posY]);
-                    }
-                    if (dungeonWallsPosition[posX - 1, posY] != null)
-                    {
-                        gateway = Instantiate(dungeonGateway, new Vector3(posX - 1, posY, 0f), Quaternion.identity, dungeonFloorsPosition[posX - 1, posY].transform.parent.parent.GetChild(0));
-                        gateway.GetComponent<GatewayPortal>().firstDirection = 1;
-                        dungeonFloorsPosition[posX - 1, posY].tag = "Gateway";
-                        if (dungeonWallsPosition[posX - 1, posY].layer == LayerMask.NameToLayer("Default") || dungeonWallsPosition[posX - 1, posY].layer == LayerMask.NameToLayer("TopWall"))
-                            Destroy(dungeonWallsPosition[posX - 1, posY]);
-                    }
+                    //Check the four sides to see if it's a room wall
+                    InstantiateGateway(posX, posY + 1, 0);
+                    InstantiateGateway(posX - 1, posY, 1);
+                    InstantiateGateway(posX, posY - 1, 2);
+                    InstantiateGateway(posX + 1, posY, 3);
                 }
             }
         }
     }
 
+    private void InstantiateGateway(int x, int y, int firstDirection)
+    {
+        if (dungeonWallsPosition[x, y] != null)
+        {
+            GameObject gateway = Instantiate(dungeonGateway, new Vector3(x, y, 0f), Quaternion.identity, dungeonFloorsPosition[x - 1, y].transform.parent.parent.GetChild(0));
+            gateway.GetComponent<GatewayPortal>().firstDirection = firstDirection;
+            dungeonFloorsPosition[x, y].tag = "Gateway";
+            if (dungeonWallsPosition[x, y].layer == LayerMask.NameToLayer("Default") || dungeonWallsPosition[x, y].layer == LayerMask.NameToLayer("TopWall"))
+                Destroy(dungeonWallsPosition[x, y]);
+        }
+    }
+    #endregion Gateways
+
+    #region Post-BSP Methods
     public void DefineRooms()
     {
         RoomController roomComponent = null;
@@ -602,6 +585,8 @@ public class DungeonController : MonoBehaviour
         room.GetComponent<RoomController>().isCompleted = true;
         Instantiate(player, room.transform.position, Quaternion.identity);
     }
+
+    #endregion Post-BSP Methods
 
     void Start()
     {
