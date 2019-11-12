@@ -31,7 +31,6 @@ public class DungeonController : MonoBehaviour
     public GameObject[,] dungeonWallsPosition;
 
     private static int _totalCorridorIdCount = 0;
-    private readonly RandomTools _clsRandomTools = new RandomTools();
 
     #region Dungeon Components
     [System.Serializable]
@@ -295,7 +294,7 @@ public class DungeonController : MonoBehaviour
                 for (int j = (int)subDungeon.room.y; j < subDungeon.room.yMax; j++)
                 {
                     floorPosition = new Vector3(i, j, 0f);
-                    instance = Instantiate(_clsRandomTools.PickOne(dungeonRoomFloors), floorPosition, Quaternion.identity, roomFloorHolder);
+                    instance = Instantiate(RandomTools.Instance.PickOne(dungeonRoomFloors), floorPosition, Quaternion.identity, roomFloorHolder);
                     dungeonFloorsPosition[i, j] = instance;
                     dungeonFloors.Add(instance.transform);
                     newRoomPosition += floorPosition;
@@ -333,7 +332,7 @@ public class DungeonController : MonoBehaviour
             //room top walls
             for (int i = (int)subDungeon.room.x + 1; i < subDungeon.room.xMax - 1; i++)
             {
-                instance = Instantiate(_clsRandomTools.PickOne(dungeonWalls.top), new Vector3(i, (int)subDungeon.room.yMax - 1, 0f), Quaternion.identity, roomWallHolder);
+                instance = Instantiate(RandomTools.Instance.PickOne(dungeonWalls.top), new Vector3(i, (int)subDungeon.room.yMax - 1, 0f), Quaternion.identity, roomWallHolder);
                 dungeonWallsPosition[i, (int)subDungeon.room.yMax - 1] = instance;
                 dungeonWallsPosition[i, (int)subDungeon.room.yMax - 2] = instance;
                 dungeonWallsPosition[i, (int)subDungeon.room.yMax - 3] = instance;
@@ -595,8 +594,8 @@ public class DungeonController : MonoBehaviour
         SubDungeon rootSubDungeon = new SubDungeon(new Rect(0, 0, boardRows, boardColumns));
         dungeonFloorsPosition = new GameObject[boardRows, boardColumns];
         dungeonWallsPosition = new GameObject[boardRows, boardColumns];
-        dungeonRoomFloors = _clsRandomTools.CreateWeightedObjectsArray(dungeonRoomFloors);
-        dungeonWalls.top = _clsRandomTools.CreateWeightedObjectsArray(dungeonWalls.top);
+        dungeonRoomFloors = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomFloors);
+        dungeonWalls.top = RandomTools.Instance.CreateWeightedObjectsArray(dungeonWalls.top);
 
         SpacePartition(rootSubDungeon);
         rootSubDungeon.CreateRoom();

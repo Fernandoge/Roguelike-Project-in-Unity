@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class RandomTools
 {
+    private RandomTools() {}
+    public static RandomTools Instance { get; } = new RandomTools();
+
     [System.Serializable]
     public class WeightedObject
     {
