@@ -15,6 +15,13 @@ public class RandomTools
         public int probability;
     }
 
+    [System.Serializable]
+    public class WeightedSizedObject : WeightedObject
+    {
+        public int tilesAvailableBelow;
+        public int tilesAvailableBeside;
+    }
+
     public WeightedObject[] CreateWeightedObjectsArray(WeightedObject[] weightedObjects)
     {
         WeightedObject[] weightedArray = new WeightedObject[weightedObjects.Select(x => x.probability).Sum()];
@@ -30,9 +37,29 @@ public class RandomTools
         return weightedArray;
     }
 
+    public WeightedSizedObject[] CreateWeightedSizedObjectsArray(WeightedSizedObject[] weightedSizedObjects)
+    {
+        WeightedSizedObject[] weightedArray = new WeightedSizedObject[weightedSizedObjects.Select(x => x.probability).Sum()];
+        int itemCont = 0;
+        foreach (WeightedSizedObject item in weightedSizedObjects)
+        {
+            for (int i = 0; i < item.probability; i++)
+            {
+                weightedArray[itemCont] = item;
+                itemCont++;
+            }
+        }
+        return weightedArray;
+    }
+
     public GameObject PickOne(WeightedObject[] weightedObjects)
     {
         return weightedObjects[Random.Range(0, weightedObjects.Length)].item;
+    }
+
+    public WeightedSizedObject PickOneSized(WeightedSizedObject[] weightedSizedObjects)
+    {
+        return weightedSizedObjects[Random.Range(0, weightedSizedObjects.Length)];
     }
 }
 

@@ -7,9 +7,11 @@ public class RoomController : MonoBehaviour
     public int id;
     public Rect roomRectangle;
     public bool isCompleted;
+    public GameObject[,] roomInteriorsPosition;
     protected DungeonController clsDungeonController;
     protected GameObject[] roomGateways;
     protected Transform roomGatewaysHolder;
+    public Transform roomInteriorsHolder;
     protected DungeonEnemy[] roomEnemies;
     public int enemiesAlive;
 
@@ -18,9 +20,27 @@ public class RoomController : MonoBehaviour
         clsDungeonController = GameObject.FindGameObjectWithTag("Dungeon").GetComponent<DungeonController>();
         roomEnemies = clsDungeonController.enemies;
         roomGatewaysHolder = transform.GetChild(0);
+        roomInteriorsHolder = transform.GetChild(3);
     }
 
     public virtual void DrawRoomInteriors(){}
+
+    protected bool CheckAvailableSpace(int posX, int posY, int tilesBelow, int tilesBeside)
+    {
+        //Check tiles below
+        for (int i = posY - 1; i > posY - tilesBelow; i--)
+        {
+            if (roomInteriorsPosition[posX, i] != null || clsDungeonController.dungeonWallsPosition[posX, i] != null)
+                return false;
+        }
+        //Check tiles beside
+        for (int i = posX - tilesBeside; i < posX + tilesBeside; i++)
+        {
+            if (roomInteriorsPosition[i, posY] != null || clsDungeonController.dungeonWallsPosition[i, posY] != null)
+                return false;
+        }
+        return true;
+    }
 
     protected void ActivateGateways()
     {

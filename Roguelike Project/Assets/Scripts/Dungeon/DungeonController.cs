@@ -10,6 +10,7 @@ public class DungeonController : MonoBehaviour
     public int minRoomSize, maxRoomSize;
     [Header("Assets")]
     public RandomTools.WeightedObject[] dungeonRoomFloors; 
+    public RandomTools.WeightedSizedObject[] dungeonRoomInteriors;
     public GameObject dungeonCorridorFloor;
     public GameObject dungeonGateway;
     [SerializeField]
@@ -573,6 +574,7 @@ public class DungeonController : MonoBehaviour
 
             roomComponent.id = dungeonRoom.id;
             roomComponent.roomRectangle = dungeonRoom.roomRectangle;
+            roomComponent.roomInteriorsPosition = new GameObject[(int)roomComponent.roomRectangle.xMax, (int)roomComponent.roomRectangle.yMax];
             roomComponent.DrawRoomInteriors();
         }
     }
@@ -595,6 +597,7 @@ public class DungeonController : MonoBehaviour
         dungeonFloorsPosition = new GameObject[boardRows, boardColumns];
         dungeonWallsPosition = new GameObject[boardRows, boardColumns];
         dungeonRoomFloors = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomFloors);
+        dungeonRoomInteriors = RandomTools.Instance.CreateWeightedSizedObjectsArray(dungeonRoomInteriors);
         dungeonWalls.top = RandomTools.Instance.CreateWeightedObjectsArray(dungeonWalls.top);
 
         SpacePartition(rootSubDungeon);

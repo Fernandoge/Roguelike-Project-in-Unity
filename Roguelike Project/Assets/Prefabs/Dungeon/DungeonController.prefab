@@ -112,6 +112,15 @@ MonoBehaviour:
   dungeonRoomFloors:
   - item: {fileID: 170492, guid: 28001a04ae420419387a894c9d751a06, type: 3}
     probability: 1
+  dungeonRoomInteriors:
+  - item: {fileID: 0}
+    probability: 4
+    tilesAvailableBelow: 0
+    tilesAvailableBeside: 0
+  - item: {fileID: 170492, guid: 77db5a604d9ebe74fafa1744dbffcbc7, type: 3}
+    probability: 2
+    tilesAvailableBelow: 2
+    tilesAvailableBeside: 2
   dungeonCorridorFloor: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
   dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
   dungeonWalls:
