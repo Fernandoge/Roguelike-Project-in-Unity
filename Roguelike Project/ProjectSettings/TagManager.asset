@@ -11,6 +11,7 @@ TagManager:
   - DungeonRoom
   - ValidCorridor
   - Gateway
+  - WallDeco
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,7 @@ public class DungeonController : MonoBehaviour
     [Header("Assets")]
     public RandomTools.WeightedObject[] dungeonRoomFloors; 
     public RandomTools.WeightedSizedObject[] dungeonRoomInteriors;
+    public RandomTools.WeightedObject[] dungeonWallDecos;
     public GameObject dungeonCorridorFloor;
     public GameObject dungeonGateway;
     [SerializeField]
@@ -37,7 +38,7 @@ public class DungeonController : MonoBehaviour
     [System.Serializable]
     public struct Walls
     {
-        public RandomTools.WeightedObject[] top;
+        public GameObject top;
         public GameObject bottom;
         public GameObject left;
         public GameObject right;
@@ -333,7 +334,7 @@ public class DungeonController : MonoBehaviour
             //room top walls
             for (int i = (int)subDungeon.room.x + 1; i < subDungeon.room.xMax - 1; i++)
             {
-                instance = Instantiate(RandomTools.Instance.PickOne(dungeonWalls.top), new Vector3(i, (int)subDungeon.room.yMax - 1, 0f), Quaternion.identity, roomWallHolder);
+                instance = Instantiate(dungeonWalls.top, new Vector3(i, (int)subDungeon.room.yMax - 1, 0f), Quaternion.identity, roomWallHolder);
                 dungeonWallsPosition[i, (int)subDungeon.room.yMax - 1] = instance;
                 dungeonWallsPosition[i, (int)subDungeon.room.yMax - 2] = instance;
                 dungeonWallsPosition[i, (int)subDungeon.room.yMax - 3] = instance;
@@ -579,6 +580,19 @@ public class DungeonController : MonoBehaviour
         }
     }
 
+    public void DecorateBigWalls()
+    {
+        GameObject objectToInstantiate;
+        foreach (GameObject wall in GameObject.FindGameObjectsWithTag("WallDeco"))
+        {
+            objectToInstantiate = RandomTools.Instance.PickOne(dungeonWallDecos);
+            if (objectToInstantiate != null)
+            {
+                Instantiate(objectToInstantiate, wall.transform);
+            }
+        }
+    }
+
     public void SpawnPlayer()
     {
         //Spawn at the first room with the room already completed
@@ -598,12 +612,13 @@ public class DungeonController : MonoBehaviour
         dungeonWallsPosition = new GameObject[boardRows, boardColumns];
         dungeonRoomFloors = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomFloors);
         dungeonRoomInteriors = RandomTools.Instance.CreateWeightedSizedObjectsArray(dungeonRoomInteriors);
-        dungeonWalls.top = RandomTools.Instance.CreateWeightedObjectsArray(dungeonWalls.top);
+        dungeonWallDecos = RandomTools.Instance.CreateWeightedObjectsArray(dungeonWallDecos);
 
         SpacePartition(rootSubDungeon);
         rootSubDungeon.CreateRoom();
         DrawRooms(rootSubDungeon);
         DefineRooms();
+        DecorateBigWalls();
         SpawnPlayer();
         DrawCorridors(rootSubDungeon);
         GenerateGateways();
