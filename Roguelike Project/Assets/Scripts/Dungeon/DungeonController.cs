@@ -333,11 +333,8 @@ public class DungeonController : MonoBehaviour
             Transform roomWallHolder = roomParent.transform.GetChild(2);
             //room top walls
             for (int i = (int)subDungeon.room.x + 1; i < subDungeon.room.xMax - 1; i++)
-            {
-                instance = Instantiate(dungeonWalls.top, new Vector3(i, (int)subDungeon.room.yMax - 1, 0f), Quaternion.identity, roomWallHolder);
-                dungeonWallsPosition[i, (int)subDungeon.room.yMax - 1] = instance;
-                dungeonWallsPosition[i, (int)subDungeon.room.yMax - 2] = instance;
-                dungeonWallsPosition[i, (int)subDungeon.room.yMax - 3] = instance;
+            { 
+                DrawWall(dungeonWalls.top, i, (int)subDungeon.room.yMax - 1, roomWallHolder);
             }
             //room bottom walls
             for (int i = (int)subDungeon.room.x + 1; i < subDungeon.room.xMax - 1; i++)
@@ -375,6 +372,10 @@ public class DungeonController : MonoBehaviour
     {
         GameObject instance = Instantiate(wall, new Vector3(x, y, 0f), Quaternion.identity, wallParent);
         dungeonWallsPosition[x, y] = instance;
+        foreach (Transform child in dungeonWallsPosition[x, y].transform)
+        {
+            dungeonWallsPosition[(int)child.transform.position.x, (int)child.transform.position.y] = instance;
+        }
     }
 
     public void DrawCorridors(SubDungeon subDungeon)

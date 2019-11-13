@@ -121,13 +121,15 @@ MonoBehaviour:
     probability: 2
     tilesAvailableBelow: 2
     tilesAvailableBeside: 2
+  dungeonWallDecos:
+  - item: {fileID: 0}
+    probability: 50
+  - item: {fileID: 170492, guid: 0a006f59cf0371943a894bbddcfbf4ee, type: 3}
+    probability: 1
   dungeonCorridorFloor: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
   dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
   dungeonWalls:
-    top:
-    - item: {fileID: 7010966846032589401, guid: 07551ecda75f9a14a912a0b1c50fa262,
-        type: 3}
-      probability: 1
+    top: {fileID: 7010966846032589401, guid: 07551ecda75f9a14a912a0b1c50fa262, type: 3}
     bottom: {fileID: 7010966846032589401, guid: 11ca31ee7b7cec54fa72ee7118bbcbc7,
       type: 3}
     left: {fileID: 7010966846032589401, guid: eae3a5be01e65874398f01677263d61c, type: 3}

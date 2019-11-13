@@ -25,19 +25,21 @@ public class RoomController : MonoBehaviour
 
     public virtual void DrawRoomInteriors(){}
 
-    protected bool CheckAvailableSpace(int posX, int posY, int tilesBelow, int tilesBeside)
+    protected bool CheckAvailableSpace(int posX, int posY, int tilesAbove, int tilesBelow, int tilesBeside)
     {
-        //Check tiles below
-        for (int i = posY - 1; i > posY - tilesBelow; i--)
+        //Check above and below tiles
+        for (int i = posY + tilesAbove; i >= posY - tilesBelow; i--)
         {
-            if (roomInteriorsPosition[posX, i] != null || clsDungeonController.dungeonWallsPosition[posX, i] != null)
+            if (i < 0 || i >= roomRectangle.yMax)
                 return false;
-        }
-        //Check tiles beside
-        for (int i = posX - tilesBeside; i < posX + tilesBeside; i++)
-        {
-            if (roomInteriorsPosition[i, posY] != null || clsDungeonController.dungeonWallsPosition[i, posY] != null)
-                return false;
+            //Check beside tiles
+            for (int j = posX - tilesBeside; j <= posX + tilesBeside; j++)
+            {
+                if (j < 0 || j >= roomRectangle.xMax)
+                    return false;
+                if (roomInteriorsPosition[j, i] != null || clsDungeonController.dungeonWallsPosition[j, i] != null)
+                    return false;
+            }
         }
         return true;
     }

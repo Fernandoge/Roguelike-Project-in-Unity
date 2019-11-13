@@ -283,5 +283,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonRoomInteriors.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonRoomInteriors.Array.data[2].item
+      value: 
+      objectReference: {fileID: 7010966846032589401, guid: 72ac3c86abd830944a2b70c5dd5acf94,
+        type: 3}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonRoomInteriors.Array.data[2].probability
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonRoomInteriors.Array.data[2].tilesAvailableBelow
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonRoomInteriors.Array.data[2].tilesAvailableBeside
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonRoomInteriors.Array.data[0].probability
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonRoomInteriors.Array.data[2].tilesAvailableAbove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonWallDecos.Array.data[0].probability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonRoomInteriors.Array.data[1].tilesAvailableAbove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonRoomInteriors.Array.data[1].tilesAvailableBeside
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: dungeonRoomInteriors.Array.data[1].probability
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c178e7d8eb75fb045aa79858a2364b69, type: 3}

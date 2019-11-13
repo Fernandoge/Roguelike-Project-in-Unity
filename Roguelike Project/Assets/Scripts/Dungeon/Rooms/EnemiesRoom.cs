@@ -7,15 +7,20 @@ public class EnemiesRoom : RoomController
     public override void DrawRoomInteriors()
     {
         RandomTools.WeightedSizedObject objectToInstantiate;
-        //we loop the tiles to instantiate floors
+        GameObject instance;
         for (int i = (int)roomRectangle.x; i < roomRectangle.xMax; i++)
         {
             for (int j = (int)roomRectangle.y; j < roomRectangle.yMax; j++)
             {
                 objectToInstantiate = RandomTools.Instance.PickOneSized(clsDungeonController.dungeonRoomInteriors);
-                if (objectToInstantiate.item != null && CheckAvailableSpace(i, j, objectToInstantiate.tilesAvailableBelow, objectToInstantiate.tilesAvailableBeside))
+                if (objectToInstantiate.item != null && CheckAvailableSpace(i, j, objectToInstantiate.tilesAvailableAbove, objectToInstantiate.tilesAvailableBelow, objectToInstantiate.tilesAvailableBeside))
                 {
-                    roomInteriorsPosition[i, j] = Instantiate(objectToInstantiate.item, new Vector3(i, j, 0f), Quaternion.identity, roomInteriorsHolder);
+                    instance = Instantiate(objectToInstantiate.item, new Vector3(i, j, 0f), Quaternion.identity, roomInteriorsHolder);
+                    roomInteriorsPosition[i, j] = instance;
+                    foreach (Transform child in roomInteriorsPosition[i, j].transform)
+                    {
+                        roomInteriorsPosition[(int)child.transform.position.x, (int)child.transform.position.y] = instance;
+                    }
                 }
                     
             }

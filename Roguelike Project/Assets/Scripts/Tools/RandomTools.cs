@@ -18,6 +18,7 @@ public class RandomTools
     [System.Serializable]
     public class WeightedSizedObject : WeightedObject
     {
+        public int tilesAvailableAbove;
         public int tilesAvailableBelow;
         public int tilesAvailableBeside;
     }
