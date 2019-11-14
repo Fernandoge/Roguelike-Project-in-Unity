@@ -107,24 +107,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardRows: 150
   boardColumns: 150
-  minRoomSize: 12
-  maxRoomSize: 12
+  minRoomSize: 20
+  maxRoomSize: 20
   dungeonRoomFloors:
   - item: {fileID: 170492, guid: 28001a04ae420419387a894c9d751a06, type: 3}
+    probability: 50
+  - item: {fileID: 170492, guid: 82a4204a217bae445ba6ee53af71ae7a, type: 3}
     probability: 1
+  - item: {fileID: 170492, guid: 786da940674419e42bffe590df55a219, type: 3}
+    probability: 2
   dungeonRoomInteriors:
   - item: {fileID: 0}
-    probability: 4
+    probability: 50
+    tilesAvailableAbove: 0
     tilesAvailableBelow: 0
     tilesAvailableBeside: 0
   - item: {fileID: 170492, guid: 77db5a604d9ebe74fafa1744dbffcbc7, type: 3}
     probability: 2
+    tilesAvailableAbove: 1
     tilesAvailableBelow: 2
+    tilesAvailableBeside: 1
+  - item: {fileID: 7010966846032589401, guid: 72ac3c86abd830944a2b70c5dd5acf94, type: 3}
+    probability: 6
+    tilesAvailableAbove: 1
+    tilesAvailableBelow: 3
     tilesAvailableBeside: 2
+  - item: {fileID: 7010966846032589401, guid: b59b6588052c6b043ae318c197c7a82c, type: 3}
+    probability: 1
+    tilesAvailableAbove: 1
+    tilesAvailableBelow: 2
+    tilesAvailableBeside: 1
   dungeonWallDecos:
   - item: {fileID: 0}
-    probability: 50
+    probability: 10
   - item: {fileID: 170492, guid: 0a006f59cf0371943a894bbddcfbf4ee, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: be1702183b006a34186c27fb4ca22bd4, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: 695ee290b98d7984fba88ec47f29f424, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: 88afa5348f81d254fa14985769ca2944, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: 6a9e67ff017751c49ab95e54131caf2f, type: 3}
     probability: 1
   dungeonCorridorFloor: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
   dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
