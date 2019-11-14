@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
     public int id;
     public Rect roomRectangle;
+    public Rect roomFloorsRectangle;
     public bool isCompleted;
     public GameObject[,] roomInteriorsPosition;
     protected DungeonController clsDungeonController;
+    public RandomTools.WeightedSizedObject[] auxDungeonRoomInteriors;
     protected GameObject[] roomGateways;
     protected Transform roomGatewaysHolder;
     public Transform roomInteriorsHolder;
@@ -18,6 +21,8 @@ public class RoomController : MonoBehaviour
     private void Awake()
     {
         clsDungeonController = GameObject.FindGameObjectWithTag("Dungeon").GetComponent<DungeonController>();
+        auxDungeonRoomInteriors = clsDungeonController.dungeonRoomInteriors;
+        RemoveOversizedObjects(auxDungeonRoomInteriors);
         roomEnemies = clsDungeonController.enemies;
         roomGatewaysHolder = transform.GetChild(0);
         roomInteriorsHolder = transform.GetChild(3);
@@ -25,7 +30,19 @@ public class RoomController : MonoBehaviour
 
     public virtual void DrawRoomInteriors(){}
 
-    protected bool CheckAvailableSpace(int posX, int posY, int tilesAbove, int tilesBelow, int tilesBeside)
+    private void RemoveOversizedObjects(RandomTools.WeightedSizedObject[] interiors)
+    {
+        //Delete bject instances from the array that are not valid for this room
+        foreach (RandomTools.WeightedSizedObject obj in interiors)
+        {
+            if (roomFloorsRectangle.width < obj.maxRoomFloorsWidth || roomFloorsRectangle.height < obj.maxRoomFloorsHeight)
+            {               
+                auxDungeonRoomInteriors = auxDungeonRoomInteriors.Where(x => x != obj).ToArray();
+            } 
+        }
+    }
+
+    protected bool CheckAvailableSpace(int posX, int posY, int tilesAbove, int tilesBelow, int tilesLeft, int tilesRight)
     {
         //Check above and below tiles
         for (int i = posY + tilesAbove; i >= posY - tilesBelow; i--)
@@ -33,7 +50,7 @@ public class RoomController : MonoBehaviour
             if (i < 0 || i >= roomRectangle.yMax)
                 return false;
             //Check beside tiles
-            for (int j = posX - tilesBeside; j <= posX + tilesBeside; j++)
+            for (int j = posX - tilesLeft; j <= posX + tilesRight; j++)
             {
                 if (j < 0 || j >= roomRectangle.xMax)
                     return false;

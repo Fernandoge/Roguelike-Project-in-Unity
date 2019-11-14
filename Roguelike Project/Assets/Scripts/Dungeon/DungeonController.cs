@@ -576,6 +576,7 @@ public class DungeonController : MonoBehaviour
 
             roomComponent.id = dungeonRoom.id;
             roomComponent.roomRectangle = dungeonRoom.roomRectangle;
+            roomComponent.roomFloorsRectangle = new Rect(dungeonRoom.roomRectangle.position, new Vector2(dungeonRoom.roomRectangle.width - 2f, dungeonRoom.roomRectangle.height - 4f));
             roomComponent.roomInteriorsPosition = new GameObject[(int)roomComponent.roomRectangle.xMax, (int)roomComponent.roomRectangle.yMax];
             roomComponent.DrawRoomInteriors();
         }

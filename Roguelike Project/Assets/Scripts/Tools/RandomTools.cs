@@ -20,7 +20,10 @@ public class RandomTools
     {
         public int tilesAvailableAbove;
         public int tilesAvailableBelow;
-        public int tilesAvailableBeside;
+        public int tilesAvailableLeft;
+        public int tilesAvailableRight;
+        public int maxRoomFloorsWidth;
+        public int maxRoomFloorsHeight;
     }
 
     public WeightedObject[] CreateWeightedObjectsArray(WeightedObject[] weightedObjects)

@@ -107,8 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardRows: 150
   boardColumns: 150
-  minRoomSize: 20
-  maxRoomSize: 20
+  minRoomSize: 15
+  maxRoomSize: 15
   dungeonRoomFloors:
   - item: {fileID: 170492, guid: 28001a04ae420419387a894c9d751a06, type: 3}
     probability: 50
@@ -121,22 +121,34 @@ MonoBehaviour:
     probability: 50
     tilesAvailableAbove: 0
     tilesAvailableBelow: 0
-    tilesAvailableBeside: 0
+    tilesAvailableLeft: 0
+    tilesAvailableRight: 0
+    maxRoomFloorsWidth: 0
+    maxRoomFloorsHeight: 0
   - item: {fileID: 170492, guid: 77db5a604d9ebe74fafa1744dbffcbc7, type: 3}
     probability: 2
     tilesAvailableAbove: 1
     tilesAvailableBelow: 2
-    tilesAvailableBeside: 1
+    tilesAvailableLeft: 0
+    tilesAvailableRight: 0
+    maxRoomFloorsWidth: 0
+    maxRoomFloorsHeight: 0
   - item: {fileID: 7010966846032589401, guid: 72ac3c86abd830944a2b70c5dd5acf94, type: 3}
     probability: 6
     tilesAvailableAbove: 1
     tilesAvailableBelow: 3
-    tilesAvailableBeside: 2
+    tilesAvailableLeft: 1
+    tilesAvailableRight: 1
+    maxRoomFloorsWidth: 0
+    maxRoomFloorsHeight: 0
   - item: {fileID: 7010966846032589401, guid: b59b6588052c6b043ae318c197c7a82c, type: 3}
-    probability: 1
+    probability: 100
     tilesAvailableAbove: 1
     tilesAvailableBelow: 2
-    tilesAvailableBeside: 1
+    tilesAvailableLeft: 1
+    tilesAvailableRight: 1
+    maxRoomFloorsWidth: 10
+    maxRoomFloorsHeight: 10
   dungeonWallDecos:
   - item: {fileID: 0}
     probability: 10
