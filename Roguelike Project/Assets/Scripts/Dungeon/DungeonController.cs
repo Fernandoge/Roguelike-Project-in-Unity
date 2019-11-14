@@ -10,8 +10,8 @@ public class DungeonController : MonoBehaviour
     public int minRoomSize, maxRoomSize;
     [Header("Assets")]
     public RandomTools.WeightedObject[] dungeonRoomFloors; 
-    public RandomTools.WeightedSizedObject[] dungeonRoomInteriors;
     public RandomTools.WeightedObject[] dungeonWallDecos;
+    public List<RandomTools.SizeWeightedObject> dungeonRoomInteriors;
     public GameObject dungeonCorridorFloor;
     public GameObject dungeonGateway;
     [SerializeField]
@@ -25,10 +25,10 @@ public class DungeonController : MonoBehaviour
     public int currentRoom;
     public int roomsCompleted;
 
-    private GameObject roomHolder;
-    private GameObject corridorHolder;
-    public List<DungeonRoom> dungeonRooms = new List<DungeonRoom>();
-    public List<GameObject> dungeonCorridors = new List<GameObject>();
+    private GameObject _roomHolder;
+    private GameObject _corridorHolder;
+    private List<DungeonRoom> _dungeonRooms = new List<DungeonRoom>();
+    private List<GameObject> _dungeonCorridors = new List<GameObject>();
     public GameObject[,] dungeonFloorsPosition;
     public GameObject[,] dungeonWallsPosition;
 
@@ -280,9 +280,9 @@ public class DungeonController : MonoBehaviour
         {
             //first we create holders for the rooms 
             //room prefab
-            GameObject roomParent = Instantiate(roomHolder, transform.GetChild(0));
+            GameObject roomParent = Instantiate(_roomHolder, transform.GetChild(0));
             DungeonRoom thisRoom = new DungeonRoom(roomParent, transform.GetChild(0).childCount, subDungeon.room);
-            dungeonRooms.Add(thisRoom);
+            _dungeonRooms.Add(thisRoom);
             //floor holder of room prefab
             Transform roomFloorHolder = roomParent.transform.GetChild(1);
             List<Transform> dungeonFloors = new List<Transform>();
@@ -398,7 +398,7 @@ public class DungeonController : MonoBehaviour
             //create new holder if it's a different corridor
             if (corridor.totalCorridorId != corridorAux.totalCorridorId)
             {
-                corridorParent = Instantiate(corridorHolder, transform.GetChild(1));
+                corridorParent = Instantiate(_corridorHolder, transform.GetChild(1));
                 corridorFloorHolder = corridorParent.transform.GetChild(0);
                 corridorFloorHolderAux = corridorFloorHolder;
             }
@@ -448,8 +448,8 @@ public class DungeonController : MonoBehaviour
                     }
                 }
             }
-            if (!dungeonCorridors.Contains(corridorParent))
-                dungeonCorridors.Add(corridorParent);
+            if (!_dungeonCorridors.Contains(corridorParent))
+                _dungeonCorridors.Add(corridorParent);
         }
     }
 
@@ -474,7 +474,7 @@ public class DungeonController : MonoBehaviour
     #region Gateways
     public void GenerateGateways()
     {
-        foreach (GameObject corridor in dungeonCorridors)
+        foreach (GameObject corridor in _dungeonCorridors)
         {
             Transform corridorFloorHolder = corridor.transform.GetChild(0);
             foreach (Transform child in corridorFloorHolder)
@@ -554,7 +554,7 @@ public class DungeonController : MonoBehaviour
     public void DefineRooms()
     {
         RoomController roomComponent = null;
-        foreach (DungeonRoom dungeonRoom in dungeonRooms)
+        foreach (DungeonRoom dungeonRoom in _dungeonRooms)
         {
             int roomChance = Random.Range(1, 4);
 
@@ -607,13 +607,12 @@ public class DungeonController : MonoBehaviour
 
     void Start()
     {
-        roomHolder = Resources.Load<GameObject>("Room");
-        corridorHolder = Resources.Load<GameObject>("Corridor");
+        _roomHolder = Resources.Load<GameObject>("Room");
+        _corridorHolder = Resources.Load<GameObject>("Corridor");
         SubDungeon rootSubDungeon = new SubDungeon(new Rect(0, 0, boardRows, boardColumns));
         dungeonFloorsPosition = new GameObject[boardRows, boardColumns];
         dungeonWallsPosition = new GameObject[boardRows, boardColumns];
         dungeonRoomFloors = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomFloors);
-        dungeonRoomInteriors = RandomTools.Instance.CreateWeightedSizedObjectsArray(dungeonRoomInteriors);
         dungeonWallDecos = RandomTools.Instance.CreateWeightedObjectsArray(dungeonWallDecos);
 
         SpacePartition(rootSubDungeon);

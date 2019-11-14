@@ -116,39 +116,6 @@ MonoBehaviour:
     probability: 1
   - item: {fileID: 170492, guid: 786da940674419e42bffe590df55a219, type: 3}
     probability: 2
-  dungeonRoomInteriors:
-  - item: {fileID: 0}
-    probability: 50
-    tilesAvailableAbove: 0
-    tilesAvailableBelow: 0
-    tilesAvailableLeft: 0
-    tilesAvailableRight: 0
-    maxRoomFloorsWidth: 0
-    maxRoomFloorsHeight: 0
-  - item: {fileID: 170492, guid: 77db5a604d9ebe74fafa1744dbffcbc7, type: 3}
-    probability: 2
-    tilesAvailableAbove: 1
-    tilesAvailableBelow: 2
-    tilesAvailableLeft: 0
-    tilesAvailableRight: 0
-    maxRoomFloorsWidth: 0
-    maxRoomFloorsHeight: 0
-  - item: {fileID: 7010966846032589401, guid: 72ac3c86abd830944a2b70c5dd5acf94, type: 3}
-    probability: 6
-    tilesAvailableAbove: 1
-    tilesAvailableBelow: 3
-    tilesAvailableLeft: 1
-    tilesAvailableRight: 1
-    maxRoomFloorsWidth: 0
-    maxRoomFloorsHeight: 0
-  - item: {fileID: 7010966846032589401, guid: b59b6588052c6b043ae318c197c7a82c, type: 3}
-    probability: 100
-    tilesAvailableAbove: 1
-    tilesAvailableBelow: 2
-    tilesAvailableLeft: 1
-    tilesAvailableRight: 1
-    maxRoomFloorsWidth: 10
-    maxRoomFloorsHeight: 10
   dungeonWallDecos:
   - item: {fileID: 0}
     probability: 10
@@ -162,6 +129,47 @@ MonoBehaviour:
     probability: 1
   - item: {fileID: 170492, guid: 6a9e67ff017751c49ab95e54131caf2f, type: 3}
     probability: 1
+  dungeonRoomInteriors:
+  - item: {fileID: 0}
+    probability: 50
+    tilesAvailableAbove: 0
+    tilesAvailableBelow: 0
+    tilesAvailableLeft: 0
+    tilesAvailableRight: 0
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 170492, guid: 77db5a604d9ebe74fafa1744dbffcbc7, type: 3}
+    probability: 2
+    tilesAvailableAbove: 1
+    tilesAvailableBelow: 2
+    tilesAvailableLeft: 0
+    tilesAvailableRight: 0
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 7010966846032589401, guid: 72ac3c86abd830944a2b70c5dd5acf94, type: 3}
+    probability: 6
+    tilesAvailableAbove: 1
+    tilesAvailableBelow: 3
+    tilesAvailableLeft: 1
+    tilesAvailableRight: 1
+    minRoomFloorsWidth: 10
+    minRoomFloorsHeight: 10
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 7010966846032589401, guid: b59b6588052c6b043ae318c197c7a82c, type: 3}
+    probability: 2
+    tilesAvailableAbove: 1
+    tilesAvailableBelow: 2
+    tilesAvailableLeft: 1
+    tilesAvailableRight: 1
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 30
+    maxRoomFloorsHeight: 10
   dungeonCorridorFloor: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
   dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
   dungeonWalls:
@@ -186,4 +194,3 @@ MonoBehaviour:
   corridorSpeed: 15
   currentRoom: 0
   roomsCompleted: 0
-  dungeonCorridors: []

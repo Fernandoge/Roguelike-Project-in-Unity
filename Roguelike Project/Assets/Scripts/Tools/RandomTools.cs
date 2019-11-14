@@ -16,12 +16,14 @@ public class RandomTools
     }
 
     [System.Serializable]
-    public class WeightedSizedObject : WeightedObject
+    public class SizeWeightedObject : WeightedObject
     {
         public int tilesAvailableAbove;
         public int tilesAvailableBelow;
         public int tilesAvailableLeft;
         public int tilesAvailableRight;
+        public int minRoomFloorsWidth;
+        public int minRoomFloorsHeight;
         public int maxRoomFloorsWidth;
         public int maxRoomFloorsHeight;
     }
@@ -41,19 +43,17 @@ public class RandomTools
         return weightedArray;
     }
 
-    public WeightedSizedObject[] CreateWeightedSizedObjectsArray(WeightedSizedObject[] weightedSizedObjects)
+    public List<SizeWeightedObject> CreateSizeWeightedObjectsList(List<SizeWeightedObject> weightedSizedObjects)
     {
-        WeightedSizedObject[] weightedArray = new WeightedSizedObject[weightedSizedObjects.Select(x => x.probability).Sum()];
-        int itemCont = 0;
-        foreach (WeightedSizedObject item in weightedSizedObjects)
+        List<SizeWeightedObject> weightedList = new List<SizeWeightedObject>();
+        foreach (SizeWeightedObject item in weightedSizedObjects)
         {
             for (int i = 0; i < item.probability; i++)
             {
-                weightedArray[itemCont] = item;
-                itemCont++;
+                weightedList.Add(item);
             }
         }
-        return weightedArray;
+        return weightedList;
     }
 
     public GameObject PickOne(WeightedObject[] weightedObjects)
@@ -61,9 +61,9 @@ public class RandomTools
         return weightedObjects[Random.Range(0, weightedObjects.Length)].item;
     }
 
-    public WeightedSizedObject PickOneSized(WeightedSizedObject[] weightedSizedObjects)
+    public SizeWeightedObject PickOneSized(List<SizeWeightedObject> weightedSizedObjects)
     {
-        return weightedSizedObjects[Random.Range(0, weightedSizedObjects.Length)];
+        return weightedSizedObjects[Random.Range(0, weightedSizedObjects.Count)];
     }
 }
 

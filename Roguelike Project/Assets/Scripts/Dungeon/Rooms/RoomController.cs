@@ -11,7 +11,7 @@ public class RoomController : MonoBehaviour
     public bool isCompleted;
     public GameObject[,] roomInteriorsPosition;
     protected DungeonController clsDungeonController;
-    public RandomTools.WeightedSizedObject[] auxDungeonRoomInteriors;
+    protected List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
     protected GameObject[] roomGateways;
     protected Transform roomGatewaysHolder;
     public Transform roomInteriorsHolder;
@@ -21,8 +21,6 @@ public class RoomController : MonoBehaviour
     private void Awake()
     {
         clsDungeonController = GameObject.FindGameObjectWithTag("Dungeon").GetComponent<DungeonController>();
-        auxDungeonRoomInteriors = clsDungeonController.dungeonRoomInteriors;
-        RemoveOversizedObjects(auxDungeonRoomInteriors);
         roomEnemies = clsDungeonController.enemies;
         roomGatewaysHolder = transform.GetChild(0);
         roomInteriorsHolder = transform.GetChild(3);
@@ -30,16 +28,18 @@ public class RoomController : MonoBehaviour
 
     public virtual void DrawRoomInteriors(){}
 
-    private void RemoveOversizedObjects(RandomTools.WeightedSizedObject[] interiors)
+    protected List<RandomTools.SizeWeightedObject> ApplySizeConditionsToObjects(List<RandomTools.SizeWeightedObject> interiors)
     {
-        //Delete bject instances from the array that are not valid for this room
-        foreach (RandomTools.WeightedSizedObject obj in interiors)
+        List<RandomTools.SizeWeightedObject> newList = new List<RandomTools.SizeWeightedObject>(interiors);
+        foreach (RandomTools.SizeWeightedObject obj in interiors)
         {
-            if (roomFloorsRectangle.width < obj.maxRoomFloorsWidth || roomFloorsRectangle.height < obj.maxRoomFloorsHeight)
-            {               
-                auxDungeonRoomInteriors = auxDungeonRoomInteriors.Where(x => x != obj).ToArray();
+            if (roomFloorsRectangle.width < obj.minRoomFloorsWidth || roomFloorsRectangle.height < obj.minRoomFloorsHeight ||
+                roomFloorsRectangle.width > obj.maxRoomFloorsWidth || roomFloorsRectangle.height > obj.maxRoomFloorsHeight)
+            {
+                newList.Remove(obj);
             } 
         }
+        return RandomTools.Instance.CreateSizeWeightedObjectsList(newList);
     }
 
     protected bool CheckAvailableSpace(int posX, int posY, int tilesAbove, int tilesBelow, int tilesLeft, int tilesRight)
