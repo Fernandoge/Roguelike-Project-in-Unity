@@ -13,9 +13,10 @@ public class EnemiesRoom : RoomController
             for (int j = (int)roomRectangle.y; j < roomRectangle.yMax; j++)
             {
                 RandomTools.SizeWeightedObject obj = RandomTools.Instance.PickOneSized(auxDungeonRoomInteriors);
-                if (obj.item != null && CheckAvailableSpace(i, j, obj.tilesAvailableAbove, obj.tilesAvailableBelow, obj.tilesAvailableLeft, obj.tilesAvailableRight))
+                Vector3 tilePosition = new Vector3(i, j, 0f);
+                if (obj.item != null && CheckAvailableSpace(obj.item, tilePosition))
                 {
-                    GameObject instance = Instantiate(obj.item, new Vector3(i, j, 0f), Quaternion.identity, roomInteriorsHolder);
+                    GameObject instance = Instantiate(obj.item, tilePosition, Quaternion.identity, roomInteriorsHolder);
                     roomInteriorsPosition[i, j] = instance;
                     foreach (Transform child in roomInteriorsPosition[i, j].transform)
                     {

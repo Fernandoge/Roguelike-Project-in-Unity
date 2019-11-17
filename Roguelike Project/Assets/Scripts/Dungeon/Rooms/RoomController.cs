@@ -11,7 +11,7 @@ public class RoomController : MonoBehaviour
     public bool isCompleted;
     public GameObject[,] roomInteriorsPosition;
     protected DungeonController clsDungeonController;
-    protected List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
+    public List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
     protected GameObject[] roomGateways;
     protected Transform roomGatewaysHolder;
     public Transform roomInteriorsHolder;
@@ -42,21 +42,31 @@ public class RoomController : MonoBehaviour
         return RandomTools.Instance.CreateSizeWeightedObjectsList(newList);
     }
 
-    protected bool CheckAvailableSpace(int posX, int posY, int tilesAbove, int tilesBelow, int tilesLeft, int tilesRight)
+    protected bool CheckAvailableSpace(GameObject obj, Vector3 instancePosition)
     {
-        //Check above and below tiles
-        for (int i = posY + tilesAbove; i >= posY - tilesBelow; i--)
+        Vector3 originalObjectPosition = obj.transform.position;
+        if (!CheckInteriorTile((int)instancePosition.x, (int)instancePosition.y))
         {
-            if (i < 0 || i >= roomRectangle.yMax)
-                return false;
-            //Check beside tiles
-            for (int j = posX - tilesLeft; j <= posX + tilesRight; j++)
+            return false;
+        }
+        obj.transform.position = instancePosition;
+        foreach (Transform child in obj.transform)
+        {
+            if (!CheckInteriorTile((int)child.transform.position.x, (int)child.transform.position.y))
             {
-                if (j < 0 || j >= roomRectangle.xMax)
-                    return false;
-                if (roomInteriorsPosition[j, i] != null || clsDungeonController.dungeonWallsPosition[j, i] != null)
-                    return false;
-            }
+                obj.transform.position = originalObjectPosition;
+                return false;
+            }  
+        }
+        obj.transform.position = originalObjectPosition;
+        return true;
+    }
+
+    private bool CheckInteriorTile(int x, int y)
+    {
+        if (x <= roomFloorsRectangle.xMin || y <= roomFloorsRectangle.yMin || x > roomFloorsRectangle.xMax || y > roomFloorsRectangle.yMax || roomInteriorsPosition[x, y] != null)
+        {
+            return false;
         }
         return true;
     }

@@ -18,10 +18,6 @@ public class RandomTools
     [System.Serializable]
     public class SizeWeightedObject : WeightedObject
     {
-        public int tilesAvailableAbove;
-        public int tilesAvailableBelow;
-        public int tilesAvailableLeft;
-        public int tilesAvailableRight;
         public int minRoomFloorsWidth;
         public int minRoomFloorsHeight;
         public int maxRoomFloorsWidth;

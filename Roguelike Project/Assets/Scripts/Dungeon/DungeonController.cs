@@ -12,10 +12,10 @@ public class DungeonController : MonoBehaviour
     public RandomTools.WeightedObject[] dungeonRoomFloors; 
     public RandomTools.WeightedObject[] dungeonWallDecos;
     public List<RandomTools.SizeWeightedObject> dungeonRoomInteriors;
-    public GameObject dungeonCorridorFloor;
-    public GameObject dungeonGateway;
     [SerializeField]
     private Walls dungeonWalls = default;
+    public GameObject dungeonCorridorFloor;
+    public GameObject dungeonGateway;
     [Header("Elements")]
     public GameObject player;
     public DungeonEnemy[] enemies;
@@ -556,7 +556,9 @@ public class DungeonController : MonoBehaviour
         RoomController roomComponent = null;
         foreach (DungeonRoom dungeonRoom in _dungeonRooms)
         {
-            int roomChance = Random.Range(1, 4);
+            //TODO: configurable room chance
+            //int roomChance = Random.Range(1, 4);
+            int roomChance = 1;
 
             switch (roomChance)
             {
