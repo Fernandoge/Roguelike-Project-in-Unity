@@ -14,6 +14,7 @@ public class DungeonController : MonoBehaviour
     public List<RandomTools.SizeWeightedObject> dungeonRoomInteriors;
     [SerializeField]
     private Walls dungeonWalls = default;
+    public Sprite playerSpriteInCorridor;
     public GameObject dungeonCorridorFloor;
     public GameObject dungeonGateway;
     [Header("Elements")]

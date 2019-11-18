@@ -174,6 +174,8 @@ MonoBehaviour:
       type: 3}
     bottomRightCorner: {fileID: 7010966846032589401, guid: 107e027d428369148bbf04b34ef57339,
       type: 3}
+  playerSpriteInCorridor: {fileID: 21300000, guid: d6719bfb5c5cdf34d938a8c772d4ac7d,
+    type: 3}
   dungeonCorridorFloor: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
   dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
   player: {fileID: 7941783385590199139, guid: 0f8f9b3a088fb8a45bc2127a5eb33c14, type: 3}

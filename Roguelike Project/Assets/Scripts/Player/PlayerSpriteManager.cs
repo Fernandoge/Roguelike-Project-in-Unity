@@ -8,16 +8,19 @@ public class PlayerSpriteManager : SpriteManager
     [SerializeField]
     private PlayerMovement _clsPlayerMovement = default;
     public GameObject directionSelector = default;
+    public GameObject corridorParticles = default;
 
     new void Update()
     {
-        if (_clsPlayerMovement.moving)
-            animator.enabled = true;
-        else
-            animator.enabled = false;
+        if (_clsPlayerMovement.canMove)
+        {
+            if (_clsPlayerMovement.moving)
+                animator.enabled = true;
+            else
+                animator.enabled = false;
 
-        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        base.Update();
-
+            direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            base.Update();
+        }
     }
 }

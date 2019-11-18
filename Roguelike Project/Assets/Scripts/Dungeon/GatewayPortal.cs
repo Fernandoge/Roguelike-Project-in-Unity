@@ -48,9 +48,8 @@ public class GatewayPortal : MonoBehaviour
             {
                 if (destinyReached)
                 {
-                    clsPlayerMovement.canMove = true;
-                    clsPlayerMovement.myRigidbody.velocity = Vector2.zero;
                     enabled = false;
+                    ManagePlayerStatus(true);
                 }
                 if (targetFloor.tag == "Gateway")
                 {
@@ -96,9 +95,8 @@ public class GatewayPortal : MonoBehaviour
             destinyReached = false;
             choosingDirection = false;
             ResetDirectionSelector();
-            clsPlayerMovement.canMove = false;
-            clsPlayerMovement.myRigidbody.velocity = Vector2.zero;
             enabled = true;
+            ManagePlayerStatus(false);
         }
     }
 
@@ -189,6 +187,22 @@ public class GatewayPortal : MonoBehaviour
                 SetTargetFloor(availableNeighbours[i]);
             }
         }
+    }
+
+    /// <summary>
+    /// Set player movement and sprite manager variables on and off when it enters a corridor.
+    /// Set state to false if the player enters a corridor and true if the corridor phase finish.
+    /// </summary>
+    private void ManagePlayerStatus(bool state)
+    {
+        clsPlayerMovement.canMove = state;
+        clsPlayerMovement.myRigidbody.velocity = Vector2.zero;
+        clsPlayerSpriteManager.corridorParticles.SetActive(!state);
+        if (state == false)
+        {
+            clsPlayerSpriteManager.animator.enabled = state;
+            clsPlayerSpriteManager.sprRender.sprite = clsDungeonController.playerSpriteInCorridor;
+        }    
     }
 
 }
