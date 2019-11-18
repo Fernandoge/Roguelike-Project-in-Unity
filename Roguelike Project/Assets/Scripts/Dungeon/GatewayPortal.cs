@@ -51,7 +51,7 @@ public class GatewayPortal : MonoBehaviour
                     enabled = false;
                     ManagePlayerStatus(true);
                 }
-                if (targetFloor.tag == "Gateway")
+                if (targetFloor.tag == "Gateway" && (targetFloor != gameObject || currentDirection != firstDirection))
                 {
                     destinyReached = true;
                 }

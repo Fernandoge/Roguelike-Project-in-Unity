@@ -542,9 +542,9 @@ public class DungeonController : MonoBehaviour
     {
         if (dungeonWallsPosition[x, y] != null)
         {
-            GameObject gateway = Instantiate(dungeonGateway, new Vector3(x, y, 0f), Quaternion.identity, dungeonFloorsPosition[x - 1, y].transform.parent.parent.GetChild(0));
+            GameObject gateway = Instantiate(dungeonGateway, new Vector3(x, y, 0f), Quaternion.identity, dungeonFloorsPosition[x, y].transform.parent.parent.GetChild(0));
+            dungeonFloorsPosition[x, y] = gateway;
             gateway.GetComponent<GatewayPortal>().firstDirection = firstDirection;
-            dungeonFloorsPosition[x, y].tag = "Gateway";
             if (dungeonWallsPosition[x, y].layer == LayerMask.NameToLayer("Default") || dungeonWallsPosition[x, y].layer == LayerMask.NameToLayer("TopWall"))
                 Destroy(dungeonWallsPosition[x, y]);
         }
@@ -577,10 +577,11 @@ public class DungeonController : MonoBehaviour
                     break;
             }
 
+            roomComponent.clsDungeonController = this;
+            roomComponent.roomEnemies = enemies;
             roomComponent.id = dungeonRoom.id;
             roomComponent.roomRectangle = dungeonRoom.roomRectangle;
             roomComponent.roomFloorsRectangle = new Rect(dungeonRoom.roomRectangle.position, new Vector2(dungeonRoom.roomRectangle.width - 2f, dungeonRoom.roomRectangle.height - 4f));
-            roomComponent.roomInteriorsPosition = new GameObject[(int)roomComponent.roomRectangle.xMax, (int)roomComponent.roomRectangle.yMax];
             roomComponent.DrawRoomInteriors();
         }
     }
@@ -600,9 +601,9 @@ public class DungeonController : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        //Spawn at the first room with the room already completed
+        //Spawn at the first room
         GameObject room = transform.GetChild(0).GetChild(0).gameObject;
-        room.GetComponent<RoomController>().isCompleted = true;
+        //room.GetComponent<RoomController>().isCompleted = true;
         Instantiate(player, room.transform.position, Quaternion.identity);
     }
 
@@ -621,10 +622,10 @@ public class DungeonController : MonoBehaviour
         SpacePartition(rootSubDungeon);
         rootSubDungeon.CreateRoom();
         DrawRooms(rootSubDungeon);
-        DefineRooms();
-        DecorateBigWalls();
         SpawnPlayer();
         DrawCorridors(rootSubDungeon);
         GenerateGateways();
+        DefineRooms();
+        DecorateBigWalls();
     }
 }

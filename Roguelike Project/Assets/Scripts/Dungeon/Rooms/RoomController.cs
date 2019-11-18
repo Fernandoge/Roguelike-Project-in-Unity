@@ -10,18 +10,16 @@ public class RoomController : MonoBehaviour
     public Rect roomFloorsRectangle;
     public bool isCompleted;
     public GameObject[,] roomInteriorsPosition;
-    protected DungeonController clsDungeonController;
+    public DungeonController clsDungeonController;
     public List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
     protected GameObject[] roomGateways;
     protected Transform roomGatewaysHolder;
     public Transform roomInteriorsHolder;
-    protected DungeonEnemy[] roomEnemies;
+    public DungeonEnemy[] roomEnemies;
     public int enemiesAlive;
 
     private void Awake()
     {
-        clsDungeonController = GameObject.FindGameObjectWithTag("Dungeon").GetComponent<DungeonController>();
-        roomEnemies = clsDungeonController.enemies;
         roomGatewaysHolder = transform.GetChild(0);
         roomInteriorsHolder = transform.GetChild(3);
     }
@@ -64,7 +62,8 @@ public class RoomController : MonoBehaviour
 
     private bool CheckInteriorTile(int x, int y)
     {
-        if (x <= roomFloorsRectangle.xMin || y <= roomFloorsRectangle.yMin || x > roomFloorsRectangle.xMax || y > roomFloorsRectangle.yMax || roomInteriorsPosition[x, y] != null)
+        if (x <= roomFloorsRectangle.xMin || y <= roomFloorsRectangle.yMin || x > roomFloorsRectangle.xMax || y > roomFloorsRectangle.yMax || 
+            (clsDungeonController.dungeonFloorsPosition[x, y] != null && clsDungeonController.dungeonFloorsPosition[x, y].tag != "Floor"))
         {
             return false;
         }
