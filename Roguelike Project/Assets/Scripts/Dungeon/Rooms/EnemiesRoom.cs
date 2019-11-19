@@ -17,10 +17,10 @@ public class EnemiesRoom : RoomController
                 if (obj.item != null && CheckAvailableSpace(obj.item, tilePosition))
                 {
                     GameObject instance = Instantiate(obj.item, tilePosition, Quaternion.identity, roomInteriorsHolder);
-                    clsDungeonController.dungeonFloorsPosition[i, j] = instance;
-                    foreach (Transform child in clsDungeonController.dungeonFloorsPosition[i, j].transform)
+                    clsDungeonController.tilesPosition[i, j] = instance;
+                    foreach (Transform child in clsDungeonController.tilesPosition[i, j].transform)
                     {
-                        clsDungeonController.dungeonFloorsPosition[(int)child.transform.position.x, (int)child.transform.position.y] = child.gameObject;
+                        clsDungeonController.tilesPosition[(int)child.transform.position.x, (int)child.transform.position.y] = child.gameObject;
                     }
                 }
             }

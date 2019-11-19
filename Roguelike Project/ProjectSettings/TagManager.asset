@@ -12,6 +12,7 @@ TagManager:
   - ValidCorridor
   - Gateway
   - WallDeco
+  - Floor
   layers:
   - Default
   - TransparentFX

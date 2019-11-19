@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1082232768064058465}
   m_Layer: 10
   m_Name: Pool (5)
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 1989515264124734812}
   m_Layer: 10
   m_Name: Pool (10)
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 6771957752349404057}
   m_Layer: 10
   m_Name: Pool (8)
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 9037244405655423754}
   m_Layer: 10
   m_Name: Pool (7)
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 3126901211248162090}
   m_Layer: 10
   m_Name: Pool
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 1731914093773295935}
   m_Layer: 10
   m_Name: Pool (3)
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 3927612294960759008}
   m_Layer: 10
   m_Name: Pool (6)
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 5957634377014016238}
   m_Layer: 10
   m_Name: Pool
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 7128980411403943414}
   m_Layer: 10
   m_Name: Pool (1)
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 3324451581225069587}
   m_Layer: 10
   m_Name: Pool (9)
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 4819795310481199404}
   m_Layer: 10
   m_Name: Pool (4)
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -930,7 +930,7 @@ GameObject:
   - component: {fileID: 1081932774328064775}
   m_Layer: 10
   m_Name: Pool (2)
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

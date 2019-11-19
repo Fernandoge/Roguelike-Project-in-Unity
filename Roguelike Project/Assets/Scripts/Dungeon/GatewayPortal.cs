@@ -14,13 +14,12 @@ public class GatewayPortal : MonoBehaviour
     [System.NonSerialized]
     public int firstDirection;
     private int currentDirection;
-    private int currentTotalNeighbours;
+    public int currentTotalNeighbours;
     private bool destinyReached;
     private bool choosingDirection;
     private bool _directionSelectorChanged;
-    private GameObject[] availableNeighbours;
-    private GameObject[,] floors;
-    private GameObject[,] walls;
+    public GameObject[] availableNeighbours;
+    private GameObject[,] tiles;
 
     private void SetTargetFloor(GameObject targetFloor)
     {
@@ -30,8 +29,7 @@ public class GatewayPortal : MonoBehaviour
     void Awake()
     {
         clsDungeonController = GameObject.FindGameObjectWithTag("Dungeon").GetComponent<DungeonController>();
-        floors = clsDungeonController.dungeonFloorsPosition;
-        walls = clsDungeonController.dungeonWallsPosition;
+        tiles = clsDungeonController.tilesPosition;
         speed = clsDungeonController.corridorSpeed;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         clsPlayerSpriteManager = player.parent.GetChild(1).GetComponent<PlayerSpriteManager>();
@@ -105,23 +103,23 @@ public class GatewayPortal : MonoBehaviour
         currentTotalNeighbours = 0;
         availableNeighbours = new GameObject[4];
 
-        if (floors[x, y - 1] != null && walls[x, y - 1] == null && direction != 2)
+        if (tiles[x, y - 1] != null && tiles[x, y - 1].tag != "Wall" && direction != 2)
             AddNeighbour(0, x, y - 1);
-        if (floors[x + 1, y] != null && walls[x + 1, y] == null && direction != 3)
+        if (tiles[x + 1, y] != null && tiles[x + 1, y].tag != "Wall" && direction != 3)
             AddNeighbour(1, x + 1, y);
-        if (floors[x, y + 1] != null && walls[x, y + 1] == null && direction != 0)
+        if (tiles[x, y + 1] != null && tiles[x, y + 1].tag != "Wall" && direction != 0)
             AddNeighbour(2, x, y + 1);
-        if (floors[x - 1, y] != null && walls[x - 1, y] == null && direction != 1)
+        if (tiles[x - 1, y] != null && tiles[x - 1, y].tag != "Wall" && direction != 1)
             AddNeighbour(3, x - 1, y);
 
         //in case the path is only one
-        if (currentTotalNeighbours == 1)
+        if (currentTotalNeighbours < 2)
         {
             LoopSides(true);
             _directionSelectorChanged = true;
         }    
         //in case you have more than one path but the other paths are gateways
-        else if (currentTotalNeighbours > 1 && targetFloor == gameObject)
+        else if (currentTotalNeighbours >= 2 && targetFloor == gameObject)
             LoopSides(false);
         //in case you have more than one path
         else
@@ -174,7 +172,7 @@ public class GatewayPortal : MonoBehaviour
     private void AddNeighbour(int direction, int x, int y)
     {
         currentTotalNeighbours++;
-        availableNeighbours[direction] = floors[x, y];
+        availableNeighbours[direction] = tiles[x, y];
     }
 
     private void LoopSides(bool ignoreGatewayCheck)
