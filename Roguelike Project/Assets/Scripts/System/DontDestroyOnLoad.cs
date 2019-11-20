@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class DontDestroyOnLoad : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private static DontDestroyOnLoad multitonInstance;
+
     void Awake()
     {
         DontDestroyOnLoad(this);
+        if (multitonInstance == null)
+        {
+            multitonInstance = this;      
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
 }

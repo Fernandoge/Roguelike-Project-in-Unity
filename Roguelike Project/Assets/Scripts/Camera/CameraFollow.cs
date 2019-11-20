@@ -4,22 +4,14 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    GameObject player;
+    public GameObject player;
     bool follow_player = true;
 
-    // Use this for initialization
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (follow_player == true)
+        if (player != null && follow_player == true)
         {
             CamFollowPlayer();
-
         }
 
     }

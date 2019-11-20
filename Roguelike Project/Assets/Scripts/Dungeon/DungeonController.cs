@@ -18,6 +18,7 @@ public class DungeonController : MonoBehaviour
     public GameObject dungeonCorridorFloor;
     public GameObject dungeonGateway;
     [Header("Elements")]
+    public Camera camera;
     public GameObject player;
     public DungeonEnemy[] enemies;
     [Header("Values")]
@@ -613,7 +614,8 @@ public class DungeonController : MonoBehaviour
         //Spawn at the first room
         GameObject room = transform.GetChild(0).GetChild(0).gameObject;
         //room.GetComponent<RoomController>().isCompleted = true;
-        Instantiate(player, room.transform.position, Quaternion.identity);
+        camera.GetComponent<CameraFollow>().player = Instantiate(player, room.transform.position, Quaternion.identity).transform.GetComponentInChildren<PlayerMovement>().gameObject;
+
     }
 
     #endregion Post-BSP Methods
