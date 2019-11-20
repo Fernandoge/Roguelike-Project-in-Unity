@@ -24,28 +24,30 @@ public class PlayerMovement : MonoBehaviour
         if (canMove)
         {
             //Horizontal Movement
-            if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
+            if (SimpleInput.GetAxisRaw("Horizontal") > 0.5f || SimpleInput.GetAxisRaw("Horizontal") < -0.5f)
             {
                 moving = true;
-                myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
+                myRigidbody.velocity = new Vector2(SimpleInput.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
             }
             else
                 myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
 
             //Vertical Movement
-            if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetAxisRaw("Vertical") < -0.5f)
+            if (SimpleInput.GetAxisRaw("Vertical") > 0.5f || SimpleInput.GetAxisRaw("Vertical") < -0.5f)
             {
                 moving = true;
-                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, Input.GetAxisRaw("Vertical") * moveSpeed);
+                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, SimpleInput.GetAxisRaw("Vertical") * moveSpeed);
             }
             else
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0f);
 
+            /*
             //Diagonal Normalizer
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.5f && Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.5f)
+            if (Mathf.Abs(SimpleInput.GetAxisRaw("Horizontal")) > 0.5f && Mathf.Abs(SimpleInput.GetAxisRaw("Vertical")) > 0.5f)
                 moveSpeed = moveSpeedAux * 0.707f;
             else
                 moveSpeed = moveSpeedAux;
+            */
 
             //Boost
             /*
@@ -62,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //No movement
-        if (Input.GetAxisRaw("Horizontal") < 0.5f && Input.GetAxisRaw("Horizontal") > -0.5f && Input.GetAxisRaw("Vertical") < 0.5f && Input.GetAxisRaw("Vertical") > -0.5f)   
+        if (SimpleInput.GetAxisRaw("Horizontal") < 0.5f && SimpleInput.GetAxisRaw("Horizontal") > -0.5f && SimpleInput.GetAxisRaw("Vertical") < 0.5f && SimpleInput.GetAxisRaw("Vertical") > -0.5f)   
         {
             moving = false;
         }

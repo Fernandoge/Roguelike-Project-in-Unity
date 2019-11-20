@@ -64,14 +64,13 @@ public class GatewayPortal : MonoBehaviour
         {
             if (_directionSelectorChanged)
             {
-                //if (Input.GetAxisRaw("Vertical") < 0.5f && availableNeighbours[0] != null)
-                if (Input.GetKeyDown(KeyCode.S) && availableNeighbours[0] != null)
+                if (SimpleInput.GetAxisRaw("Vertical") < -0.5f && availableNeighbours[0] != null)
                     SelectDirection(0);
-                if (Input.GetKeyDown(KeyCode.D) && availableNeighbours[1] != null)
+                if (SimpleInput.GetAxisRaw("Horizontal") > 0.5f && availableNeighbours[1] != null)
                     SelectDirection(1);
-                if (Input.GetKeyDown(KeyCode.W) && availableNeighbours[2] != null)
+                if (SimpleInput.GetAxisRaw("Vertical") > 0.5f && availableNeighbours[2] != null)
                     SelectDirection(2);
-                if (Input.GetKeyDown(KeyCode.A) && availableNeighbours[3] != null)
+                if (SimpleInput.GetAxisRaw("Horizontal") < -0.5f && availableNeighbours[3] != null)
                     SelectDirection(3);
             }
             //this occurs when the directionSelector combination is repeated, so the player don't have to insert inputs per each tile that are adjacents

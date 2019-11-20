@@ -9,6 +9,12 @@ public class PlayerSpriteManager : SpriteManager
     private PlayerMovement _clsPlayerMovement = default;
     public GameObject directionSelector = default;
     public GameObject corridorParticles = default;
+    private GameObject joystickThumb;
+
+    private void Awake()
+    {
+        joystickThumb = GameObject.FindGameObjectWithTag("GameController");
+    }
 
     new void Update()
     {
@@ -19,7 +25,11 @@ public class PlayerSpriteManager : SpriteManager
             else
                 animator.enabled = false;
 
-            direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            //direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            if (joystickThumb.transform.localPosition.x != 0f && joystickThumb.transform.localPosition.y != 0f)
+            {
+                direction = joystickThumb.transform.localPosition;
+            }   
             base.Update();
         }
     }
