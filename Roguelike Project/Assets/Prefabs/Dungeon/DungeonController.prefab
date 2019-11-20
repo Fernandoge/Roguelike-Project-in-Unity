@@ -173,7 +173,9 @@ MonoBehaviour:
     type: 3}
   dungeonCorridorFloor: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
   dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
-  camera: {fileID: 8610930163838314838}
+  _dungeonRoomsParent: {fileID: 1403184905427494535}
+  _dungeonCorridorsParent: {fileID: 1403184904892740545}
+  dungeonCamera: {fileID: 8610930163838314838}
   player: {fileID: 7941783385590199139, guid: 0f8f9b3a088fb8a45bc2127a5eb33c14, type: 3}
   enemies:
   - enemyType: {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a,

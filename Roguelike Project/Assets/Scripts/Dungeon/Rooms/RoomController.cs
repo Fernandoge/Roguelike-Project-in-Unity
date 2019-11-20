@@ -9,19 +9,27 @@ public class RoomController : MonoBehaviour
     public Rect roomRectangle;
     public Rect roomFloorsRectangle;
     public bool isCompleted;
-    public GameObject[,] roomInteriorsPosition;
-    public DungeonController clsDungeonController;
-    public List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
+    protected GameObject[,] tiles;
+    protected DungeonController clsDungeonController;
+    protected List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
     protected GameObject[] roomGateways;
-    protected Transform roomGatewaysHolder;
-    public Transform roomInteriorsHolder;
-    public DungeonEnemy[] roomEnemies;
+    protected Transform roomInteriorsHolder;
+    protected DungeonController.DungeonEnemy[] roomEnemies;
     public int enemiesAlive;
 
     private void Awake()
     {
-        roomGatewaysHolder = transform.GetChild(0);
         roomInteriorsHolder = transform.GetChild(3);
+    }
+
+    public void Initialize(DungeonController dungeonController, GameObject[,] tiles, DungeonController.DungeonEnemy[] enemies, int id, Rect roomRectangle, Rect roomFloorsRectangle)
+    {
+        clsDungeonController = dungeonController;
+        roomEnemies = enemies;
+        this.tiles = tiles;
+        this.id = id;
+        this.roomRectangle = roomRectangle;
+        this.roomFloorsRectangle = roomFloorsRectangle;
     }
 
     public virtual void DrawRoomInteriors(){}
@@ -63,7 +71,7 @@ public class RoomController : MonoBehaviour
     private bool CheckInteriorTile(int x, int y)
     {
         if (x <= roomFloorsRectangle.xMin || y <= roomFloorsRectangle.yMin || x > roomFloorsRectangle.xMax || y > roomFloorsRectangle.yMax || 
-            (clsDungeonController.tilesPosition[x, y] != null && clsDungeonController.tilesPosition[x, y].tag != "Floor"))
+            (tiles[x, y] != null && tiles[x, y].tag != "Floor"))
         {
             return false;
         }

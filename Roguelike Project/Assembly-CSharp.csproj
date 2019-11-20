@@ -97,9 +97,7 @@
     <Compile Include="Assets\Asset Store\Plugins\SimpleInput\Scripts\SimpleInputHelper.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonController.cs" />
-    <Compile Include="Assets\Scripts\Dungeon\DungeonEnemy.cs" />
     <Compile Include="Assets\Scripts\Dungeon\DungeonEntrance.cs" />
-    <Compile Include="Assets\Scripts\Dungeon\DungeonRoom.cs" />
     <Compile Include="Assets\Scripts\Dungeon\GatewayPortal.cs" />
     <Compile Include="Assets\Scripts\Dungeon\Rooms\BossRoom.cs" />
     <Compile Include="Assets\Scripts\Dungeon\Rooms\EnemiesRoom.cs" />

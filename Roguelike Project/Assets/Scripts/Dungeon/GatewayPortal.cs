@@ -4,44 +4,45 @@ using UnityEngine;
 
 public class GatewayPortal : MonoBehaviour
 {
-    private Transform player;
-    private PlayerMovement clsPlayerMovement;
-    private PlayerSpriteManager clsPlayerSpriteManager;
-    private DungeonController clsDungeonController;
-    private float speed;
+    private Transform _player;
+    private PlayerMovement _clsPlayerMovement;
+    private PlayerSpriteManager _clsPlayerSpriteManager;
+    private DungeonController _clsDungeonController;
+    private float _speed;
     private float distanceBetweenNextFloor;
     private GameObject targetFloor;
     [System.NonSerialized]
-    public int firstDirection;
+    private int _firstDirection;
     private int currentDirection;
     public int currentTotalNeighbours;
     private bool destinyReached;
     private bool choosingDirection;
     private bool _directionSelectorChanged;
     public GameObject[] availableNeighbours;
-    private GameObject[,] tiles;
+    private GameObject[,] _tiles;
+
+    public void Initialize(DungeonController dungeonController, int firstDirection, float speed, GameObject[,] tiles, Transform player, PlayerMovement playerMovement, PlayerSpriteManager playerSpriteManager)
+    {
+        _clsDungeonController = dungeonController;
+        _clsPlayerMovement = playerMovement;
+        _clsPlayerSpriteManager = playerSpriteManager;
+        _tiles = tiles;
+        _firstDirection = firstDirection;
+        _speed = speed;
+        _player = player;
+    }
 
     private void SetTargetFloor(GameObject targetFloor)
     {
         this.targetFloor = targetFloor;
     }
 
-    void Awake()
-    {
-        clsDungeonController = GameObject.FindGameObjectWithTag("Dungeon").GetComponent<DungeonController>();
-        tiles = clsDungeonController.tilesPosition;
-        speed = clsDungeonController.corridorSpeed;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        clsPlayerSpriteManager = player.parent.GetChild(1).GetComponent<PlayerSpriteManager>();
-        clsPlayerMovement = player.gameObject.GetComponent<PlayerMovement>();
-    }
-
     private void FixedUpdate()
     {
         if (!choosingDirection)
         {
-            distanceBetweenNextFloor = Vector2.Distance(player.position, targetFloor.transform.position); 
-            player.position = Vector2.MoveTowards(player.position, targetFloor.transform.position, speed * Time.deltaTime);
+            distanceBetweenNextFloor = Vector2.Distance(_player.position, targetFloor.transform.position); 
+            _player.position = Vector2.MoveTowards(_player.position, targetFloor.transform.position, _speed * Time.deltaTime);
             if (distanceBetweenNextFloor == 0f)
             {
                 if (destinyReached)
@@ -49,7 +50,7 @@ public class GatewayPortal : MonoBehaviour
                     enabled = false;
                     ManagePlayerStatus(true);
                 }
-                if (targetFloor.tag == "Gateway" && (targetFloor != gameObject || currentDirection != firstDirection))
+                if (targetFloor.tag == "Gateway" && (targetFloor != gameObject || currentDirection != _firstDirection))
                 {
                     destinyReached = true;
                 }
@@ -77,7 +78,7 @@ public class GatewayPortal : MonoBehaviour
             else
             {
                 choosingDirection = false;
-                clsPlayerSpriteManager.directionSelector.SetActive(false);
+                _clsPlayerSpriteManager.directionSelector.SetActive(false);
                 SetTargetFloor(availableNeighbours[currentDirection]);
             }
         }
@@ -85,9 +86,9 @@ public class GatewayPortal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && clsPlayerMovement.canMove)
+        if (collision.tag == "Player" && _clsPlayerMovement.canMove)
         {
-            currentDirection = firstDirection;
+            currentDirection = _firstDirection;
             SetTargetFloor(gameObject);
             destinyReached = false;
             choosingDirection = false;
@@ -102,13 +103,13 @@ public class GatewayPortal : MonoBehaviour
         currentTotalNeighbours = 0;
         availableNeighbours = new GameObject[4];
 
-        if (tiles[x, y - 1] != null && tiles[x, y - 1].tag != "Wall" && direction != 2)
+        if (_tiles[x, y - 1] != null && _tiles[x, y - 1].tag != "Wall" && direction != 2)
             AddNeighbour(0, x, y - 1);
-        if (tiles[x + 1, y] != null && tiles[x + 1, y].tag != "Wall" && direction != 3)
+        if (_tiles[x + 1, y] != null && _tiles[x + 1, y].tag != "Wall" && direction != 3)
             AddNeighbour(1, x + 1, y);
-        if (tiles[x, y + 1] != null && tiles[x, y + 1].tag != "Wall" && direction != 0)
+        if (_tiles[x, y + 1] != null && _tiles[x, y + 1].tag != "Wall" && direction != 0)
             AddNeighbour(2, x, y + 1);
-        if (tiles[x - 1, y] != null && tiles[x - 1, y].tag != "Wall" && direction != 1)
+        if (_tiles[x - 1, y] != null && _tiles[x - 1, y].tag != "Wall" && direction != 1)
             AddNeighbour(3, x - 1, y);
 
         //in case the path is only one
@@ -133,17 +134,17 @@ public class GatewayPortal : MonoBehaviour
 
     private void DirectionSelector()
     {
-        clsPlayerSpriteManager.directionSelector.SetActive(true);
+        _clsPlayerSpriteManager.directionSelector.SetActive(true);
         for (int i = 0; i < 4; i++)
         {
-            if (availableNeighbours[i] != null && !clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.activeSelf)
+            if (availableNeighbours[i] != null && !_clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.activeSelf)
             {
-                clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(true);
+                _clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(true);
                 _directionSelectorChanged = true;
             }
-            else if(availableNeighbours[i] == null && clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.activeSelf)
+            else if(availableNeighbours[i] == null && _clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.activeSelf)
             {
-                clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(false);
+                _clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(false);
                 _directionSelectorChanged = true;
             }
                 
@@ -155,7 +156,7 @@ public class GatewayPortal : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(false);
+            _clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
 
@@ -164,14 +165,14 @@ public class GatewayPortal : MonoBehaviour
         currentDirection = direction;
         SetTargetFloor(availableNeighbours[direction]);
         choosingDirection = false;
-        clsPlayerSpriteManager.directionSelector.SetActive(false);
+        _clsPlayerSpriteManager.directionSelector.SetActive(false);
         _directionSelectorChanged = false;
     }
 
     private void AddNeighbour(int direction, int x, int y)
     {
         currentTotalNeighbours++;
-        availableNeighbours[direction] = tiles[x, y];
+        availableNeighbours[direction] = _tiles[x, y];
     }
 
     private void LoopSides(bool ignoreGatewayCheck)
@@ -192,13 +193,13 @@ public class GatewayPortal : MonoBehaviour
     /// </summary>
     private void ManagePlayerStatus(bool state)
     {
-        clsPlayerMovement.canMove = state;
-        clsPlayerMovement.myRigidbody.velocity = Vector2.zero;
-        clsPlayerSpriteManager.corridorParticles.SetActive(!state);
+        _clsPlayerMovement.canMove = state;
+        _clsPlayerMovement.myRigidbody.velocity = Vector2.zero;
+        _clsPlayerSpriteManager.corridorParticles.SetActive(!state);
         if (state == false)
         {
-            clsPlayerSpriteManager.animator.enabled = state;
-            clsPlayerSpriteManager.sprRender.sprite = clsDungeonController.playerSpriteInCorridor;
+            _clsPlayerSpriteManager.animator.enabled = state;
+            _clsPlayerSpriteManager.sprRender.sprite = _clsDungeonController.playerSpriteInCorridor;
         }    
     }
 
