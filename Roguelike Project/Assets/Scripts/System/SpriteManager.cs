@@ -17,11 +17,12 @@ public class SpriteManager : MonoBehaviour
     public SpriteRenderer weaponRightSprRender, weaponLeftSprRender;
     private Sprite _weaponSprite;
 
-    [System.NonSerialized]
-    public Vector2 direction;
+    public int direction;
 
+    /*
     public void Update()
     {
+        
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         int index = (int)((Mathf.Round(angle / 90f) + 4) % 4); //add a modulo over 4 to get a normalized index
 
@@ -56,6 +57,24 @@ public class SpriteManager : MonoBehaviour
             weaponLeftSprRender.sprite = _weaponSprite;
         }
 
+    }
+    */
+
+    public void UpdateSpriteDirection(int direction)
+    {
+        this.direction = direction;
+        animator.SetInteger("Direction", direction);
+        switch (direction)
+        {
+            case 0:
+                sprRender.sprite = spRight; break;
+            case 1:
+                sprRender.sprite = spUp; break;
+            case 2:
+                sprRender.sprite = spLeft; break;
+            case 3:
+                sprRender.sprite = spDown; break;
+        }
     }
 
     public void UpdateWeaponSprite(Sprite weaponSprite)

@@ -16,7 +16,7 @@ public class EnemySpriteManager : SpriteManager
         UpdateWeaponSprite(_clsEnemyWeapon.equippedWeapon.GetComponent<SpriteRenderer>().sprite);
     }
 
-    new void Update()
+    void Update()
     {
         if (_clsEnemyMovement.moving)
             animator.enabled = true;
@@ -48,8 +48,7 @@ public class EnemySpriteManager : SpriteManager
 
         if (_clsEnemyMovement.pursuingPlayer)
         {
-            direction = _clsEnemyMovement.player.transform.position - _clsEnemyMovement.transform.position;
-            base.Update();
+            //direction = _clsEnemyMovement.player.transform.position - _clsEnemyMovement.transform.position;
         }
     }
 

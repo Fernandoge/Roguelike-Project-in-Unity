@@ -2,79 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MovingObject
 {
-    public Rigidbody2D myRigidbody;
     public bool canMove;
-    public bool moving;
-    public float moveSpeed;
-    private float moveSpeedAux;
-    public float boost;
-    // Use this for initialization
-    void Start()
-    {
-        myRigidbody = GetComponent<Rigidbody2D>();
-        moveSpeedAux = moveSpeed;
-    }
 
-
-    // Update is called once per frame
     void Update()
     {
+        if (!GameManager.Instance.playersTurn) 
+            return;
+
+        int horizontal = 0;
+        int vertical = 0;
+
         if (canMove)
         {
-            //Horizontal Movement
-            if (SimpleInput.GetAxisRaw("Horizontal") > 0.5f || SimpleInput.GetAxisRaw("Horizontal") < -0.5f)
-            {
-                moving = true;
-                myRigidbody.velocity = new Vector2(SimpleInput.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
-            }
-            else
-                myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
+            if (SimpleInput.GetAxisRaw("Horizontal") > 0.55f)
+                horizontal = 1;
+            else if (SimpleInput.GetAxisRaw("Horizontal") < -0.5f)
+                horizontal = -1;
 
-            //Vertical Movement
-            if (SimpleInput.GetAxisRaw("Vertical") > 0.5f || SimpleInput.GetAxisRaw("Vertical") < -0.5f)
-            {
-                moving = true;
-                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, SimpleInput.GetAxisRaw("Vertical") * moveSpeed);
-            }
-            else
-                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0f);
-
-            /*
-            //Diagonal Normalizer
-            if (Mathf.Abs(SimpleInput.GetAxisRaw("Horizontal")) > 0.5f && Mathf.Abs(SimpleInput.GetAxisRaw("Vertical")) > 0.5f)
-                moveSpeed = moveSpeedAux * 0.707f;
-            else
-                moveSpeed = moveSpeedAux;
-            */
-
-            //Boost
-            /*
-            if (Input.GetKeyDown("space"))          
-            {
-                moveSpeedAux = moveSpeedAux * boost;
-            }
-            if (Input.GetKeyUp("space"))
-            {
-                moveSpeedAux = moveSpeedAux / boost; 
-            }
-            */
-
+            if (SimpleInput.GetAxisRaw("Vertical") > 0.5f)
+                vertical = 1;
+            else if (SimpleInput.GetAxisRaw("Vertical") < -0.5f)
+                vertical = -1;
         }
 
-        //No movement
-        if (SimpleInput.GetAxisRaw("Horizontal") < 0.5f && SimpleInput.GetAxisRaw("Horizontal") > -0.5f && SimpleInput.GetAxisRaw("Vertical") < 0.5f && SimpleInput.GetAxisRaw("Vertical") > -0.5f)   
+        if (horizontal != 0 || vertical != 0)
         {
-            moving = false;
+            Move(horizontal, vertical);
         }
-
+            
     }
-
-    /* For future interactions in case something push the player
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log(collision.gameObject);
-    }
-    */
 }

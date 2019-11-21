@@ -41,8 +41,9 @@ public class GatewayPortal : MonoBehaviour
     {
         if (!choosingDirection)
         {
-            distanceBetweenNextFloor = Vector2.Distance(_player.position, targetFloor.transform.position); 
-            _player.position = Vector2.MoveTowards(_player.position, targetFloor.transform.position, _speed * Time.deltaTime);
+            distanceBetweenNextFloor = Vector2.Distance(_player.position, targetFloor.transform.position);
+            Vector2 newPosition = Vector2.MoveTowards(_player.position, targetFloor.transform.position, _speed * Time.deltaTime);
+            _clsPlayerMovement._rigidbody.MovePosition(newPosition);
             if (distanceBetweenNextFloor == 0f)
             {
                 if (destinyReached)
@@ -57,6 +58,7 @@ public class GatewayPortal : MonoBehaviour
                 CheckNeighbours((int)targetFloor.transform.position.x, (int)targetFloor.transform.position.y, currentDirection);
             }
         }
+
     }
 
     private void Update()
@@ -194,13 +196,15 @@ public class GatewayPortal : MonoBehaviour
     private void ManagePlayerStatus(bool state)
     {
         _clsPlayerMovement.canMove = state;
-        _clsPlayerMovement.myRigidbody.velocity = Vector2.zero;
+        _clsPlayerMovement._rigidbody.velocity = Vector2.zero;
         _clsPlayerSpriteManager.corridorParticles.SetActive(!state);
         if (state == false)
         {
-            _clsPlayerSpriteManager.animator.enabled = state;
+            _clsPlayerSpriteManager.animator.enabled = false;
             _clsPlayerSpriteManager.sprRender.sprite = _clsDungeonController.playerSpriteInCorridor;
-        }    
+        }
+        else
+            _clsPlayerSpriteManager.UpdateSpriteDirection(currentDirection);
     }
 
 }

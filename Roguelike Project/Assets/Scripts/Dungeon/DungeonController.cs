@@ -614,10 +614,25 @@ public class DungeonController : MonoBehaviour
                     roomComponent = dungeonRoom.room.AddComponent(typeof(BossRoom)) as BossRoom;
                     break;
             }
-            
+
             Rect roomFloorsRectangle = new Rect(dungeonRoom.roomRectangle.position, new Vector2(dungeonRoom.roomRectangle.width - 2f, dungeonRoom.roomRectangle.height - 4f));
             roomComponent.Initialize(this, _tilesPosition, enemies, dungeonRoom.id, dungeonRoom.roomRectangle, roomFloorsRectangle);
             roomComponent.DrawRoomInteriors();
+            //Set player initial position at a random floor tile of the first room
+            if (dungeonRoom.id == 1)
+            {
+                bool playerPositionUpdated = false;
+                while (!playerPositionUpdated)
+                {
+                    int x = Random.Range((int)dungeonRoom.roomRectangle.x, (int)dungeonRoom.roomRectangle.xMax);
+                    int y = Random.Range((int)dungeonRoom.roomRectangle.y, (int)dungeonRoom.roomRectangle.yMax);
+                    if (_tilesPosition[x,y].tag == "Floor")
+                    {
+                        _clsPlayerMovement.gameObject.transform.position = new Vector3(x, y);
+                        playerPositionUpdated = true;
+                    }
+                }
+            }
         }
     }
 
@@ -636,13 +651,11 @@ public class DungeonController : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        //Spawn at the first room
-        GameObject room = _dungeonRoomsParent.GetChild(0).gameObject;
-        //room.GetComponent<RoomController>().isCompleted = true;
-        GameObject playerInstance = Instantiate(player, room.transform.position, Quaternion.identity);
-        _clsPlayerSpriteManager = playerInstance.GetComponentInChildren<PlayerSpriteManager>();
-        _clsPlayerMovement = playerInstance.GetComponentInChildren<PlayerMovement>();
-        dungeonCamera.GetComponent<CameraFollow>().player = _clsPlayerMovement.gameObject;
+        GameObject playerInstance = Instantiate(player);
+        dungeonCamera.GetComponent<CameraFollow>().player = playerInstance;
+        _clsPlayerSpriteManager = playerInstance.GetComponent<PlayerSpriteManager>();
+        _clsPlayerMovement = playerInstance.GetComponent<PlayerMovement>();
+        _clsPlayerMovement.tiles = _tilesPosition;
     }
 
     #endregion Post-BSP Methods
