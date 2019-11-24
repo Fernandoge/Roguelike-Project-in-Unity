@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7688890032932593154}
   m_Layer: 10
   m_Name: UpperWallTile
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8137357481823107000}
   - component: {fileID: 4131139606974812333}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WallDeco
   m_TagString: WallDeco
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 286422782715563250}
   m_Layer: 10
   m_Name: UpperWallTile
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 8096358668841147250}
   m_Layer: 10
   m_Name: UpperWallTile
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,5 +348,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 2.95}
+  m_Size: {x: 0.95, y: 2.95}
   m_EdgeRadius: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovingObject : MonoBehaviour
 {
     public SpriteManager _clsSpriteManager;
+    public LayerMask blockingLayers;
     public float moveTime = 1000f;
     public GameObject[,] tiles;
     public Rigidbody2D _rigidbody;
@@ -19,9 +20,7 @@ public class MovingObject : MonoBehaviour
     protected void Move(int xDir, int yDir)
     {
         Vector3 destiny = transform.position + new Vector3(xDir, yDir, 0f);
-        Debug.Log(tiles[(int)destiny.x, (int)destiny.y].tag);
-
-        if (tiles[(int)destiny.x, (int)destiny.y].tag != "Wall")
+        if (Physics2D.Linecast(transform.position, destiny, blockingLayers) == false)
         {
             GameManager.Instance.playersTurn = false;
             moving = true;

@@ -4,15 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Wall
-  - Destroyable
-  - Dungeon
-  - DungeonRoom
   - ValidCorridor
   - Gateway
   - WallDeco
-  - Floor
+  - CorridorHolder
   layers:
   - Default
   - TransparentFX
@@ -22,17 +17,17 @@ TagManager:
   - UI
   - 
   - 
-  - People
   - Player
+  - Obstacle
   - TopWall
   - TopLeftCorner
   - TopRightCorner
   - BottomLeftCorner
   - BottomRightCorner
-  - 
-  - 
-  - 
-  - 
+  - Floor
+  - Enemy
+  - NoFloorTile
+  - DestroyableObstacle
   - 
   - 
   - 

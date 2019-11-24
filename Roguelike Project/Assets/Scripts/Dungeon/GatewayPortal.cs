@@ -88,7 +88,7 @@ public class GatewayPortal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && _clsPlayerMovement.canMove)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && _clsPlayerMovement.canMove)
         {
             currentDirection = _firstDirection;
             SetTargetFloor(gameObject);
@@ -105,13 +105,13 @@ public class GatewayPortal : MonoBehaviour
         currentTotalNeighbours = 0;
         availableNeighbours = new GameObject[4];
 
-        if (_tiles[x, y - 1] != null && _tiles[x, y - 1].tag != "Wall" && direction != 2)
+        if (_tiles[x, y - 1] != null && _tiles[x, y - 1].layer != LayerMask.NameToLayer("Obstacle") && direction != 2)
             AddNeighbour(0, x, y - 1);
-        if (_tiles[x + 1, y] != null && _tiles[x + 1, y].tag != "Wall" && direction != 3)
+        if (_tiles[x + 1, y] != null && _tiles[x + 1, y].layer != LayerMask.NameToLayer("Obstacle") && direction != 3)
             AddNeighbour(1, x + 1, y);
-        if (_tiles[x, y + 1] != null && _tiles[x, y + 1].tag != "Wall" && direction != 0)
+        if (_tiles[x, y + 1] != null && _tiles[x, y + 1].layer != LayerMask.NameToLayer("Obstacle") && direction != 0)
             AddNeighbour(2, x, y + 1);
-        if (_tiles[x - 1, y] != null && _tiles[x - 1, y].tag != "Wall" && direction != 1)
+        if (_tiles[x - 1, y] != null && _tiles[x - 1, y].layer != LayerMask.NameToLayer("Obstacle") && direction != 1)
             AddNeighbour(3, x - 1, y);
 
         //in case the path is only one
@@ -181,7 +181,7 @@ public class GatewayPortal : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            if (availableNeighbours[i] != null && (ignoreGatewayCheck || availableNeighbours[i].tag != "Gateway"))
+            if (availableNeighbours[i] != null && (ignoreGatewayCheck || availableNeighbours[i].CompareTag("Gateway") == false))
             {
                 currentDirection = i;
                 SetTargetFloor(availableNeighbours[i]);

@@ -16,12 +16,12 @@ public class PlayerMovement : MovingObject
 
         if (canMove)
         {
-            if (SimpleInput.GetAxisRaw("Horizontal") > 0.55f)
+            if (SimpleInput.GetAxisRaw("Horizontal") > 0.5f)
                 horizontal = 1;
             else if (SimpleInput.GetAxisRaw("Horizontal") < -0.5f)
                 horizontal = -1;
-
-            if (SimpleInput.GetAxisRaw("Vertical") > 0.5f)
+            //delete this else for diagonal movement
+            else if (SimpleInput.GetAxisRaw("Vertical") > 0.5f)
                 vertical = 1;
             else if (SimpleInput.GetAxisRaw("Vertical") < -0.5f)
                 vertical = -1;

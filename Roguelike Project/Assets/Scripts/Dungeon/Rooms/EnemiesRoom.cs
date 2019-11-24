@@ -8,6 +8,7 @@ public class EnemiesRoom : RoomController
     {
         //First we remove the objects that are not valid for this room
         auxDungeonRoomInteriors = ApplySizeConditionsToObjects(clsDungeonController.dungeonRoomInteriors);
+        //Instantiate room interiors checking if there is enough space to instantiate them
         for (int i = (int)roomRectangle.x; i < roomRectangle.xMax; i++)
         {
             for (int j = (int)roomRectangle.y; j < roomRectangle.yMax; j++)
@@ -25,6 +26,7 @@ public class EnemiesRoom : RoomController
                 }
             }
         }
+        base.DrawRoomInteriors();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,7 +37,7 @@ public class EnemiesRoom : RoomController
             if (!isCompleted)
             {
                 ActivateGateways();
-                Invoke("SpawnEnemies", 2f);
+                //SpawnObject(roomEnemies[0].enemyType);
             }
         }
     }

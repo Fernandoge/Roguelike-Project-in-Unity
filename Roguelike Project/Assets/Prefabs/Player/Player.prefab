@@ -5197,15 +5197,15 @@ GameObject:
   m_Component:
   - component: {fileID: 7941783385590199136}
   - component: {fileID: -513293902576892018}
-  - component: {fileID: -544051136433348782}
+  - component: {fileID: 8595681899117903800}
   - component: {fileID: -4538776187614880190}
   - component: {fileID: 183807082801774960}
   - component: {fileID: -6606183662124443510}
   - component: {fileID: -1667655407307348466}
   - component: {fileID: -8494247205447777556}
   - component: {fileID: 501637920075301324}
-  m_Layer: 0
-  m_Name: NewPlayer
+  m_Layer: 8
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5279,8 +5279,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &-544051136433348782
-BoxCollider2D:
+--- !u!70 &8595681899117903800
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5292,19 +5292,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.03}
+  m_Size: {x: 0.7, y: 0.96}
+  m_Direction: 0
 --- !u!50 &-4538776187614880190
 Rigidbody2D:
   serializedVersion: 4
@@ -5357,10 +5347,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9030b996d9edd488684fa2bea04f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clsSpriteManager: {fileID: -8494247205447777556}
+  blockingLayers:
+    serializedVersion: 2
+    m_Bits: 328192
   moveTime: 0.1
   _rigidbody: {fileID: -4538776187614880190}
   moving: 0
-  _clsSpriteManager: {fileID: -8494247205447777556}
   canMove: 1
 --- !u!114 &-1667655407307348466
 MonoBehaviour:
@@ -5400,7 +5393,7 @@ MonoBehaviour:
   sprRender: {fileID: -513293902576892018}
   weaponRightSprRender: {fileID: 7941783385174788768}
   weaponLeftSprRender: {fileID: 7941783383853911881}
-  _clsPlayerMovement: {fileID: -6606183662124443510}
+  direction: 0
   directionSelector: {fileID: 1702820693399759986}
   corridorParticles: {fileID: 2453763607810283607}
 --- !u!114 &501637920075301324

@@ -14,11 +14,14 @@ public class RoomController : MonoBehaviour
     protected List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
     protected GameObject[] roomGateways;
     protected Transform roomInteriorsHolder;
+    protected Transform roomFloorHolder; 
     protected DungeonController.DungeonEnemy[] roomEnemies;
     public int enemiesAlive;
 
+    #region Dungeon Generation Methods
     private void Awake()
     {
+        roomFloorHolder = transform.GetChild(1);
         roomInteriorsHolder = transform.GetChild(3);
     }
 
@@ -32,7 +35,25 @@ public class RoomController : MonoBehaviour
         this.roomFloorsRectangle = roomFloorsRectangle;
     }
 
-    public virtual void DrawRoomInteriors(){}
+    public virtual void DrawRoomInteriors()
+    {
+        //Draw floors in tiles without them
+        for (int i = (int)roomRectangle.x + 1; i < roomRectangle.xMax - 1; i++)
+        {
+            for (int j = (int)roomRectangle.y + 1; j < roomRectangle.yMax - 3; j++)
+            {
+                if (tiles[i, j] == null)
+                {
+                    tiles[i, j] = Instantiate(RandomTools.Instance.PickOne(clsDungeonController.dungeonRoomFloors), new Vector3(i, j, 0f), Quaternion.identity, roomFloorHolder);
+                }
+                else if (tiles[i, j].gameObject.layer == LayerMask.NameToLayer("NoFloorTile"))
+                {
+                    Instantiate(RandomTools.Instance.PickOne(clsDungeonController.dungeonRoomFloors), new Vector3(i, j, 0f), Quaternion.identity, roomFloorHolder);
+                }   
+            }
+        }
+    }
+    
 
     protected List<RandomTools.SizeWeightedObject> ApplySizeConditionsToObjects(List<RandomTools.SizeWeightedObject> interiors)
     {
@@ -70,13 +91,16 @@ public class RoomController : MonoBehaviour
 
     private bool CheckInteriorTile(int x, int y)
     {
-        if (x <= roomFloorsRectangle.xMin || y <= roomFloorsRectangle.yMin || x > roomFloorsRectangle.xMax || y > roomFloorsRectangle.yMax || 
-            (tiles[x, y] != null && tiles[x, y].tag != "Floor"))
+        if (x <= roomFloorsRectangle.xMin || y <= roomFloorsRectangle.yMin || x > roomFloorsRectangle.xMax || y > roomFloorsRectangle.yMax || tiles[x, y] != null)
         {
             return false;
         }
         return true;
     }
+
+    #endregion Dungeon Generation Methods
+
+    #region Gameplay Methods
 
     protected void ActivateGateways()
     {
@@ -96,8 +120,25 @@ public class RoomController : MonoBehaviour
         */
     }
 
-    protected void SpawnEnemies()
+    public void SpawnObject(GameObject obj, bool isPlayer = false)
     {
+        bool objectSpawned = false;
+        while (!objectSpawned)
+        {
+            int x = Random.Range((int)roomRectangle.x, (int)roomRectangle.xMax);
+            int y = Random.Range((int)roomRectangle.y, (int)roomRectangle.yMax);
+
+            //Spawn the object in a floor and not inside a wall or a trigger
+            if (tiles[x, y].layer == LayerMask.NameToLayer("Floor"))
+            {
+                if (!isPlayer)
+                    obj = Instantiate(obj, new Vector3(x, y), Quaternion.identity);
+                else
+                    obj.transform.position = new Vector3(x, y);
+
+                objectSpawned = true;
+            }
+        }
         /*
         foreach (DungeonEnemy enemy in roomEnemies)
         {  
@@ -130,5 +171,5 @@ public class RoomController : MonoBehaviour
         }
     }
 
-
+    #endregion Gameplay Methods
 }

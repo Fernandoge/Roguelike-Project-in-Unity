@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basic Enemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3914512871002406623, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -79,6 +84,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5321503236256192883, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
+        type: 3}
+      propertyPath: hitpoints
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 190120077144803765, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
         type: 3}
       propertyPath: pursuingSpeed
@@ -98,11 +108,6 @@ PrefabInstance:
         type: 3}
       propertyPath: fireRate
       value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 5321503236256192883, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
-        type: 3}
-      propertyPath: hitpoints
-      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}

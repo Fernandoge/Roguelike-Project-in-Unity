@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 1403184906628289016}
   m_Layer: 0
   m_Name: DungeonController
-  m_TagString: Dungeon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,8 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardRows: 200
   boardColumns: 200
-  minRoomSize: 12
-  maxRoomSize: 12
+  minRoomSize: 15
+  maxRoomSize: 15
   dungeonRoomFloors:
   - item: {fileID: 170492, guid: 28001a04ae420419387a894c9d751a06, type: 3}
     probability: 50
@@ -176,7 +176,7 @@ MonoBehaviour:
   _dungeonRoomsParent: {fileID: 1403184905427494535}
   _dungeonCorridorsParent: {fileID: 1403184904892740545}
   dungeonCamera: {fileID: 8610930163838314838}
-  player: {fileID: 7941783385590199139, guid: 0f8f9b3a088fb8a45bc2127a5eb33c14, type: 3}
+  player: {fileID: 7941783385590199139, guid: f4eee62e59924fa4b9b801ba9c9382fb, type: 3}
   enemies:
   - enemyType: {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
       type: 3}
