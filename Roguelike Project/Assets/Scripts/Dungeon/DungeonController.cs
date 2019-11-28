@@ -397,7 +397,7 @@ public class DungeonController : MonoBehaviour
             //Set player initial position at a random floor tile of the first room
             if (dungeonRoom.id == 1)
             {
-                roomComponent.isCompleted = true;
+                //roomComponent.isCompleted = true;
                 roomComponent.SpawnObject(_clsPlayerMovement.gameObject, true);
             }
         }
@@ -563,10 +563,9 @@ public class DungeonController : MonoBehaviour
 
     private void InstantiateGateway(int x, int y, int firstDirection)
     {
-        //If the layer isn't Default it means it's wall, so instantiate a gateway in that position
-        if (_tilesPosition[x, y] != null && _tilesPosition[x, y].layer != 0)
+        if (_tilesPosition[x, y] != null && (_tilesPosition[x, y].layer == LayerMask.NameToLayer("Obstacle") || _tilesPosition[x, y].layer == LayerMask.NameToLayer("TopWall")))
         {
-            //Instantiate floors since a top wall may be destroyed
+            //Instantiate floors in child positions since a top wall may be destroyed
             foreach (Transform child in _tilesPosition[x, y].transform)
             {
                 int posX = (int)child.transform.position.x;

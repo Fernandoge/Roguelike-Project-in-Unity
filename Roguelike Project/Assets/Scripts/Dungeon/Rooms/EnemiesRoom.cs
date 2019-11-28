@@ -37,7 +37,9 @@ public class EnemiesRoom : RoomController
             if (!isCompleted)
             {
                 ActivateGateways();
-                //SpawnObject(roomEnemies[0].enemyType);
+                SpawnObject(roomEnemies[0].enemyType);
+                SpawnObject(roomEnemies[0].enemyType);
+                SpawnObject(roomEnemies[0].enemyType);
             }
         }
     }

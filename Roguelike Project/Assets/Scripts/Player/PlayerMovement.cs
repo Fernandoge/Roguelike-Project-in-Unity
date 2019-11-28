@@ -6,6 +6,12 @@ public class PlayerMovement : MovingObject
 {
     public bool canMove;
 
+    protected override void Start()
+    {
+        GameManager.Instance.player = this;
+        base.Start();
+    }
+
     void Update()
     {
         if (!GameManager.Instance.playersTurn) 
@@ -29,8 +35,11 @@ public class PlayerMovement : MovingObject
 
         if (horizontal != 0 || vertical != 0)
         {
-            Move(horizontal, vertical);
+            if (CheckNextMovement(horizontal, vertical))
+            {
+                Move();
+                GameManager.Instance.playersTurn = false;
+            }
         }
-            
     }
 }

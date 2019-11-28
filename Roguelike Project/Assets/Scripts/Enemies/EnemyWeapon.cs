@@ -26,7 +26,7 @@ public class EnemyWeapon : MonoBehaviour
         if (fireRate > 0)
             fireRate -= Time.deltaTime;
 
-        if (clsEnemyMovement.distanceBetweenPlayer <= distanceToShoot && fireRate <= 0 && equippedWeapon != null && clsEnemyMovement.pursuingPlayer)
+        if (clsEnemyMovement.moving && fireRate <= 0 && equippedWeapon != null)
             Shoot();
 
     }
@@ -58,7 +58,8 @@ public class EnemyWeapon : MonoBehaviour
 
     public void Shoot()
     {
-        clsBulletConfig = weaponBullet.GetComponent<BulletConfig>();
+        transform.eulerAngles = new Vector3(0, 0, 
+            Mathf.Atan2(clsEnemyMovement.target.transform.position.y - transform.position.y, clsEnemyMovement.target.transform.position.x - transform.position.x) * Mathf.Rad2Deg);
         Vector3 dir;
         dir.x = Vector2.right.x;
         dir.y = Vector2.right.y;

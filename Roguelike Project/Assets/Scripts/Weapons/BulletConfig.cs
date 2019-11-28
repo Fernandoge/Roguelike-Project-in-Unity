@@ -33,38 +33,34 @@ public class BulletConfig : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject != null)
+        if (creator.layer == LayerMask.NameToLayer("Player"))
         {
-            if (creator.layer == LayerMask.NameToLayer("Player"))
+            if (col.gameObject.layer == LayerMask.NameToLayer("Enemy") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObject"))
             {
-                if (col.gameObject.layer == LayerMask.NameToLayer("Enemy") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObject"))
-                {
-                    clsHitpointsManager = col.gameObject.GetComponent<HitpointsManager>();
-                    clsHitpointsManager.BulletHit(bulletDamage);
-                    //enemyHit.killBullet(); esto es despues para la animacion de muerte
-                    //Instantiate (bloodImpact, this.transform.position, this.transform.rotation);
-                    Destroy(this.gameObject);
-                }
-            }
-
-            else
-            {
-                if (col.gameObject.layer == LayerMask.NameToLayer("Player") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObject"))
-                {
-                    clsHitpointsManager = col.gameObject.GetComponent<HitpointsManager>();
-                    clsHitpointsManager.BulletHit(bulletDamage);
-                    //enemyHit.killBullet(); esto es despues para la animacion de muerte
-                    //Instantiate (bloodImpact, this.transform.position, this.transform.rotation);
-                    Destroy(this.gameObject);
-                }
-            }
-
-            if (col.gameObject.layer == LayerMask.NameToLayer("DestroyableObject"))
-            {
-                //Instantiate (wallImpact, this.transform.position, this.transform.rotation);
+                clsHitpointsManager = col.gameObject.GetComponent<HitpointsManager>();
+                clsHitpointsManager.BulletHit(bulletDamage);
+                //enemyHit.killBullet(); esto es despues para la animacion de muerte
+                //Instantiate (bloodImpact, this.transform.position, this.transform.rotation);
                 Destroy(this.gameObject);
             }
         }
-          
+
+        else
+        {
+            if (col.gameObject.layer == LayerMask.NameToLayer("Player") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObject"))
+            {
+                clsHitpointsManager = col.gameObject.GetComponent<HitpointsManager>();
+                clsHitpointsManager.BulletHit(bulletDamage);
+                //enemyHit.killBullet(); esto es despues para la animacion de muerte
+                //Instantiate (bloodImpact, this.transform.position, this.transform.rotation);
+                Destroy(this.gameObject);
+            }
+        }
+
+        if (col.gameObject.layer == LayerMask.NameToLayer("DestroyableObject"))
+        {
+            //Instantiate (wallImpact, this.transform.position, this.transform.rotation);
+            Destroy(this.gameObject);
+        }   
     }
 }
