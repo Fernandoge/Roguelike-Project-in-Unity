@@ -5292,8 +5292,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
-  m_Size: {x: 0.7, y: 0.96}
+  m_Offset: {x: -0.010310292, y: -0.03322196}
+  m_Size: {x: 0.69312644, y: 0.9577091}
   m_Direction: 0
 --- !u!50 &-4538776187614880190
 Rigidbody2D:
@@ -5347,14 +5347,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9030b996d9edd488684fa2bea04f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objRigidbody: {fileID: -4538776187614880190}
   _clsSpriteManager: {fileID: -8494247205447777556}
   blockingLayers:
     serializedVersion: 2
     m_Bits: 328192
   moveTime: 0.1
-  objRigidbody: {fileID: -4538776187614880190}
-  moving: 0
   canMove: 1
+  moving: 0
 --- !u!114 &-1667655407307348466
 MonoBehaviour:
   m_ObjectHideFlags: 0

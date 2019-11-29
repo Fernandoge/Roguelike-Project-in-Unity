@@ -31,7 +31,7 @@ public abstract class MovingObject : MonoBehaviour
     public void Move(int xDir, int yDir)
     {
         Vector3 _destiny = transform.position + new Vector3(xDir, yDir, 0f);
-        if (Physics2D.Linecast(transform.position, _destiny, blockingLayers) == false)
+        if (Physics2D.OverlapBox(_destiny, new Vector2(0.95f, 0.95f), 0f, blockingLayers) == null)
         {
             moving = true;
             _clsSpriteManager.CheckMovement(xDir, yDir);

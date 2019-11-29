@@ -397,7 +397,7 @@ public class DungeonController : MonoBehaviour
             //Set player initial position at a random floor tile of the first room
             if (dungeonRoom.id == 1)
             {
-                //roomComponent.isCompleted = true;
+                roomComponent.isCompleted = true;
                 roomComponent.SpawnObject(_clsPlayerMovement.gameObject, true);
             }
         }

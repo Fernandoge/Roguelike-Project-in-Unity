@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7459011167722533473}
   - component: {fileID: 8662901260970231379}
   - component: {fileID: 8096358668841147250}
-  m_Layer: 13
-  m_Name: BottomLeftCorner
+  m_Layer: 14
+  m_Name: BottomRightCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 3fe4581864bd9a84ebf26712edf22263, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aeb979d63e79ab64abfbe515e82b9062, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,5 +105,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.95, y: 0.95}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0

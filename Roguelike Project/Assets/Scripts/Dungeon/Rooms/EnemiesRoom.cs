@@ -29,18 +29,15 @@ public class EnemiesRoom : RoomController
         base.DrawRoomInteriors();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void ActivateRoom()
     {
-        if (collision.tag == "Player")
+        clsDungeonController.currentRoom = id;
+        if (!isCompleted)
         {
-            clsDungeonController.currentRoom = id;
-            if (!isCompleted)
-            {
-                ActivateGateways();
-                SpawnObject(roomEnemies[0].enemyType);
-                SpawnObject(roomEnemies[0].enemyType);
-                SpawnObject(roomEnemies[0].enemyType);
-            }
+            ActivateGateways();
+            SpawnObject(roomEnemies[0].enemyType);
+            SpawnObject(roomEnemies[0].enemyType);
+            SpawnObject(roomEnemies[0].enemyType);
         }
     }
 }

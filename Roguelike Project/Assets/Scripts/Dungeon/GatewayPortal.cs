@@ -15,6 +15,7 @@ public class GatewayPortal : MonoBehaviour
     private int _firstDirection;
     private int currentDirection;
     public int currentTotalNeighbours;
+    private GameObject gatewayReached;
     private bool destinyReached;
     private bool choosingDirection;
     private bool _directionSelectorChanged;
@@ -50,10 +51,13 @@ public class GatewayPortal : MonoBehaviour
                 {
                     enabled = false;
                     ManagePlayerStatus(true);
+                    EnemiesRoom enemyRoomComponent = gatewayReached.transform.parent.parent.GetComponent<EnemiesRoom>();
+                    enemyRoomComponent.ActivateRoom();
                 }
                 if (targetFloor.tag == "Gateway" && (targetFloor != gameObject || currentDirection != _firstDirection))
                 {
                     destinyReached = true;
+                    gatewayReached = targetFloor;
                 }
                 CheckNeighbours((int)targetFloor.transform.position.x, (int)targetFloor.transform.position.y, currentDirection);
             }
