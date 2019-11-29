@@ -43,7 +43,7 @@ public class GatewayPortal : MonoBehaviour
         {
             distanceBetweenNextFloor = Vector2.Distance(_player.position, targetFloor.transform.position);
             Vector2 newPosition = Vector2.MoveTowards(_player.position, targetFloor.transform.position, _speed * Time.deltaTime);
-            _clsPlayerMovement.rigidbody.MovePosition(newPosition);
+            _clsPlayerMovement.objRigidbody.MovePosition(newPosition);
             if (distanceBetweenNextFloor == 0f)
             {
                 if (destinyReached)
@@ -196,7 +196,7 @@ public class GatewayPortal : MonoBehaviour
     private void ManagePlayerStatus(bool state)
     {
         _clsPlayerMovement.canMove = state;
-        _clsPlayerMovement.rigidbody.velocity = Vector2.zero;
+        _clsPlayerMovement.objRigidbody.velocity = Vector2.zero;
         _clsPlayerSpriteManager.corridorParticles.SetActive(!state);
         if (state == false)
         {

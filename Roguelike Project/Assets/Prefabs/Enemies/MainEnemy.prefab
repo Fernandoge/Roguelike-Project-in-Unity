@@ -183,13 +183,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc977eb5fdb8417f9a35dd62509a09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objRigidbody: {fileID: 4836105954153109662}
   _clsSpriteManager: {fileID: 6978326576728948576}
   blockingLayers:
     serializedVersion: 2
     m_Bits: 328448
-  moveTime: 0.1
-  rigidbody: {fileID: 4836105954153109662}
-  collider: {fileID: 2055824880326827500}
+  moveTime: 1
+  canMove: 1
   moving: 0
   target: {fileID: 0}
   stopDistance: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3914512871002406622}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd2989051b979aa4fab4b32130724cf9, type: 3}
   m_Name: 

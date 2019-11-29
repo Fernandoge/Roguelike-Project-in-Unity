@@ -5352,8 +5352,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 328192
   moveTime: 0.1
-  rigidbody: {fileID: -4538776187614880190}
-  collider: {fileID: 8595681899117903800}
+  objRigidbody: {fileID: -4538776187614880190}
   moving: 0
   canMove: 1
 --- !u!114 &-1667655407307348466

@@ -12,33 +12,41 @@ public class EnemyMovement : MovingObject
 
     protected override void Start()
     {
-        GameManager.Instance.enemies.Add(this);
+        GameData.Instance.enemies.Add(this);
         target = GameObject.FindGameObjectWithTag("Player").transform;
         base.Start();
     }
 
-    public bool CheckEnemyMovement()
+    private void Update()
     {
-        int xDir = 0;
-        int yDir = 0;
-
-        if (Mathf.Abs (target.position.x - transform.position.x) < float.Epsilon)
-        {
-            yDir = target.position.y > transform.position.y ? 1 : -1;
-        }
-        else
-        {
-            xDir = target.position.x > transform.position.x ? 1 : -1;
-        }
-
-        return CheckNextMovement(xDir, yDir);
+        AttemptMove();
     }
 
-    void Movement()
+    protected override void Movement()
+    {
+        if (canMove)
+        {
+            int xDir = 0;
+            int yDir = 0;
+
+            if (Mathf.Abs(target.position.x - transform.position.x) < float.Epsilon)
+            {
+                yDir = target.position.y > transform.position.y ? 1 : -1;
+            }
+            else
+            {
+                xDir = target.position.x > transform.position.x ? 1 : -1;
+            }
+
+            Move(xDir, yDir);
+        }
+    }
+
+    void OldMovement()
     {
         distanceBetweenPlayer = Vector2.Distance(transform.position, target.transform.position);
         //Debug.Log(distanceBetweenPlayer);
-        rigidbody.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((target.transform.position.y - transform.position.y), (target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg);
+        GetComponent<Rigidbody>().transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((target.transform.position.y - transform.position.y), (target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg);
         if (distanceBetweenPlayer > stopDistance)
         {
             //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);

@@ -13,20 +13,11 @@ public class EnemySpriteManager : SpriteManager
 
     private void Start()
     {
-        UpdateWeaponSprite(_clsEnemyWeapon.equippedWeapon.GetComponent<SpriteRenderer>().sprite);
-    }
-
-    void Update()
-    {
-        if (_clsEnemyMovement.moving)
-            animator.enabled = true;
-        else
-            animator.enabled = false;
+        //UpdateWeaponSprite(_clsEnemyWeapon.equippedWeapon.GetComponent<SpriteRenderer>().sprite);
     }
 
     public void Death()
     {
-        _clsEnemyMovement.moving = false;
         animator.enabled = false;
         sprRender.sprite = spDeath;
     }

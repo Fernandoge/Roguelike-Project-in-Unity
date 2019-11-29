@@ -19,46 +19,31 @@ public class SpriteManager : MonoBehaviour
 
     public int direction;
 
-    /*
-    public void Update()
+    public void CheckMovement(int xDir, int yDir)
     {
-        
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        int index = (int)((Mathf.Round(angle / 90f) + 4) % 4); //add a modulo over 4 to get a normalized index
-
-        switch (index)
+        if (xDir == -1)
         {
-            case 0:
-                sprRender.sprite = spRight;
-                animator.SetInteger("Direction", 0);
-                break;
-            case 1:
-                sprRender.sprite = spUp;
-                animator.SetInteger("Direction", 1);
-                break;
-            case 2:
-                sprRender.sprite = spLeft;
-                animator.SetInteger("Direction", 2);
-                break;
-            case 3:
-                sprRender.sprite = spDown;
-                animator.SetInteger("Direction", 3);
-                break;
+            if (yDir == 1 && direction == 1)
+                return;
+            else if (yDir == -1 && direction == 3)
+                return;
+            else
+                UpdateSpriteDirection(2);
         }
-
-        if (angle > -90 && angle < 90)
+        else if (xDir == 1)
         {
-            weaponLeftSprRender.sprite = null;
-            weaponRightSprRender.sprite = _weaponSprite;
+            if (yDir == 1 && direction == 1)
+                return;
+            else if (yDir == -1 && direction == 3)
+                return;
+            else
+                UpdateSpriteDirection(0);
         }
-        else
-        {
-            weaponRightSprRender.sprite = null;
-            weaponLeftSprRender.sprite = _weaponSprite;
-        }
-
+        else if (yDir == 1)
+            UpdateSpriteDirection(1);
+        else if (yDir == -1)
+            UpdateSpriteDirection(3);
     }
-    */
 
     public void UpdateSpriteDirection(int direction)
     {

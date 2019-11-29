@@ -35,7 +35,7 @@ public class BulletConfig : MonoBehaviour {
     {
         if (creator.layer == LayerMask.NameToLayer("Player"))
         {
-            if (col.gameObject.layer == LayerMask.NameToLayer("Enemy") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObject"))
+            if (col.gameObject.layer == LayerMask.NameToLayer("Enemy") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObstacle"))
             {
                 clsHitpointsManager = col.gameObject.GetComponent<HitpointsManager>();
                 clsHitpointsManager.BulletHit(bulletDamage);
@@ -47,7 +47,7 @@ public class BulletConfig : MonoBehaviour {
 
         else
         {
-            if (col.gameObject.layer == LayerMask.NameToLayer("Player") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObject"))
+            if (col.gameObject.layer == LayerMask.NameToLayer("Player") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObstacle"))
             {
                 clsHitpointsManager = col.gameObject.GetComponent<HitpointsManager>();
                 clsHitpointsManager.BulletHit(bulletDamage);
@@ -57,7 +57,7 @@ public class BulletConfig : MonoBehaviour {
             }
         }
 
-        if (col.gameObject.layer == LayerMask.NameToLayer("DestroyableObject"))
+        if (col.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             //Instantiate (wallImpact, this.transform.position, this.transform.rotation);
             Destroy(this.gameObject);

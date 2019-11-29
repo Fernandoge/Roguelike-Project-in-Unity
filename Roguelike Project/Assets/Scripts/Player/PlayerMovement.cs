@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class PlayerMovement : MovingObject
 {
-    public bool canMove;
-
     protected override void Start()
     {
-        GameManager.Instance.player = this;
+        GameData.Instance.player = this;
         base.Start();
     }
 
-    void Update()
+    private void Update()
     {
-        if (!GameManager.Instance.playersTurn) 
-            return;
+        AttemptMove();
+    }
 
-        int horizontal = 0;
-        int vertical = 0;
-
+    protected override void Movement()
+    {
         if (canMove)
         {
+            int horizontal = 0;
+            int vertical = 0;
+
             if (SimpleInput.GetAxisRaw("Horizontal") > 0.5f)
                 horizontal = 1;
             else if (SimpleInput.GetAxisRaw("Horizontal") < -0.5f)
@@ -31,15 +31,13 @@ public class PlayerMovement : MovingObject
                 vertical = 1;
             else if (SimpleInput.GetAxisRaw("Vertical") < -0.5f)
                 vertical = -1;
-        }
 
-        if (horizontal != 0 || vertical != 0)
-        {
-            if (CheckNextMovement(horizontal, vertical))
+            if (horizontal != 0 || vertical != 0)
             {
-                Move();
-                GameManager.Instance.playersTurn = false;
+                Move(horizontal, vertical);
             }
         }
+
+        
     }
 }

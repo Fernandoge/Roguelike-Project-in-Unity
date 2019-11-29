@@ -145,7 +145,7 @@ public class TextManager : MonoBehaviour
         isActive = true;
         textBox.SetActive(true);
         clsPlayerMovement.canMove = false;
-        clsPlayerMovement.rigidbody.velocity = Vector2.zero;
+        clsPlayerMovement.objRigidbody.velocity = Vector2.zero;
         StartCoroutine(TextScroll(textLines[currentLine]));
 
     }
