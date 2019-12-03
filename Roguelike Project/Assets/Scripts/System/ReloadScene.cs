@@ -14,8 +14,9 @@ public class ReloadScene : MonoBehaviour
         button.onClick.AddListener(ReloadCurrentScene);
     }
 
-    private void ReloadCurrentScene()
+    public void ReloadCurrentScene()
     {
+        GameManager.Instance.ManageLoadingScreen(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     

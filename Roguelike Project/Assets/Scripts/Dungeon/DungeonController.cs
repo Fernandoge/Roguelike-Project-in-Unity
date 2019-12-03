@@ -7,7 +7,10 @@ public class DungeonController : MonoBehaviour
     [Header("Config")]
     public int boardRows;
     public int boardColumns;
-    public int minRoomSize, maxRoomSize;
+    public int averageMinRoomTiles;
+    public RoomSizeRandomness roomSizeRandomness;
+    public int minRoomWidth, minRoomHeight;
+    public int maxRoomWidth, maxRoomHeight;
     [Header("Assets")]
     public RandomTools.WeightedObject[] dungeonRoomFloors; 
     public RandomTools.WeightedObject[] dungeonWallDecos;
@@ -31,6 +34,7 @@ public class DungeonController : MonoBehaviour
     public int currentRoom;
     public int roomsCompleted;
 
+    private int _roomSideSize;
     private GameObject _roomHolder;
     private GameObject _corridorHolder;
     private PlayerMovement _clsPlayerMovement;
@@ -43,6 +47,14 @@ public class DungeonController : MonoBehaviour
     private static int _totalCorridorIdCount = 0;
 
     #region Dungeon Components
+
+    public enum RoomSizeRandomness
+    {
+        FullRandom = 0,
+        BigRooms = 1,
+        SmallRooms = 2
+    }
+
     public class DungeonRoom
     {
         public GameObject room;
@@ -109,7 +121,7 @@ public class DungeonController : MonoBehaviour
             return leftDungeon == null && rightDungeon == null;
         }
 
-        public bool Split(int minRoomSize, int maxRoomSize)
+        public bool Split(int roomSideSize)
         {
             if (!IAmLeaf())
             {
@@ -129,24 +141,25 @@ public class DungeonController : MonoBehaviour
             {
                 splitHorizontal = Random.Range(0.0f, 1.0f) > 0.5;
             }
-
-            if (Mathf.Min(rectangle.height, rectangle.width) / 2 < minRoomSize)
+            
+            if (Mathf.Min(rectangle.height, rectangle.width) / 2 < roomSideSize)
             {
                 return false;
             }
 
+            
             if (splitHorizontal)
             {
                 // split so that the resulting sub-dungeons widths are not too small
                 // (since we are splitting horizontally) 
-                int split = Random.Range(minRoomSize, (int)(rectangle.width - minRoomSize));
+                int split = Random.Range(roomSideSize, (int)(rectangle.width - roomSideSize));
 
                 leftDungeon = new SubDungeon(new Rect(rectangle.x, rectangle.y, rectangle.width, split));
                 rightDungeon = new SubDungeon(new Rect(rectangle.x, rectangle.y + split, rectangle.width, rectangle.height - split));
             }
             else
             {
-                int split = Random.Range(minRoomSize, (int)(rectangle.height - minRoomSize));
+                int split = Random.Range(roomSideSize, (int)(rectangle.height - roomSideSize));
 
                 leftDungeon = new SubDungeon(new Rect(rectangle.x, rectangle.y, split, rectangle.height));
                 rightDungeon = new SubDungeon(new Rect(rectangle.x + split, rectangle.y, rectangle.width - split, rectangle.height));
@@ -155,15 +168,18 @@ public class DungeonController : MonoBehaviour
             return true;
         }
 
-        public void CreateRoom()
+        public void CreateRoom(int minRoomWidth, int minRoomHeight, int maxRoomWidth, int maxRoomHeight, RoomSizeRandomness randomnessLevel)
         {
+            if (GameManager.Instance.generationFailed)
+                return;
+
             if (leftDungeon != null)
             {
-                leftDungeon.CreateRoom();
+                leftDungeon.CreateRoom(minRoomWidth, minRoomHeight, maxRoomWidth, maxRoomHeight, randomnessLevel);
             }
             if (rightDungeon != null)
             {
-                rightDungeon.CreateRoom();
+                rightDungeon.CreateRoom(minRoomWidth, minRoomHeight, maxRoomWidth, maxRoomHeight, randomnessLevel);
             }
             if (leftDungeon != null && rightDungeon != null)
             {
@@ -171,10 +187,29 @@ public class DungeonController : MonoBehaviour
             }
             if (IAmLeaf())
             {
-                int roomWidth = (int)Random.Range(rectangle.width / 2, rectangle.width - 2);
-                int roomHeight = (int)Random.Range(rectangle.height / 2, rectangle.height - 2);
+                int roomWidth = 0, roomHeight = 0;
+                if (randomnessLevel == RoomSizeRandomness.FullRandom)
+                {
+                    roomWidth = (int)Random.Range(rectangle.width / 2, rectangle.width - 2);
+                    roomHeight = (int)Random.Range(rectangle.height / 2, rectangle.height - 2);
+                }
+                else if (randomnessLevel == RoomSizeRandomness.BigRooms)
+                {
+                    roomWidth = (int)rectangle.width - 2;
+                    roomHeight = (int)rectangle.height - 2;
+                }
+                else if (randomnessLevel == RoomSizeRandomness.SmallRooms)
+                {
+                    roomWidth = (int)rectangle.width / 2;
+                    roomHeight = (int)rectangle.height / 2;
+                }
                 int roomX = (int)Random.Range(1, rectangle.width - roomWidth - 1);
                 int roomY = (int)Random.Range(1, rectangle.height - roomHeight - 1);
+
+                if (roomWidth < minRoomWidth || roomWidth > maxRoomWidth || roomHeight < minRoomHeight || roomHeight > maxRoomHeight)
+                {
+                    GameManager.Instance.generationFailed = true;
+                }
 
                 // room position will be absolute in the board, not relative to the sub-dungeon
                 room = new Rect(rectangle.x + roomX, rectangle.y + roomY, roomWidth, roomHeight);
@@ -286,9 +321,9 @@ public class DungeonController : MonoBehaviour
         if (subDungeon.IAmLeaf())
         {
             //split subDungeon if it's large
-            if (subDungeon.rectangle.width > maxRoomSize || subDungeon.rectangle.height > maxRoomSize || Random.Range(0.0f, 1.0f) > 0.25)
+            if (subDungeon.rectangle.width > _roomSideSize || subDungeon.rectangle.height > _roomSideSize)
             {
-                if (subDungeon.Split(minRoomSize, maxRoomSize))
+                if (subDungeon.Split(_roomSideSize))
                 {
                     SpacePartition(subDungeon.leftDungeon);
                     SpacePartition(subDungeon.rightDungeon);
@@ -609,20 +644,36 @@ public class DungeonController : MonoBehaviour
 
     void Start()
     {
+        _roomSideSize = Mathf.CeilToInt(Mathf.Sqrt(averageMinRoomTiles));
         _roomHolder = Resources.Load<GameObject>("Room");
         _corridorHolder = Resources.Load<GameObject>("Corridor");
-        SubDungeon rootSubDungeon = new SubDungeon(new Rect(0, 0, boardRows, boardColumns));
-        _tilesPosition = new GameObject[boardRows, boardColumns];
         dungeonRoomFloors = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomFloors);
         dungeonWallDecos = RandomTools.Instance.CreateWeightedObjectsArray(dungeonWallDecos);
 
-        SpacePartition(rootSubDungeon);
-        rootSubDungeon.CreateRoom();
-        DrawRoomWalls(rootSubDungeon);
-        SpawnPlayer();
-        DefineRooms();
-        DrawCorridors(rootSubDungeon);
-        GenerateGateways();
-        DecorateBigWalls();
+        do
+        {
+            GameManager.Instance.generationFailed = false;
+            SubDungeon rootSubDungeon = new SubDungeon(new Rect(0, 0, boardRows, boardColumns));
+            _tilesPosition = new GameObject[boardRows, boardColumns];
+            SpacePartition(rootSubDungeon);
+            rootSubDungeon.CreateRoom(minRoomWidth, minRoomHeight, maxRoomWidth, maxRoomHeight, roomSizeRandomness);
+            if (GameManager.Instance.generationFailed == false)
+            {
+                DrawRoomWalls(rootSubDungeon);
+                SpawnPlayer();
+                DefineRooms();
+                DrawCorridors(rootSubDungeon);
+                GenerateGateways();
+                DecorateBigWalls();
+                GameManager.Instance.ManageLoadingScreen(false);
+            }
+            
+            else
+            {
+                Debug.Log("Generation Failed");
+            }
+            
+
+        } while (GameManager.Instance.generationFailed);
     }
 }

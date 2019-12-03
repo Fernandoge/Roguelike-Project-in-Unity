@@ -6,7 +6,7 @@ public class PlayerMovement : MovingObject
 {
     protected override void Start()
     {
-        GameData.Instance.player = this;
+        GameManager.Instance.player = this;
         base.Start();
     }
 

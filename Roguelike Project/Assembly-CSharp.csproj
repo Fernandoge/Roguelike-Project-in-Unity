@@ -115,7 +115,7 @@
     <Compile Include="Assets\Scripts\Player\RotateToCursor.cs" />
     <Compile Include="Assets\Scripts\System\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\System\FollowObject.cs" />
-    <Compile Include="Assets\Scripts\System\GameData.cs" />
+    <Compile Include="Assets\Scripts\System\GameManager.cs" />
     <Compile Include="Assets\Scripts\System\MovingObject.cs" />
     <Compile Include="Assets\Scripts\System\ReloadScene.cs" />
     <Compile Include="Assets\Scripts\System\ShowFPS.cs" />

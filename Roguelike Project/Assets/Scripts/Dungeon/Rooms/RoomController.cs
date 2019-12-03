@@ -7,7 +7,7 @@ public class RoomController : MonoBehaviour
 {
     public int id;
     public Rect roomRectangle;
-    public Rect roomFloorsRectangle;
+    private Rect _roomFloorsRectangle;
     public bool isCompleted;
     protected GameObject[,] tiles;
     protected DungeonController clsDungeonController;
@@ -32,7 +32,7 @@ public class RoomController : MonoBehaviour
         this.tiles = tiles;
         this.id = id;
         this.roomRectangle = roomRectangle;
-        this.roomFloorsRectangle = roomFloorsRectangle;
+        _roomFloorsRectangle = roomFloorsRectangle;
     }
 
     public virtual void DrawRoomInteriors()
@@ -60,8 +60,8 @@ public class RoomController : MonoBehaviour
         List<RandomTools.SizeWeightedObject> newList = new List<RandomTools.SizeWeightedObject>(interiors);
         foreach (RandomTools.SizeWeightedObject obj in interiors)
         {
-            if (roomFloorsRectangle.width < obj.minRoomFloorsWidth || roomFloorsRectangle.height < obj.minRoomFloorsHeight ||
-                roomFloorsRectangle.width > obj.maxRoomFloorsWidth || roomFloorsRectangle.height > obj.maxRoomFloorsHeight)
+            if (_roomFloorsRectangle.width < obj.minRoomFloorsWidth || _roomFloorsRectangle.height < obj.minRoomFloorsHeight ||
+                _roomFloorsRectangle.width > obj.maxRoomFloorsWidth || _roomFloorsRectangle.height > obj.maxRoomFloorsHeight)
             {
                 newList.Remove(obj);
             } 
@@ -91,7 +91,7 @@ public class RoomController : MonoBehaviour
 
     private bool CheckInteriorTile(int x, int y)
     {
-        if (x <= roomFloorsRectangle.xMin || y <= roomFloorsRectangle.yMin || x > roomFloorsRectangle.xMax || y > roomFloorsRectangle.yMax || tiles[x, y] != null)
+        if (x <= _roomFloorsRectangle.xMin || y <= _roomFloorsRectangle.yMin || x > _roomFloorsRectangle.xMax || y > _roomFloorsRectangle.yMax || tiles[x, y] != null)
         {
             return false;
         }

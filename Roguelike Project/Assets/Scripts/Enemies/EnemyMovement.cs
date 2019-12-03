@@ -12,7 +12,6 @@ public class EnemyMovement : MovingObject
 
     protected override void Start()
     {
-        GameData.Instance.enemies.Add(this);
         target = GameObject.FindGameObjectWithTag("Player").transform;
         base.Start();
     }

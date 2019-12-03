@@ -108,8 +108,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardRows: 200
   boardColumns: 200
-  minRoomSize: 15
-  maxRoomSize: 15
+  averageMinRoomTiles: 900
+  roomSizeRandomness: 2
+  minRoomWidth: 4
+  minRoomHeight: 7
+  maxRoomWidth: 80
+  maxRoomHeight: 80
   dungeonRoomFloors:
   - item: {fileID: 170492, guid: 28001a04ae420419387a894c9d751a06, type: 3}
     probability: 50
