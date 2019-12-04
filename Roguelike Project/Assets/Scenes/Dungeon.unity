@@ -447,7 +447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &871020927
 RectTransform:
   m_ObjectHideFlags: 0
@@ -790,7 +790,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   loadingScreen: {fileID: 871020926}
-  enemies: []
 --- !u!1 &1815244629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,66 +1045,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: boardRows
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: boardColumns
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: minRoomSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: maxRoomSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: minRoomWidth
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: minRoomHeight
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: maxRoomWidth
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: maxRoomHeight
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: averageRoomTiles
-      value: 900
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: randomnessLevel
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: averageMinRoomTiles
-      value: 900
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: roomSizeRandomness
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c178e7d8eb75fb045aa79858a2364b69, type: 3}

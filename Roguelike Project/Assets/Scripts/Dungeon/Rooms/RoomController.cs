@@ -13,16 +13,20 @@ public class RoomController : MonoBehaviour
     protected DungeonController clsDungeonController;
     protected List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
     protected GameObject[] roomGateways;
+    protected Transform roomGatewaysHolder;
     protected Transform roomInteriorsHolder;
-    protected Transform roomFloorHolder; 
+    protected Transform roomFloorsHolder;
+    protected Transform roomTreasureHolder;
     protected DungeonController.DungeonEnemy[] roomEnemies;
     public int enemiesAlive;
 
     #region Dungeon Generation Methods
     private void Awake()
     {
-        roomFloorHolder = transform.GetChild(1);
+        roomGatewaysHolder = transform.GetChild(0);
+        roomFloorsHolder = transform.GetChild(1);
         roomInteriorsHolder = transform.GetChild(3);
+        roomTreasureHolder = transform.GetChild(4);
     }
 
     public void Initialize(DungeonController dungeonController, GameObject[,] tiles, DungeonController.DungeonEnemy[] enemies, int id, Rect roomRectangle, Rect roomFloorsRectangle)
@@ -44,11 +48,11 @@ public class RoomController : MonoBehaviour
             {
                 if (tiles[i, j] == null)
                 {
-                    tiles[i, j] = Instantiate(RandomTools.Instance.PickOne(clsDungeonController.dungeonRoomFloors), new Vector3(i, j, 0f), Quaternion.identity, roomFloorHolder);
+                    tiles[i, j] = Instantiate(RandomTools.Instance.PickOne(clsDungeonController.dungeonRoomFloors), new Vector3(i, j, 0f), Quaternion.identity, roomFloorsHolder);
                 }
                 else if (tiles[i, j].gameObject.layer == LayerMask.NameToLayer("NoFloorTile"))
                 {
-                    Instantiate(RandomTools.Instance.PickOne(clsDungeonController.dungeonRoomFloors), new Vector3(i, j, 0f), Quaternion.identity, roomFloorHolder);
+                    Instantiate(RandomTools.Instance.PickOne(clsDungeonController.dungeonRoomFloors), new Vector3(i, j, 0f), Quaternion.identity, roomFloorsHolder);
                 }   
             }
         }

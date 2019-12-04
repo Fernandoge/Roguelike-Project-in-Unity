@@ -6,7 +6,9 @@ public class TreasureRoom : RoomController
 {
     public override void DrawRoomInteriors()
     {
-        Debug.Log("Drawing Treasure Room Interior");
+        Vector3 treasurePosition = clsDungeonController.treasure.transform.position + new Vector3(Mathf.Floor(roomRectangle.center.x), Mathf.Floor(roomRectangle.center.y));
+        Instantiate(clsDungeonController.treasure, treasurePosition, Quaternion.identity, roomTreasureHolder);
+        base.DrawRoomInteriors();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

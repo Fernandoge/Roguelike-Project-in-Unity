@@ -11,6 +11,9 @@ public class DungeonController : MonoBehaviour
     public RoomSizeRandomness roomSizeRandomness;
     public int minRoomWidth, minRoomHeight;
     public int maxRoomWidth, maxRoomHeight;
+    [Header("Values")]
+    public float corridorSpeed;
+    public int treasureRoomQuantity;
     [Header("Assets")]
     public RandomTools.WeightedObject[] dungeonRoomFloors; 
     public RandomTools.WeightedObject[] dungeonWallDecos;
@@ -19,7 +22,6 @@ public class DungeonController : MonoBehaviour
     private Walls dungeonWalls = default;
     public Sprite playerSpriteInCorridor;
     public GameObject dungeonCorridorFloor;
-    public GameObject dungeonGateway;
     [Header("Elements")]
     [SerializeField]
     private Transform _dungeonRoomsParent;
@@ -28,8 +30,8 @@ public class DungeonController : MonoBehaviour
     public Camera dungeonCamera;
     public GameObject player;
     public DungeonEnemy[] enemies;
-    [Header("Values")]
-    public float corridorSpeed;
+    public GameObject dungeonGateway;
+    public GameObject treasure;
     [Header("Gameplay Info")]
     public int currentRoom;
     public int roomsCompleted;
@@ -403,14 +405,26 @@ public class DungeonController : MonoBehaviour
 
     public void DefineRooms()
     {
+        HashSet<int> treasureRooms = new HashSet<int>();
+        while (treasureRoomQuantity > 0)
+        {
+            int randomRoomID = Random.Range(2, _dungeonRooms.Count);
+            if (!treasureRooms.Contains(randomRoomID))
+            {
+                treasureRooms.Add(randomRoomID);
+                treasureRoomQuantity--;
+            }
+        }
         RoomController roomComponent = null;
         foreach (DungeonRoom dungeonRoom in _dungeonRooms)
         {
-            //TODO: configurable room chance
-            //int roomChance = Random.Range(1, 4);
-            int roomChance = 1;
+            int roomType;
+            if (treasureRooms.Contains(dungeonRoom.id))
+                roomType = 2;
+            else
+                roomType = 1;
 
-            switch (roomChance)
+            switch (roomType)
             {
                 //enemy room
                 case 1:

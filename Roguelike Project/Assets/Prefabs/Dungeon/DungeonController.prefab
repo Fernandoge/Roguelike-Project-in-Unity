@@ -114,6 +114,8 @@ MonoBehaviour:
   minRoomHeight: 7
   maxRoomWidth: 80
   maxRoomHeight: 80
+  corridorSpeed: 15
+  treasureRoomQuantity: 2
   dungeonRoomFloors:
   - item: {fileID: 170492, guid: 28001a04ae420419387a894c9d751a06, type: 3}
     probability: 50
@@ -176,7 +178,6 @@ MonoBehaviour:
   playerSpriteInCorridor: {fileID: 21300000, guid: d6719bfb5c5cdf34d938a8c772d4ac7d,
     type: 3}
   dungeonCorridorFloor: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
-  dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
   _dungeonRoomsParent: {fileID: 1403184905427494535}
   _dungeonCorridorsParent: {fileID: 1403184904892740545}
   dungeonCamera: {fileID: 8610930163838314838}
@@ -185,7 +186,9 @@ MonoBehaviour:
   - enemyType: {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
       type: 3}
     quantity: 3
-  corridorSpeed: 15
+  dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
+  treasure: {fileID: 4528958197017009291, guid: 6bd4d51cc4c2b974d846e15706945e95,
+    type: 3}
   currentRoom: 0
   roomsCompleted: 0
 --- !u!1 &8950835656357922183
