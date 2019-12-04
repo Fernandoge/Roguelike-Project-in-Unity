@@ -11,15 +11,13 @@ public class TreasureRoom : RoomController
         base.DrawRoomInteriors();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public override void ActivateRoom()
     {
-        if (collision.tag == "Player")
+        if (!isCompleted)
         {
-            clsDungeonController.currentRoom = id;
-            if (!isCompleted)
-            {
-                //spawn treasure
-            }
+            ActivateGateways();
         }
+        base.ActivateRoom();
     }
+
 }

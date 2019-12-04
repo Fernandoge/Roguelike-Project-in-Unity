@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class BossRoom : RoomController
 {
+    public GameObject firstBossFloor;
+    public GameObject secondBossFloor;
+    public GameObject roomClosedWall;
+
+    public void Initialize(DungeonController dungeonController, GameObject[,] tiles, DungeonController.DungeonEnemy[] enemies, int id)
+    {
+        clsDungeonController = dungeonController;
+        roomEnemies = enemies;
+        this.tiles = tiles;
+        this.id = id;
+    }
+
     public override void DrawRoomInteriors()
     {
         Debug.Log("Drawing Boss Room Interior");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public override void ActivateRoom()
     {
-        if (collision.tag == "Player")
-        {
-            clsDungeonController.currentRoom = id;
-            if (!isCompleted)
-            {
-                ActivateGateways();
-                //spawn boss
-            }
-        }
+        base.ActivateRoom();
+        roomClosedWall.SetActive(true);
     }
 }

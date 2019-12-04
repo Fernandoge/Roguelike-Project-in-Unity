@@ -18,27 +18,25 @@ public class EnemyMovement : MovingObject
 
     private void Update()
     {
-        AttemptMove();
+        if (canMove)
+            AttemptMove();
     }
 
     protected override void Movement()
     {
-        if (canMove)
+        int xDir = 0;
+        int yDir = 0;
+
+        if (Mathf.Abs(target.position.x - transform.position.x) < float.Epsilon)
         {
-            int xDir = 0;
-            int yDir = 0;
-
-            if (Mathf.Abs(target.position.x - transform.position.x) < float.Epsilon)
-            {
-                yDir = target.position.y > transform.position.y ? 1 : -1;
-            }
-            else
-            {
-                xDir = target.position.x > transform.position.x ? 1 : -1;
-            }
-
-            Move(xDir, yDir);
+            yDir = target.position.y > transform.position.y ? 1 : -1;
         }
+        else
+        {
+            xDir = target.position.x > transform.position.x ? 1 : -1;
+        }
+
+        Move(xDir, yDir);
     }
 
     void OldMovement()

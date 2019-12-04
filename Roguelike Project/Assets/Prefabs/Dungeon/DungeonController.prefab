@@ -189,6 +189,7 @@ MonoBehaviour:
   dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
   treasure: {fileID: 4528958197017009291, guid: 6bd4d51cc4c2b974d846e15706945e95,
     type: 3}
+  bossRoom: {fileID: 170492, guid: d1d8985b3b9cf414fbdb952e7182d600, type: 3}
   currentRoom: 0
   roomsCompleted: 0
 --- !u!1 &8950835656357922183

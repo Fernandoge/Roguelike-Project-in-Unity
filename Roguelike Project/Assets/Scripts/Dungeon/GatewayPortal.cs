@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class GatewayPortal : MonoBehaviour
 {
+    public GameObject targetFloor;
+
     private Transform _player;
     private PlayerMovement _clsPlayerMovement;
     private PlayerSpriteManager _clsPlayerSpriteManager;
     private DungeonController _clsDungeonController;
-    private float _speed;
-    private float distanceBetweenNextFloor;
-    private GameObject targetFloor;
-    [System.NonSerialized]
-    private int _firstDirection;
-    private int currentDirection;
-    public int currentTotalNeighbours;
+    private GameObject _firstBossFloor;
+    private GameObject _secondBossFloor;
     private GameObject gatewayReached;
-    private bool destinyReached;
-    private bool choosingDirection;
-    private bool _directionSelectorChanged;
-    public GameObject[] availableNeighbours;
+    private GameObject[] _availableNeighbours;
     private GameObject[,] _tiles;
+    private float _speed;
+    private float _distanceBetweenNextFloor;
+    private bool _isBossGateway;
+    private int _firstDirection;
+    private int _currentDirection;
+    private int _currentTotalNeighbours;
+    private bool _destinyReached;
+    private bool _choosingDirection;
+    private bool _directionSelectorChanged;
+    
 
     public void Initialize(DungeonController dungeonController, int firstDirection, float speed, GameObject[,] tiles, Transform player, PlayerMovement playerMovement, PlayerSpriteManager playerSpriteManager)
     {
@@ -33,6 +37,13 @@ public class GatewayPortal : MonoBehaviour
         _player = player;
     }
 
+    public void SetBossRoom(GameObject firstBossFloor, GameObject secondBossFloor)
+    {
+        _firstBossFloor = firstBossFloor;
+        _secondBossFloor = secondBossFloor;
+        _isBossGateway = true;
+    }
+
     private void SetTargetFloor(GameObject targetFloor)
     {
         this.targetFloor = targetFloor;
@@ -40,52 +51,69 @@ public class GatewayPortal : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!choosingDirection)
+        if (!_choosingDirection)
         {
-            distanceBetweenNextFloor = Vector2.Distance(_player.position, targetFloor.transform.position);
+            _distanceBetweenNextFloor = Vector2.Distance(_player.position, targetFloor.transform.position);
             Vector2 newPosition = Vector2.MoveTowards(_player.position, targetFloor.transform.position, _speed * Time.deltaTime);
             _clsPlayerMovement.objRigidbody.MovePosition(newPosition);
-            if (distanceBetweenNextFloor == 0f)
+            if (_distanceBetweenNextFloor == 0f)
             {
-                if (destinyReached)
+                if (_destinyReached)
                 {
                     enabled = false;
                     ManagePlayerStatus(true);
-                    EnemiesRoom enemyRoomComponent = gatewayReached.transform.parent.parent.GetComponent<EnemiesRoom>();
-                    enemyRoomComponent.ActivateRoom();
+                    RoomController RoomComponent;
+                    if (!_isBossGateway)
+                    {
+                        RoomComponent = gatewayReached.transform.parent.parent.GetComponent<RoomController>();
+                    }
+                    else 
+                    {
+                        RoomComponent = gameObject.GetComponent<BossRoom>();
+                    }
+                    RoomComponent.ActivateRoom();
                 }
-                if (targetFloor.tag == "Gateway" && (targetFloor != gameObject || currentDirection != _firstDirection))
+                if (targetFloor.tag == "Gateway" && (targetFloor != gameObject || _currentDirection != _firstDirection))
                 {
-                    destinyReached = true;
+                    _destinyReached = true;
                     gatewayReached = targetFloor;
                 }
-                CheckNeighbours((int)targetFloor.transform.position.x, (int)targetFloor.transform.position.y, currentDirection);
+                if (!_isBossGateway)
+                {
+                    CheckNeighbours((int)targetFloor.transform.position.x, (int)targetFloor.transform.position.y, _currentDirection);
+                }
+                else
+                {
+                    if (targetFloor == gameObject)
+                        SetTargetFloor(_firstBossFloor);
+                    else
+                        SetTargetFloor(_secondBossFloor);
+                }
             }
         }
-
     }
 
     private void Update()
     {
-        if (choosingDirection)
+        if (_choosingDirection)
         {
             if (_directionSelectorChanged)
             {
-                if (SimpleInput.GetAxisRaw("Vertical") < -0.5f && availableNeighbours[0] != null)
+                if (SimpleInput.GetAxisRaw("Vertical") < -0.5f && _availableNeighbours[0] != null)
                     SelectDirection(0);
-                if (SimpleInput.GetAxisRaw("Horizontal") > 0.5f && availableNeighbours[1] != null)
+                if (SimpleInput.GetAxisRaw("Horizontal") > 0.5f && _availableNeighbours[1] != null)
                     SelectDirection(1);
-                if (SimpleInput.GetAxisRaw("Vertical") > 0.5f && availableNeighbours[2] != null)
+                if (SimpleInput.GetAxisRaw("Vertical") > 0.5f && _availableNeighbours[2] != null)
                     SelectDirection(2);
-                if (SimpleInput.GetAxisRaw("Horizontal") < -0.5f && availableNeighbours[3] != null)
+                if (SimpleInput.GetAxisRaw("Horizontal") < -0.5f && _availableNeighbours[3] != null)
                     SelectDirection(3);
             }
             //this occurs when the directionSelector combination is repeated, so the player don't have to insert inputs per each tile that are adjacents
             else
             {
-                choosingDirection = false;
+                _choosingDirection = false;
                 _clsPlayerSpriteManager.directionSelector.SetActive(false);
-                SetTargetFloor(availableNeighbours[currentDirection]);
+                SetTargetFloor(_availableNeighbours[_currentDirection]);
             }
         }
     }
@@ -93,11 +121,11 @@ public class GatewayPortal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && _clsPlayerMovement.canMove)
-        {
-            currentDirection = _firstDirection;
+        { 
             SetTargetFloor(gameObject);
-            destinyReached = false;
-            choosingDirection = false;
+            _currentDirection = _firstDirection;
+            _destinyReached = false;
+            _choosingDirection = false;
             ResetDirectionSelector();
             enabled = true;
             ManagePlayerStatus(false);
@@ -106,8 +134,8 @@ public class GatewayPortal : MonoBehaviour
 
     private void CheckNeighbours(int x, int y, int direction)
     {
-        currentTotalNeighbours = 0;
-        availableNeighbours = new GameObject[4];
+        _currentTotalNeighbours = 0;
+        _availableNeighbours = new GameObject[4];
 
         if (_tiles[x, y - 1] != null && _tiles[x, y - 1].layer != LayerMask.NameToLayer("Obstacle") && direction != 2)
             AddNeighbour(0, x, y - 1);
@@ -119,18 +147,18 @@ public class GatewayPortal : MonoBehaviour
             AddNeighbour(3, x - 1, y);
 
         //in case the path is only one
-        if (currentTotalNeighbours < 2)
+        if (_currentTotalNeighbours < 2)
         {
             LoopSides(true);
             _directionSelectorChanged = true;
         }    
         //in case you have more than one path but the other paths are gateways
-        else if (currentTotalNeighbours >= 2 && targetFloor == gameObject)
+        else if (_currentTotalNeighbours >= 2 && targetFloor == gameObject)
             LoopSides(false);
         //in case you have more than one path
         else
         {
-            if (!destinyReached)
+            if (!_destinyReached)
                 DirectionSelector();
             else
                 //for the extra step to the room when you reach a gateway
@@ -143,19 +171,19 @@ public class GatewayPortal : MonoBehaviour
         _clsPlayerSpriteManager.directionSelector.SetActive(true);
         for (int i = 0; i < 4; i++)
         {
-            if (availableNeighbours[i] != null && !_clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.activeSelf)
+            if (_availableNeighbours[i] != null && !_clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.activeSelf)
             {
                 _clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(true);
                 _directionSelectorChanged = true;
             }
-            else if(availableNeighbours[i] == null && _clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.activeSelf)
+            else if(_availableNeighbours[i] == null && _clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.activeSelf)
             {
                 _clsPlayerSpriteManager.directionSelector.transform.GetChild(i).gameObject.SetActive(false);
                 _directionSelectorChanged = true;
             }
                 
         }
-        choosingDirection = true;
+        _choosingDirection = true;
     }
 
     private void ResetDirectionSelector()
@@ -168,27 +196,27 @@ public class GatewayPortal : MonoBehaviour
 
     private void SelectDirection(int direction)
     {
-        currentDirection = direction;
-        SetTargetFloor(availableNeighbours[direction]);
-        choosingDirection = false;
+        _currentDirection = direction;
+        SetTargetFloor(_availableNeighbours[direction]);
+        _choosingDirection = false;
         _clsPlayerSpriteManager.directionSelector.SetActive(false);
         _directionSelectorChanged = false;
     }
 
     private void AddNeighbour(int direction, int x, int y)
     {
-        currentTotalNeighbours++;
-        availableNeighbours[direction] = _tiles[x, y];
+        _currentTotalNeighbours++;
+        _availableNeighbours[direction] = _tiles[x, y];
     }
 
     private void LoopSides(bool ignoreGatewayCheck)
     {
         for (int i = 0; i < 4; i++)
         {
-            if (availableNeighbours[i] != null && (ignoreGatewayCheck || availableNeighbours[i].CompareTag("Gateway") == false))
+            if (_availableNeighbours[i] != null && (ignoreGatewayCheck || _availableNeighbours[i].CompareTag("Gateway") == false))
             {
-                currentDirection = i;
-                SetTargetFloor(availableNeighbours[i]);
+                _currentDirection = i;
+                SetTargetFloor(_availableNeighbours[i]);
             }
         }
     }
@@ -208,7 +236,6 @@ public class GatewayPortal : MonoBehaviour
             _clsPlayerSpriteManager.sprRender.sprite = _clsDungeonController.playerSpriteInCorridor;
         }
         else
-            _clsPlayerSpriteManager.UpdateSpriteDirection(currentDirection);
+            _clsPlayerSpriteManager.UpdateSpriteDirection(_currentDirection);
     }
-
 }

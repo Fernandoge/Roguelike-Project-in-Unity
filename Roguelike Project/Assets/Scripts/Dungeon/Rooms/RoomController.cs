@@ -101,10 +101,24 @@ public class RoomController : MonoBehaviour
         }
         return true;
     }
+    
+    public Vector3 DestroyRandomRightWall()
+    {
+        Vector3 rightWallPosition = new Vector3(roomRectangle.xMax - 1, (int)Random.Range(roomRectangle.yMin + ((roomRectangle.yMax - roomRectangle.yMin) / 2), roomRectangle.yMax - 3));
+        Destroy(tiles[(int)rightWallPosition.x, (int)rightWallPosition.y]);
+        return rightWallPosition;
+    }
+
 
     #endregion Dungeon Generation Methods
 
     #region Gameplay Methods
+
+    public virtual void ActivateRoom()
+    {
+        clsDungeonController.currentRoom = id;
+
+    }
 
     protected void ActivateGateways()
     {

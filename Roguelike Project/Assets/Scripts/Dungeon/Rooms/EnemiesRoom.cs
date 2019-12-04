@@ -29,9 +29,9 @@ public class EnemiesRoom : RoomController
         base.DrawRoomInteriors();
     }
 
-    public void ActivateRoom()
+    public override void ActivateRoom()
     {
-        clsDungeonController.currentRoom = id;
+        base.ActivateRoom();
         if (!isCompleted)
         {
             ActivateGateways();

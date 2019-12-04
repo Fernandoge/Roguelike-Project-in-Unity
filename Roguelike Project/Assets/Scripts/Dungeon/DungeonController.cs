@@ -23,15 +23,17 @@ public class DungeonController : MonoBehaviour
     public Sprite playerSpriteInCorridor;
     public GameObject dungeonCorridorFloor;
     [Header("Elements")]
+    public GameObject player;
+    public DungeonEnemy[] enemies;
+    public GameObject dungeonGateway;
+    public GameObject treasure;
+    public GameObject bossRoom;
+    [Header ("Controller References")]
     [SerializeField]
     private Transform _dungeonRoomsParent;
     [SerializeField]
     private Transform _dungeonCorridorsParent;
     public Camera dungeonCamera;
-    public GameObject player;
-    public DungeonEnemy[] enemies;
-    public GameObject dungeonGateway;
-    public GameObject treasure;
     [Header("Gameplay Info")]
     public int currentRoom;
     public int roomsCompleted;
@@ -408,7 +410,7 @@ public class DungeonController : MonoBehaviour
         HashSet<int> treasureRooms = new HashSet<int>();
         while (treasureRoomQuantity > 0)
         {
-            int randomRoomID = Random.Range(2, _dungeonRooms.Count);
+            int randomRoomID = Random.Range(2, _dungeonRooms.Count + 1);
             if (!treasureRooms.Contains(randomRoomID))
             {
                 treasureRooms.Add(randomRoomID);
@@ -418,27 +420,10 @@ public class DungeonController : MonoBehaviour
         RoomController roomComponent = null;
         foreach (DungeonRoom dungeonRoom in _dungeonRooms)
         {
-            int roomType;
             if (treasureRooms.Contains(dungeonRoom.id))
-                roomType = 2;
+                roomComponent = dungeonRoom.room.AddComponent(typeof(TreasureRoom)) as TreasureRoom;
             else
-                roomType = 1;
-
-            switch (roomType)
-            {
-                //enemy room
-                case 1:
-                    roomComponent = dungeonRoom.room.AddComponent(typeof(EnemiesRoom)) as EnemiesRoom;
-                    break;
-                //treasure room
-                case 2:
-                    roomComponent = dungeonRoom.room.AddComponent(typeof(TreasureRoom)) as TreasureRoom;
-                    break;
-                //boss room
-                case 3:
-                    roomComponent = dungeonRoom.room.AddComponent(typeof(BossRoom)) as BossRoom;
-                    break;
-            }
+                roomComponent = dungeonRoom.room.AddComponent(typeof(EnemiesRoom)) as EnemiesRoom;
 
             Rect roomFloorsRectangle = new Rect(dungeonRoom.roomRectangle.position, new Vector2(dungeonRoom.roomRectangle.width - 2f, dungeonRoom.roomRectangle.height - 4f));
             roomComponent.Initialize(this, _tilesPosition, enemies, dungeonRoom.id, dungeonRoom.roomRectangle, roomFloorsRectangle);
@@ -448,6 +433,17 @@ public class DungeonController : MonoBehaviour
             {
                 roomComponent.isCompleted = true;
                 roomComponent.SpawnObject(_clsPlayerMovement.gameObject, true);
+            }
+            //Set boss room in the last dungeon room
+            else if (dungeonRoom.id == _dungeonRooms.Count)
+            {
+                GameObject bossRoomInstance = Instantiate(bossRoom, roomComponent.DestroyRandomRightWall(), Quaternion.identity, _dungeonRoomsParent);
+                BossRoom bossRoomComponent = bossRoomInstance.GetComponent<BossRoom>();
+                GatewayPortal bossRoomGateway = bossRoomInstance.GetComponent<GatewayPortal>();
+
+                bossRoomGateway.Initialize(this, 0, corridorSpeed, _tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
+                bossRoomGateway.SetBossRoom(bossRoomComponent.firstBossFloor, bossRoomComponent.secondBossFloor);
+                bossRoomComponent.Initialize(this, _tilesPosition, enemies, dungeonRoom.id + 1);
             }
         }
     }
