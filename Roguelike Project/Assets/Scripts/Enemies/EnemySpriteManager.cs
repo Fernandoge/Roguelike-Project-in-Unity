@@ -18,6 +18,7 @@ public class EnemySpriteManager : SpriteManager
 
     public void Death()
     {
+        _clsEnemyMovement.enabled = false;
         animator.enabled = false;
         sprRender.sprite = spDeath;
     }

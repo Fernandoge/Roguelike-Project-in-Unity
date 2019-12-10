@@ -15,7 +15,8 @@ public class TreasureRoom : RoomController
     {
         if (!isCompleted)
         {
-            ActivateGateways();
+            SpawnObject(roomEnemies[0].enemyType, isEnemy: true);
+            DisableGateways();
         }
         base.ActivateRoom();
     }

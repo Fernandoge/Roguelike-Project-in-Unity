@@ -34,10 +34,10 @@ public class EnemiesRoom : RoomController
         base.ActivateRoom();
         if (!isCompleted)
         {
-            ActivateGateways();
-            SpawnObject(roomEnemies[0].enemyType);
-            SpawnObject(roomEnemies[0].enemyType);
-            SpawnObject(roomEnemies[0].enemyType);
+            DisableGateways();
+            SpawnObject(roomEnemies[0].enemyType, isEnemy: true);
+            SpawnObject(roomEnemies[0].enemyType, isEnemy: true);
+            SpawnObject(roomEnemies[0].enemyType, isEnemy: true);
         }
     }
 }

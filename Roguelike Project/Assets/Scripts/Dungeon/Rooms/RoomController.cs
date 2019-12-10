@@ -12,13 +12,14 @@ public class RoomController : MonoBehaviour
     protected GameObject[,] tiles;
     protected DungeonController clsDungeonController;
     protected List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
-    protected GameObject[] roomGateways;
+    protected GatewayPortal[] roomGateways;
     protected Transform roomGatewaysHolder;
     protected Transform roomInteriorsHolder;
     protected Transform roomFloorsHolder;
     protected Transform roomTreasureHolder;
     protected DungeonController.DungeonEnemy[] roomEnemies;
-    public int enemiesAlive;
+    public List<GameObject> enemiesAlive = new List<GameObject>();
+    public int enemiesAliveCount;
 
     #region Dungeon Generation Methods
     private void Awake()
@@ -116,29 +117,21 @@ public class RoomController : MonoBehaviour
 
     public virtual void ActivateRoom()
     {
-        clsDungeonController.currentRoom = id;
-
+        clsDungeonController.currentRoom = this;
     }
 
-    protected void ActivateGateways()
+    protected void DisableGateways()
     {
-        Debug.Log("Activate gateways is disabled");
-        /*
-        roomGateways = new GameObject[roomGatewaysHolder.childCount];
+        roomGateways = roomGatewaysHolder.GetComponentsInChildren<GatewayPortal>();
 
-        for (int i = 0; i < roomGatewaysHolder.childCount; i++)
+        foreach (GatewayPortal gateway in roomGateways)
         {
-            roomGateways[i] = roomGatewaysHolder.GetChild(i).gameObject;
+            gateway.spriteRender.sprite = gateway.disabledSprite;
+            gateway.gameObject.layer = LayerMask.NameToLayer("Obstacle");
         }
-
-        foreach (GameObject gateway in roomGateways)
-        {
-            gateway.SetActive(true);
-        }
-        */
     }
 
-    public void SpawnObject(GameObject obj, bool isPlayer = false)
+    public void SpawnObject(GameObject obj, bool isPlayer = false, bool isEnemy = false)
     {
         bool objectSpawned = false;
         while (!objectSpawned)
@@ -154,6 +147,11 @@ public class RoomController : MonoBehaviour
                 else
                     obj.transform.position = new Vector3(x, y);
 
+                if (isEnemy)
+                {
+                    enemiesAlive.Add(obj);
+                    enemiesAliveCount++;
+                }
                 objectSpawned = true;
             }
         }
@@ -170,22 +168,34 @@ public class RoomController : MonoBehaviour
         */
     }
 
-    public void EnemyKilled()
+    public void KillAllEnemies()
     {
-        enemiesAlive--;
-        if (enemiesAlive == 0)
+        foreach (GameObject enemy in enemiesAlive.ToList())
         {
-            isCompleted = true;
+            EnemySpriteManager enemySpriteManager = enemy.GetComponent<EnemySpriteManager>();
+            enemySpriteManager.Death();
+            EnemyKilled(enemy);
+        }
+    }
+
+    public void EnemyKilled(GameObject enemy)
+    {
+        enemiesAlive.Remove(enemy);
+        enemiesAliveCount--;
+        if (enemiesAliveCount == 0)
+        {
             CompleteRoom();
         }
     }
 
-    protected void CompleteRoom()
+    public virtual void CompleteRoom()
     {
+        isCompleted = true;
         clsDungeonController.roomsCompleted++;
-        foreach (GameObject gateway in roomGateways)
+        foreach (GatewayPortal gateway in roomGateways)
         {
-            Destroy(gateway);
+            gateway.spriteRender.sprite = gateway.activeSprite;
+            gateway.gameObject.layer = 0;
         }
     }
 

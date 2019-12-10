@@ -1,17 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class ReloadScene : MonoBehaviour
+public class DebugController : MonoBehaviour
 {
-    private Button button;
+    public static DebugController Instance = null;
 
-    private void Start()
+    private void Awake()
     {
-        button = gameObject.GetComponent<Button>();
-        button.onClick.AddListener(ReloadCurrentScene);
+        if (Instance == null)
+            Instance = this;
     }
 
     public void ReloadCurrentScene()
@@ -19,5 +18,9 @@ public class ReloadScene : MonoBehaviour
         GameManager.Instance.ManageLoadingScreen(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    
+
+    public void KillRoomEnemies()
+    {
+        GameManager.Instance.currentDungeon.currentRoom.KillAllEnemies();
+    }
 }

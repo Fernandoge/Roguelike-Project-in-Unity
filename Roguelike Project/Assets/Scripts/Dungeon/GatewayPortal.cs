@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GatewayPortal : MonoBehaviour
 {
-    public GameObject targetFloor;
+    public SpriteRenderer spriteRender;
+    public Sprite activeSprite;
+    public Sprite disabledSprite;
 
+    private GameObject _targetFloor;
     private Transform _player;
     private PlayerMovement _clsPlayerMovement;
     private PlayerSpriteManager _clsPlayerSpriteManager;
@@ -46,15 +49,15 @@ public class GatewayPortal : MonoBehaviour
 
     private void SetTargetFloor(GameObject targetFloor)
     {
-        this.targetFloor = targetFloor;
+        this._targetFloor = targetFloor;
     }
 
     private void FixedUpdate()
     {
         if (!_choosingDirection)
         {
-            _distanceBetweenNextFloor = Vector2.Distance(_player.position, targetFloor.transform.position);
-            Vector2 newPosition = Vector2.MoveTowards(_player.position, targetFloor.transform.position, _speed * Time.deltaTime);
+            _distanceBetweenNextFloor = Vector2.Distance(_player.position, _targetFloor.transform.position);
+            Vector2 newPosition = Vector2.MoveTowards(_player.position, _targetFloor.transform.position, _speed * Time.deltaTime);
             _clsPlayerMovement.objRigidbody.MovePosition(newPosition);
             if (_distanceBetweenNextFloor == 0f)
             {
@@ -73,18 +76,18 @@ public class GatewayPortal : MonoBehaviour
                     }
                     RoomComponent.ActivateRoom();
                 }
-                if (targetFloor.tag == "Gateway" && (targetFloor != gameObject || _currentDirection != _firstDirection))
+                if (_targetFloor.tag == "Gateway" && (_targetFloor != gameObject || _currentDirection != _firstDirection))
                 {
                     _destinyReached = true;
-                    gatewayReached = targetFloor;
+                    gatewayReached = _targetFloor;
                 }
                 if (!_isBossGateway)
                 {
-                    CheckNeighbours((int)targetFloor.transform.position.x, (int)targetFloor.transform.position.y, _currentDirection);
+                    CheckNeighbours((int)_targetFloor.transform.position.x, (int)_targetFloor.transform.position.y, _currentDirection);
                 }
                 else
                 {
-                    if (targetFloor == gameObject)
+                    if (_targetFloor == gameObject)
                         SetTargetFloor(_firstBossFloor);
                     else
                         SetTargetFloor(_secondBossFloor);
@@ -153,7 +156,7 @@ public class GatewayPortal : MonoBehaviour
             _directionSelectorChanged = true;
         }    
         //in case you have more than one path but the other paths are gateways
-        else if (_currentTotalNeighbours >= 2 && targetFloor == gameObject)
+        else if (_currentTotalNeighbours >= 2 && _targetFloor == gameObject)
             LoopSides(false);
         //in case you have more than one path
         else

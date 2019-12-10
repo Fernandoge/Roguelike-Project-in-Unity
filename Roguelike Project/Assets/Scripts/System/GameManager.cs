@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
 
+    public DungeonController currentDungeon;
     public PlayerMovement player;
     public GameObject loadingScreen;
     [System.NonSerialized] public bool generationFailed;

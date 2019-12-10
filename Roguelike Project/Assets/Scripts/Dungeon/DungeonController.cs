@@ -35,7 +35,7 @@ public class DungeonController : MonoBehaviour
     private Transform _dungeonCorridorsParent;
     public Camera dungeonCamera;
     [Header("Gameplay Info")]
-    public int currentRoom;
+    public RoomController currentRoom;
     public int roomsCompleted;
 
     private int _roomSideSize;
@@ -408,6 +408,7 @@ public class DungeonController : MonoBehaviour
     public void DefineRooms()
     {
         HashSet<int> treasureRooms = new HashSet<int>();
+        //Define what room ids are going to be treasure rooms
         while (treasureRoomQuantity > 0)
         {
             int randomRoomID = Random.Range(2, _dungeonRooms.Count + 1);
@@ -432,7 +433,7 @@ public class DungeonController : MonoBehaviour
             if (dungeonRoom.id == 1)
             {
                 roomComponent.isCompleted = true;
-                roomComponent.SpawnObject(_clsPlayerMovement.gameObject, true);
+                roomComponent.SpawnObject(_clsPlayerMovement.gameObject, isPlayer: true);
             }
             //Set boss room in the last dungeon room
             else if (dungeonRoom.id == _dungeonRooms.Count)
@@ -675,6 +676,7 @@ public class DungeonController : MonoBehaviour
                 DrawCorridors(rootSubDungeon);
                 GenerateGateways();
                 DecorateBigWalls();
+                GameManager.Instance.currentDungeon = this;
                 GameManager.Instance.ManageLoadingScreen(false);
             }
             
