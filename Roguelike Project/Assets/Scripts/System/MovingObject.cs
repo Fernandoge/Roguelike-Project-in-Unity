@@ -20,7 +20,7 @@ public abstract class MovingObject : MonoBehaviour
 
     protected abstract void Movement();
 
-    protected void AttemptMove()
+    public void AttemptMove()
     {
         if (moving)
             return;

@@ -21,6 +21,11 @@ public class DebugController : MonoBehaviour
 
     public void KillRoomEnemies()
     {
-        GameManager.Instance.currentDungeon.currentRoom.KillAllEnemies();
+        foreach (EnemyMovement enemy in GameManager.Instance.enemiesAlive)
+        {
+            EnemySpriteManager enemySpriteManager = enemy.gameObject.GetComponent<EnemySpriteManager>();
+            enemySpriteManager.Death();
+            GameManager.Instance.EnemyKilled(enemy);
+        }
     }
 }

@@ -18,8 +18,6 @@ public class RoomController : MonoBehaviour
     protected Transform roomFloorsHolder;
     protected Transform roomTreasureHolder;
     protected DungeonController.DungeonEnemy[] roomEnemies;
-    public List<GameObject> enemiesAlive = new List<GameObject>();
-    public int enemiesAliveCount;
 
     #region Dungeon Generation Methods
     private void Awake()
@@ -149,8 +147,8 @@ public class RoomController : MonoBehaviour
 
                 if (isEnemy)
                 {
-                    enemiesAlive.Add(obj);
-                    enemiesAliveCount++;
+                    GameManager.Instance.enemiesAlive.Add(obj.GetComponent<EnemyMovement>());
+                    GameManager.Instance.enemiesAliveCount++;
                 }
                 objectSpawned = true;
             }
@@ -168,23 +166,12 @@ public class RoomController : MonoBehaviour
         */
     }
 
-    public void KillAllEnemies()
+    public void SpawnEnemies()
     {
-        foreach (GameObject enemy in enemiesAlive.ToList())
+        foreach (DungeonController.DungeonEnemy enemy in roomEnemies)
         {
-            EnemySpriteManager enemySpriteManager = enemy.GetComponent<EnemySpriteManager>();
-            enemySpriteManager.Death();
-            EnemyKilled(enemy);
-        }
-    }
-
-    public void EnemyKilled(GameObject enemy)
-    {
-        enemiesAlive.Remove(enemy);
-        enemiesAliveCount--;
-        if (enemiesAliveCount == 0)
-        {
-            CompleteRoom();
+            for (int i = 0; i < enemy.quantity; i++)
+                SpawnObject(enemy.enemyType, isEnemy: true);
         }
     }
 

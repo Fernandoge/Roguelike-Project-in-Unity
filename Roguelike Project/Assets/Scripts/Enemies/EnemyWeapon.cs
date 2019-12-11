@@ -26,7 +26,7 @@ public class EnemyWeapon : MonoBehaviour
         if (fireRate > 0)
             fireRate -= Time.deltaTime;
 
-        if (clsEnemyMovement.moving && fireRate <= 0 && equippedWeapon != null)
+        if (fireRate <= 0)
             Shoot();
 
     }

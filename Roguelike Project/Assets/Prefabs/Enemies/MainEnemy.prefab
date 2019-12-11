@@ -188,7 +188,7 @@ MonoBehaviour:
   blockingLayers:
     serializedVersion: 2
     m_Bits: 328448
-  moveTime: 1
+  moveTime: 0.12
   canMove: 1
   moving: 0
   target: {fileID: 0}

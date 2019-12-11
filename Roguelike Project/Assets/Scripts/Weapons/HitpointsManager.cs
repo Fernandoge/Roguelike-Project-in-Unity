@@ -16,8 +16,10 @@ public class HitpointsManager : MonoBehaviour
             {
                 transform.parent.GetChild(1).GetComponent<EnemySpriteManager>().Death();
                 gameObject.SetActive(false);
+                /*
                 if (clsRoomController != null)
                     clsRoomController.EnemyKilled(gameObject);
+                */
             }
             else
             {

@@ -16,12 +16,6 @@ public class EnemyMovement : MovingObject
         base.Start();
     }
 
-    private void Update()
-    {
-        if (canMove)
-            AttemptMove();
-    }
-
     protected override void Movement()
     {
         int xDir = 0;
@@ -36,7 +30,10 @@ public class EnemyMovement : MovingObject
             xDir = target.position.x > transform.position.x ? 1 : -1;
         }
 
-        Move(xDir, yDir);
+        if (Vector2.Distance(transform.position, target.position) >= 2.5f)
+            Move(xDir, yDir);
+        else
+            _clsSpriteManager.CheckMovement(xDir, yDir);
     }
 
     void OldMovement()
