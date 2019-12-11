@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject loadingScreen;
     public List<EnemyMovement> enemiesAlive = new List<EnemyMovement>();
     public int enemiesAliveCount;
-    private bool _enemiesMoving;
+    public bool enemiesMoving;
 
     private void Awake()
     {
@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!_enemiesMoving)
+        if (!enemiesMoving)
             StartCoroutine(MoveEnemies());
     }
 
     private IEnumerator MoveEnemies()
     {
-        _enemiesMoving = true;
+        enemiesMoving = true;
         foreach (EnemyMovement enemy in enemiesAlive)
         {
             if (enemy.canMove)
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(0.02f);
             }
         }
-        _enemiesMoving = false;
+        enemiesMoving = false;
     }
 
     public void EnemyKilled(EnemyMovement enemy)

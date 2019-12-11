@@ -720,7 +720,6 @@ GameObject:
   - component: {fileID: 1421613353}
   - component: {fileID: 1421613352}
   - component: {fileID: 1421613351}
-  - component: {fileID: 1421613350}
   m_Layer: 5
   m_Name: (Debug) Kill Enemies
   m_TagString: Untagged
@@ -748,19 +747,6 @@ RectTransform:
   m_AnchoredPosition: {x: 358, y: 111.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1421613350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421613348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5559f53cfbd4b384689c6d0f26b62406, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
 --- !u!114 &1421613351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,7 +791,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 834677469}
-        m_MethodName: ReloadCurrentScene
+        m_MethodName: KillRoomEnemies
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -946,8 +932,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906d4aabc130a014ba238f43ed9805f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDungeon: {fileID: 0}
   player: {fileID: 0}
   loadingScreen: {fileID: 871020926}
+  enemiesAlive: []
+  enemiesAliveCount: 0
 --- !u!1 &1815244629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5559f53cfbd4b384689c6d0f26b62406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
 --- !u!114 &2135287353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,6 +1270,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
+        type: 3}
+      propertyPath: roomSizeRandomness
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c178e7d8eb75fb045aa79858a2364b69, type: 3}

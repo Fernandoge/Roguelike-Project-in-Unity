@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,11 +22,12 @@ public class DebugController : MonoBehaviour
 
     public void KillRoomEnemies()
     {
-        foreach (EnemyMovement enemy in GameManager.Instance.enemiesAlive)
+        foreach (EnemyMovement enemy in GameManager.Instance.enemiesAlive.ToList())
         {
             EnemySpriteManager enemySpriteManager = enemy.gameObject.GetComponent<EnemySpriteManager>();
             enemySpriteManager.Death();
             GameManager.Instance.EnemyKilled(enemy);
         }
+        GameManager.Instance.enemiesMoving = false;
     }
 }

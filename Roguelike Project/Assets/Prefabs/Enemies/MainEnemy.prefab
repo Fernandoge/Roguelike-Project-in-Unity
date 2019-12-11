@@ -264,7 +264,7 @@ MonoBehaviour:
   weaponLeftSprRender: {fileID: 2150515960138168098}
   direction: 0
   _clsEnemyMovement: {fileID: 2533875942306066360}
-  _clsEnemyWeapon: {fileID: 0}
+  _clsEnemyWeapon: {fileID: 8674482474884631650}
 --- !u!212 &5006262955719001528
 SpriteRenderer:
   m_ObjectHideFlags: 0
