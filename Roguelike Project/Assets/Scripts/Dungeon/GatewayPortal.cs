@@ -18,6 +18,7 @@ public class GatewayPortal : MonoBehaviour
     private GameObject gatewayReached;
     private GameObject[] _availableNeighbours;
     private GameObject[,] _tiles;
+    private GameObject _corridorParticlesInstance;
     private float _speed;
     private float _distanceBetweenNextFloor;
     private bool _isBossGateway;
@@ -49,7 +50,7 @@ public class GatewayPortal : MonoBehaviour
 
     private void SetTargetFloor(GameObject targetFloor)
     {
-        this._targetFloor = targetFloor;
+        _targetFloor = targetFloor;
     }
 
     private void FixedUpdate()
@@ -102,13 +103,13 @@ public class GatewayPortal : MonoBehaviour
         {
             if (_directionSelectorChanged)
             {
-                if (SimpleInput.GetAxisRaw("Vertical") < -0.5f && _availableNeighbours[0] != null)
+                if (SimpleInput.GetAxisRaw("Horizontal") > 0.5f && _availableNeighbours[0] != null)
                     SelectDirection(0);
-                if (SimpleInput.GetAxisRaw("Horizontal") > 0.5f && _availableNeighbours[1] != null)
+                if (SimpleInput.GetAxisRaw("Vertical") > 0.5f && _availableNeighbours[1] != null)
                     SelectDirection(1);
-                if (SimpleInput.GetAxisRaw("Vertical") > 0.5f && _availableNeighbours[2] != null)
+                if (SimpleInput.GetAxisRaw("Horizontal") < -0.5f && _availableNeighbours[2] != null)
                     SelectDirection(2);
-                if (SimpleInput.GetAxisRaw("Horizontal") < -0.5f && _availableNeighbours[3] != null)
+                if (SimpleInput.GetAxisRaw("Vertical") < -0.5f && _availableNeighbours[3] != null)
                     SelectDirection(3);
             }
             //this occurs when the directionSelector combination is repeated, so the player don't have to insert inputs per each tile that are adjacents
@@ -140,14 +141,14 @@ public class GatewayPortal : MonoBehaviour
         _currentTotalNeighbours = 0;
         _availableNeighbours = new GameObject[4];
 
-        if (_tiles[x, y - 1] != null && _tiles[x, y - 1].layer != LayerMask.NameToLayer("Obstacle") && direction != 2)
-            AddNeighbour(0, x, y - 1);
-        if (_tiles[x + 1, y] != null && _tiles[x + 1, y].layer != LayerMask.NameToLayer("Obstacle") && direction != 3)
-            AddNeighbour(1, x + 1, y);
-        if (_tiles[x, y + 1] != null && _tiles[x, y + 1].layer != LayerMask.NameToLayer("Obstacle") && direction != 0)
-            AddNeighbour(2, x, y + 1);
-        if (_tiles[x - 1, y] != null && _tiles[x - 1, y].layer != LayerMask.NameToLayer("Obstacle") && direction != 1)
-            AddNeighbour(3, x - 1, y);
+        if (_tiles[x - 1, y] != null && _tiles[x - 1, y].layer != LayerMask.NameToLayer("Obstacle") && direction != 0)
+            AddNeighbour(2, x - 1, y);
+        if (_tiles[x, y - 1] != null && _tiles[x, y - 1].layer != LayerMask.NameToLayer("Obstacle") && direction != 1)
+            AddNeighbour(3, x, y - 1);
+        if (_tiles[x + 1, y] != null && _tiles[x + 1, y].layer != LayerMask.NameToLayer("Obstacle") && direction != 2)
+            AddNeighbour(0, x + 1, y);
+        if (_tiles[x, y + 1] != null && _tiles[x, y + 1].layer != LayerMask.NameToLayer("Obstacle") && direction != 3)
+            AddNeighbour(1, x, y + 1);
 
         //in case the path is only one
         if (_currentTotalNeighbours < 2)
@@ -218,7 +219,10 @@ public class GatewayPortal : MonoBehaviour
         {
             if (_availableNeighbours[i] != null && (ignoreGatewayCheck || _availableNeighbours[i].CompareTag("Gateway") == false))
             {
-                _currentDirection = i;
+                if (!_destinyReached)
+                {
+                    _currentDirection = i;
+                }
                 SetTargetFloor(_availableNeighbours[i]);
             }
         }
@@ -232,13 +236,17 @@ public class GatewayPortal : MonoBehaviour
     {
         _clsPlayerMovement.canMove = state;
         _clsPlayerMovement.objRigidbody.velocity = Vector2.zero;
-        _clsPlayerSpriteManager.corridorParticles.SetActive(!state);
+        _clsPlayerSpriteManager.sprRender.enabled = state;
+
         if (state == false)
-        {
+        {           
+            _corridorParticlesInstance = Instantiate(_clsDungeonController.playerCorridorParticles, _player);
             _clsPlayerSpriteManager.animator.enabled = false;
-            _clsPlayerSpriteManager.sprRender.sprite = _clsDungeonController.playerSpriteInCorridor;
-        }
+        }  
         else
+        {
+            Destroy(_corridorParticlesInstance);
             _clsPlayerSpriteManager.UpdateSpriteDirection(_currentDirection);
+        }
     }
 }

@@ -20,7 +20,7 @@ public class DungeonController : MonoBehaviour
     public List<RandomTools.SizeWeightedObject> dungeonRoomInteriors;
     [SerializeField]
     private Walls dungeonWalls = default;
-    public Sprite playerSpriteInCorridor;
+    public GameObject playerCorridorParticles;
     public GameObject dungeonCorridorFloor;
     [Header("Elements")]
     public GameObject player;
@@ -594,10 +594,10 @@ public class DungeonController : MonoBehaviour
                 if (neighboursCount < 2)
                 {
                     //Check the four sides to see if it's a room wall
-                    InstantiateGateway(x, y + 1, 0);
-                    InstantiateGateway(x - 1, y, 1);
-                    InstantiateGateway(x, y - 1, 2);
-                    InstantiateGateway(x + 1, y, 3);
+                    InstantiateGateway(x - 1, y, 0);
+                    InstantiateGateway(x, y - 1, 1);
+                    InstantiateGateway(x + 1, y, 2);
+                    InstantiateGateway(x, y + 1, 3);
                 }
             }
         }

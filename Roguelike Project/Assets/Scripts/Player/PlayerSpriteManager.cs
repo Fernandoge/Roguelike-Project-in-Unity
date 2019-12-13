@@ -6,5 +6,4 @@ public class PlayerSpriteManager : SpriteManager
 {
     [Header("This Components")]
     public GameObject directionSelector = default;
-    public GameObject corridorParticles = default;
 }

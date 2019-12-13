@@ -937,6 +937,7 @@ MonoBehaviour:
   loadingScreen: {fileID: 871020926}
   enemiesAlive: []
   enemiesAliveCount: 0
+  enemiesMoving: 0
 --- !u!1 &1815244629
 GameObject:
   m_ObjectHideFlags: 0
