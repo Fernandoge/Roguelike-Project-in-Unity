@@ -29,13 +29,12 @@ public class DungeonController : MonoBehaviour
     public GameObject treasure;
     public GameObject bossRoom;
     [Header ("Controller References")]
-    [SerializeField]
-    private Transform _dungeonRoomsParent;
-    [SerializeField]
-    private Transform _dungeonCorridorsParent;
+    public Transform dungeonRoomsParent;
+    public Transform dungeonCorridorsParent;
     public Camera dungeonCamera;
     [Header("Gameplay Info")]
     public RoomController currentRoom;
+    public RoomController previousRoom;
     public int roomsCompleted;
 
     private int _roomSideSize;
@@ -46,7 +45,8 @@ public class DungeonController : MonoBehaviour
     private List<DungeonRoom> _dungeonRooms = new List<DungeonRoom>();
     private List<GameObject> _dungeonCorridors = new List<GameObject>();
     private List<GameObject> _incorrectLayerWalls = new List<GameObject>();
-    private static GameObject[,] _tilesPosition;
+    public GameObject[,] tilesPosition;
+    [System.NonSerialized] public BossRoom bossRoomInstance;
 
     private static int _totalCorridorIdCount = 0;
 
@@ -349,8 +349,8 @@ public class DungeonController : MonoBehaviour
         {
             //first we create holders for the rooms 
             //room prefab
-            GameObject roomParent = Instantiate(_roomHolder, _dungeonRoomsParent);
-            DungeonRoom thisRoom = new DungeonRoom(roomParent, _dungeonRoomsParent.childCount, subDungeon.room);
+            GameObject roomParent = Instantiate(_roomHolder, dungeonRoomsParent);
+            DungeonRoom thisRoom = new DungeonRoom(roomParent, dungeonRoomsParent.childCount, subDungeon.room);
             _dungeonRooms.Add(thisRoom);
             //wall holder of room prefab
             Transform roomWallHolder = roomParent.transform.GetChild(2);
@@ -393,10 +393,10 @@ public class DungeonController : MonoBehaviour
     public void DrawWall(GameObject wall, int x, int y, Transform wallParent, bool incorrectLayer = false)
     {
         GameObject instance = Instantiate(wall, new Vector3(x, y, 0f), Quaternion.identity, wallParent);
-        _tilesPosition[x, y] = instance;
-        foreach (Transform child in _tilesPosition[x, y].transform)
+        tilesPosition[x, y] = instance;
+        foreach (Transform child in tilesPosition[x, y].transform)
         {
-            _tilesPosition[(int)child.transform.position.x, (int)child.transform.position.y] = instance;
+            tilesPosition[(int)child.transform.position.x, (int)child.transform.position.y] = instance;
             _incorrectLayerWalls.Add(child.gameObject);
         }
         if (incorrectLayer)
@@ -427,7 +427,7 @@ public class DungeonController : MonoBehaviour
                 roomComponent = dungeonRoom.room.AddComponent(typeof(EnemiesRoom)) as EnemiesRoom;
 
             Rect roomFloorsRectangle = new Rect(dungeonRoom.roomRectangle.position, new Vector2(dungeonRoom.roomRectangle.width - 2f, dungeonRoom.roomRectangle.height - 4f));
-            roomComponent.Initialize(this, _tilesPosition, enemies, dungeonRoom.id, dungeonRoom.roomRectangle, roomFloorsRectangle);
+            roomComponent.Initialize(this, tilesPosition, enemies, dungeonRoom.id, dungeonRoom.roomRectangle, roomFloorsRectangle);
             roomComponent.DrawRoomInteriors();
             //Set player initial position at a random floor tile of the first room
             if (dungeonRoom.id == 1)
@@ -438,13 +438,13 @@ public class DungeonController : MonoBehaviour
             //Set boss room in the last dungeon room
             else if (dungeonRoom.id == _dungeonRooms.Count)
             {
-                GameObject bossRoomInstance = Instantiate(bossRoom, roomComponent.DestroyRandomRightWall(), Quaternion.identity, _dungeonRoomsParent);
+                GameObject bossRoomInstance = Instantiate(bossRoom, roomComponent.DestroyRandomRightWall(), Quaternion.identity);
                 BossRoom bossRoomComponent = bossRoomInstance.GetComponent<BossRoom>();
                 GatewayPortal bossRoomGateway = bossRoomInstance.GetComponent<GatewayPortal>();
 
-                bossRoomGateway.Initialize(this, 0, corridorSpeed, _tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
-                bossRoomGateway.SetBossRoom(bossRoomComponent.firstBossFloor, bossRoomComponent.secondBossFloor);
-                bossRoomComponent.Initialize(this, _tilesPosition, enemies, dungeonRoom.id + 1);
+                bossRoomGateway.Initialize(this, 0, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
+                bossRoomGateway.SetBossRoom(bossRoomComponent.firstPortalStop, bossRoomComponent.secondPortalStop);
+                bossRoomComponent.Initialize(this, tilesPosition, enemies, dungeonRoom.id + 1);
             }
         }
     }
@@ -469,7 +469,7 @@ public class DungeonController : MonoBehaviour
             //create new holder if it's a different corridor
             if (corridor.totalCorridorId != corridorAux.totalCorridorId)
             {
-                corridorParent = Instantiate(_corridorHolder, _dungeonCorridorsParent);
+                corridorParent = Instantiate(_corridorHolder, dungeonCorridorsParent);
                 corridorFloorHolder = corridorParent.transform.GetChild(0);
                 corridorFloorHolderAux = corridorFloorHolder;
             }
@@ -481,35 +481,35 @@ public class DungeonController : MonoBehaviour
                 for (int j = (int)corridor.rect.y; j < corridor.rect.yMax; j++)
                 {
                     //check if there isn't a room tile
-                    if (_tilesPosition[i, j] == null)
+                    if (tilesPosition[i, j] == null)
                     {
                         InstantiateCorridorTile(i, j, corridorFloorHolder);
                         //check if the corridor tile collides with a corner or top wall, in this case we add extra tiles so when we generate the portals the player don't have the path to it blocked
 
                         //corridor collision with top walls from left and right
                         int k = j;
-                        while (_tilesPosition[i + 2, k]?.layer == LayerMask.NameToLayer("TopWall") || _tilesPosition[i - 2, k]?.layer == LayerMask.NameToLayer("TopWall"))
+                        while (tilesPosition[i + 2, k]?.layer == LayerMask.NameToLayer("TopWall") || tilesPosition[i - 2, k]?.layer == LayerMask.NameToLayer("TopWall"))
                         {
                             k--;
-                            if (_tilesPosition[i, k] == null)
+                            if (tilesPosition[i, k] == null)
                                 InstantiateCorridorTile(i, k, corridorFloorHolder);
                         }
                         //corridor collision with bottom corners from left and right
-                        if (_tilesPosition[i + 1, j]?.layer == LayerMask.NameToLayer("BottomLeftCorner") || _tilesPosition[i - 1, j]?.layer == LayerMask.NameToLayer("BottomRightCorner"))
+                        if (tilesPosition[i + 1, j]?.layer == LayerMask.NameToLayer("BottomLeftCorner") || tilesPosition[i - 1, j]?.layer == LayerMask.NameToLayer("BottomRightCorner"))
                         {
-                            if (_tilesPosition[i, j + 1] == null)
+                            if (tilesPosition[i, j + 1] == null)
                                 InstantiateCorridorTile(i, j + 1, corridorFloorHolder);
                         }
                         //corridor collision with left corners from top and bottom
-                        if (_tilesPosition[i, j + 1]?.layer == LayerMask.NameToLayer("BottomLeftCorner") || _tilesPosition[i, j - 1]?.layer == LayerMask.NameToLayer("TopLeftCorner"))
+                        if (tilesPosition[i, j + 1]?.layer == LayerMask.NameToLayer("BottomLeftCorner") || tilesPosition[i, j - 1]?.layer == LayerMask.NameToLayer("TopLeftCorner"))
                         {
-                            if (_tilesPosition[i + 1, j] == null)
+                            if (tilesPosition[i + 1, j] == null)
                                 InstantiateCorridorTile(i + 1, j, corridorFloorHolder);
                         }
                         //corridor collision with right corners from top and bottom
-                        if (_tilesPosition[i, j + 1]?.layer == LayerMask.NameToLayer("BottomRightCorner") || _tilesPosition[i, j - 1]?.layer == LayerMask.NameToLayer("TopRightCorner"))
+                        if (tilesPosition[i, j + 1]?.layer == LayerMask.NameToLayer("BottomRightCorner") || tilesPosition[i, j - 1]?.layer == LayerMask.NameToLayer("TopRightCorner"))
                         {
-                            if (_tilesPosition[i - 1, j] == null)
+                            if (tilesPosition[i - 1, j] == null)
                                 InstantiateCorridorTile(i - 1, j, corridorFloorHolder);
                         }
                     }
@@ -524,12 +524,12 @@ public class DungeonController : MonoBehaviour
     {
         GameObject instance = Instantiate(dungeonCorridorFloor, new Vector3(x, y, 0f), Quaternion.identity, corridorFloorHolder);
         instance.tag = CorridorValidator(x, y);
-        _tilesPosition[x, y] = instance;
+        tilesPosition[x, y] = instance;
     }
 
     public string CorridorValidator(int x, int y)
     {
-        if (_tilesPosition[x + 2, y]?.layer == LayerMask.NameToLayer("TopWall") || _tilesPosition[x - 2, y]?.layer == LayerMask.NameToLayer("TopWall"))
+        if (tilesPosition[x + 2, y]?.layer == LayerMask.NameToLayer("TopWall") || tilesPosition[x - 2, y]?.layer == LayerMask.NameToLayer("TopWall"))
             return "Untagged";
         else
             return "ValidCorridor";
@@ -553,40 +553,40 @@ public class DungeonController : MonoBehaviour
 
                 int neighboursCount = 0;
 
-                if (_tilesPosition[x + 1, y] != null)
+                if (tilesPosition[x + 1, y] != null)
                 {
-                    if (_tilesPosition[x + 1, y].layer == 0 && _tilesPosition[x + 1, y].transform.IsChildOf(corridorFloorHolder) && _tilesPosition[x + 1, y].CompareTag("ValidCorridor"))
+                    if (tilesPosition[x + 1, y].layer == 0 && tilesPosition[x + 1, y].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x + 1, y].CompareTag("ValidCorridor"))
                         neighboursCount++;
-                    else if (!_tilesPosition[x + 1, y].transform.IsChildOf(corridorFloorHolder) && _tilesPosition[x + 2, y] != null && ((!_tilesPosition[x + 2, y].CompareTag("ValidCorridor") &&
-                        _tilesPosition[x + 2, y].transform.parent.parent.CompareTag("CorridorHolder")) || _tilesPosition[x + 2, y].transform.IsChildOf(corridorFloorHolder)))
+                    else if (!tilesPosition[x + 1, y].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x + 2, y] != null && ((!tilesPosition[x + 2, y].CompareTag("ValidCorridor") &&
+                        tilesPosition[x + 2, y].transform.parent.parent.CompareTag("CorridorHolder")) || tilesPosition[x + 2, y].transform.IsChildOf(corridorFloorHolder)))
                         neighboursCount++;
                 }
-                if (_tilesPosition[x - 1, y] != null)
+                if (tilesPosition[x - 1, y] != null)
                 {
-                    if (_tilesPosition[x - 1, y].layer == 0 && _tilesPosition[x - 1, y].transform.IsChildOf(corridorFloorHolder) && _tilesPosition[x - 1, y].CompareTag("ValidCorridor"))
+                    if (tilesPosition[x - 1, y].layer == 0 && tilesPosition[x - 1, y].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x - 1, y].CompareTag("ValidCorridor"))
                         neighboursCount++;
-                    else if (!_tilesPosition[x - 1, y].transform.IsChildOf(corridorFloorHolder) && _tilesPosition[x - 2, y] != null && ((!_tilesPosition[x - 2, y].CompareTag("ValidCorridor") &&
-                        _tilesPosition[x - 2, y].transform.parent.parent.CompareTag("CorridorHolder")) || _tilesPosition[x - 2, y].transform.IsChildOf(corridorFloorHolder)))
-                        neighboursCount++;
-                }
-
-                if (_tilesPosition[x, y - 1] != null)
-                {
-                    if (_tilesPosition[x, y - 1].layer == 0 && _tilesPosition[x, y - 1].transform.IsChildOf(corridorFloorHolder) && _tilesPosition[x, y - 1].CompareTag("ValidCorridor"))
-                        neighboursCount++;
-                    else if (!_tilesPosition[x, y - 1].transform.IsChildOf(corridorFloorHolder) && _tilesPosition[x, y - 2] != null && ((!_tilesPosition[x, y - 2].CompareTag("ValidCorridor") &&
-                        _tilesPosition[x, y - 2].transform.parent.parent.CompareTag("CorridorHolder")) || _tilesPosition[x, y - 2].transform.IsChildOf(corridorFloorHolder)))
+                    else if (!tilesPosition[x - 1, y].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x - 2, y] != null && ((!tilesPosition[x - 2, y].CompareTag("ValidCorridor") &&
+                        tilesPosition[x - 2, y].transform.parent.parent.CompareTag("CorridorHolder")) || tilesPosition[x - 2, y].transform.IsChildOf(corridorFloorHolder)))
                         neighboursCount++;
                 }
 
-                if (_tilesPosition[x, y + 1] != null)
+                if (tilesPosition[x, y - 1] != null)
                 {
-                    if (_tilesPosition[x, y + 1].layer == 0 && _tilesPosition[x, y + 1].transform.IsChildOf(corridorFloorHolder) && _tilesPosition[x, y + 1].CompareTag("ValidCorridor"))
+                    if (tilesPosition[x, y - 1].layer == 0 && tilesPosition[x, y - 1].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x, y - 1].CompareTag("ValidCorridor"))
                         neighboursCount++;
-                    else if (!_tilesPosition[x, y + 1].CompareTag("ValidCorridor") && _tilesPosition[x, y + 4] != null && _tilesPosition[x, y + 4].transform.IsChildOf(corridorFloorHolder))
+                    else if (!tilesPosition[x, y - 1].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x, y - 2] != null && ((!tilesPosition[x, y - 2].CompareTag("ValidCorridor") &&
+                        tilesPosition[x, y - 2].transform.parent.parent.CompareTag("CorridorHolder")) || tilesPosition[x, y - 2].transform.IsChildOf(corridorFloorHolder)))
                         neighboursCount++;
-                    else if (!_tilesPosition[x, y + 1].transform.IsChildOf(corridorFloorHolder) && _tilesPosition[x, y + 2] != null && ((!_tilesPosition[x, y + 2].CompareTag("ValidCorridor") &&
-                        _tilesPosition[x, y + 2].transform.parent.parent.CompareTag("CorridorHolder")) || _tilesPosition[x, y + 2].transform.IsChildOf(corridorFloorHolder)))
+                }
+
+                if (tilesPosition[x, y + 1] != null)
+                {
+                    if (tilesPosition[x, y + 1].layer == 0 && tilesPosition[x, y + 1].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x, y + 1].CompareTag("ValidCorridor"))
+                        neighboursCount++;
+                    else if (!tilesPosition[x, y + 1].CompareTag("ValidCorridor") && tilesPosition[x, y + 4] != null && tilesPosition[x, y + 4].transform.IsChildOf(corridorFloorHolder))
+                        neighboursCount++;
+                    else if (!tilesPosition[x, y + 1].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x, y + 2] != null && ((!tilesPosition[x, y + 2].CompareTag("ValidCorridor") &&
+                        tilesPosition[x, y + 2].transform.parent.parent.CompareTag("CorridorHolder")) || tilesPosition[x, y + 2].transform.IsChildOf(corridorFloorHolder)))
                         neighboursCount++;
                 }
 
@@ -609,20 +609,20 @@ public class DungeonController : MonoBehaviour
 
     private void InstantiateGateway(int x, int y, int firstDirection)
     {
-        if (_tilesPosition[x, y] != null && (_tilesPosition[x, y].layer == LayerMask.NameToLayer("Obstacle") || _tilesPosition[x, y].layer == LayerMask.NameToLayer("TopWall")))
+        if (tilesPosition[x, y] != null && (tilesPosition[x, y].layer == LayerMask.NameToLayer("Obstacle") || tilesPosition[x, y].layer == LayerMask.NameToLayer("TopWall")))
         {
             //Instantiate floors in child positions since a top wall may be destroyed
-            foreach (Transform child in _tilesPosition[x, y].transform)
+            foreach (Transform child in tilesPosition[x, y].transform)
             {
                 int posX = (int)child.transform.position.x;
                 int posY = (int)child.transform.position.y;
-                _tilesPosition[posX, posY] =
-                    Instantiate(RandomTools.Instance.PickOne(dungeonRoomFloors), new Vector3(posX, posY, 0f), Quaternion.identity, _tilesPosition[posX, posY].transform.parent.parent.GetChild(1));
+                tilesPosition[posX, posY] =
+                    Instantiate(RandomTools.Instance.PickOne(dungeonRoomFloors), new Vector3(posX, posY, 0f), Quaternion.identity, tilesPosition[posX, posY].transform.parent.parent.GetChild(1));
             }
-            Destroy(_tilesPosition[x, y]);
-            GameObject gateway = Instantiate(dungeonGateway, new Vector3(x, y, 0f), Quaternion.identity, _tilesPosition[x, y].transform.parent.parent.GetChild(0));
-            _tilesPosition[x, y] = gateway;
-            gateway.GetComponent<GatewayPortal>().Initialize(this, firstDirection, corridorSpeed, _tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
+            Destroy(tilesPosition[x, y]);
+            GameObject gateway = Instantiate(dungeonGateway, new Vector3(x, y, 0f), Quaternion.identity, tilesPosition[x, y].transform.parent.parent.GetChild(0));
+            tilesPosition[x, y] = gateway;
+            gateway.GetComponent<GatewayPortal>().Initialize(this, firstDirection, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
         }
     }
     #endregion Gateways
@@ -648,7 +648,6 @@ public class DungeonController : MonoBehaviour
         dungeonCamera.GetComponent<CameraFollow>().player = playerInstance;
         _clsPlayerSpriteManager = playerInstance.GetComponent<PlayerSpriteManager>();
         _clsPlayerMovement = playerInstance.GetComponent<PlayerMovement>();
-        _clsPlayerMovement.tiles = _tilesPosition;
     }
 
     #endregion Post-BSP Methods
@@ -665,7 +664,7 @@ public class DungeonController : MonoBehaviour
         {
             GameManager.Instance.generationFailed = false;
             SubDungeon rootSubDungeon = new SubDungeon(new Rect(0, 0, boardRows, boardColumns));
-            _tilesPosition = new GameObject[boardRows, boardColumns];
+            tilesPosition = new GameObject[boardRows, boardColumns];
             SpacePartition(rootSubDungeon);
             rootSubDungeon.CreateRoom(minRoomWidth, minRoomHeight, maxRoomWidth, maxRoomHeight, roomSizeRandomness);
             if (GameManager.Instance.generationFailed == false)
@@ -676,7 +675,7 @@ public class DungeonController : MonoBehaviour
                 DrawCorridors(rootSubDungeon);
                 GenerateGateways();
                 DecorateBigWalls();
-                GameManager.Instance.currentDungeon = this;
+                GameManager.Instance.InitializeDungeon(this);
                 GameManager.Instance.ManageLoadingScreen(false);
             }
             

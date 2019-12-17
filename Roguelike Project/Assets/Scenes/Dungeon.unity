@@ -935,9 +935,6 @@ MonoBehaviour:
   currentDungeon: {fileID: 0}
   player: {fileID: 0}
   loadingScreen: {fileID: 871020926}
-  enemiesAlive: []
-  enemiesAliveCount: 0
-  enemiesMoving: 0
 --- !u!1 &1815244629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,11 +1268,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1403184906628289016, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: roomSizeRandomness
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c178e7d8eb75fb045aa79858a2364b69, type: 3}

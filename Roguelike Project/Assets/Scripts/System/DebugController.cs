@@ -22,12 +22,9 @@ public class DebugController : MonoBehaviour
 
     public void KillRoomEnemies()
     {
-        foreach (EnemyMovement enemy in GameManager.Instance.enemiesAlive.ToList())
+        foreach (EnemyMovement enemy in GameManager.Instance.currentDungeon.currentRoom.enemiesAlive.ToList())
         {
-            EnemySpriteManager enemySpriteManager = enemy.gameObject.GetComponent<EnemySpriteManager>();
-            enemySpriteManager.Death();
-            GameManager.Instance.EnemyKilled(enemy);
+            GameManager.Instance.currentDungeon.currentRoom.EnemyKilled(enemy);
         }
-        GameManager.Instance.enemiesMoving = false;
     }
 }

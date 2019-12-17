@@ -177,8 +177,6 @@ MonoBehaviour:
       type: 3}
   playerCorridorParticles: {fileID: 4310809315154537236, guid: b37daf0336e8c3c45980410b4fd8f660,
     type: 3}
-  playerSpriteInCorridor: {fileID: 21300000, guid: d6719bfb5c5cdf34d938a8c772d4ac7d,
-    type: 3}
   dungeonCorridorFloor: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
   player: {fileID: 7941783385590199139, guid: f4eee62e59924fa4b9b801ba9c9382fb, type: 3}
   enemies:
@@ -189,10 +187,11 @@ MonoBehaviour:
   treasure: {fileID: 4528958197017009291, guid: 6bd4d51cc4c2b974d846e15706945e95,
     type: 3}
   bossRoom: {fileID: 170492, guid: d1d8985b3b9cf414fbdb952e7182d600, type: 3}
-  _dungeonRoomsParent: {fileID: 1403184905427494535}
-  _dungeonCorridorsParent: {fileID: 1403184904892740545}
+  dungeonRoomsParent: {fileID: 1403184905427494535}
+  dungeonCorridorsParent: {fileID: 1403184904892740545}
   dungeonCamera: {fileID: 8610930163838314838}
   currentRoom: {fileID: 0}
+  previousRoom: {fileID: 0}
   roomsCompleted: 0
 --- !u!1 &8950835656357922183
 GameObject:

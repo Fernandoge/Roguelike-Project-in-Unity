@@ -15,15 +15,19 @@ public class RoomController : MonoBehaviour
     protected GatewayPortal[] roomGateways;
     protected Transform roomGatewaysHolder;
     protected Transform roomInteriorsHolder;
+    protected Transform roomWallsHolder;
     protected Transform roomFloorsHolder;
     protected Transform roomTreasureHolder;
     protected DungeonController.DungeonEnemy[] roomEnemies;
+    public List<EnemyMovement> enemiesAlive = new List<EnemyMovement>();
+    public int enemiesAliveCount;
 
     #region Dungeon Generation Methods
     private void Awake()
     {
         roomGatewaysHolder = transform.GetChild(0);
         roomFloorsHolder = transform.GetChild(1);
+        roomWallsHolder = transform.GetChild(2);
         roomInteriorsHolder = transform.GetChild(3);
         roomTreasureHolder = transform.GetChild(4);
     }
@@ -45,14 +49,10 @@ public class RoomController : MonoBehaviour
         {
             for (int j = (int)roomRectangle.y + 1; j < roomRectangle.yMax - 3; j++)
             {
-                if (tiles[i, j] == null)
+                if (tiles[i, j] == null || tiles[i, j].gameObject.layer == LayerMask.NameToLayer("NoFloorTile"))
                 {
                     tiles[i, j] = Instantiate(RandomTools.Instance.PickOne(clsDungeonController.dungeonRoomFloors), new Vector3(i, j, 0f), Quaternion.identity, roomFloorsHolder);
                 }
-                else if (tiles[i, j].gameObject.layer == LayerMask.NameToLayer("NoFloorTile"))
-                {
-                    Instantiate(RandomTools.Instance.PickOne(clsDungeonController.dungeonRoomFloors), new Vector3(i, j, 0f), Quaternion.identity, roomFloorsHolder);
-                }   
             }
         }
     }
@@ -104,6 +104,7 @@ public class RoomController : MonoBehaviour
     public Vector3 DestroyRandomRightWall()
     {
         Vector3 rightWallPosition = new Vector3(roomRectangle.xMax - 1, (int)Random.Range(roomRectangle.yMin + ((roomRectangle.yMax - roomRectangle.yMin) / 2), roomRectangle.yMax - 3));
+        tiles[(int)rightWallPosition.x, (int)rightWallPosition.y].layer = 0;
         Destroy(tiles[(int)rightWallPosition.x, (int)rightWallPosition.y]);
         return rightWallPosition;
     }
@@ -115,6 +116,7 @@ public class RoomController : MonoBehaviour
 
     public virtual void ActivateRoom()
     {
+        clsDungeonController.previousRoom = clsDungeonController.currentRoom;
         clsDungeonController.currentRoom = this;
     }
 
@@ -147,8 +149,8 @@ public class RoomController : MonoBehaviour
 
                 if (isEnemy)
                 {
-                    GameManager.Instance.enemiesAlive.Add(obj.GetComponent<EnemyMovement>());
-                    GameManager.Instance.enemiesAliveCount++;
+                    enemiesAlive.Add(obj.GetComponent<EnemyMovement>());
+                    enemiesAliveCount++;
                 }
                 objectSpawned = true;
             }
@@ -172,6 +174,18 @@ public class RoomController : MonoBehaviour
         {
             for (int i = 0; i < enemy.quantity; i++)
                 SpawnObject(enemy.enemyType, isEnemy: true);
+        }
+    }
+
+    public void EnemyKilled(EnemyMovement enemy)
+    {
+        EnemySpriteManager enemySpriteManager = enemy.gameObject.GetComponent<EnemySpriteManager>();
+        enemySpriteManager.Death();
+        enemiesAlive.Remove(enemy);
+        enemiesAliveCount--;
+        if (enemiesAliveCount == 0)
+        {
+            CompleteRoom();
         }
     }
 

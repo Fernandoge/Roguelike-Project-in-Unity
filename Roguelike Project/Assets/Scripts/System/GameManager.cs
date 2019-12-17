@@ -8,11 +8,9 @@ public class GameManager : MonoBehaviour
 
     [System.NonSerialized] public bool generationFailed;
     public DungeonController currentDungeon;
+    public int[,] tilesLayers;
     public PlayerMovement player;
     public GameObject loadingScreen;
-    public List<EnemyMovement> enemiesAlive = new List<EnemyMovement>();
-    public int enemiesAliveCount;
-    public bool enemiesMoving;
 
     private void Awake()
     {
@@ -20,38 +18,26 @@ public class GameManager : MonoBehaviour
             Instance = this;
     }
 
-    private void Update()
+    public void InitializeDungeon(DungeonController dungeon)
     {
-        if (!enemiesMoving)
-            StartCoroutine(MoveEnemies());
-    }
-
-    private IEnumerator MoveEnemies()
-    {
-        enemiesMoving = true;
-        foreach (EnemyMovement enemy in enemiesAlive)
+        currentDungeon = dungeon;
+        int xLength = dungeon.tilesPosition.GetLength(0);
+        int yLength = dungeon.tilesPosition.GetLength(1);
+        tilesLayers = new int[xLength, yLength];
+        for (int i = 0; i < xLength; i++)
         {
-            if (enemy.canMove)
+            for (int j = 0; j < yLength; j++)
             {
-                enemy.AttemptMove();
-                yield return new WaitForSeconds(0.02f);
+                if (dungeon.tilesPosition[i, j] != null)
+                    tilesLayers[i, j] = dungeon.tilesPosition[i, j].layer;
             }
         }
-        enemiesMoving = false;
-    }
-
-    public void EnemyKilled(EnemyMovement enemy)
-    {
-        enemiesAlive.Remove(enemy);
-        enemiesAliveCount--;
-        if (enemiesAliveCount == 0)
-        {
-            currentDungeon.currentRoom.CompleteRoom();
-        }
+        dungeon.bossRoomInstance.GetBossRoomLayers();
     }
 
     public void ManageLoadingScreen(bool state)
     {
         loadingScreen.SetActive(state);
     }
+
 }
