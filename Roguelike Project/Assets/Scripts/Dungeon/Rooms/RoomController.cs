@@ -12,14 +12,14 @@ public class RoomController : MonoBehaviour
     protected GameObject[,] tiles;
     protected DungeonController clsDungeonController;
     protected List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
-    protected GatewayPortal[] roomGateways;
     protected Transform roomGatewaysHolder;
     protected Transform roomInteriorsHolder;
     protected Transform roomWallsHolder;
     protected Transform roomFloorsHolder;
     protected Transform roomTreasureHolder;
     protected DungeonController.DungeonEnemy[] roomEnemies;
-    public List<EnemyMovement> enemiesAlive = new List<EnemyMovement>();
+    [System.NonSerialized] public List<GatewayPortal> roomGateways = new List<GatewayPortal>();
+    [System.NonSerialized] public List<EnemyMovement> enemiesAlive = new List<EnemyMovement>();
     public int enemiesAliveCount;
 
     #region Dungeon Generation Methods
@@ -100,6 +100,11 @@ public class RoomController : MonoBehaviour
         }
         return true;
     }
+
+    public void GetGateways()
+    {
+        roomGateways.AddRange(roomGatewaysHolder.GetComponentsInChildren<GatewayPortal>());
+    }
     
     public Vector3 DestroyRandomRightWall()
     {
@@ -122,12 +127,10 @@ public class RoomController : MonoBehaviour
 
     protected void DisableGateways()
     {
-        roomGateways = roomGatewaysHolder.GetComponentsInChildren<GatewayPortal>();
-
         foreach (GatewayPortal gateway in roomGateways)
         {
             gateway.spriteRender.sprite = gateway.disabledSprite;
-            gateway.gameObject.layer = LayerMask.NameToLayer("Obstacle");
+            GameManager.Instance.tilesLayers[(int)gateway.transform.position.x, (int)gateway.transform.position.y] = LayerMask.NameToLayer("Obstacle");
         }
     }
 
@@ -196,7 +199,7 @@ public class RoomController : MonoBehaviour
         foreach (GatewayPortal gateway in roomGateways)
         {
             gateway.spriteRender.sprite = gateway.activeSprite;
-            gateway.gameObject.layer = 0;
+            GameManager.Instance.tilesLayers[(int)gateway.transform.position.x, (int)gateway.transform.position.y] = 0;
         }
     }
 

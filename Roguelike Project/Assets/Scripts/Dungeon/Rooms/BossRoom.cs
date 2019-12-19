@@ -43,6 +43,7 @@ public class BossRoom : RoomController
             foreach (Transform child in currentChild)
             {
                 bossRoomLayers[(int)(child.position.x - firstTile.transform.position.x), (int)(child.position.y - firstTile.transform.position.y)] = child.gameObject.layer;
+                //We add this extra loop in case a tile have objects inside it, like upper walls for example
                 for (int j = 0; j < child.childCount; j++)
                 {
                     Transform currentChildOfChild = child.GetChild(j);

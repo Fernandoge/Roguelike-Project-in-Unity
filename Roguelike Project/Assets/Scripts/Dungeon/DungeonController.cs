@@ -43,6 +43,7 @@ public class DungeonController : MonoBehaviour
     private PlayerMovement _clsPlayerMovement;
     private PlayerSpriteManager _clsPlayerSpriteManager;
     private List<DungeonRoom> _dungeonRooms = new List<DungeonRoom>();
+    private List<RoomController> _dungeonRoomsComponent = new List<RoomController>();
     private List<GameObject> _dungeonCorridors = new List<GameObject>();
     private List<GameObject> _incorrectLayerWalls = new List<GameObject>();
     public GameObject[,] tilesPosition;
@@ -426,6 +427,7 @@ public class DungeonController : MonoBehaviour
             else
                 roomComponent = dungeonRoom.room.AddComponent(typeof(EnemiesRoom)) as EnemiesRoom;
 
+            _dungeonRoomsComponent.Add(roomComponent);
             Rect roomFloorsRectangle = new Rect(dungeonRoom.roomRectangle.position, new Vector2(dungeonRoom.roomRectangle.width - 2f, dungeonRoom.roomRectangle.height - 4f));
             roomComponent.Initialize(this, tilesPosition, enemies, dungeonRoom.id, dungeonRoom.roomRectangle, roomFloorsRectangle);
             roomComponent.DrawRoomInteriors();
@@ -445,6 +447,7 @@ public class DungeonController : MonoBehaviour
                 bossRoomGateway.Initialize(this, 0, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
                 bossRoomGateway.SetBossRoom(bossRoomComponent.firstPortalStop, bossRoomComponent.secondPortalStop);
                 bossRoomComponent.Initialize(this, tilesPosition, enemies, dungeonRoom.id + 1);
+                roomComponent.roomGateways.Add(bossRoomGateway);
             }
         }
     }
@@ -605,6 +608,10 @@ public class DungeonController : MonoBehaviour
         foreach (GameObject wall in _incorrectLayerWalls)
             if (wall.layer != LayerMask.NameToLayer("Default"))
                 wall.layer = LayerMask.NameToLayer("Obstacle");
+
+        //Get each room gateways
+        foreach (RoomController room in _dungeonRoomsComponent)
+            room.GetGateways();
     }
 
     private void InstantiateGateway(int x, int y, int firstDirection)
