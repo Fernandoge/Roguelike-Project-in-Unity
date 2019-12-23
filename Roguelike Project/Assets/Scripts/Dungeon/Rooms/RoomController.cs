@@ -141,6 +141,7 @@ public class RoomController : MonoBehaviour
     {
         foreach (GatewayPortal gateway in roomGateways)
         {
+            gateway.animator.enabled = false;
             gateway.spriteRender.sprite = gateway.disabledSprite;
             GameManager.Instance.tilesLayers[(int)gateway.transform.position.x, (int)gateway.transform.position.y] = LayerMask.NameToLayer("Obstacle");
         }
@@ -210,7 +211,7 @@ public class RoomController : MonoBehaviour
         clsDungeonController.roomsCompleted++;
         foreach (GatewayPortal gateway in roomGateways)
         {
-            gateway.spriteRender.sprite = gateway.activeSprite;
+            gateway.animator.enabled = true;
             GameManager.Instance.tilesLayers[(int)gateway.transform.position.x, (int)gateway.transform.position.y] = 0;
         }
     }

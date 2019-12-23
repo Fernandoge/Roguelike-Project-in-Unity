@@ -5,8 +5,8 @@ using UnityEngine;
 public class GatewayPortal : MonoBehaviour
 {
     public SpriteRenderer spriteRender;
-    public Sprite activeSprite;
     public Sprite disabledSprite;
+    public Animator animator;
 
     private GameObject _targetFloor;
     private Transform _player;
