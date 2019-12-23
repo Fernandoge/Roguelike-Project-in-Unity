@@ -188,7 +188,7 @@ MonoBehaviour:
   blockingLayers:
     serializedVersion: 2
     m_Bits: 328448
-  moveTime: 0.12
+  moveTime: 0.24
   canMove: 1
   moving: 0
   target: {fileID: 0}
@@ -302,7 +302,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300062, guid: b2c84bb366a6144c2a0e364f0a1c6879, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

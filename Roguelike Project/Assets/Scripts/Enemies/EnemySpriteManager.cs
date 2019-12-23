@@ -18,6 +18,7 @@ public class EnemySpriteManager : SpriteManager
 
     public void Death()
     {
+        GameManager.Instance.tilesLayers[(int)transform.position.x, (int)transform.position.y] = 0;
         _clsEnemyMovement.enabled = false;
         _clsEnemyWeapon.enabled = false;
         animator.enabled = false;
