@@ -11,7 +11,6 @@ public class RoomController : MonoBehaviour
     public bool isCompleted;
     protected GameObject[,] tiles;
     protected DungeonController clsDungeonController;
-    protected List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors;
     protected Transform roomGatewaysHolder;
     protected Transform roomInteriorsHolder;
     protected Transform roomWallsHolder;
@@ -45,9 +44,9 @@ public class RoomController : MonoBehaviour
     public virtual void DrawRoomInteriors()
     {
         //Draw floors in tiles without them
-        for (int i = (int)roomRectangle.x + 1; i < roomRectangle.xMax - 1; i++)
+        for (int i = (int)_roomFloorsRectangle.x + 1; i <= _roomFloorsRectangle.xMax; i++)
         {
-            for (int j = (int)roomRectangle.y + 1; j < roomRectangle.yMax - 3; j++)
+            for (int j = (int)_roomFloorsRectangle.y + 1; j <= _roomFloorsRectangle.yMax; j++)
             {
                 if (tiles[i, j] == null || tiles[i, j].gameObject.layer == LayerMask.NameToLayer("NoFloorTile"))
                 {
@@ -104,6 +103,19 @@ public class RoomController : MonoBehaviour
     public void GetGateways()
     {
         roomGateways.AddRange(roomGatewaysHolder.GetComponentsInChildren<GatewayPortal>());
+    }
+
+    public List<(int, int)> GetTilePositions()
+    {
+        List<(int, int)> tupleList = new List<(int, int)>();
+        for (int i = (int)_roomFloorsRectangle.x + 1; i <= _roomFloorsRectangle.xMax; i++)
+        {
+            for (int j = (int)_roomFloorsRectangle.y + 1; j <= _roomFloorsRectangle.yMax; j++)
+            {
+                tupleList.Add((i, j));
+            }
+        }
+        return tupleList;
     }
     
     public Vector3 DestroyRandomRightWall()

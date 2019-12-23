@@ -7,24 +7,27 @@ public class EnemiesRoom : RoomController
     public override void DrawRoomInteriors()
     {
         //First we remove the objects that are not valid for this room
-        auxDungeonRoomInteriors = ApplySizeConditionsToObjects(clsDungeonController.dungeonRoomInteriors);
+        List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors = ApplySizeConditionsToObjects(clsDungeonController.dungeonRoomInteriors);
+        //Get the tile positions of the room in a List
+        List <(int x, int y)> roomTilesPositions = GetTilePositions();
         //Instantiate room interiors checking if there is enough space to instantiate them
-        for (int i = (int)roomRectangle.x; i < roomRectangle.xMax; i++)
+        int tilesListSize = roomTilesPositions.Count;
+        for (int i = 0; i < tilesListSize; i++)
         {
-            for (int j = (int)roomRectangle.y; j < roomRectangle.yMax; j++)
+            int randomInt = Random.Range(0, roomTilesPositions.Count);
+            RandomTools.SizeWeightedObject obj = RandomTools.Instance.PickOneSized(auxDungeonRoomInteriors);
+            Vector3 tilePosition = new Vector3(roomTilesPositions[randomInt].x, roomTilesPositions[randomInt].y, 0f);
+
+            if (obj.item != null && CheckAvailableSpace(obj.item, tilePosition))
             {
-                RandomTools.SizeWeightedObject obj = RandomTools.Instance.PickOneSized(auxDungeonRoomInteriors);
-                Vector3 tilePosition = new Vector3(i, j, 0f);
-                if (obj.item != null && CheckAvailableSpace(obj.item, tilePosition))
+                GameObject instance = Instantiate(obj.item, tilePosition, Quaternion.identity, roomInteriorsHolder);
+                tiles[roomTilesPositions[randomInt].x, roomTilesPositions[randomInt].y] = instance;
+                foreach (Transform child in tiles[roomTilesPositions[randomInt].x, roomTilesPositions[randomInt].y].transform)
                 {
-                    GameObject instance = Instantiate(obj.item, tilePosition, Quaternion.identity, roomInteriorsHolder);
-                    tiles[i, j] = instance;
-                    foreach (Transform child in tiles[i, j].transform)
-                    {
-                        tiles[(int)child.transform.position.x, (int)child.transform.position.y] = child.gameObject;
-                    }
+                    tiles[(int)child.transform.position.x, (int)child.transform.position.y] = child.gameObject;
                 }
             }
+            roomTilesPositions.RemoveAt(randomInt);
         }
         base.DrawRoomInteriors();
     }
