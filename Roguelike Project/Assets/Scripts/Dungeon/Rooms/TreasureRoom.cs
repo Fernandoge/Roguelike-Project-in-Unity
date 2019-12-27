@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TreasureRoom : RoomController
 {
+    private void Start()
+    {
+        roomEnemyPack = GetEnemyPack(clsDungeonController.enemyPacks);
+    }
+
     public override void DrawRoomInteriors()
     {
         Vector3 treasurePosition = clsDungeonController.treasure.transform.position + new Vector3(Mathf.Floor(roomRectangle.center.x), Mathf.Floor(roomRectangle.center.y));

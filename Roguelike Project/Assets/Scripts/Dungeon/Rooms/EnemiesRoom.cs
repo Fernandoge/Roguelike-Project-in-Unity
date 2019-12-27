@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemiesRoom : RoomController
 {
+    private void Start()
+    {
+        roomEnemyPack = GetEnemyPack(clsDungeonController.enemyPacks);
+    }
+
     public override void DrawRoomInteriors()
     {
         //First we remove the objects that are not valid for this room

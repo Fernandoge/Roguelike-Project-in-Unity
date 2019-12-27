@@ -358,10 +358,16 @@ MonoBehaviour:
     type: 3}
   dungeonCorridorFloor: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
   player: {fileID: 7941783385590199139, guid: f4eee62e59924fa4b9b801ba9c9382fb, type: 3}
-  enemies:
-  - enemyType: {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
-      type: 3}
-    quantity: 3
+  enemyPacks:
+  - enemies:
+    - {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
+    - {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
+    - {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
+    stock: 100
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
   dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
   treasure: {fileID: 4528958197017009291, guid: 6bd4d51cc4c2b974d846e15706945e95,
     type: 3}

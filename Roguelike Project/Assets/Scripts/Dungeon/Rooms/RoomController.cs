@@ -10,13 +10,13 @@ public class RoomController : MonoBehaviour
     private Rect _roomFloorsRectangle;
     public bool isCompleted;
     protected GameObject[,] tiles;
+    protected GameObject[] roomEnemyPack;
     protected DungeonController clsDungeonController;
     protected Transform roomGatewaysHolder;
     protected Transform roomInteriorsHolder;
     protected Transform roomWallsHolder;
     protected Transform roomFloorsHolder;
     protected Transform roomTreasureHolder;
-    protected DungeonController.DungeonEnemy[] roomEnemies;
     [System.NonSerialized] public List<GatewayPortal> roomGateways = new List<GatewayPortal>();
     [System.NonSerialized] public List<EnemyMovement> enemiesAlive = new List<EnemyMovement>();
     public int enemiesAliveCount;
@@ -31,10 +31,9 @@ public class RoomController : MonoBehaviour
         roomTreasureHolder = transform.GetChild(4);
     }
 
-    public void Initialize(DungeonController dungeonController, GameObject[,] tiles, DungeonController.DungeonEnemy[] enemies, int id, Rect roomRectangle, Rect roomFloorsRectangle)
+    public void Initialize(DungeonController dungeonController, GameObject[,] tiles, int id, Rect roomRectangle, Rect roomFloorsRectangle)
     {
         clsDungeonController = dungeonController;
-        roomEnemies = enemies;
         this.tiles = tiles;
         this.id = id;
         this.roomRectangle = roomRectangle;
@@ -55,7 +54,29 @@ public class RoomController : MonoBehaviour
             }
         }
     }
-    
+
+    protected GameObject[] GetEnemyPack(List<DungeonController.DungeonEnemyPack> enemyPacks)
+    {
+        List<DungeonController.DungeonEnemyPack> newList = new List<DungeonController.DungeonEnemyPack>(enemyPacks);
+        foreach (DungeonController.DungeonEnemyPack obj in enemyPacks)
+        {
+            if (_roomFloorsRectangle.width < obj.minRoomFloorsWidth || _roomFloorsRectangle.height < obj.minRoomFloorsHeight ||
+                _roomFloorsRectangle.width > obj.maxRoomFloorsWidth || _roomFloorsRectangle.height > obj.maxRoomFloorsHeight)
+            {
+                newList.Remove(obj);
+            }
+        }
+
+        int index = enemyPacks.IndexOf(newList[Random.Range(0, newList.Count)]);
+        DungeonController.DungeonEnemyPack pack = enemyPacks[index];
+        enemyPacks[index] = new DungeonController.DungeonEnemyPack(
+            pack.enemies, pack.stock - 1, pack.minRoomFloorsWidth, pack.minRoomFloorsHeight, pack.maxRoomFloorsWidth, pack.maxRoomFloorsHeight);
+
+        if (enemyPacks[index].stock == 0)
+            enemyPacks.Remove(enemyPacks[index]);
+
+        return pack.enemies;
+    }
 
     protected List<RandomTools.SizeWeightedObject> ApplySizeConditionsToObjects(List<RandomTools.SizeWeightedObject> interiors)
     {
@@ -171,25 +192,13 @@ public class RoomController : MonoBehaviour
                 objectSpawned = true;
             }
         }
-        /*
-        foreach (DungeonEnemy enemy in roomEnemies)
-        {  
-            for (int i = 0; i < enemy.quantity; i++)
-            {
-                enemiesAlive++;
-                enemy.enemyType.transform.GetChild(0).GetComponent<HitpointsManager>().SetRoomController(this);
-                GameObject enemyInstance = Instantiate(enemy.enemyType, transform.position, Quaternion.identity);
-            }    
-        }
-        */
     }
 
     public void SpawnEnemies()
     {
-        foreach (DungeonController.DungeonEnemy enemy in roomEnemies)
+        foreach (GameObject enemy in roomEnemyPack)
         {
-            for (int i = 0; i < enemy.quantity; i++)
-                SpawnObject(enemy.enemyType, isEnemy: true);
+            SpawnObject(enemy, isEnemy: true);
         }
     }
 

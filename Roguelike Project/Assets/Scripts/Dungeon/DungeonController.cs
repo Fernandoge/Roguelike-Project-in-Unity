@@ -24,7 +24,7 @@ public class DungeonController : MonoBehaviour
     public GameObject dungeonCorridorFloor;
     [Header("Elements")]
     public GameObject player;
-    public DungeonEnemy[] enemies;
+    public List<DungeonEnemyPack> enemyPacks;
     public GameObject dungeonGateway;
     public GameObject treasure;
     public GameObject bossRoom;
@@ -60,7 +60,7 @@ public class DungeonController : MonoBehaviour
         SmallRooms = 2
     }
 
-    public class DungeonRoom
+    public struct DungeonRoom
     {
         public GameObject room;
         public int id;
@@ -87,7 +87,25 @@ public class DungeonController : MonoBehaviour
         public GameObject bottomRightCorner;
     }
 
-    public class DungeonCorridor
+    [System.Serializable]
+    public struct DungeonEnemyPack
+    {
+        public GameObject[] enemies;
+        public int stock;
+        public int minRoomFloorsWidth, minRoomFloorsHeight, maxRoomFloorsWidth, maxRoomFloorsHeight;
+
+        public DungeonEnemyPack(GameObject[] enemies, int stock, int minRoomFloorsWidth, int minRoomFloorsHeight, int maxRoomFloorsWidth, int maxRoomFloorsHeight)
+        {
+            this.enemies = enemies;
+            this.stock = stock;
+            this.minRoomFloorsWidth = minRoomFloorsWidth;
+            this.minRoomFloorsHeight = minRoomFloorsHeight;
+            this.maxRoomFloorsWidth = maxRoomFloorsWidth;
+            this.maxRoomFloorsHeight = maxRoomFloorsHeight;
+        }
+    }
+
+    public struct DungeonCorridor
     {
         public Rect rect;
         public int totalCorridorId;
@@ -97,13 +115,6 @@ public class DungeonController : MonoBehaviour
             this.rect = rect;
             this.totalCorridorId = totalCorridorId;
         }
-    }
-
-    [System.Serializable]
-    public struct DungeonEnemy
-    {
-        public GameObject enemyType;
-        public int quantity;
     }
 
     #endregion Dungeon Components
@@ -429,7 +440,7 @@ public class DungeonController : MonoBehaviour
 
             _dungeonRoomsComponent.Add(roomComponent);
             Rect roomFloorsRectangle = new Rect(dungeonRoom.roomRectangle.position, new Vector2(dungeonRoom.roomRectangle.width - 2f, dungeonRoom.roomRectangle.height - 4f));
-            roomComponent.Initialize(this, tilesPosition, enemies, dungeonRoom.id, dungeonRoom.roomRectangle, roomFloorsRectangle);
+            roomComponent.Initialize(this, tilesPosition, dungeonRoom.id, dungeonRoom.roomRectangle, roomFloorsRectangle);
             roomComponent.DrawRoomInteriors();
             //Set player initial position at a random floor tile of the first room
             if (dungeonRoom.id == 1)
@@ -446,7 +457,7 @@ public class DungeonController : MonoBehaviour
 
                 bossRoomGateway.Initialize(this, 0, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
                 bossRoomGateway.SetBossRoom(bossRoomComponent.firstPortalStop, bossRoomComponent.secondPortalStop);
-                bossRoomComponent.Initialize(this, tilesPosition, enemies, dungeonRoom.id + 1);
+                bossRoomComponent.Initialize(this, tilesPosition, dungeonRoom.id + 1);
                 roomComponent.roomGateways.Add(bossRoomGateway);
             }
         }

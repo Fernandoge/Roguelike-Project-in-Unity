@@ -12,11 +12,10 @@ public class BossRoom : RoomController
     public GameObject lastTile;
     private int[,] bossRoomLayers;
 
-    public void Initialize(DungeonController dungeonController, GameObject[,] tiles, DungeonController.DungeonEnemy[] enemies, int id)
+    public void Initialize(DungeonController dungeonController, GameObject[,] tiles, int id)
     {
         clsDungeonController = dungeonController;
         clsDungeonController.bossRoomInstance = this;
-        roomEnemies = enemies;
         this.tiles = tiles;
         this.id = id;
     }

@@ -18,10 +18,7 @@ public class RandomTools
     [System.Serializable]
     public class SizeWeightedObject : WeightedObject
     {
-        public int minRoomFloorsWidth;
-        public int minRoomFloorsHeight;
-        public int maxRoomFloorsWidth;
-        public int maxRoomFloorsHeight;
+        public int minRoomFloorsWidth, minRoomFloorsHeight, maxRoomFloorsWidth, maxRoomFloorsHeight;
     }
 
     public WeightedObject[] CreateWeightedObjectsArray(WeightedObject[] weightedObjects)
