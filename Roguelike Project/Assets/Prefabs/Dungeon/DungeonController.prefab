@@ -340,6 +340,12 @@ MonoBehaviour:
     minRoomFloorsHeight: 0
     maxRoomFloorsWidth: 10000
     maxRoomFloorsHeight: 10000
+  - item: {fileID: 7010966846032589401, guid: 6725f5e4d89074442ac9ff4708086dba, type: 3}
+    probability: 20
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 10000
+    maxRoomFloorsHeight: 10000
   dungeonWalls:
     top: {fileID: 7010966846032589401, guid: 07551ecda75f9a14a912a0b1c50fa262, type: 3}
     bottom: {fileID: 7010966846032589401, guid: 11ca31ee7b7cec54fa72ee7118bbcbc7,
