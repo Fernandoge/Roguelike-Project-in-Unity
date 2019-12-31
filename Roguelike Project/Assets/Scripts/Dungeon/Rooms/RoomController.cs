@@ -138,15 +138,23 @@ public class RoomController : MonoBehaviour
         }
         return tupleList;
     }
-    
-    public Vector3 DestroyRandomRightWall()
-    {
-        Vector3 rightWallPosition = new Vector3(roomRectangle.xMax - 1, (int)Random.Range(roomRectangle.yMin + ((roomRectangle.yMax - roomRectangle.yMin) / 2), roomRectangle.yMax - 3));
-        tiles[(int)rightWallPosition.x, (int)rightWallPosition.y].layer = 0;
-        Destroy(tiles[(int)rightWallPosition.x, (int)rightWallPosition.y]);
-        return rightWallPosition;
-    }
 
+    public Vector3 DestroyRandomSideWall(int side)
+    {
+        Vector3 destroyedWallPosition = new Vector3();
+        switch (side)
+        {
+            case 0:
+                destroyedWallPosition = new Vector3(roomRectangle.xMax - 1, (int)Random.Range(roomRectangle.yMin + ((roomRectangle.yMax - roomRectangle.yMin) / 2), roomRectangle.yMax - 3));
+                break;
+            case 2:
+                destroyedWallPosition = new Vector3(roomRectangle.xMin, (int)Random.Range(roomRectangle.yMin + 2, roomRectangle.yMax / 2));
+                break;
+        }
+        tiles[(int)destroyedWallPosition.x, (int)destroyedWallPosition.y].layer = 0;
+        Destroy(tiles[(int)destroyedWallPosition.x, (int)destroyedWallPosition.y]);
+        return destroyedWallPosition;
+    }
 
     #endregion Dungeon Generation Methods
 
@@ -162,13 +170,15 @@ public class RoomController : MonoBehaviour
     {
         foreach (GatewayPortal gateway in roomGateways)
         {
-            gateway.animator.enabled = false;
-            gateway.spriteRender.sprite = gateway.disabledSprite;
             GameManager.Instance.tilesLayers[(int)gateway.transform.position.x, (int)gateway.transform.position.y] = LayerMask.NameToLayer("Obstacle");
+            if (gateway.animator != null)
+                gateway.animator.enabled = false;
+            if (gateway.spriteRender != null)
+                gateway.spriteRender.sprite = gateway.disabledSprite;
         }
     }
 
-    public void SpawnObject(GameObject obj, bool isPlayer = false, bool isEnemy = false)
+    public void SpawnObject(GameObject obj, bool isEnemy = false)
     {
         bool objectSpawned = false;
         while (!objectSpawned)
@@ -179,16 +189,14 @@ public class RoomController : MonoBehaviour
             //Spawn the object in a floor and not inside a wall or a trigger
             if (tiles[x, y].layer == LayerMask.NameToLayer("Floor"))
             {
-                if (!isPlayer)
-                    obj = Instantiate(obj, new Vector3(x, y), Quaternion.identity);
-                else
-                    obj.transform.position = new Vector3(x, y);
+                obj = Instantiate(obj, new Vector3(x, y), Quaternion.identity);
 
                 if (isEnemy)
                 {
                     enemiesAlive.Add(obj.GetComponent<EnemyMovement>());
                     enemiesAliveCount++;
                 }
+
                 objectSpawned = true;
             }
         }
@@ -220,8 +228,9 @@ public class RoomController : MonoBehaviour
         clsDungeonController.roomsCompleted++;
         foreach (GatewayPortal gateway in roomGateways)
         {
-            gateway.animator.enabled = true;
             GameManager.Instance.tilesLayers[(int)gateway.transform.position.x, (int)gateway.transform.position.y] = 0;
+            if (gateway.animator != null)
+                gateway.animator.enabled = true;
         }
     }
 

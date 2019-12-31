@@ -18,8 +18,7 @@ public class DungeonController : MonoBehaviour
     public RandomTools.WeightedObject[] dungeonRoomFloors; 
     public RandomTools.WeightedObject[] dungeonWallDecos;
     public List<RandomTools.SizeWeightedObject> dungeonRoomInteriors;
-    [SerializeField]
-    private Walls dungeonWalls = default;
+    public Walls dungeonWalls;
     public GameObject playerCorridorParticles;
     public GameObject dungeonCorridorFloor;
     [Header("Elements")]
@@ -28,6 +27,7 @@ public class DungeonController : MonoBehaviour
     public GameObject dungeonGateway;
     public GameObject treasure;
     public GameObject bossRoom;
+    public GameObject initialCorridor;
     [Header ("Controller References")]
     public Transform dungeonRoomsParent;
     public Transform dungeonCorridorsParent;
@@ -445,18 +445,24 @@ public class DungeonController : MonoBehaviour
             //Set player initial position at a random floor tile of the first room
             if (dungeonRoom.id == 1)
             {
-                roomComponent.isCompleted = true;
-                roomComponent.SpawnObject(_clsPlayerMovement.gameObject, isPlayer: true);
+                GameObject initialCorridorInstance = Instantiate(initialCorridor, roomComponent.DestroyRandomSideWall(2), Quaternion.identity, roomComponent.transform.GetChild(0));
+                GatewayPortal initialCorridorGateway = initialCorridorInstance.GetComponent<GatewayPortal>();
+                GameObject firstRoomTile = tilesPosition[(int)initialCorridorInstance.transform.position.x + 1, (int)initialCorridorInstance.transform.position.y];
+
+                firstRoomTile.tag = "Gateway";
+                initialCorridorGateway.Initialize(this, 0, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
+                initialCorridorGateway.SetSimpleGateway(firstRoomTile, firstRoomTile);
+                _clsPlayerMovement.gameObject.transform.position = new Vector3(initialCorridorInstance.transform.position.x - 40, initialCorridorInstance.transform.position.y);
             }
             //Set boss room in the last dungeon room
             else if (dungeonRoom.id == _dungeonRooms.Count)
             {
-                GameObject bossRoomInstance = Instantiate(bossRoom, roomComponent.DestroyRandomRightWall(), Quaternion.identity);
+                GameObject bossRoomInstance = Instantiate(bossRoom, roomComponent.DestroyRandomSideWall(0), Quaternion.identity);
                 BossRoom bossRoomComponent = bossRoomInstance.GetComponent<BossRoom>();
                 GatewayPortal bossRoomGateway = bossRoomInstance.GetComponent<GatewayPortal>();
 
                 bossRoomGateway.Initialize(this, 0, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
-                bossRoomGateway.SetBossRoom(bossRoomComponent.firstPortalStop, bossRoomComponent.secondPortalStop);
+                bossRoomGateway.SetSimpleGateway(bossRoomComponent.firstPortalStop, bossRoomComponent.secondPortalStop);
                 bossRoomComponent.Initialize(this, tilesPosition, dungeonRoom.id + 1);
                 roomComponent.roomGateways.Add(bossRoomGateway);
             }
@@ -475,7 +481,6 @@ public class DungeonController : MonoBehaviour
 
         GameObject corridorParent = null;
         Transform corridorFloorHolder = null;
-        Transform corridorFloorHolderAux = null;
         DungeonCorridor corridorAux = new DungeonCorridor(new Rect(-1, -1, 0, 0), 0);
 
         foreach (DungeonCorridor corridor in subDungeon.corridors)
@@ -485,7 +490,6 @@ public class DungeonController : MonoBehaviour
             {
                 corridorParent = Instantiate(_corridorHolder, dungeonCorridorsParent);
                 corridorFloorHolder = corridorParent.transform.GetChild(0);
-                corridorFloorHolderAux = corridorFloorHolder;
             }
             corridorAux = corridor;
 

@@ -378,6 +378,8 @@ MonoBehaviour:
   treasure: {fileID: 4528958197017009291, guid: 6bd4d51cc4c2b974d846e15706945e95,
     type: 3}
   bossRoom: {fileID: 170492, guid: d1d8985b3b9cf414fbdb952e7182d600, type: 3}
+  initialCorridor: {fileID: 1572115446923078345, guid: 812fe123eba09744198d1e5a67649e75,
+    type: 3}
   dungeonRoomsParent: {fileID: 1403184905427494535}
   dungeonCorridorsParent: {fileID: 1403184904892740545}
   dungeonCamera: {fileID: 8610930163838314838}

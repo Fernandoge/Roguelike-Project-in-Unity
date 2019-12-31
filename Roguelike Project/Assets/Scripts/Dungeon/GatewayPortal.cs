@@ -21,7 +21,7 @@ public class GatewayPortal : MonoBehaviour
     private GameObject _corridorParticlesInstance;
     private float _speed;
     private float _distanceBetweenNextFloor;
-    private bool _isBossGateway;
+    private bool _isSimpleGateway;
     private int _firstDirection;
     private int _currentDirection;
     private int _currentTotalNeighbours;
@@ -41,11 +41,11 @@ public class GatewayPortal : MonoBehaviour
         _player = player;
     }
 
-    public void SetBossRoom(GameObject firstBossFloor, GameObject secondBossFloor)
+    public void SetSimpleGateway(GameObject firstBossFloor, GameObject secondBossFloor)
     {
         _firstBossFloor = firstBossFloor;
         _secondBossFloor = secondBossFloor;
-        _isBossGateway = true;
+        _isSimpleGateway = true;
     }
 
     private void SetTargetFloor(GameObject targetFloor)
@@ -67,7 +67,7 @@ public class GatewayPortal : MonoBehaviour
                     enabled = false;
                     ManagePlayerStatus(true);
                     RoomController RoomComponent;
-                    if (!_isBossGateway)
+                    if (!_isSimpleGateway || transform.parent != null)
                     {
                         RoomComponent = gatewayReached.transform.parent.parent.GetComponent<RoomController>();
                     }
@@ -82,7 +82,7 @@ public class GatewayPortal : MonoBehaviour
                     _destinyReached = true;
                     gatewayReached = _targetFloor;
                 }
-                if (!_isBossGateway)
+                if (!_isSimpleGateway)
                 {
                     CheckNeighbours((int)_targetFloor.transform.position.x, (int)_targetFloor.transform.position.y, _currentDirection);
                 }

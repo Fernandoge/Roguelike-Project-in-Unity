@@ -2211,7 +2211,7 @@ GameObject:
   - component: {fileID: 8662901260970231379}
   - component: {fileID: 6820797122319014877}
   m_Layer: 9
-  m_Name: zWall
+  m_Name: InteriorZ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
