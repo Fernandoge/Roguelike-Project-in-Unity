@@ -246,7 +246,7 @@ public class GatewayPortal : MonoBehaviour
         else
         {
             Destroy(_corridorParticlesInstance);
-            _clsPlayerSpriteManager.UpdateSpriteDirection(_currentDirection);
+            _clsPlayerSpriteManager.sprRender.sprite = _clsPlayerSpriteManager.UpdateDirectionSprite(_currentDirection);
         }
     }
 }

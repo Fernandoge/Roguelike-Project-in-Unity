@@ -28,7 +28,7 @@ public class SpriteManager : MonoBehaviour
             else if (yDir == -1 && direction == 3)
                 return;
             else
-                UpdateSpriteDirection(2);
+                sprRender.sprite = UpdateDirectionSprite(2);
         }
         else if (xDir == 1)
         {
@@ -37,29 +37,31 @@ public class SpriteManager : MonoBehaviour
             else if (yDir == -1 && direction == 3)
                 return;
             else
-                UpdateSpriteDirection(0);
+                sprRender.sprite = UpdateDirectionSprite(0);
         }
         else if (yDir == 1)
-            UpdateSpriteDirection(1);
+            sprRender.sprite = UpdateDirectionSprite(1);
         else if (yDir == -1)
-            UpdateSpriteDirection(3);
+            sprRender.sprite = UpdateDirectionSprite(3);
     }
 
-    public void UpdateSpriteDirection(int direction)
+    public Sprite UpdateDirectionSprite(int direction)
     {
         this.direction = direction;
         animator.SetInteger("Direction", direction);
+        Sprite sprite = null;
         switch (direction)
         {
             case 0:
-                sprRender.sprite = spRight; break;
+                sprite = spRight; break;
             case 1:
-                sprRender.sprite = spUp; break;
+                sprite = spUp; break;
             case 2:
-                sprRender.sprite = spLeft; break;
+                sprite = spLeft; break;
             case 3:
-                sprRender.sprite = spDown; break;
+                sprite = spDown; break;
         }
+        return sprite;
     }
 
     public void UpdateWeaponSprite(Sprite weaponSprite)

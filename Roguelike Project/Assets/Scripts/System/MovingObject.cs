@@ -24,6 +24,11 @@ public abstract class MovingObject : MonoBehaviour
     {
         if (moving)
             return;
+        else
+        {
+            if (_clsSpriteManager.animator.enabled && _clsSpriteManager.sprRender.sprite == _clsSpriteManager.UpdateDirectionSprite(_clsSpriteManager.direction))
+                _clsSpriteManager.animator.enabled = false;
+        }
 
         Movement();
     }
@@ -39,6 +44,7 @@ public abstract class MovingObject : MonoBehaviour
             GameManager.Instance.tilesLayers[(int)_destiny.x, (int)_destiny.y] = gameObject.layer;
 
             moving = true;
+            _clsSpriteManager.animator.enabled = true;
             _clsSpriteManager.CheckMovement(xDir, yDir);
             StartCoroutine(SmoothMovement(_destiny));
         }  
