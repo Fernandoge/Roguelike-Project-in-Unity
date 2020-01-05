@@ -44,13 +44,13 @@ public class EnemiesRoom : RoomController
         {
             DisableGateways();
             SpawnEnemies();
-        }
-        if (id == 1)
-        {
-            GameObject initialCorridor = roomGatewaysHolder.GetChild(0).gameObject;
-            Instantiate(clsDungeonController.dungeonWalls.left, initialCorridor.transform.position, Quaternion.identity, roomWallsHolder);
-            roomGateways.Remove(initialCorridor.GetComponent<GatewayPortal>());
-            Destroy(initialCorridor);
+            if (id == 1)
+            {
+                GameObject initialCorridor = roomGatewaysHolder.GetChild(0).gameObject;
+                Instantiate(clsDungeonController.dungeonWalls.left, initialCorridor.transform.position, Quaternion.identity, roomWallsHolder);
+                roomGateways.Remove(initialCorridor.GetComponent<GatewayPortal>());
+                Destroy(initialCorridor);
+            }
         }
     }
 }

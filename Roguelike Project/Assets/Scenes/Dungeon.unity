@@ -212,11 +212,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonController
       objectReference: {fileID: 0}
-    - target: {fileID: 8610930163838314838, guid: c178e7d8eb75fb045aa79858a2364b69,
-        type: 3}
-      propertyPath: orthographic size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1403184906628289017, guid: c178e7d8eb75fb045aa79858a2364b69,
         type: 3}
       propertyPath: m_LocalPosition.x

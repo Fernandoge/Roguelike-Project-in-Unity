@@ -36,7 +36,7 @@ public class BossRoom : RoomController
     public void GetBossRoomLayers()
     {   
         bossRoomLayers = new int[(int)(lastTile.transform.position.x - firstTile.transform.position.x + 1), (int)(lastTile.transform.position.y - firstTile.transform.position.y + 1)];
-        for (int i = 0; i < transform.childCount - 1; i++)  
+        for (int i = 0; i < transform.childCount - 2; i++)  
         {
             Transform currentChild = transform.GetChild(i);
             foreach (Transform child in currentChild)
