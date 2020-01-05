@@ -14,7 +14,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -236,7 +236,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enemy_Left
-  m_Speed: 1
+  m_Speed: 0.065
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101341649229252736}
@@ -319,7 +319,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enemy_Right
-  m_Speed: 1
+  m_Speed: 0.065
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101570810235440344}
@@ -346,7 +346,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enemy_Up
-  m_Speed: 1
+  m_Speed: 0.065
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101877795661311658}
@@ -373,7 +373,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enemy_Down
-  m_Speed: 1
+  m_Speed: 0.065
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101055165119209620}
@@ -403,7 +403,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102011617078668348}
-    m_Position: {x: 180, y: 156, z: 0}
+    m_Position: {x: 180, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102478829614174010}
     m_Position: {x: 804, y: 144, z: 0}

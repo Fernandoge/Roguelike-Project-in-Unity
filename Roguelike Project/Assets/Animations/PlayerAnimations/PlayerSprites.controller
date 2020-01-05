@@ -14,7 +14,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -266,7 +266,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player_Left
-  m_Speed: 1
+  m_Speed: 0.065
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101081774997224830}
@@ -293,7 +293,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player_Right
-  m_Speed: 1
+  m_Speed: 0.065
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101109979770664738}
@@ -320,7 +320,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player_Down
-  m_Speed: 1
+  m_Speed: 0.065
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101642292396244822}
@@ -347,7 +347,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player_Up
-  m_Speed: 1
+  m_Speed: 0.065
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101177737656611286}
@@ -377,7 +377,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102674857753104816}
-    m_Position: {x: 324, y: 48, z: 0}
+    m_Position: {x: 320, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102498166941050136}
     m_Position: {x: 324, y: 456, z: 0}
