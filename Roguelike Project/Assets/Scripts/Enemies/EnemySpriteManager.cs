@@ -10,6 +10,8 @@ public class EnemySpriteManager : SpriteManager
     private EnemyMovement _clsEnemyMovement = default;
     [SerializeField]
     private EnemyWeapon _clsEnemyWeapon = default;
+    [SerializeField]
+    private ParticleSystem _deathParticles = default;
 
     private void Start()
     {
@@ -19,10 +21,9 @@ public class EnemySpriteManager : SpriteManager
     public void Death()
     {
         GameManager.Instance.tilesLayers[(int)transform.position.x, (int)transform.position.y] = 0;
-        _clsEnemyMovement.enabled = false;
-        _clsEnemyWeapon.enabled = false;
-        animator.enabled = false;
-        sprRender.sprite = spDeath;
+        ParticleSystem deathParticlesInstance = Instantiate(_deathParticles, transform.position, Quaternion.identity);
+        Destroy(deathParticlesInstance.gameObject, deathParticlesInstance.main.startLifetimeMultiplier);
+        Destroy(gameObject);
     }
 }
     

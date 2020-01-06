@@ -266,6 +266,8 @@ MonoBehaviour:
   direction: 0
   _clsEnemyMovement: {fileID: 2533875942306066360}
   _clsEnemyWeapon: {fileID: 8674482474884631650}
+  _deathParticles: {fileID: 8278757029764318106, guid: 0be9c20e8ddaf23449d57234c1be28e1,
+    type: 3}
 --- !u!212 &5006262955719001528
 SpriteRenderer:
   m_ObjectHideFlags: 0

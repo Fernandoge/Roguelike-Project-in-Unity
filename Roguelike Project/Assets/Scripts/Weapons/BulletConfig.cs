@@ -6,7 +6,7 @@ public class BulletConfig : MonoBehaviour {
     public Vector3 direction;
     public float bulletSpeed;
     public float bulletDamage;
-    public GameObject creator;
+    public int creatorLayer;
     HitpointsManager clsHitpointsManager;
     public GameObject bloodImpact, wallImpact;
     public float bulletDuration;
@@ -25,15 +25,15 @@ public class BulletConfig : MonoBehaviour {
         transform.Translate(direction * bulletSpeed * Time.deltaTime);
     }
 
-    public void SetVals (Vector3 dir, GameObject shooterName)
+    public void SetVals (Vector3 dir, int shooterLayer)
     {
         direction = dir;
-        creator = shooterName;
+        creatorLayer = shooterLayer;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (creator.layer == LayerMask.NameToLayer("Player"))
+        if (creatorLayer == LayerMask.NameToLayer("Player"))
         {
             if (col.gameObject.layer == LayerMask.NameToLayer("Enemy") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObstacle"))
             {

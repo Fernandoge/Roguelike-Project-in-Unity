@@ -63,7 +63,7 @@ public class EnemyWeapon : MonoBehaviour
         dir.x = Vector2.right.x;
         dir.y = Vector2.right.y;
         dir.z = 0;
-        clsBulletConfig.SetVals(dir, gameObject);
+        clsBulletConfig.SetVals(dir, gameObject.layer);
         Instantiate(weaponBullet, bulletSpawn.transform.position, this.transform.rotation);
         fireRate = timerReset;
 
