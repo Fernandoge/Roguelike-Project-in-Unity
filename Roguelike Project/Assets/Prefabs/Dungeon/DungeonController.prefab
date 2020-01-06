@@ -206,8 +206,9 @@ MonoBehaviour:
   enemyPacks:
   - enemies:
     - {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
-    - {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
-    - {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
+    - {fileID: 7318080954582039609, guid: 23d5e4d942b1f9e49981b6d20709d7d4, type: 3}
+    - {fileID: 9217898153457032286, guid: faf9b39a860bfc446ac3f08083ad1d98, type: 3}
+    - {fileID: 6761725785093711239, guid: a3e19ddd6d1f05b4dac865cde3281370, type: 3}
     stock: 100
     minRoomFloorsWidth: 0
     minRoomFloorsHeight: 0

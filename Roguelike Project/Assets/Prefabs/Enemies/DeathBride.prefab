@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6042756948168999655
+--- !u!1001 &5314152175184896640
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,12 +10,7 @@ PrefabInstance:
     - target: {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
         type: 3}
       propertyPath: m_Name
-      value: Basic Enemy Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
+      value: DeathBride
       objectReference: {fileID: 0}
     - target: {fileID: 3914512871002406623, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
         type: 3}
@@ -72,42 +67,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 485676596, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9339623
-      objectReference: {fileID: 0}
-    - target: {fileID: 485676596, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 485676596, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5321503236256192883, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
+    - target: {fileID: 6978326576728948576, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
         type: 3}
-      propertyPath: hitpoints
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 190120077144803765, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
+      propertyPath: spDown
+      value: 
+      objectReference: {fileID: -2167885455777336892, guid: afbc78fecc29d1e44abae2462dc929b2,
         type: 3}
-      propertyPath: pursuingSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 190120077144803765, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
+    - target: {fileID: 6978326576728948576, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
         type: 3}
-      propertyPath: stopDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8802549347646168770, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
+      propertyPath: spLeft
+      value: 
+      objectReference: {fileID: -5482887672799308662, guid: afbc78fecc29d1e44abae2462dc929b2,
         type: 3}
-      propertyPath: distanceToShoot
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8802549347646168770, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
+    - target: {fileID: 6978326576728948576, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
         type: 3}
-      propertyPath: fireRate
-      value: 0.02
-      objectReference: {fileID: 0}
+      propertyPath: spRight
+      value: 
+      objectReference: {fileID: -8831327345240788512, guid: afbc78fecc29d1e44abae2462dc929b2,
+        type: 3}
+    - target: {fileID: 6978326576728948576, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
+        type: 3}
+      propertyPath: spUp
+      value: 
+      objectReference: {fileID: -8973098240933213779, guid: afbc78fecc29d1e44abae2462dc929b2,
+        type: 3}
+    - target: {fileID: 5006262955719001528, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2167885455777336892, guid: afbc78fecc29d1e44abae2462dc929b2,
+        type: 3}
+    - target: {fileID: 4848892119370078338, guid: 5a37c800d90d0054687a08e7e8cf2e6a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a9932418656d2e4409e043a77ec1b018, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
