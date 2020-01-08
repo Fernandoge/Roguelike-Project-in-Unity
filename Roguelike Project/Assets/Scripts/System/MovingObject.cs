@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class MovingObject : MonoBehaviour
 {
     [System.NonSerialized] public int currentPositionOriginalLayer;
+    [System.NonSerialized] public Vector3 destinyPosition;
     public Rigidbody2D objRigidbody;
     public SpriteManager _clsSpriteManager;
     public LayerMask blockingLayers;
@@ -35,18 +36,18 @@ public abstract class MovingObject : MonoBehaviour
 
     public void Move(int xDir, int yDir)
     {
-        Vector3 _destiny = transform.position + new Vector3(xDir, yDir, 0f);
+        destinyPosition = transform.position + new Vector3(xDir, yDir, 0f);
         //if (Physics2D.OverlapBox(_destiny, new Vector2(0.95f, 0.95f), 0f, blockingLayers) == null)
-        if (((1 << GameManager.Instance.tilesLayers[(int)_destiny.x, (int)_destiny.y]) & blockingLayers) == 0)
+        if (((1 << GameManager.Instance.tilesLayers[(int)destinyPosition.x, (int)destinyPosition.y]) & blockingLayers) == 0)
         {
             GameManager.Instance.tilesLayers[(int)transform.position.x, (int)transform.position.y] = currentPositionOriginalLayer;
-            currentPositionOriginalLayer = GameManager.Instance.tilesLayers[(int)_destiny.x, (int)_destiny.y];
-            GameManager.Instance.tilesLayers[(int)_destiny.x, (int)_destiny.y] = gameObject.layer;
+            currentPositionOriginalLayer = GameManager.Instance.tilesLayers[(int)destinyPosition.x, (int)destinyPosition.y];
+            GameManager.Instance.tilesLayers[(int)destinyPosition.x, (int)destinyPosition.y] = gameObject.layer;
 
             moving = true;
             _clsSpriteManager.animator.enabled = true;
             _clsSpriteManager.CheckMovement(xDir, yDir);
-            StartCoroutine(SmoothMovement(_destiny));
+            StartCoroutine(SmoothMovement(destinyPosition));
         }  
     }
 

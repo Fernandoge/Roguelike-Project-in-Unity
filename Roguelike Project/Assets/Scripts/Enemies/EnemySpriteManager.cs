@@ -20,7 +20,7 @@ public class EnemySpriteManager : SpriteManager
 
     public void Death()
     {
-        GameManager.Instance.tilesLayers[(int)transform.position.x, (int)transform.position.y] = 0;
+        GameManager.Instance.tilesLayers[(int)_clsEnemyMovement.destinyPosition.x, (int)_clsEnemyMovement.destinyPosition.y] = _clsEnemyMovement.currentPositionOriginalLayer;
         ParticleSystem deathParticlesInstance = Instantiate(_deathParticles, transform.position, Quaternion.identity);
         Destroy(deathParticlesInstance.gameObject, deathParticlesInstance.main.startLifetimeMultiplier);
         Destroy(gameObject);

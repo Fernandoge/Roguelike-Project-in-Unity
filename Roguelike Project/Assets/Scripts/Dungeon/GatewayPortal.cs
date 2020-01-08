@@ -245,6 +245,7 @@ public class GatewayPortal : MonoBehaviour
         }  
         else
         {
+            _clsPlayerMovement.currentPositionOriginalLayer = LayerMask.NameToLayer("Floor");
             Destroy(_corridorParticlesInstance);
             _clsPlayerSpriteManager.sprRender.sprite = _clsPlayerSpriteManager.UpdateDirectionSprite(_currentDirection);
         }

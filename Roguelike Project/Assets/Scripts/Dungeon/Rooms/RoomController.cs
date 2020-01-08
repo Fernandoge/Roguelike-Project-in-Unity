@@ -47,9 +47,13 @@ public class RoomController : MonoBehaviour
         {
             for (int j = (int)_roomFloorsRectangle.y + 1; j <= _roomFloorsRectangle.yMax; j++)
             {
-                if (tiles[i, j] == null || tiles[i, j].gameObject.layer == LayerMask.NameToLayer("NoFloorTile"))
+                if (tiles[i, j] == null)
                 {
                     tiles[i, j] = Instantiate(RandomTools.Instance.PickOne(clsDungeonController.dungeonRoomFloors), new Vector3(i, j, 0f), Quaternion.identity, roomFloorsHolder);
+                }
+                else if (tiles[i, j].gameObject.layer == LayerMask.NameToLayer("NoFloorTile"))
+                {
+                    Instantiate(RandomTools.Instance.PickOne(clsDungeonController.dungeonRoomFloors), new Vector3(i, j, 0f), Quaternion.identity, roomFloorsHolder);
                 }
             }
         }
@@ -187,13 +191,15 @@ public class RoomController : MonoBehaviour
             int y = Random.Range((int)roomRectangle.y, (int)roomRectangle.yMax);
 
             //Spawn the object in a floor and not inside a wall or a trigger
-            if (tiles[x, y].layer == LayerMask.NameToLayer("Floor"))
+            if (tiles[x, y].layer == LayerMask.NameToLayer("Floor") || tiles[x, y].layer == LayerMask.NameToLayer("NoFloorTile"))
             {
                 obj = Instantiate(obj, new Vector3(x, y), Quaternion.identity);
 
                 if (isEnemy)
                 {
-                    enemiesAlive.Add(obj.GetComponent<EnemyMovement>());
+                    EnemyMovement enemyMovement = obj.GetComponent<EnemyMovement>();
+                    enemyMovement.currentPositionOriginalLayer = tiles[x, y].layer;
+                    enemiesAlive.Add(enemyMovement);
                     enemiesAliveCount++;
                 }
 
