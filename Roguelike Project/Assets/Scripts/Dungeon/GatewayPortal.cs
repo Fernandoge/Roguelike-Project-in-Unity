@@ -69,7 +69,8 @@ public class GatewayPortal : MonoBehaviour
                     RoomController RoomComponent;
                     if (!_isSimpleGateway || transform.parent != null)
                     {
-                        RoomComponent = gatewayReached.transform.parent.parent.GetComponent<RoomController>();
+                        RoomComponent = gatewayReached.GetComponentInParent<RoomController>();
+                        GameManager.Instance.tilesLayers[(int)_targetFloor.transform.position.x, (int)_targetFloor.transform.position.y] = _player.gameObject.layer;
                     }
                     else 
                     {

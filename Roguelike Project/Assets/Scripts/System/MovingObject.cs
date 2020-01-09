@@ -36,10 +36,11 @@ public abstract class MovingObject : MonoBehaviour
 
     public void Move(int xDir, int yDir)
     {
-        destinyPosition = transform.position + new Vector3(xDir, yDir, 0f);
+        Vector3 positionToCheck = transform.position + new Vector3(xDir, yDir, 0f);
         //if (Physics2D.OverlapBox(_destiny, new Vector2(0.95f, 0.95f), 0f, blockingLayers) == null)
-        if (((1 << GameManager.Instance.tilesLayers[(int)destinyPosition.x, (int)destinyPosition.y]) & blockingLayers) == 0)
+        if (((1 << GameManager.Instance.tilesLayers[(int)positionToCheck.x, (int)positionToCheck.y]) & blockingLayers) == 0)
         {
+            destinyPosition = positionToCheck;
             GameManager.Instance.tilesLayers[(int)transform.position.x, (int)transform.position.y] = currentPositionOriginalLayer;
             currentPositionOriginalLayer = GameManager.Instance.tilesLayers[(int)destinyPosition.x, (int)destinyPosition.y];
             GameManager.Instance.tilesLayers[(int)destinyPosition.x, (int)destinyPosition.y] = gameObject.layer;

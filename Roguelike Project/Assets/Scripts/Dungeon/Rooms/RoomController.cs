@@ -191,9 +191,10 @@ public class RoomController : MonoBehaviour
             int y = Random.Range((int)roomRectangle.y, (int)roomRectangle.yMax);
 
             //Spawn the object in a floor and not inside a wall or a trigger
-            if (tiles[x, y].layer == LayerMask.NameToLayer("Floor") || tiles[x, y].layer == LayerMask.NameToLayer("NoFloorTile"))
+            if (GameManager.Instance.tilesLayers[x,y] == LayerMask.NameToLayer("Floor") || GameManager.Instance.tilesLayers[x, y] == LayerMask.NameToLayer("NoFloorTile"))
             {
                 obj = Instantiate(obj, new Vector3(x, y), Quaternion.identity);
+                GameManager.Instance.tilesLayers[x, y] = obj.layer;
 
                 if (isEnemy)
                 {

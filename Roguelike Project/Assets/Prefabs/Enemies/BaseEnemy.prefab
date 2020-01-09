@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 5006262955719001528}
   - component: {fileID: 4848892119370078338}
   m_Layer: 16
-  m_Name: MainEnemy
+  m_Name: BaseEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   _clsSpriteManager: {fileID: 6978326576728948576}
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 328448
+    m_Bits: 1377024
   moveTime: 0.24
   canMove: 1
   moving: 0
