@@ -14,7 +14,6 @@ public class GatewayPortal : MonoBehaviour
     private PlayerSpriteManager _clsPlayerSpriteManager;
     private DungeonController _clsDungeonController;
     private GameObject _firstBossFloor;
-    private GameObject _secondBossFloor;
     private GameObject gatewayReached;
     private GameObject[] _availableNeighbours;
     private GameObject[,] _tiles;
@@ -41,10 +40,9 @@ public class GatewayPortal : MonoBehaviour
         _player = player;
     }
 
-    public void SetSimpleGateway(GameObject firstBossFloor, GameObject secondBossFloor)
+    public void SetSimpleGateway(GameObject firstBossFloor)
     {
         _firstBossFloor = firstBossFloor;
-        _secondBossFloor = secondBossFloor;
         _isSimpleGateway = true;
     }
 
@@ -91,8 +89,6 @@ public class GatewayPortal : MonoBehaviour
                 {
                     if (_targetFloor == gameObject)
                         SetTargetFloor(_firstBossFloor);
-                    else
-                        SetTargetFloor(_secondBossFloor);
                 }
             }
         }

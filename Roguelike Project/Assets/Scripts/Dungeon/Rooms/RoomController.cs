@@ -9,6 +9,7 @@ public class RoomController : MonoBehaviour
     public Rect roomRectangle;
     private Rect _roomFloorsRectangle;
     public bool isCompleted;
+    public bool isFirstRoom;
     protected GameObject[,] tiles;
     protected GameObject[] roomEnemyPack;
     protected DungeonController clsDungeonController;
@@ -148,11 +149,11 @@ public class RoomController : MonoBehaviour
         Vector3 destroyedWallPosition = new Vector3();
         switch (side)
         {
-            case 0:
-                destroyedWallPosition = new Vector3(roomRectangle.xMax - 1, (int)Random.Range(roomRectangle.yMin + ((roomRectangle.yMax - roomRectangle.yMin) / 2), roomRectangle.yMax - 3));
+            case 1:
+                destroyedWallPosition = new Vector3((int)Random.Range(roomRectangle.xMin + 1, roomRectangle.xMax - 2), roomRectangle.yMax - 1);
                 break;
-            case 2:
-                destroyedWallPosition = new Vector3(roomRectangle.xMin, (int)Random.Range(roomRectangle.yMin + 2, roomRectangle.yMax / 2));
+            case 3:
+                destroyedWallPosition = new Vector3((int)Random.Range(roomRectangle.xMin + 1, roomRectangle.xMax - 2), roomRectangle.yMin);
                 break;
         }
         tiles[(int)destroyedWallPosition.x, (int)destroyedWallPosition.y].layer = 0;

@@ -421,15 +421,21 @@ public class DungeonController : MonoBehaviour
     {
         HashSet<int> treasureRooms = new HashSet<int>();
         //Define what room ids are going to be treasure rooms
-        while (treasureRoomQuantity > 0)
+        if (treasureRoomQuantity <= _dungeonRooms.Count)
         {
-            int randomRoomID = Random.Range(2, _dungeonRooms.Count + 1);
-            if (!treasureRooms.Contains(randomRoomID))
+            while (treasureRoomQuantity > 0)
             {
-                treasureRooms.Add(randomRoomID);
-                treasureRoomQuantity--;
+                int randomRoomID = Random.Range(2, _dungeonRooms.Count + 1);
+                if (!treasureRooms.Contains(randomRoomID))
+                {
+                    treasureRooms.Add(randomRoomID);
+                    treasureRoomQuantity--;
+                }
             }
         }
+        int bottomStartRoom = GetRandomSideRoom(3);
+        int topEndRoom = GetRandomSideRoom(1);
+
         RoomController roomComponent = null;
         foreach (DungeonRoom dungeonRoom in _dungeonRooms)
         {
@@ -443,30 +449,88 @@ public class DungeonController : MonoBehaviour
             roomComponent.Initialize(this, tilesPosition, dungeonRoom.id, dungeonRoom.roomRectangle, roomFloorsRectangle);
             roomComponent.DrawRoomInteriors();
             //Set player initial position at a random floor tile of the first room
-            if (dungeonRoom.id == 1)
+            if (dungeonRoom.id == bottomStartRoom)
             {
-                GameObject initialCorridorInstance = Instantiate(initialCorridor, roomComponent.DestroyRandomSideWall(2), Quaternion.identity, roomComponent.transform.GetChild(0));
+                GameObject initialCorridorInstance = Instantiate(initialCorridor, roomComponent.DestroyRandomSideWall(3), Quaternion.identity, roomComponent.transform.GetChild(0));
                 GatewayPortal initialCorridorGateway = initialCorridorInstance.GetComponent<GatewayPortal>();
-                GameObject firstRoomTile = tilesPosition[(int)initialCorridorInstance.transform.position.x + 1, (int)initialCorridorInstance.transform.position.y];
+                GameObject firstRoomTile = tilesPosition[(int)initialCorridorInstance.transform.position.x, (int)initialCorridorInstance.transform.position.y + 1];
 
+                roomComponent.isFirstRoom = true;
                 firstRoomTile.tag = "Gateway";
-                initialCorridorGateway.Initialize(this, 0, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
-                initialCorridorGateway.SetSimpleGateway(firstRoomTile, firstRoomTile);
-                _clsPlayerMovement.gameObject.transform.position = new Vector3(initialCorridorInstance.transform.position.x - 40, initialCorridorInstance.transform.position.y);
+                initialCorridorGateway.Initialize(this, 1, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
+                initialCorridorGateway.SetSimpleGateway(firstRoomTile);
+                _clsPlayerMovement.gameObject.transform.position = new Vector3(initialCorridorInstance.transform.position.x, initialCorridorInstance.transform.position.y - 40);
             }
             //Set boss room in the last dungeon room
-            else if (dungeonRoom.id == _dungeonRooms.Count)
+            if (dungeonRoom.id == topEndRoom)
             {
-                GameObject bossRoomInstance = Instantiate(bossRoom, roomComponent.DestroyRandomSideWall(0), Quaternion.identity);
+                GameObject bossRoomInstance = Instantiate(bossRoom, roomComponent.DestroyRandomSideWall(1), Quaternion.identity);
                 BossRoom bossRoomComponent = bossRoomInstance.GetComponent<BossRoom>();
                 GatewayPortal bossRoomGateway = bossRoomInstance.GetComponent<GatewayPortal>();
 
-                bossRoomGateway.Initialize(this, 0, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
-                bossRoomGateway.SetSimpleGateway(bossRoomComponent.firstPortalStop, bossRoomComponent.secondPortalStop);
+                bossRoomGateway.Initialize(this, 1, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
+                bossRoomGateway.SetSimpleGateway(bossRoomComponent.firstPortalStop);
                 bossRoomComponent.Initialize(this, tilesPosition, dungeonRoom.id + 1);
                 roomComponent.roomGateways.Add(bossRoomGateway);
             }
         }
+    }
+    /*
+    private int GetRandomSideRoom(int side)
+    {
+        float yMin = Mathf.Infinity;
+        List<int> topRoomsList = new List<int>();
+        List<int> bottomRoomsList = new List<int>();
+        foreach (DungeonRoom dungeonRoom in _dungeonRooms)
+        {
+            if (dungeonRoom.roomRectangle.yMin < yMin)
+            {
+                bottomRoomsList.Add(dungeonRoom.id);
+                topRoomsList.Add(dungeonRoom.id - 1);
+            }
+
+            yMin = dungeonRoom.roomRectangle.yMin;
+        }
+        topRoomsList.Remove(0);
+        topRoomsList.Add(_dungeonRooms.Count);
+
+        if (side == 1)
+            return topRoomsList[Random.Range(0, topRoomsList.Count)];
+        if (side == 3)
+            return bottomRoomsList[Random.Range(0, bottomRoomsList.Count)];
+
+        return 0;
+    }*/
+    
+    private int GetRandomSideRoom(int side)
+    {
+        List<int> topRoomsList = new List<int>();
+        List<int> bottomRoomsList = new List<int>();
+        foreach (DungeonRoom dungeonRoom in _dungeonRooms)
+        {
+            bool noRoomTop = false, noRoomBot = false;
+
+            if (Physics2D.BoxCast(new Vector2(dungeonRoom.roomRectangle.center.x, dungeonRoom.roomRectangle.yMax), new Vector2(dungeonRoom.roomRectangle.width, 1), 0f, Vector2.up).collider == null)
+                noRoomTop = true;
+
+            if (Physics2D.BoxCast(new Vector2(dungeonRoom.roomRectangle.center.x, dungeonRoom.roomRectangle.yMin), new Vector2(dungeonRoom.roomRectangle.width, 1), 0f, Vector2.down).collider == null)
+                noRoomBot = true;
+
+            if (noRoomTop == true && noRoomBot == false)
+                topRoomsList.Add(dungeonRoom.id);
+
+            if (noRoomTop == false && noRoomBot == true)
+                bottomRoomsList.Add(dungeonRoom.id);
+        }
+
+        if (topRoomsList.Count == 0 || bottomRoomsList.Count == 0)
+            return 1;
+        if (side == 1)
+            return topRoomsList[Random.Range(0, topRoomsList.Count)];
+        if (side == 3)
+            return bottomRoomsList[Random.Range(0, bottomRoomsList.Count)];
+
+        return 0;
     }
 
     public void DrawCorridors(SubDungeon subDungeon)

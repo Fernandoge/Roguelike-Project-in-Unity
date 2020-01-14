@@ -6,7 +6,6 @@ public class BossRoom : RoomController
 {
     [SerializeField] private Transform _roomCorridorsHolder;
     public GameObject firstPortalStop;
-    public GameObject secondPortalStop;
     public GameObject roomClosedWall;
     public GameObject firstTile;
     public GameObject lastTile;
@@ -29,7 +28,7 @@ public class BossRoom : RoomController
         Destroy(_roomCorridorsHolder.gameObject);
         transform.position = new Vector3(0f, 0f, 0f);
         transform.position -= firstTile.transform.position;
-        GameManager.Instance.player.transform.position = secondPortalStop.transform.position;
+        GameManager.Instance.player.transform.position = firstPortalStop.transform.position;
         GameManager.Instance.tilesLayers = bossRoomLayers;
     }
 

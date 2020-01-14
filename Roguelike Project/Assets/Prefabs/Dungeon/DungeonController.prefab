@@ -106,14 +106,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fae29c79084e42cf983d71a943f4735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardRows: 100
-  boardColumns: 100
+  boardRows: 180
+  boardColumns: 80
   averageMinRoomTiles: 300
   roomSizeRandomness: 2
-  minRoomWidth: 12
-  minRoomHeight: 10
-  maxRoomWidth: 25
-  maxRoomHeight: 22
+  minRoomWidth: 10
+  minRoomHeight: 12
+  maxRoomWidth: 60
+  maxRoomHeight: 35
   corridorSpeed: 15
   treasureRoomQuantity: 2
   dungeonRoomFloors:

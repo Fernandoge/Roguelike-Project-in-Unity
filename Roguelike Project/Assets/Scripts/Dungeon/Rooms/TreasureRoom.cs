@@ -22,12 +22,19 @@ public class TreasureRoom : RoomController
 
     public override void ActivateRoom()
     {
+        base.ActivateRoom();
         if (!isCompleted)
         {
             SpawnEnemies();
             DisableGateways();
+            if (isFirstRoom)
+            {
+                GameObject initialCorridor = roomGatewaysHolder.GetChild(0).gameObject;
+                Instantiate(clsDungeonController.dungeonWalls.bottom, initialCorridor.transform.position, Quaternion.identity, roomWallsHolder);
+                roomGateways.Remove(initialCorridor.GetComponent<GatewayPortal>());
+                Destroy(initialCorridor);
+            }
         }
-        base.ActivateRoom();
     }
 
 }
