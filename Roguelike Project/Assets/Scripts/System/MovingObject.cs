@@ -45,6 +45,12 @@ public abstract class MovingObject : MonoBehaviour
             currentPositionOriginalLayer = GameManager.Instance.tilesLayers[(int)destinyPosition.x, (int)destinyPosition.y];
             GameManager.Instance.tilesLayers[(int)destinyPosition.x, (int)destinyPosition.y] = gameObject.layer;
 
+            if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                GameManager.Instance.playerDestinyPosition = destinyPosition;
+            }
+            GameManager.Instance.ResetPathfinding(this);
+
             moving = true;
             _clsSpriteManager.animator.enabled = true;
             _clsSpriteManager.CheckMovement(xDir, yDir);
@@ -62,6 +68,6 @@ public abstract class MovingObject : MonoBehaviour
             sqrRemainingDistance = (transform.position - destiny).sqrMagnitude;
             yield return null;
         }
-        moving = false;
+        moving = false;    
     }
 }

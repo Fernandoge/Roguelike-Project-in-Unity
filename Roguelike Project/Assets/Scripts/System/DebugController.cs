@@ -16,6 +16,7 @@ public class DebugController : MonoBehaviour
 
     public void ReloadCurrentScene()
     {
+        GameManager.Instance.enemiesAlive = new List<MovingObject>();
         GameManager.Instance.ManageLoadingScreen(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

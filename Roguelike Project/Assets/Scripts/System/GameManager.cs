@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public DungeonController currentDungeon;
     public int[,] tilesLayers;
     public PlayerMovement player;
+    public Vector3 playerDestinyPosition;
     public GameObject loadingScreen;
+    public List<MovingObject> enemiesAlive;
 
     private void Awake()
     {
@@ -38,6 +40,18 @@ public class GameManager : MonoBehaviour
     public void ManageLoadingScreen(bool state)
     {
         loadingScreen.SetActive(state);
+    }
+
+    public void ResetPathfinding(MovingObject thisEnemy)
+    {
+        foreach (EnemyMovement enemy in enemiesAlive)
+        {
+            if (thisEnemy != enemy)
+            {
+                enemy.targetPosition = playerDestinyPosition;
+                enemy.pathCalculated = false;
+            }    
+        }
     }
 
 }
