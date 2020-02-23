@@ -188,12 +188,12 @@ MonoBehaviour:
   blockingLayers:
     serializedVersion: 2
     m_Bits: 1377024
-  moveTime: 0.24
+  moveTime: 0.5
   canMove: 1
   moving: 0
-  target: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
   stopDistance: 0
-  distanceBetweenPlayer: 0
+  pathCalculated: 0
 --- !u!50 &4836105954153109662
 Rigidbody2D:
   serializedVersion: 4

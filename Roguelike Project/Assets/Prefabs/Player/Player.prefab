@@ -599,7 +599,7 @@ MonoBehaviour:
   blockingLayers:
     serializedVersion: 2
     m_Bits: 328192
-  moveTime: 0.1
+  moveTime: 0.2
   canMove: 1
   moving: 0
 --- !u!114 &-1667655407307348466

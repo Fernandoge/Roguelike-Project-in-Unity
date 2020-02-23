@@ -25,8 +25,8 @@ public class EnemyWeapon : MonoBehaviour
     {
         if (fireRate > 0)
             fireRate -= Time.deltaTime;
-        else
-            Shoot();
+        //else
+            //Shoot();
 
     }
 
@@ -58,7 +58,7 @@ public class EnemyWeapon : MonoBehaviour
     public void Shoot()
     {
         transform.eulerAngles = new Vector3(0, 0, 
-            Mathf.Atan2(clsEnemyMovement.target.transform.position.y - transform.position.y, clsEnemyMovement.target.transform.position.x - transform.position.x) * Mathf.Rad2Deg);
+            Mathf.Atan2(clsEnemyMovement.targetPosition.y - transform.position.y, clsEnemyMovement.targetPosition.x - transform.position.x) * Mathf.Rad2Deg);
         Vector3 dir;
         dir.x = Vector2.right.x;
         dir.y = Vector2.right.y;
