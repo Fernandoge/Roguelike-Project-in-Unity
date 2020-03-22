@@ -172,6 +172,7 @@ MonoBehaviour:
     width: 0
     height: 0
   isCompleted: 0
+  isFirstRoom: 0
   enemiesAliveCount: 0
   _roomCorridorsHolder: {fileID: 7203028211672122158}
   firstPortalStop: {fileID: 1771088670812565795}
@@ -995,7 +996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1232757715644991520
 Transform:
   m_ObjectHideFlags: 0
@@ -3485,7 +3486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &143150733346071255
 Transform:
   m_ObjectHideFlags: 0

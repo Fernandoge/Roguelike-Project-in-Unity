@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 487668}
   - component: {fileID: 21244900}
   m_Layer: 17
-  m_Name: InteriorExample
+  m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

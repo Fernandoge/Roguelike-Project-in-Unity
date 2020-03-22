@@ -187,7 +187,7 @@ MonoBehaviour:
   _clsSpriteManager: {fileID: 6978326576728948576}
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 1377024
+    m_Bits: 1376768
   moveTime: 0.5
   canMove: 1
   moving: 0

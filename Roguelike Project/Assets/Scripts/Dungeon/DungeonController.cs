@@ -4,27 +4,27 @@ using System.Collections.Generic;
 
 public class DungeonController : MonoBehaviour
 {
-    [Header("Config")]
+    [Header("Dungeon Size")]
     public int boardRows;
     public int boardColumns;
     public int averageMinRoomTiles;
     public RoomSizeRandomness roomSizeRandomness;
     public int minRoomWidth, minRoomHeight;
     public int maxRoomWidth, maxRoomHeight;
-    [Header("Values")]
+    [Header("Dungeon Values")]
     public float corridorSpeed;
     public int treasureRoomQuantity;
-    [Header("Assets")]
+    [Header("Dungeon Assets")]
     public RandomTools.WeightedObject[] dungeonRoomFloors; 
-    public RandomTools.WeightedObject[] dungeonWallDecos;
-    public List<RandomTools.SizeWeightedObject> dungeonRoomInteriors;
     public Walls dungeonWalls;
+    public List<RandomTools.SizeWeightedObject> dungeonRoomInteriors;
+    public RandomTools.WeightedObject[] dungeonWallDecos;
+    public RandomTools.WeightedObject[] dungeonCorridorFloors;
     public GameObject playerCorridorParticles;
-    public GameObject dungeonCorridorFloor;
+    public GameObject dungeonGateway;
     [Header("Elements")]
     public GameObject player;
     public List<DungeonEnemyPack> enemyPacks;
-    public GameObject dungeonGateway;
     public GameObject treasure;
     public GameObject bossRoom;
     public GameObject initialCorridor;
@@ -475,32 +475,6 @@ public class DungeonController : MonoBehaviour
             }
         }
     }
-    /*
-    private int GetRandomSideRoom(int side)
-    {
-        float yMin = Mathf.Infinity;
-        List<int> topRoomsList = new List<int>();
-        List<int> bottomRoomsList = new List<int>();
-        foreach (DungeonRoom dungeonRoom in _dungeonRooms)
-        {
-            if (dungeonRoom.roomRectangle.yMin < yMin)
-            {
-                bottomRoomsList.Add(dungeonRoom.id);
-                topRoomsList.Add(dungeonRoom.id - 1);
-            }
-
-            yMin = dungeonRoom.roomRectangle.yMin;
-        }
-        topRoomsList.Remove(0);
-        topRoomsList.Add(_dungeonRooms.Count);
-
-        if (side == 1)
-            return topRoomsList[Random.Range(0, topRoomsList.Count)];
-        if (side == 3)
-            return bottomRoomsList[Random.Range(0, bottomRoomsList.Count)];
-
-        return 0;
-    }*/
     
     private int GetRandomSideRoom(int side)
     {
@@ -604,7 +578,7 @@ public class DungeonController : MonoBehaviour
 
     public void InstantiateCorridorTile(int x, int y, Transform corridorFloorHolder)
     {
-        GameObject instance = Instantiate(dungeonCorridorFloor, new Vector3(x, y, 0f), Quaternion.identity, corridorFloorHolder);
+        GameObject instance = Instantiate(RandomTools.Instance.PickOne(dungeonCorridorFloors), new Vector3(x, y, 0f), Quaternion.identity, corridorFloorHolder);
         instance.tag = CorridorValidator(x, y);
         tilesPosition[x, y] = instance;
     }
@@ -745,6 +719,7 @@ public class DungeonController : MonoBehaviour
         _corridorHolder = Resources.Load<GameObject>("Corridor");
         dungeonRoomFloors = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomFloors);
         dungeonWallDecos = RandomTools.Instance.CreateWeightedObjectsArray(dungeonWallDecos);
+        dungeonCorridorFloors = RandomTools.Instance.CreateWeightedObjectsArray(dungeonCorridorFloors);
 
         do
         {
