@@ -43,6 +43,31 @@ public class RoomController : MonoBehaviour
 
     public virtual void DrawRoomInteriors()
     {
+        //Spawn interiors
+        //First we remove the objects that are not valid for this room
+        List<RandomTools.SizeWeightedObject> auxDungeonRoomInteriors = ApplySizeConditionsToObjects(clsDungeonController.dungeonRoomInteriorsSeparated);
+        //Get the tile positions of the room in a List
+        List<(int x, int y)> roomTilesPositions = GetTilePositions();
+        //Instantiate room interiors checking if there is enough space to instantiate them
+        int tilesListSize = roomTilesPositions.Count;
+        for (int i = 0; i < tilesListSize; i++)
+        {
+            int randomInt = Random.Range(0, roomTilesPositions.Count);
+            GameObject obj = RandomTools.Instance.PickOneSized(auxDungeonRoomInteriors);
+            Vector3 tilePosition = new Vector3(roomTilesPositions[randomInt].x, roomTilesPositions[randomInt].y, 0f);
+
+            if (obj != null && CheckAvailableSpace(obj, tilePosition))
+            {
+                GameObject instance = Instantiate(obj, tilePosition, Quaternion.identity, roomInteriorsHolder);
+                tiles[roomTilesPositions[randomInt].x, roomTilesPositions[randomInt].y] = instance;
+                foreach (Transform child in tiles[roomTilesPositions[randomInt].x, roomTilesPositions[randomInt].y].transform)
+                {
+                    tiles[(int)child.transform.position.x, (int)child.transform.position.y] = child.gameObject;
+                }
+            }
+            roomTilesPositions.RemoveAt(randomInt);
+        }
+
         //Draw floors in tiles without them
         for (int i = (int)_roomFloorsRectangle.x + 1; i <= _roomFloorsRectangle.xMax; i++)
         {
@@ -107,7 +132,7 @@ public class RoomController : MonoBehaviour
         obj.transform.position = instancePosition;
         foreach (Transform child in obj.transform)
         {
-            if (!CheckInteriorTile((int)child.transform.position.x, (int)child.transform.position.y))
+            if (!CheckInteriorTile((int)child.position.x, (int)child.position.y))
             {
                 obj.transform.position = originalObjectPosition;
                 return false;
@@ -169,6 +194,18 @@ public class RoomController : MonoBehaviour
     {
         clsDungeonController.previousRoom = clsDungeonController.currentRoom;
         clsDungeonController.currentRoom = this;
+        if (!isCompleted)
+        {
+            DisableGateways();
+            SpawnEnemies();
+            if (isFirstRoom)
+            {
+                GameObject initialCorridor = roomGatewaysHolder.GetChild(0).gameObject;
+                Instantiate(clsDungeonController.dungeonWalls.bottom, initialCorridor.transform.position, Quaternion.identity, roomWallsHolder);
+                roomGateways.Remove(initialCorridor.GetComponent<GatewayPortal>());
+                Destroy(initialCorridor);
+            }
+        }
     }
 
     protected void DisableGateways()

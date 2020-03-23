@@ -17,7 +17,12 @@ public class DungeonController : MonoBehaviour
     [Header("Dungeon Assets")]
     public RandomTools.WeightedObject[] dungeonRoomFloors; 
     public Walls dungeonWalls;
-    public List<RandomTools.SizeWeightedObject> dungeonRoomInteriors;
+    public List<RandomTools.SizeWeightedObject> dungeonRoomInteriorsSeparated;
+    public RandomTools.WeightedObject[] dungeonRoomInteriorsWallAttachedGlobal;
+    public RandomTools.WeightedObject[] dungeonRoomInteriorsWallAttachedTop;
+    public RandomTools.WeightedObject[] dungeonRoomInteriorsWallAttachedBottom;
+    public RandomTools.WeightedObject[] dungeonRoomInteriorsWallAttachedLeft;
+    public RandomTools.WeightedObject[] dungeonRoomInteriorsWallAttachedRight;
     public RandomTools.WeightedObject[] dungeonWallDecos;
     public RandomTools.WeightedObject[] dungeonCorridorFloors;
     public GameObject playerCorridorParticles;
@@ -408,8 +413,11 @@ public class DungeonController : MonoBehaviour
         tilesPosition[x, y] = instance;
         foreach (Transform child in tilesPosition[x, y].transform)
         {
-            tilesPosition[(int)child.transform.position.x, (int)child.transform.position.y] = instance;
-            _incorrectLayerWalls.Add(child.gameObject);
+            if (child.gameObject.layer == LayerMask.NameToLayer("TopWall")) 
+            {
+                tilesPosition[(int)child.transform.position.x, (int)child.transform.position.y] = instance;
+                _incorrectLayerWalls.Add(child.gameObject);
+            }
         }
         if (incorrectLayer)
         {
@@ -689,20 +697,83 @@ public class DungeonController : MonoBehaviour
 
     #region Post-BSP Methods
 
-    public void DecorateBigWalls()
+    private void DrawWallAttachedObjects()
     {
-        GameObject objectToInstantiate;
-        foreach (GameObject wall in GameObject.FindGameObjectsWithTag("WallDeco"))
+        string attachmentPosition = "";
+        RandomTools.WeightedObject[] attachments = new RandomTools.WeightedObject[0];
+        for (int i = 0; i < 4; i++)
         {
-            objectToInstantiate = RandomTools.Instance.PickOne(dungeonWallDecos);
+            switch (i)
+            {
+                case 0:
+                    attachmentPosition = "RightAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedRight); break;
+                case 1:
+                    attachmentPosition = "TopAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedTop); break;
+                case 2:
+                    attachmentPosition = "LeftAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedLeft); break;
+                case 3:
+                    attachmentPosition = "BottomAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedBottom); break;
+            }
+
+            RandomTools.WeightedObject[] combinedAttachments = new RandomTools.WeightedObject[dungeonRoomInteriorsWallAttachedGlobal.Length + attachments.Length];
+            dungeonRoomInteriorsWallAttachedGlobal.CopyTo(combinedAttachments, 0);
+            attachments.CopyTo(combinedAttachments, dungeonRoomInteriorsWallAttachedGlobal.Length);
+
+            foreach (GameObject attachedObject in GameObject.FindGameObjectsWithTag(attachmentPosition))
+            {
+                GameObject obj = RandomTools.Instance.PickOne(combinedAttachments);
+                Vector3 instancePosition = attachedObject.transform.position;
+
+                if (obj != null && CheckAvailableSpace(obj, instancePosition))
+                {
+                    Transform roomInteriorsHolder = tilesPosition[(int)instancePosition.x, (int)instancePosition.y].transform.parent.parent.GetChild(3);
+                    GameObject instance = Instantiate(obj, instancePosition, Quaternion.identity, roomInteriorsHolder);
+                    tilesPosition[(int)instancePosition.x, (int)instancePosition.y] = instance;
+                    foreach (Transform child in tilesPosition[(int)instancePosition.x, (int)instancePosition.y].transform)
+                    {
+                        tilesPosition[(int)child.position.x, (int)child.position.y] = child.gameObject;
+                    }
+                }
+            }
+        } 
+    }
+
+    private bool CheckAvailableSpace(GameObject obj, Vector3 instancePosition)
+    {
+        Vector3 originalObjectPosition = obj.transform.position;
+        if (instancePosition.x < 0 || instancePosition.x >= boardRows || instancePosition.y < 0 || instancePosition.y >= boardColumns ||
+            tilesPosition[(int)instancePosition.x, (int)instancePosition.y].layer != LayerMask.NameToLayer("Floor"))
+        {
+            return false;
+        }
+        obj.transform.position = instancePosition;
+        foreach (Transform child in obj.transform)
+        {
+            if (child.position.x < 0 || child.position.x >= boardRows || child.position.y < 0 || child.position.y >= boardColumns || 
+                (child.CompareTag("GatewayChecker") == false && tilesPosition[(int)child.position.x, (int)child.position.y].layer != LayerMask.NameToLayer("Floor")) ||
+                (child.CompareTag("GatewayChecker") == true && tilesPosition[(int)child.position.x, (int)child.position.y].CompareTag("Gateway")))
+            {
+                obj.transform.position = originalObjectPosition;
+                return false;
+            }
+        }
+        obj.transform.position = originalObjectPosition;
+        return true;
+    }
+
+    private void DrawWallDecos()
+    {
+        foreach (GameObject decoPosition in GameObject.FindGameObjectsWithTag("WallDeco"))
+        {
+            GameObject objectToInstantiate = RandomTools.Instance.PickOne(dungeonWallDecos);
             if (objectToInstantiate != null)
             {
-                Instantiate(objectToInstantiate, wall.transform);
+                Instantiate(objectToInstantiate, decoPosition.transform);
             }
         }
     }
 
-    public void SpawnPlayer()
+    private void SpawnPlayer()
     {
         GameObject playerInstance = Instantiate(player);
         dungeonCamera.GetComponent<CameraFollow>().player = playerInstance;
@@ -718,6 +789,7 @@ public class DungeonController : MonoBehaviour
         _roomHolder = Resources.Load<GameObject>("Room");
         _corridorHolder = Resources.Load<GameObject>("Corridor");
         dungeonRoomFloors = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomFloors);
+        dungeonRoomInteriorsWallAttachedGlobal = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedGlobal);
         dungeonWallDecos = RandomTools.Instance.CreateWeightedObjectsArray(dungeonWallDecos);
         dungeonCorridorFloors = RandomTools.Instance.CreateWeightedObjectsArray(dungeonCorridorFloors);
 
@@ -744,8 +816,7 @@ public class DungeonController : MonoBehaviour
             {
                 Debug.Log("Generation Failed");
             }
-            
-
+   
         } while (GameManager.Instance.generationFailed);
     }
 }

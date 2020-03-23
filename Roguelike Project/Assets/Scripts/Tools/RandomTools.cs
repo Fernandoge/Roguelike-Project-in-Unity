@@ -54,9 +54,9 @@ public class RandomTools
         return weightedObjects[Random.Range(0, weightedObjects.Length)].item;
     }
 
-    public SizeWeightedObject PickOneSized(List<SizeWeightedObject> weightedSizedObjects)
+    public GameObject PickOneSized(List<SizeWeightedObject> weightedSizedObjects)
     {
-        return weightedSizedObjects[Random.Range(0, weightedSizedObjects.Count)];
+        return weightedSizedObjects[Random.Range(0, weightedSizedObjects.Count)].item;
     }
 }
 

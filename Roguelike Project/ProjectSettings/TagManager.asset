@@ -8,6 +8,11 @@ TagManager:
   - Gateway
   - WallDeco
   - CorridorHolder
+  - RightAttachment
+  - TopAttachment
+  - LeftAttachment
+  - BottomAttachment
+  - GatewayChecker
   layers:
   - Default
   - TransparentFX
@@ -28,7 +33,7 @@ TagManager:
   - Enemy
   - NoFloorTile
   - DestroyableObstacle
-  - 
+  - GatewayChecker
   - FloorTrigger
   - 
   - 
