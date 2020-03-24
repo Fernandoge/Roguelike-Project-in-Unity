@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4237248328469899799}
   m_Layer: 17
-  m_Name: EmptyTile
-  m_TagString: Untagged
+  m_Name: GlobalAttachment
+  m_TagString: GlobalAttachment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -966,8 +966,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3284005511778933981}
   m_Layer: 17
-  m_Name: EmptyTile
-  m_TagString: Untagged
+  m_Name: GlobalAttachment
+  m_TagString: GlobalAttachment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1157,8 +1157,8 @@ GameObject:
   m_Component:
   - component: {fileID: 530797473578344095}
   m_Layer: 17
-  m_Name: EmptyTile
-  m_TagString: Untagged
+  m_Name: GlobalAttachment
+  m_TagString: GlobalAttachment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1648,8 +1648,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3701998858061476626}
   m_Layer: 17
-  m_Name: EmptyTile
-  m_TagString: Untagged
+  m_Name: GlobalAttachment
+  m_TagString: GlobalAttachment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1788,8 +1788,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8560037438625232895}
   m_Layer: 17
-  m_Name: EmptyTile
-  m_TagString: Untagged
+  m_Name: GlobalAttachment
+  m_TagString: GlobalAttachment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

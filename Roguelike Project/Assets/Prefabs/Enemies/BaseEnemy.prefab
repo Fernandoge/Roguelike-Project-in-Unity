@@ -255,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spUp: {fileID: 4779613494383706331, guid: d4a48d742da119746a1f939daeda31e8, type: 3}
   spDown: {fileID: 603246180932034874, guid: d4a48d742da119746a1f939daeda31e8, type: 3}
-  spLeft: {fileID: -2830400777432795297, guid: d4a48d742da119746a1f939daeda31e8, type: 3}
+  spLeft: {fileID: 6623458078085082728, guid: d4a48d742da119746a1f939daeda31e8, type: 3}
   spRight: {fileID: -2866906920947679445, guid: d4a48d742da119746a1f939daeda31e8,
     type: 3}
   spDeath: {fileID: 0}

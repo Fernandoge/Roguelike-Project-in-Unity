@@ -541,8 +541,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7661359639743927259}
   m_Layer: 17
-  m_Name: EmptyTile
-  m_TagString: Untagged
+  m_Name: GlobalAttachmnet
+  m_TagString: GlobalAttachment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2842,8 +2842,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1227838662130736120}
   m_Layer: 17
-  m_Name: EmptyTile
-  m_TagString: Untagged
+  m_Name: GlobalAttachment
+  m_TagString: GlobalAttachment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

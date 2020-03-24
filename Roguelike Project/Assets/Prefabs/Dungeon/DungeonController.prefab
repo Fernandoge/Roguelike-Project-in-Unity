@@ -106,10 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fae29c79084e42cf983d71a943f4735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardRows: 400
-  boardColumns: 400
-  averageMinRoomTiles: 1000
-  roomSizeRandomness: 1
+  boardRows: 180
+  boardColumns: 100
+  averageMinRoomTiles: 400
+  roomSizeRandomness: 2
   minRoomWidth: 10
   minRoomHeight: 10
   maxRoomWidth: 150
@@ -137,27 +137,33 @@ MonoBehaviour:
       type: 3}
     bottomRightCorner: {fileID: 7010966846032589401, guid: 107e027d428369148bbf04b34ef57339,
       type: 3}
-  dungeonRoomInteriors:
-  - item: {fileID: 0}
-    probability: 10
-    minRoomFloorsWidth: 0
-    minRoomFloorsHeight: 0
-    maxRoomFloorsWidth: 1000
-    maxRoomFloorsHeight: 1000
+  dungeonRoomInteriorsSeparated:
   - item: {fileID: 170492, guid: 77db5a604d9ebe74fafa1744dbffcbc7, type: 3}
     probability: 2
     minRoomFloorsWidth: 0
     minRoomFloorsHeight: 0
     maxRoomFloorsWidth: 1000
     maxRoomFloorsHeight: 1000
-  - item: {fileID: 7010966846032589401, guid: 72ac3c86abd830944a2b70c5dd5acf94, type: 3}
-    probability: 25
-    minRoomFloorsWidth: 10
-    minRoomFloorsHeight: 10
+  - item: {fileID: 7010966846032589401, guid: c6cc024214b8af7409ba247897f03375, type: 3}
+    probability: 5
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
     maxRoomFloorsWidth: 1000
     maxRoomFloorsHeight: 1000
-  - item: {fileID: 7010966846032589401, guid: b59b6588052c6b043ae318c197c7a82c, type: 3}
+  - item: {fileID: 7010966846032589401, guid: 6725f5e4d89074442ac9ff4708086dba, type: 3}
+    probability: 5
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 7010966846032589401, guid: c9a0977573e48d841a0a5a00685d4d09, type: 3}
     probability: 1
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 7010966846032589401, guid: 72ac3c86abd830944a2b70c5dd5acf94, type: 3}
+    probability: 12
     minRoomFloorsWidth: 0
     minRoomFloorsHeight: 0
     maxRoomFloorsWidth: 1000
@@ -168,30 +174,37 @@ MonoBehaviour:
     minRoomFloorsHeight: 0
     maxRoomFloorsWidth: 1000
     maxRoomFloorsHeight: 1000
-  - item: {fileID: 7010966846032589401, guid: c6cc024214b8af7409ba247897f03375, type: 3}
-    probability: 5
-    minRoomFloorsWidth: 15
-    minRoomFloorsHeight: 0
-    maxRoomFloorsWidth: 10000
-    maxRoomFloorsHeight: 10000
-  - item: {fileID: 7010966846032589401, guid: 0df0f120a46375944b37b8ed454ebd18, type: 3}
-    probability: 2
-    minRoomFloorsWidth: 0
-    minRoomFloorsHeight: 0
-    maxRoomFloorsWidth: 10000
-    maxRoomFloorsHeight: 10000
-  - item: {fileID: 7010966846032589401, guid: 6725f5e4d89074442ac9ff4708086dba, type: 3}
-    probability: 5
-    minRoomFloorsWidth: 0
-    minRoomFloorsHeight: 0
-    maxRoomFloorsWidth: 10000
-    maxRoomFloorsHeight: 10000
-  - item: {fileID: 7010966846032589401, guid: c9a0977573e48d841a0a5a00685d4d09, type: 3}
+  - item: {fileID: 7010966846032589401, guid: b59b6588052c6b043ae318c197c7a82c, type: 3}
     probability: 1
     minRoomFloorsWidth: 0
     minRoomFloorsHeight: 0
-    maxRoomFloorsWidth: 10000
-    maxRoomFloorsHeight: 10000
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  dungeonRoomInteriorsWallAttachedGlobal:
+  - item: {fileID: 0}
+    probability: 8
+  - item: {fileID: 170492, guid: d30cc01fca225554d94449f34da84aab, type: 3}
+    probability: 1
+  dungeonRoomInteriorsWallAttachedTop:
+  - item: {fileID: 5039784536619202498, guid: af77c356ff948a44cb27f31e3f48fd76, type: 3}
+    probability: 10
+  - item: {fileID: 5039784536619202498, guid: c75bdfa474cf13c4eb1da375226ce7ad, type: 3}
+    probability: 10
+  dungeonRoomInteriorsWallAttachedBottom:
+  - item: {fileID: 7010966846032589401, guid: 11653f30e7281c24fb6688d4a9d6bc92, type: 3}
+    probability: 10
+  - item: {fileID: 7010966846032589401, guid: 92ff298a5ee12ca4189900c2bb603c79, type: 3}
+    probability: 10
+  dungeonRoomInteriorsWallAttachedLeft:
+  - item: {fileID: 7010966846032589401, guid: 82a9b982d49f6dd4ea5a82330c285c3f, type: 3}
+    probability: 10
+  - item: {fileID: 7010966846032589401, guid: a4451588d98f3994fa9325d4deafcb70, type: 3}
+    probability: 10
+  dungeonRoomInteriorsWallAttachedRight:
+  - item: {fileID: 7010966846032589401, guid: fe36359b363927e47af99157a1cc3b28, type: 3}
+    probability: 10
+  - item: {fileID: 7010966846032589401, guid: 420075e52b7ec6e43ab268a0bedb915f, type: 3}
+    probability: 10
   dungeonWallDecos:
   - item: {fileID: 0}
     probability: 15
