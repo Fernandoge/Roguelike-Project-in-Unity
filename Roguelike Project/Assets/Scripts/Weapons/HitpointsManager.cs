@@ -6,6 +6,8 @@ public class HitpointsManager : MonoBehaviour
 {
     public float hitpoints;
     public RoomController clsRoomController;
+    [SerializeField]
+    private ParticleSystem _destroyedParticles = default;
 
     public void BulletHit(float bulletDamage)
     {
@@ -31,5 +33,15 @@ public class HitpointsManager : MonoBehaviour
     public void SetRoomController(RoomController clsRoomController)
     {
         this.clsRoomController = clsRoomController;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (CompareTag("GlobalWallAttached")) 
+        {
+            Destroy(gameObject);
+            ParticleSystem deathParticlesInstance = Instantiate(_destroyedParticles, transform.position, Quaternion.identity);
+            Destroy(deathParticlesInstance.gameObject, deathParticlesInstance.main.startLifetimeMultiplier);
+        }
     }
 }

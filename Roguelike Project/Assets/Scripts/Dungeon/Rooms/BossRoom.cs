@@ -17,6 +17,7 @@ public class BossRoom : RoomController
         clsDungeonController.bossRoomInstance = this;
         this.tiles = tiles;
         this.id = id;
+        isBossRoom = true;
     }
 
     public override void ActivateRoom()

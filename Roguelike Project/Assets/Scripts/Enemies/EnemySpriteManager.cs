@@ -10,6 +10,7 @@ public class EnemySpriteManager : SpriteManager
     private EnemyMovement _clsEnemyMovement = default;
     [SerializeField]
     private EnemyWeapon _clsEnemyWeapon = default;
+    //TODO: death particles should be handled in hitpoints manager
     [SerializeField]
     private ParticleSystem _deathParticles = default;
 

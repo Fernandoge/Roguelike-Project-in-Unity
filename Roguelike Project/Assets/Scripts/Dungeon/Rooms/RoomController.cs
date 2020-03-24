@@ -10,6 +10,7 @@ public class RoomController : MonoBehaviour
     private Rect _roomFloorsRectangle;
     public bool isCompleted;
     public bool isFirstRoom;
+    public bool isBossRoom;
     protected GameObject[,] tiles;
     protected GameObject[] roomEnemyPack;
     protected DungeonController clsDungeonController;
@@ -62,7 +63,9 @@ public class RoomController : MonoBehaviour
                 tiles[roomTilesPositions[randomInt].x, roomTilesPositions[randomInt].y] = instance;
                 foreach (Transform child in tiles[roomTilesPositions[randomInt].x, roomTilesPositions[randomInt].y].transform)
                 {
-                    tiles[(int)child.transform.position.x, (int)child.transform.position.y] = child.gameObject;
+                    //Only replace array position if the position is null or the child is a object with sprite render 
+                    if ((child.gameObject.layer == LayerMask.NameToLayer("NoFloorTile") && tiles[roomTilesPositions[randomInt].x, roomTilesPositions[randomInt].y] != null) == false)
+                        tiles[(int)child.transform.position.x, (int)child.transform.position.y] = child.gameObject;
                 }
             }
             roomTilesPositions.RemoveAt(randomInt);
@@ -125,14 +128,14 @@ public class RoomController : MonoBehaviour
     protected bool CheckAvailableSpace(GameObject obj, Vector3 instancePosition)
     {
         Vector3 originalObjectPosition = obj.transform.position;
-        if (!CheckInteriorTile((int)instancePosition.x, (int)instancePosition.y))
+        if (!CheckInteriorTile((int)instancePosition.x, (int)instancePosition.y, obj))
         {
             return false;
         }
-        obj.transform.position = instancePosition;
+        obj.transform.position = instancePosition; 
         foreach (Transform child in obj.transform)
         {
-            if (!CheckInteriorTile((int)child.position.x, (int)child.position.y))
+            if (!CheckInteriorTile((int)child.position.x, (int)child.position.y, child.gameObject))
             {
                 obj.transform.position = originalObjectPosition;
                 return false;
@@ -142,10 +145,14 @@ public class RoomController : MonoBehaviour
         return true;
     }
 
-    private bool CheckInteriorTile(int x, int y)
+    private bool CheckInteriorTile(int x, int y, GameObject obj)
     {
         if (x <= _roomFloorsRectangle.xMin || y <= _roomFloorsRectangle.yMin || x > _roomFloorsRectangle.xMax || y > _roomFloorsRectangle.yMax || tiles[x, y] != null)
         {
+            //Return true in case the object is an unrestricted interior 
+            if (obj.layer == LayerMask.NameToLayer("NoFloorTile") && tiles[x, y].layer == LayerMask.NameToLayer("NoFloorTile"))
+                return true;
+
             return false;
         }
         return true;
@@ -194,7 +201,7 @@ public class RoomController : MonoBehaviour
     {
         clsDungeonController.previousRoom = clsDungeonController.currentRoom;
         clsDungeonController.currentRoom = this;
-        if (!isCompleted)
+        if (!isCompleted && !isBossRoom)
         {
             DisableGateways();
             SpawnEnemies();

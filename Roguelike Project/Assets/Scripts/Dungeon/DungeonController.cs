@@ -462,6 +462,7 @@ public class DungeonController : MonoBehaviour
                 GameObject initialCorridorInstance = Instantiate(initialCorridor, roomComponent.DestroyRandomSideWall(3), Quaternion.identity, roomComponent.transform.GetChild(0));
                 GatewayPortal initialCorridorGateway = initialCorridorInstance.GetComponent<GatewayPortal>();
                 GameObject firstRoomTile = tilesPosition[(int)initialCorridorInstance.transform.position.x, (int)initialCorridorInstance.transform.position.y + 1];
+                tilesPosition[(int)initialCorridorInstance.transform.position.x, (int)initialCorridorInstance.transform.position.y].tag = "Gateway";
 
                 roomComponent.isFirstRoom = true;
                 firstRoomTile.tag = "Gateway";
@@ -475,6 +476,7 @@ public class DungeonController : MonoBehaviour
                 GameObject bossRoomInstance = Instantiate(bossRoom, roomComponent.DestroyRandomSideWall(1), Quaternion.identity);
                 BossRoom bossRoomComponent = bossRoomInstance.GetComponent<BossRoom>();
                 GatewayPortal bossRoomGateway = bossRoomInstance.GetComponent<GatewayPortal>();
+                tilesPosition[(int)bossRoomInstance.transform.position.x, (int)bossRoomInstance.transform.position.y].tag = "Gateway";
 
                 bossRoomGateway.Initialize(this, 1, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
                 bossRoomGateway.SetSimpleGateway(bossRoomComponent.firstPortalStop);
@@ -701,7 +703,7 @@ public class DungeonController : MonoBehaviour
     {
         string attachmentPosition = "";
         RandomTools.WeightedObject[] attachments = new RandomTools.WeightedObject[0];
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             switch (i)
             {
@@ -713,6 +715,8 @@ public class DungeonController : MonoBehaviour
                     attachmentPosition = "LeftAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedLeft); break;
                 case 3:
                     attachmentPosition = "BottomAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedBottom); break;
+                case 4:
+                    attachmentPosition = "GlobalAttachment"; attachments = new RandomTools.WeightedObject[0]; break;
             }
 
             RandomTools.WeightedObject[] combinedAttachments = new RandomTools.WeightedObject[dungeonRoomInteriorsWallAttachedGlobal.Length + attachments.Length];
@@ -726,12 +730,17 @@ public class DungeonController : MonoBehaviour
 
                 if (obj != null && CheckAvailableSpace(obj, instancePosition))
                 {
-                    Transform roomInteriorsHolder = tilesPosition[(int)instancePosition.x, (int)instancePosition.y].transform.parent.parent.GetChild(3);
+                    if (obj.CompareTag("GlobalWallAttached") == false)
+                    {
+                        Destroy(attachedObject.transform.parent.gameObject);
+                    }
+                    Transform roomInteriorsHolder = tilesPosition[(int)instancePosition.x, (int)instancePosition.y].GetComponentInParent<RoomController>().transform.GetChild(3);
                     GameObject instance = Instantiate(obj, instancePosition, Quaternion.identity, roomInteriorsHolder);
                     tilesPosition[(int)instancePosition.x, (int)instancePosition.y] = instance;
                     foreach (Transform child in tilesPosition[(int)instancePosition.x, (int)instancePosition.y].transform)
                     {
-                        tilesPosition[(int)child.position.x, (int)child.position.y] = child.gameObject;
+                        if (child.CompareTag("GatewayChecker") == false)
+                            tilesPosition[(int)child.position.x, (int)child.position.y] = child.gameObject;
                     }
                 }
             }
@@ -741,19 +750,32 @@ public class DungeonController : MonoBehaviour
     private bool CheckAvailableSpace(GameObject obj, Vector3 instancePosition)
     {
         Vector3 originalObjectPosition = obj.transform.position;
-        if (instancePosition.x < 0 || instancePosition.x >= boardRows || instancePosition.y < 0 || instancePosition.y >= boardColumns ||
-            tilesPosition[(int)instancePosition.x, (int)instancePosition.y].layer != LayerMask.NameToLayer("Floor"))
+        if (instancePosition.x >= 0 && instancePosition.x < boardRows && instancePosition.y >= 0 && instancePosition.y < boardColumns)
         {
+            //Instantiate wall attached objects in any floor unless there is an object that isn't a floor in that position
+            if (obj.layer == LayerMask.NameToLayer("NoFloorTile") && tilesPosition[(int)instancePosition.x, (int)instancePosition.y].GetComponent<SpriteRenderer>() == null)
+                return true;
+            if (tilesPosition[(int)instancePosition.x, (int)instancePosition.y] == null || tilesPosition[(int)instancePosition.x, (int)instancePosition.y].layer != LayerMask.NameToLayer("Floor"))
+                return false;
+        } else {
             return false;
         }
+
         obj.transform.position = instancePosition;
         foreach (Transform child in obj.transform)
         {
-            if (child.position.x < 0 || child.position.x >= boardRows || child.position.y < 0 || child.position.y >= boardColumns || 
-                (child.CompareTag("GatewayChecker") == false && tilesPosition[(int)child.position.x, (int)child.position.y].layer != LayerMask.NameToLayer("Floor")) ||
-                (child.CompareTag("GatewayChecker") == true && tilesPosition[(int)child.position.x, (int)child.position.y].CompareTag("Gateway")))
+            if (child.position.x >= 0 && child.position.x < boardRows && child.position.y >= 0 && child.position.y < boardColumns)
             {
-                obj.transform.position = originalObjectPosition;
+                if (tilesPosition[(int)child.position.x, (int)child.position.y] == null ||
+                    (child.CompareTag("GatewayChecker") == false && tilesPosition[(int)child.position.x, (int)child.position.y].layer != LayerMask.NameToLayer("Floor")) ||
+                    (child.CompareTag("GatewayChecker") == true && tilesPosition[(int)child.position.x, (int)child.position.y].CompareTag("Gateway")))
+                {
+                    obj.transform.position = originalObjectPosition;
+                    return false;
+                }
+            }
+            else
+            {
                 return false;
             }
         }
@@ -802,12 +824,51 @@ public class DungeonController : MonoBehaviour
             rootSubDungeon.CreateRoom(minRoomWidth, minRoomHeight, maxRoomWidth, maxRoomHeight, roomSizeRandomness);
             if (GameManager.Instance.generationFailed == false)
             {
+                var watch = System.Diagnostics.Stopwatch.StartNew();
                 DrawRoomWalls(rootSubDungeon);
+                watch.Stop();
+                var elapsedMs = watch.ElapsedMilliseconds;
+                Debug.Log("Draw de murallas: " + elapsedMs);
+
+                watch = System.Diagnostics.Stopwatch.StartNew();
                 SpawnPlayer();
+                watch.Stop();
+                elapsedMs = watch.ElapsedMilliseconds;
+                Debug.Log("spawn player: " + elapsedMs);
+
+                watch = System.Diagnostics.Stopwatch.StartNew();
                 DefineRooms();
+                watch.Stop();
+                elapsedMs = watch.ElapsedMilliseconds;
+                Debug.Log("Creación de rooms: " + elapsedMs);
+
+                watch = System.Diagnostics.Stopwatch.StartNew();
                 DrawCorridors(rootSubDungeon);
+
+                watch.Stop();
+                elapsedMs = watch.ElapsedMilliseconds;
+                Debug.Log("Draw de corridors: " + elapsedMs);
+
+                watch = System.Diagnostics.Stopwatch.StartNew();
+
                 GenerateGateways();
-                DecorateBigWalls();
+                watch.Stop();
+                elapsedMs = watch.ElapsedMilliseconds;
+                Debug.Log("Draw de gateways: " + elapsedMs);
+
+                watch = System.Diagnostics.Stopwatch.StartNew();
+
+                DrawWallAttachedObjects();
+                watch.Stop();
+                elapsedMs = watch.ElapsedMilliseconds;
+                Debug.Log("Draw de attached objects: " + elapsedMs);
+
+                watch = System.Diagnostics.Stopwatch.StartNew();
+
+                DrawWallDecos();
+                watch.Stop();
+                elapsedMs = watch.ElapsedMilliseconds;
+                Debug.Log("Decorando murallas: " + elapsedMs);
                 GameManager.Instance.InitializeDungeon(this);
                 GameManager.Instance.ManageLoadingScreen(false);
             }
