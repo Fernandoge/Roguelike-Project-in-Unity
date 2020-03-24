@@ -37,8 +37,10 @@ public class HitpointsManager : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CompareTag("GlobalWallAttached")) 
+        if (gameObject.layer == LayerMask.NameToLayer("DestroyableObstacle") && collision.gameObject.layer == LayerMask.NameToLayer("Player")) 
         {
+            collision.GetComponent<PlayerMovement>().currentPositionOriginalLayer = LayerMask.NameToLayer("Floor"); 
+            GameManager.Instance.tilesLayers[(int)transform.position.x, (int)transform.position.y] = LayerMask.NameToLayer("Floor");
             Destroy(gameObject);
             ParticleSystem deathParticlesInstance = Instantiate(_destroyedParticles, transform.position, Quaternion.identity);
             Destroy(deathParticlesInstance.gameObject, deathParticlesInstance.main.startLifetimeMultiplier);

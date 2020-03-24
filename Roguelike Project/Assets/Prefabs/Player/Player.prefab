@@ -598,8 +598,8 @@ MonoBehaviour:
   _clsSpriteManager: {fileID: -8494247205447777556}
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 1376768
   moveTime: 0.2
+    m_Bits: 1114624
   canMove: 1
   moving: 0
 --- !u!114 &-1667655407307348466
@@ -657,6 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 99999
   clsRoomController: {fileID: 0}
+  _destroyedParticles: {fileID: 0}
 --- !u!1 &7941783385716262080
 GameObject:
   m_ObjectHideFlags: 0

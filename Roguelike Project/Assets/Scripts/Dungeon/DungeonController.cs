@@ -753,7 +753,7 @@ public class DungeonController : MonoBehaviour
         if (instancePosition.x >= 0 && instancePosition.x < boardRows && instancePosition.y >= 0 && instancePosition.y < boardColumns)
         {
             //Instantiate wall attached objects in any floor unless there is an object that isn't a floor in that position
-            if (obj.layer == LayerMask.NameToLayer("NoFloorTile") && tilesPosition[(int)instancePosition.x, (int)instancePosition.y].GetComponent<SpriteRenderer>() == null)
+            if (obj.CompareTag("GlobalWallAttached") && tilesPosition[(int)instancePosition.x, (int)instancePosition.y].GetComponent<SpriteRenderer>() == null)
                 return true;
             if (tilesPosition[(int)instancePosition.x, (int)instancePosition.y] == null || tilesPosition[(int)instancePosition.x, (int)instancePosition.y].layer != LayerMask.NameToLayer("Floor"))
                 return false;
