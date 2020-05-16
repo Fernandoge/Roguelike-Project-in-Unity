@@ -486,6 +486,11 @@ public class DungeonController : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Define the top and bottom rooms of the dungeon and get one random of the side specified using the side parameter
+    /// </summary>
+    /// <param name="side"> Room side to get, 1 for top and 3 for bottom</param>
+    /// <returns>Id of the room</returns>
     private int GetRandomSideRoom(int side)
     {
         List<int> topRoomsList = new List<int>();
@@ -550,8 +555,8 @@ public class DungeonController : MonoBehaviour
                     if (tilesPosition[i, j] == null)
                     {
                         InstantiateCorridorTile(i, j, corridorFloorHolder);
-                        //check if the corridor tile collides with a corner or top wall, in this case we add extra tiles so when we generate the portals the player don't have the path to it blocked
 
+                        //now check if the corridor tile collides with a corner or top wall, in this case we add extra tiles so when portals are generated the player don't have the path to them blocked
                         //corridor collision with top walls from left and right
                         int k = j;
                         while (tilesPosition[i + 2, k]?.layer == LayerMask.NameToLayer("TopWall") || tilesPosition[i - 2, k]?.layer == LayerMask.NameToLayer("TopWall"))
@@ -618,45 +623,44 @@ public class DungeonController : MonoBehaviour
                 int y = (int)child.position.y;
 
                 int neighboursCount = 0;
+                int xDir = 0, yDir = 0;
 
-                if (tilesPosition[x + 1, y] != null)
+                //Loop through each neighbour side of corridor floors to see if they are in a position of to instantiate a gateway
+                for (int i = 0; i < 3; i++)
                 {
-                    if (tilesPosition[x + 1, y].layer == 0 && tilesPosition[x + 1, y].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x + 1, y].CompareTag("ValidCorridor"))
-                        neighboursCount++;
-                    else if (!tilesPosition[x + 1, y].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x + 2, y] != null && ((!tilesPosition[x + 2, y].CompareTag("ValidCorridor") &&
-                        tilesPosition[x + 2, y].transform.parent.parent.CompareTag("CorridorHolder")) || tilesPosition[x + 2, y].transform.IsChildOf(corridorFloorHolder)))
-                        neighboursCount++;
-                }
-                if (tilesPosition[x - 1, y] != null)
-                {
-                    if (tilesPosition[x - 1, y].layer == 0 && tilesPosition[x - 1, y].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x - 1, y].CompareTag("ValidCorridor"))
-                        neighboursCount++;
-                    else if (!tilesPosition[x - 1, y].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x - 2, y] != null && ((!tilesPosition[x - 2, y].CompareTag("ValidCorridor") &&
-                        tilesPosition[x - 2, y].transform.parent.parent.CompareTag("CorridorHolder")) || tilesPosition[x - 2, y].transform.IsChildOf(corridorFloorHolder)))
-                        neighboursCount++;
+                    switch (i)
+                    {
+                        case 0:
+                            xDir = 1; yDir = 0; break;
+                        case 1:
+                            xDir = -1; yDir = 0; break;
+                        case 2:
+                            xDir = 0; yDir = 1; break;
+                        case 3:
+                            xDir = 0; yDir = -1; break;
+                    }
+
+                    if (tilesPosition[x + xDir, y + yDir] != null)
+                    {
+                        //if a side neighbour is from the same prefab parent add a neighbour count
+                        if (tilesPosition[x + xDir, y + yDir].layer == 0 && tilesPosition[x + xDir, y + yDir].transform.IsChildOf(corridorFloorHolder) && 
+                            tilesPosition[x + xDir, y + yDir].CompareTag("ValidCorridor"))
+                        {
+                            neighboursCount++;
+                        }
+                        //if a side neighbour is not from the same prefab check the tile that comes after the side checked to see if it's from the same prefab parent, otherwise if it isn't 
+                        //from the same prefab parent check if it's a valid corridor position since the player won't be able to enter the room if it's generated in that position 
+                        //(for example gateway generated at the side of a wall). Both of these cases will add a neighbour count
+                        else if (!tilesPosition[x + xDir, y + yDir].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x + 2*xDir, y + 2*yDir] != null && 
+                            ((!tilesPosition[x + 2*xDir, y + 2*yDir].CompareTag("ValidCorridor") && tilesPosition[x + 2*xDir, y + 2*yDir].transform.parent.parent.CompareTag("CorridorHolder")) || 
+                            tilesPosition[x + 2*xDir, y + 2*yDir].transform.IsChildOf(corridorFloorHolder)))
+                        {
+                            neighboursCount++;
+                        }
+                    }
                 }
 
-                if (tilesPosition[x, y - 1] != null)
-                {
-                    if (tilesPosition[x, y - 1].layer == 0 && tilesPosition[x, y - 1].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x, y - 1].CompareTag("ValidCorridor"))
-                        neighboursCount++;
-                    else if (!tilesPosition[x, y - 1].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x, y - 2] != null && ((!tilesPosition[x, y - 2].CompareTag("ValidCorridor") &&
-                        tilesPosition[x, y - 2].transform.parent.parent.CompareTag("CorridorHolder")) || tilesPosition[x, y - 2].transform.IsChildOf(corridorFloorHolder)))
-                        neighboursCount++;
-                }
-
-                if (tilesPosition[x, y + 1] != null)
-                {
-                    if (tilesPosition[x, y + 1].layer == 0 && tilesPosition[x, y + 1].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x, y + 1].CompareTag("ValidCorridor"))
-                        neighboursCount++;
-                    else if (!tilesPosition[x, y + 1].CompareTag("ValidCorridor") && tilesPosition[x, y + 4] != null && tilesPosition[x, y + 4].transform.IsChildOf(corridorFloorHolder))
-                        neighboursCount++;
-                    else if (!tilesPosition[x, y + 1].transform.IsChildOf(corridorFloorHolder) && tilesPosition[x, y + 2] != null && ((!tilesPosition[x, y + 2].CompareTag("ValidCorridor") &&
-                        tilesPosition[x, y + 2].transform.parent.parent.CompareTag("CorridorHolder")) || tilesPosition[x, y + 2].transform.IsChildOf(corridorFloorHolder)))
-                        neighboursCount++;
-                }
-
-                //If the neighbours are less than two it means this is the corridor tile that generates the gateway since it's the last one
+                //If the neighbours are less than two it means this is the corridor tile that generates the gateway since it's the last valid tile from the corridor
                 if (neighboursCount < 2)
                 {
                     //Check the four sides to see if it's a room wall
