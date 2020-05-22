@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -10,8 +11,8 @@ public class TextManager : MonoBehaviour
     public GameObject optionsBox;
     public Text theText;
     public Text OptionText;
-    public TextAsset textFile;
-    public PlayerMovement clsPlayerMovement;
+    public TextAsset textFile; 
+    public PlayerController clsPlayerController;
     public NarrativesManager clsNarrativesManager;
     public Narrative clsNarrative;
     //public GameVariables Variables;
@@ -144,8 +145,8 @@ public class TextManager : MonoBehaviour
     {
         isActive = true;
         textBox.SetActive(true);
-        clsPlayerMovement.canMove = false;
-        clsPlayerMovement.objRigidbody.velocity = Vector2.zero;
+        clsPlayerController.canMove = false;
+        clsPlayerController.objRigidbody.velocity = Vector2.zero;
         StartCoroutine(TextScroll(textLines[currentLine]));
 
     }
@@ -155,7 +156,7 @@ public class TextManager : MonoBehaviour
         StartCoroutine(isActiveWithWait());
         textBox.SetActive(false);
         optionsBox.SetActive(false);
-        clsPlayerMovement.canMove = true;
+        clsPlayerController.canMove = true;
         clsNarrative.SprRender.sprite = clsNarrative.nonTalkingSprite;
     }
 

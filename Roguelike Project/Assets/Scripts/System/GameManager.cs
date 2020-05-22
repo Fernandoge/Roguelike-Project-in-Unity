@@ -9,14 +9,14 @@ public class GameManager : MonoBehaviour
     [System.NonSerialized] public bool generationFailed;
     public DungeonController currentDungeon;
     public int[,] tilesLayers;
-    public PlayerMovement player;
+    public PlayerController player;
     public Vector3 playerDestinyPosition;
     public GameObject loadingScreen;
     public List<MovingObject> enemiesAlive;
 
     private void Awake()
     {
-	Application.targetFrameRate = 60;
+	    Application.targetFrameRate = 60;
         if (Instance == null)
             Instance = this;
     }
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetPathfinding(MovingObject thisEnemy)
     {
-        foreach (EnemyMovement enemy in enemiesAlive)
+        foreach (EnemyController enemy in enemiesAlive)
         {
             if (thisEnemy != enemy)
             {
@@ -54,5 +54,4 @@ public class GameManager : MonoBehaviour
             }    
         }
     }
-
 }

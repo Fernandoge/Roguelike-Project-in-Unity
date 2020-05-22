@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MovingObject
+public class EnemyController : MovingObject
 {
     public Vector3 targetPosition;
     public float stopDistance;
@@ -30,7 +30,7 @@ public class EnemyMovement : MovingObject
     protected override void Start()
     {
         GameManager.Instance.enemiesAlive.Add(this);
-        targetPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        targetPosition = GameManager.Instance.player.transform.position;
         base.Start();
     }
 

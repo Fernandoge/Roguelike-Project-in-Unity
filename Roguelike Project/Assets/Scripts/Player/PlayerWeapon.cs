@@ -14,9 +14,7 @@ public class PlayerWeapon : MonoBehaviour {
     float timerReset;
     //readonly float weaponChange = 0.5f;
     //bool changingWeapon = false;
-    
 
-    // Use this for initialization
     void Start () {
         timerReset = timer;
 	}
@@ -41,9 +39,6 @@ public class PlayerWeapon : MonoBehaviour {
         weaponBullet = TypeOfBullet;
         clsBulletConfig = weaponBullet.GetComponent<BulletConfig>();
         clsPlayerSpriteManager.UpdateWeaponSprite(weaponSprite);
-
-
-
     }
 
     public GameObject GetCurrentWeapon()

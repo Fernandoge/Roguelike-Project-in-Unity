@@ -1,32 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
-public class HitpointsManager : MonoBehaviour
+public class Stats : MonoBehaviour
 {
     public float hitpoints;
     public RoomController clsRoomController;
     [SerializeField]
     private ParticleSystem _destroyedParticles = default;
 
-    public void BulletHit(float bulletDamage)
+    public void AttackHit(float attackDamage)
     {
-        hitpoints -= bulletDamage;
+        hitpoints -= attackDamage;
         if (hitpoints <= 0)
         {
             if (gameObject.tag == "Enemy")
             {
                 transform.parent.GetChild(1).GetComponent<EnemySpriteManager>().Death();
                 gameObject.SetActive(false);
-                /*
-                if (clsRoomController != null)
-                    clsRoomController.EnemyKilled(gameObject);
-                */
             }
             else
-            {
-                Destroy(gameObject);
-            }  
+                Destroyed();
         }
     }
 
@@ -39,11 +34,16 @@ public class HitpointsManager : MonoBehaviour
     {
         if (gameObject.layer == LayerMask.NameToLayer("DestroyableObstacle") && collision.gameObject.layer == LayerMask.NameToLayer("Player")) 
         {
-            collision.GetComponent<PlayerMovement>().currentPositionOriginalLayer = LayerMask.NameToLayer("Floor"); 
-            GameManager.Instance.tilesLayers[(int)transform.position.x, (int)transform.position.y] = LayerMask.NameToLayer("Floor");
-            Destroy(gameObject);
-            ParticleSystem deathParticlesInstance = Instantiate(_destroyedParticles, transform.position, Quaternion.identity);
-            Destroy(deathParticlesInstance.gameObject, deathParticlesInstance.main.startLifetimeMultiplier);
+            collision.GetComponent<PlayerController>().currentPositionOriginalLayer = LayerMask.NameToLayer("Floor");
+            Destroyed();
         }
+    }
+
+    public void Destroyed()
+    {
+        GameManager.Instance.tilesLayers[(int)transform.position.x, (int)transform.position.y] = LayerMask.NameToLayer("Floor");
+        Destroy(gameObject);
+        ParticleSystem deathParticlesInstance = Instantiate(_destroyedParticles, transform.position, Quaternion.identity);
+        Destroy(deathParticlesInstance.gameObject, deathParticlesInstance.main.startLifetimeMultiplier);
     }
 }

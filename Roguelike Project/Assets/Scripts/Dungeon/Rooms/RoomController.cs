@@ -20,7 +20,7 @@ public class RoomController : MonoBehaviour
     protected Transform roomFloorsHolder;
     protected Transform roomTreasureHolder;
     [System.NonSerialized] public List<GatewayPortal> roomGateways = new List<GatewayPortal>();
-    [System.NonSerialized] public List<EnemyMovement> enemiesAlive = new List<EnemyMovement>();
+    [System.NonSerialized] public List<EnemyController> enemiesAlive = new List<EnemyController>();
     public int enemiesAliveCount;
 
     #region Dungeon Generation Methods
@@ -243,9 +243,9 @@ public class RoomController : MonoBehaviour
 
                 if (isEnemy)
                 {
-                    EnemyMovement enemyMovement = obj.GetComponent<EnemyMovement>();
-                    enemyMovement.currentPositionOriginalLayer = tiles[x, y].layer;
-                    enemiesAlive.Add(enemyMovement);
+                    EnemyController enemyController = obj.GetComponent<EnemyController>();
+                    enemyController.currentPositionOriginalLayer = tiles[x, y].layer;
+                    enemiesAlive.Add(enemyController);
                     enemiesAliveCount++;
                 }
 
@@ -262,7 +262,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    public void EnemyKilled(EnemyMovement enemy)
+    public void EnemyKilled(EnemyController enemy)
     {
         EnemySpriteManager enemySpriteManager = enemy.gameObject.GetComponent<EnemySpriteManager>();
         enemySpriteManager.Death();

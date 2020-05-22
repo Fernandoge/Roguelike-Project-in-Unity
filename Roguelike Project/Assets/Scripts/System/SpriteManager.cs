@@ -21,31 +21,27 @@ public class SpriteManager : MonoBehaviour
 
     public void CheckMovement(int xDir, int yDir)
     {
-        if (xDir == -1)
+        switch (xDir)
         {
-            if (yDir == 1 && direction == 1)
-                return;
-            else if (yDir == -1 && direction == 3)
-                return;
-            else
-                sprRender.sprite = UpdateDirectionSprite(2);
+            case -1:
+            case 1:
+                switch (yDir)
+                {
+                    case 1 when direction == 1:
+                    case -1 when direction == 3:
+                        return;
+                    default:
+                        var horizontalPos = xDir == 1 ? UpdateSpriteToDirection(0) : UpdateSpriteToDirection(2); break;
+                }
+                break;
+
+            default:
+                var verticalPos = yDir == 1 ? UpdateSpriteToDirection(1) : UpdateSpriteToDirection(3);
+                break;
         }
-        else if (xDir == 1)
-        {
-            if (yDir == 1 && direction == 1)
-                return;
-            else if (yDir == -1 && direction == 3)
-                return;
-            else
-                sprRender.sprite = UpdateDirectionSprite(0);
-        }
-        else if (yDir == 1)
-            sprRender.sprite = UpdateDirectionSprite(1);
-        else if (yDir == -1)
-            sprRender.sprite = UpdateDirectionSprite(3);
     }
 
-    public Sprite UpdateDirectionSprite(int direction)
+    public Sprite UpdateSpriteToDirection(int direction)
     {
         this.direction = direction;
         animator.SetInteger("Direction", direction);
@@ -53,15 +49,19 @@ public class SpriteManager : MonoBehaviour
         switch (direction)
         {
             case 0:
-                sprite = spRight; break;
+                sprRender.sprite = spRight;
+                break;
             case 1:
-                sprite = spUp; break;
+                sprRender.sprite = spUp;
+                break;
             case 2:
-                sprite = spLeft; break;
+                sprRender.sprite = spLeft;
+                break;
             case 3:
-                sprite = spDown; break;
+                sprRender.sprite = spDown;
+                break;
         }
-        return sprite;
+        return sprRender.sprite;
     }
 
     public void UpdateWeaponSprite(Sprite weaponSprite)

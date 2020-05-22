@@ -806,7 +806,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentDungeon: {fileID: 0}
   player: {fileID: 0}
+  playerDestinyPosition: {x: 0, y: 0, z: 0}
   loadingScreen: {fileID: 1226777219552206774}
+  enemiesAlive: []
 --- !u!1 &1226777220936687011
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,6 +958,11 @@ PrefabInstance:
       propertyPath: dynamicJoystickMovementArea
       value: 
       objectReference: {fileID: 1226777220436162922}
+    - target: {fileID: 114282555968907678, guid: e0815e227ed46e445b99930271e8942c,
+        type: 3}
+      propertyPath: isDynamicJoystick
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224977699150327530, guid: e0815e227ed46e445b99930271e8942c,
         type: 3}
       propertyPath: m_LocalPosition.x

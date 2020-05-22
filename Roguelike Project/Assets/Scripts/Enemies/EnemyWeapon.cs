@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyWeapon : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class EnemyWeapon : MonoBehaviour
     [SerializeField]
     private GameObject weaponBullet;
     private BulletConfig clsBulletConfig;
-    public EnemyMovement clsEnemyMovement;
+    public EnemyController clsEnemyController;
     float timerReset;
 
     // Use this for initialization
@@ -58,7 +59,7 @@ public class EnemyWeapon : MonoBehaviour
     public void Shoot()
     {
         transform.eulerAngles = new Vector3(0, 0, 
-            Mathf.Atan2(clsEnemyMovement.targetPosition.y - transform.position.y, clsEnemyMovement.targetPosition.x - transform.position.x) * Mathf.Rad2Deg);
+            Mathf.Atan2(clsEnemyController.targetPosition.y - transform.position.y, clsEnemyController.targetPosition.x - transform.position.x) * Mathf.Rad2Deg);
         Vector3 dir;
         dir.x = Vector2.right.x;
         dir.y = Vector2.right.y;

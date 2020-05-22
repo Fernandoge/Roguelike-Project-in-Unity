@@ -7,11 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4542940918164105755, guid: bfeeecd152986cf4c822e7d9d421c046,
-        type: 3}
-      propertyPath: m_Name
-      value: Assault Rifle
-      objectReference: {fileID: 0}
     - target: {fileID: 4542940918164105752, guid: bfeeecd152986cf4c822e7d9d421c046,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,6 +83,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8809461448386199670, guid: 1d0b00f528706714ab5cb719dee5f1c2,
         type: 3}
+    - target: {fileID: 4542940918164105753, guid: bfeeecd152986cf4c822e7d9d421c046,
+        type: 3}
+      propertyPath: onPositionToPickUp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4542940918164105755, guid: bfeeecd152986cf4c822e7d9d421c046,
+        type: 3}
+      propertyPath: m_Name
+      value: Assault Rifle
+      objectReference: {fileID: 0}
     - target: {fileID: 4542940918164105758, guid: bfeeecd152986cf4c822e7d9d421c046,
         type: 3}
       propertyPath: m_Offset.x

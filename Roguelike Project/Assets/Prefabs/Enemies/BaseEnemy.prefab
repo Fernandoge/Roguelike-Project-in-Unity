@@ -45,6 +45,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -133,7 +134,7 @@ MonoBehaviour:
     type: 3}
   weaponBullet: {fileID: 1952973253268562, guid: a4b2f4ff477ce7149976df82e37e3b45,
     type: 3}
-  clsEnemyMovement: {fileID: 2533875942306066360}
+  clsEnemyController: {fileID: 0}
 --- !u!1 &3914512871002406622
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +265,7 @@ MonoBehaviour:
   weaponRightSprRender: {fileID: 4676392600362603941}
   weaponLeftSprRender: {fileID: 2150515960138168098}
   direction: 0
-  _clsEnemyMovement: {fileID: 2533875942306066360}
+  clsEnemyController: {fileID: 2533875942306066360}
   _clsEnemyWeapon: {fileID: 8674482474884631650}
   _deathParticles: {fileID: 8278757029764318106, guid: 0be9c20e8ddaf23449d57234c1be28e1,
     type: 3}
@@ -282,6 +283,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -411,6 +413,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

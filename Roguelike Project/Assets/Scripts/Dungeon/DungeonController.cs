@@ -41,17 +41,18 @@ public class DungeonController : MonoBehaviour
     public RoomController currentRoom;
     public RoomController previousRoom;
     public int roomsCompleted;
+    
+    public GameObject[,] tilesPosition;
 
     private int _roomSideSize;
     private GameObject _roomHolder;
     private GameObject _corridorHolder;
-    private PlayerMovement _clsPlayerMovement;
+    private PlayerController _clsPlayerController;
     private PlayerSpriteManager _clsPlayerSpriteManager;
     private List<DungeonRoom> _dungeonRooms = new List<DungeonRoom>();
     private List<RoomController> _dungeonRoomsComponent = new List<RoomController>();
     private List<GameObject> _dungeonCorridors = new List<GameObject>();
     private List<GameObject> _incorrectLayerWalls = new List<GameObject>();
-    public GameObject[,] tilesPosition;
     [System.NonSerialized] public BossRoom bossRoomInstance;
 
     private static int _totalCorridorIdCount = 0;
@@ -466,9 +467,9 @@ public class DungeonController : MonoBehaviour
 
                 roomComponent.isFirstRoom = true;
                 firstRoomTile.tag = "Gateway";
-                initialCorridorGateway.Initialize(this, 1, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
+                initialCorridorGateway.Initialize(this, 1, corridorSpeed, tilesPosition, _clsPlayerController.transform, _clsPlayerController, _clsPlayerSpriteManager);
                 initialCorridorGateway.SetSimpleGateway(firstRoomTile);
-                _clsPlayerMovement.gameObject.transform.position = new Vector3(initialCorridorInstance.transform.position.x, initialCorridorInstance.transform.position.y - 40);
+                _clsPlayerController.gameObject.transform.position = new Vector3(initialCorridorInstance.transform.position.x, initialCorridorInstance.transform.position.y - 40);
             }
             //Set boss room in the last dungeon room
             if (dungeonRoom.id == topEndRoom)
@@ -478,7 +479,7 @@ public class DungeonController : MonoBehaviour
                 GatewayPortal bossRoomGateway = bossRoomInstance.GetComponent<GatewayPortal>();
                 tilesPosition[(int)bossRoomInstance.transform.position.x, (int)bossRoomInstance.transform.position.y].tag = "Gateway";
 
-                bossRoomGateway.Initialize(this, 1, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
+                bossRoomGateway.Initialize(this, 1, corridorSpeed, tilesPosition, _clsPlayerController.transform, _clsPlayerController, _clsPlayerSpriteManager);
                 bossRoomGateway.SetSimpleGateway(bossRoomComponent.firstPortalStop);
                 bossRoomComponent.Initialize(this, tilesPosition, dungeonRoom.id + 1);
                 roomComponent.roomGateways.Add(bossRoomGateway);
@@ -692,7 +693,7 @@ public class DungeonController : MonoBehaviour
             Destroy(tilesPosition[x, y]);
             GameObject gateway = Instantiate(dungeonGateway, new Vector3(x, y, 0f), Quaternion.identity, tilesPosition[x, y].transform.parent.parent.GetChild(0));
             tilesPosition[x, y] = gateway;
-            gateway.GetComponent<GatewayPortal>().Initialize(this, firstDirection, corridorSpeed, tilesPosition, _clsPlayerMovement.transform, _clsPlayerMovement, _clsPlayerSpriteManager);
+            gateway.GetComponent<GatewayPortal>().Initialize(this, firstDirection, corridorSpeed, tilesPosition, _clsPlayerController.transform, _clsPlayerController, _clsPlayerSpriteManager);
         }
     }
     #endregion Gateways
@@ -800,7 +801,7 @@ public class DungeonController : MonoBehaviour
         GameObject playerInstance = Instantiate(player);
         dungeonCamera.GetComponent<CameraFollow>().player = playerInstance;
         _clsPlayerSpriteManager = playerInstance.GetComponent<PlayerSpriteManager>();
-        _clsPlayerMovement = playerInstance.GetComponent<PlayerMovement>();
+        _clsPlayerController = playerInstance.GetComponent<PlayerController>();
     }
 
     #endregion Post-BSP Methods
@@ -828,47 +829,47 @@ public class DungeonController : MonoBehaviour
                 DrawRoomWalls(rootSubDungeon);
                 watch.Stop();
                 var elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Draw de murallas: " + elapsedMs);
+                Debug.Log("Walls draw: " + elapsedMs);
 
                 watch = System.Diagnostics.Stopwatch.StartNew();
                 SpawnPlayer();
                 watch.Stop();
                 elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("spawn player: " + elapsedMs);
+                Debug.Log("Player spawn: " + elapsedMs);
 
                 watch = System.Diagnostics.Stopwatch.StartNew();
                 DefineRooms();
                 watch.Stop();
                 elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Creación de rooms: " + elapsedMs);
+                Debug.Log("Room creation: " + elapsedMs);
 
                 watch = System.Diagnostics.Stopwatch.StartNew();
                 DrawCorridors(rootSubDungeon);
 
                 watch.Stop();
                 elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Draw de corridors: " + elapsedMs);
+                Debug.Log("Corridors draw: " + elapsedMs);
 
                 watch = System.Diagnostics.Stopwatch.StartNew();
 
                 GenerateGateways();
                 watch.Stop();
                 elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Draw de gateways: " + elapsedMs);
+                Debug.Log("Gateways draw: " + elapsedMs);
 
                 watch = System.Diagnostics.Stopwatch.StartNew();
 
                 DrawWallAttachedObjects();
                 watch.Stop();
                 elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Draw de attached objects: " + elapsedMs);
+                Debug.Log("Attached objects draw: " + elapsedMs);
 
                 watch = System.Diagnostics.Stopwatch.StartNew();
 
                 DrawWallDecos();
                 watch.Stop();
                 elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Decorando murallas: " + elapsedMs);
+                Debug.Log("Wall decos: " + elapsedMs);
                 GameManager.Instance.InitializeDungeon(this);
                 GameManager.Instance.ManageLoadingScreen(false);
             }

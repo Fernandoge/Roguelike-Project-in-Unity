@@ -1,28 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BulletConfig : MonoBehaviour {
-    public Vector3 direction;
     public float bulletSpeed;
     public float bulletDamage;
-    public int creatorLayer;
-    HitpointsManager clsHitpointsManager;
-    public GameObject bloodImpact, wallImpact;
     public float bulletDuration;
-    public GameObject target;
-    Rigidbody2D rb;
-    Vector2 moveDirection;
-    // Use this for initialization
+    public GameObject[] phases;
+    public int creatorLayer;
+    public Vector3 direction;
+    
+    [System.NonSerialized] public Vector3 targetPosition;
+    
+    private bool _destinyReached;
+    private int _currentPhase;
+    
     void Start ()
     {
         Destroy(gameObject, bulletDuration);
-	}
-
-    // Update is called once per frame
+    }
+    
     void Update()
     {
-        transform.Translate(direction * bulletSpeed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, targetPosition) < 0.001f)
+        {
+            DestinyReached();
+        }
+        else if (_destinyReached == false)
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, bulletSpeed * Time.deltaTime);
     }
 
     public void SetVals (Vector3 dir, int shooterLayer)
@@ -33,34 +36,29 @@ public class BulletConfig : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (creatorLayer == LayerMask.NameToLayer("Player"))
+        if (col.gameObject.layer == LayerMask.NameToLayer("DestroyableObstacle"))
         {
-            if (col.gameObject.layer == LayerMask.NameToLayer("Enemy") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObstacle"))
-            {
-                clsHitpointsManager = col.gameObject.GetComponent<HitpointsManager>();
-                clsHitpointsManager.BulletHit(bulletDamage);
-                //enemyHit.killBullet(); esto es despues para la animacion de muerte
-                //Instantiate (bloodImpact, this.transform.position, this.transform.rotation);
-                Destroy(this.gameObject);
-            }
+            col.gameObject.GetComponent<Stats>()?.AttackHit(bulletDamage);
+            transform.rotation = Quaternion.identity;
+            _destinyReached = true;
+            DestinyReached();
         }
-
-        else
+        else if (col.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
-            if (col.gameObject.layer == LayerMask.NameToLayer("Player") || col.gameObject.layer == LayerMask.NameToLayer("DestroyableObstacle"))
-            {
-                clsHitpointsManager = col.gameObject.GetComponent<HitpointsManager>();
-                clsHitpointsManager.BulletHit(bulletDamage);
-                //enemyHit.killBullet(); esto es despues para la animacion de muerte
-                //Instantiate (bloodImpact, this.transform.position, this.transform.rotation);
-                Destroy(this.gameObject);
-            }
-        }
-
-        if (col.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-        {
-            //Instantiate (wallImpact, this.transform.position, this.transform.rotation);
-            Destroy(this.gameObject);
+            transform.rotation = Quaternion.identity;
+            _destinyReached = true;
+            DestinyReached();
         }   
+    }
+
+    private void DestinyReached()
+    {
+        if (_currentPhase + 1 == phases.Length)
+            return;
+        
+        phases[_currentPhase].SetActive(false);
+        _currentPhase += 1;
+        transform.rotation = Quaternion.identity;
+        phases[_currentPhase].SetActive(true);
     }
 }

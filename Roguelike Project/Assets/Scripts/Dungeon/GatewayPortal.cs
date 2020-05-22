@@ -10,7 +10,7 @@ public class GatewayPortal : MonoBehaviour
 
     private GameObject _targetFloor;
     private Transform _player;
-    private PlayerMovement _clsPlayerMovement;
+    private PlayerController _clsPlayerController;
     private PlayerSpriteManager _clsPlayerSpriteManager;
     private DungeonController _clsDungeonController;
     private GameObject _firstBossFloor;
@@ -29,10 +29,10 @@ public class GatewayPortal : MonoBehaviour
     private bool _directionSelectorChanged;
     
 
-    public void Initialize(DungeonController dungeonController, int firstDirection, float speed, GameObject[,] tiles, Transform player, PlayerMovement playerMovement, PlayerSpriteManager playerSpriteManager)
+    public void Initialize(DungeonController dungeonController, int firstDirection, float speed, GameObject[,] tiles, Transform player, PlayerController playerController, PlayerSpriteManager playerSpriteManager)
     {
         _clsDungeonController = dungeonController;
-        _clsPlayerMovement = playerMovement;
+        _clsPlayerController = playerController;
         _clsPlayerSpriteManager = playerSpriteManager;
         _tiles = tiles;
         _firstDirection = firstDirection;
@@ -57,26 +57,26 @@ public class GatewayPortal : MonoBehaviour
         {
             _distanceBetweenNextFloor = Vector2.Distance(_player.position, _targetFloor.transform.position);
             Vector2 newPosition = Vector2.MoveTowards(_player.position, _targetFloor.transform.position, _speed * Time.deltaTime);
-            _clsPlayerMovement.objRigidbody.MovePosition(newPosition);
+            _clsPlayerController.objRigidbody.MovePosition(newPosition);
             if (_distanceBetweenNextFloor == 0f)
             {
                 if (_destinyReached)
                 {
                     enabled = false;
                     ManagePlayerStatus(true);
-                    RoomController RoomComponent;
+                    RoomController roomComponent;
                     if (!_isSimpleGateway || transform.parent != null)
                     {
-                        RoomComponent = gatewayReached.GetComponentInParent<RoomController>();
+                        roomComponent = gatewayReached.GetComponentInParent<RoomController>();
                         GameManager.Instance.tilesLayers[(int)_targetFloor.transform.position.x, (int)_targetFloor.transform.position.y] = _player.gameObject.layer;
                     }
                     else 
                     {
-                        RoomComponent = gameObject.GetComponent<BossRoom>();
+                        roomComponent = gameObject.GetComponent<BossRoom>();
                     }
-                    RoomComponent.ActivateRoom();
+                    roomComponent.ActivateRoom();
                 }
-                if (_targetFloor.tag == "Gateway" && (_targetFloor != gameObject || _currentDirection != _firstDirection))
+                if (_targetFloor.CompareTag("Gateway") && (_targetFloor != gameObject || _currentDirection != _firstDirection))
                 {
                     _destinyReached = true;
                     gatewayReached = _targetFloor;
@@ -121,7 +121,7 @@ public class GatewayPortal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && _clsPlayerMovement.canMove)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && _clsPlayerController.canMove)
         { 
             SetTargetFloor(gameObject);
             _currentDirection = _firstDirection;
@@ -231,8 +231,8 @@ public class GatewayPortal : MonoBehaviour
     /// </summary>
     private void ManagePlayerStatus(bool state)
     {
-        _clsPlayerMovement.canMove = state;
-        _clsPlayerMovement.objRigidbody.velocity = Vector2.zero;
+        _clsPlayerController.canMove = state;
+        _clsPlayerController.objRigidbody.velocity = Vector2.zero;
         _clsPlayerSpriteManager.sprRender.enabled = state;
 
         if (state == false)
@@ -242,9 +242,9 @@ public class GatewayPortal : MonoBehaviour
         }  
         else
         {
-            _clsPlayerMovement.currentPositionOriginalLayer = LayerMask.NameToLayer("Floor");
+            _clsPlayerController.currentPositionOriginalLayer = LayerMask.NameToLayer("Floor");
             Destroy(_corridorParticlesInstance);
-            _clsPlayerSpriteManager.sprRender.sprite = _clsPlayerSpriteManager.UpdateDirectionSprite(_currentDirection);
+            _clsPlayerSpriteManager.UpdateSpriteToDirection(_currentDirection);
         }
     }
 }
