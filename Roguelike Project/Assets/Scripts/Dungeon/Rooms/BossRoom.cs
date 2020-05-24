@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossRoom : RoomController
 {
-    [SerializeField] private Transform _roomCorridorsHolder;
+    [SerializeField] private Transform _roomCorridorsHolder = default;
     public GameObject firstPortalStop;
     public GameObject roomClosedWall;
     public GameObject firstTile;

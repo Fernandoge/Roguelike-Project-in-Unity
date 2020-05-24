@@ -45,7 +45,6 @@ public class SpriteManager : MonoBehaviour
     {
         this.direction = direction;
         animator.SetInteger("Direction", direction);
-        Sprite sprite = null;
         switch (direction)
         {
             case 0:

@@ -8,8 +8,8 @@ public class EnemySpriteManager : SpriteManager
     [Header("This Components")]
     [SerializeField]
     private EnemyController clsEnemyController = default;
-    [SerializeField]
-    private EnemyWeapon _clsEnemyWeapon = default;
+    //[SerializeField]
+    //private EnemyWeapon _clsEnemyWeapon = default;
     //TODO: death particles should be handled in hitpoints manager
     [SerializeField]
     private ParticleSystem _deathParticles = default;

@@ -711,9 +711,9 @@ public class DungeonController : MonoBehaviour
                 case 0:
                     attachmentPosition = "RightAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedRight); break;
                 case 1:
-                    attachmentPosition = "TopAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedTop); break;
-                case 2:
                     attachmentPosition = "LeftAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedLeft); break;
+                case 2:
+                    attachmentPosition = "TopAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedTop); break;
                 case 3:
                     attachmentPosition = "BottomAttachment"; attachments = RandomTools.Instance.CreateWeightedObjectsArray(dungeonRoomInteriorsWallAttachedBottom); break;
                 case 4:
@@ -825,60 +825,43 @@ public class DungeonController : MonoBehaviour
             rootSubDungeon.CreateRoom(minRoomWidth, minRoomHeight, maxRoomWidth, maxRoomHeight, roomSizeRandomness);
             if (GameManager.Instance.generationFailed == false)
             {
-                var watch = System.Diagnostics.Stopwatch.StartNew();
+                DebugController.Instance.StartMeasuringMethod();
                 DrawRoomWalls(rootSubDungeon);
-                watch.Stop();
-                var elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Walls draw: " + elapsedMs);
+                DebugController.Instance.StopMeasuringMethod("Walls draw:");
 
-                watch = System.Diagnostics.Stopwatch.StartNew();
+                DebugController.Instance.StartMeasuringMethod();
                 SpawnPlayer();
-                watch.Stop();
-                elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Player spawn: " + elapsedMs);
+                DebugController.Instance.StopMeasuringMethod("Player spawn:");
 
-                watch = System.Diagnostics.Stopwatch.StartNew();
+                DebugController.Instance.StartMeasuringMethod();
                 DefineRooms();
-                watch.Stop();
-                elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Room creation: " + elapsedMs);
+                DebugController.Instance.StopMeasuringMethod("Room interiors and floors draw:");
 
-                watch = System.Diagnostics.Stopwatch.StartNew();
+                DebugController.Instance.StartMeasuringMethod();
                 DrawCorridors(rootSubDungeon);
+                DebugController.Instance.StopMeasuringMethod("Corridors draw:");
 
-                watch.Stop();
-                elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Corridors draw: " + elapsedMs);
-
-                watch = System.Diagnostics.Stopwatch.StartNew();
-
+                DebugController.Instance.StartMeasuringMethod();
                 GenerateGateways();
-                watch.Stop();
-                elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Gateways draw: " + elapsedMs);
-
-                watch = System.Diagnostics.Stopwatch.StartNew();
-
+                DebugController.Instance.StopMeasuringMethod("Gateways draw:");
+                
+                DebugController.Instance.StartMeasuringMethod();
                 DrawWallAttachedObjects();
-                watch.Stop();
-                elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Attached objects draw: " + elapsedMs);
-
-                watch = System.Diagnostics.Stopwatch.StartNew();
-
+                DebugController.Instance.StopMeasuringMethod("Attached objects draw:");
+                
+                DebugController.Instance.StartMeasuringMethod();
                 DrawWallDecos();
-                watch.Stop();
-                elapsedMs = watch.ElapsedMilliseconds;
-                Debug.Log("Wall decos: " + elapsedMs);
+                DebugController.Instance.StopMeasuringMethod("Wall decos draw:");
+                
                 GameManager.Instance.InitializeDungeon(this);
                 GameManager.Instance.ManageLoadingScreen(false);
             }
-            
+
             else
             {
                 Debug.Log("Generation Failed");
             }
-   
+
         } while (GameManager.Instance.generationFailed);
     }
 }
