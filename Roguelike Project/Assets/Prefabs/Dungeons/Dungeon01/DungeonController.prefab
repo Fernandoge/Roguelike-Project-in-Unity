@@ -1,0 +1,362 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1403184904892740544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403184904892740545}
+  m_Layer: 0
+  m_Name: Corridors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1403184904892740545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403184904892740544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1403184906628289017}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1403184905427494534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403184905427494535}
+  m_Layer: 0
+  m_Name: Rooms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1403184905427494535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403184905427494534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1403184906628289017}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1403184906628289019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403184906628289017}
+  - component: {fileID: 1403184906628289016}
+  m_Layer: 0
+  m_Name: DungeonController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1403184906628289017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403184906628289019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1403184905427494535}
+  - {fileID: 1403184904892740545}
+  - {fileID: 7812252352885890929}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1403184906628289016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403184906628289019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fae29c79084e42cf983d71a943f4735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardRows: 180
+  boardColumns: 100
+  averageMinRoomTiles: 400
+  roomSizeRandomness: 2
+  minRoomWidth: 10
+  minRoomHeight: 10
+  maxRoomWidth: 150
+  maxRoomHeight: 150
+  corridorSpeed: 15
+  treasureRoomQuantity: 2
+  dungeonRoomFloors:
+  - item: {fileID: 170492, guid: 28001a04ae420419387a894c9d751a06, type: 3}
+    probability: 50
+  - item: {fileID: 170492, guid: 82a4204a217bae445ba6ee53af71ae7a, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: 786da940674419e42bffe590df55a219, type: 3}
+    probability: 2
+  dungeonWalls:
+    top: {fileID: 7010966846032589401, guid: 07551ecda75f9a14a912a0b1c50fa262, type: 3}
+    bottom: {fileID: 7010966846032589401, guid: 11ca31ee7b7cec54fa72ee7118bbcbc7,
+      type: 3}
+    left: {fileID: 7010966846032589401, guid: eae3a5be01e65874398f01677263d61c, type: 3}
+    right: {fileID: 7010966846032589401, guid: c5a46db4ac818d549bd49266976acf68, type: 3}
+    topLeftCorner: {fileID: 7010966846032589401, guid: cdb41cb55465dae4aba7cbc25c235866,
+      type: 3}
+    topRightCorner: {fileID: 7010966846032589401, guid: 591dfbae95d51fd4498b14fcc2b98272,
+      type: 3}
+    bottomLeftCorner: {fileID: 7010966846032589401, guid: d7da2f512236c9a49a8f9f4cd8b319a2,
+      type: 3}
+    bottomRightCorner: {fileID: 7010966846032589401, guid: 107e027d428369148bbf04b34ef57339,
+      type: 3}
+  dungeonRoomInteriorsSeparated:
+  - item: {fileID: 0}
+    probability: 20
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 170492, guid: 77db5a604d9ebe74fafa1744dbffcbc7, type: 3}
+    probability: 2
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 7010966846032589401, guid: c6cc024214b8af7409ba247897f03375, type: 3}
+    probability: 5
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 7010966846032589401, guid: 6725f5e4d89074442ac9ff4708086dba, type: 3}
+    probability: 5
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 7010966846032589401, guid: c9a0977573e48d841a0a5a00685d4d09, type: 3}
+    probability: 1
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 7010966846032589401, guid: 72ac3c86abd830944a2b70c5dd5acf94, type: 3}
+    probability: 5
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 7010966846032589401, guid: 97bea6b72e39e564c8187180426505e9, type: 3}
+    probability: 9
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  - item: {fileID: 7010966846032589401, guid: b59b6588052c6b043ae318c197c7a82c, type: 3}
+    probability: 1
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  dungeonRoomInteriorsWallAttachedGlobal:
+  - item: {fileID: 0}
+    probability: 30
+  - item: {fileID: 170492, guid: 905e70f0e5648314688acb1414a34b91, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: d035a8dbdc394004889e193e1fc729d4, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: d51b822e0bf4d7c4b8990e81ce8dea68, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: d30cc01fca225554d94449f34da84aab, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: 5cf607c20effb3d49b048c38b51ca138, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: e82096c951c17ff4597fa7780e900a15, type: 3}
+    probability: 1
+  dungeonRoomInteriorsWallAttachedTop:
+  - item: {fileID: 5039784536619202498, guid: af77c356ff948a44cb27f31e3f48fd76, type: 3}
+    probability: 10
+  - item: {fileID: 5039784536619202498, guid: c75bdfa474cf13c4eb1da375226ce7ad, type: 3}
+    probability: 10
+  dungeonRoomInteriorsWallAttachedBottom:
+  - item: {fileID: 7010966846032589401, guid: 11653f30e7281c24fb6688d4a9d6bc92, type: 3}
+    probability: 10
+  - item: {fileID: 7010966846032589401, guid: 92ff298a5ee12ca4189900c2bb603c79, type: 3}
+    probability: 10
+  dungeonRoomInteriorsWallAttachedLeft:
+  - item: {fileID: 7010966846032589401, guid: 82a9b982d49f6dd4ea5a82330c285c3f, type: 3}
+    probability: 10
+  - item: {fileID: 7010966846032589401, guid: a4451588d98f3994fa9325d4deafcb70, type: 3}
+    probability: 10
+  dungeonRoomInteriorsWallAttachedRight:
+  - item: {fileID: 7010966846032589401, guid: fe36359b363927e47af99157a1cc3b28, type: 3}
+    probability: 10
+  - item: {fileID: 7010966846032589401, guid: 420075e52b7ec6e43ab268a0bedb915f, type: 3}
+    probability: 10
+  dungeonWallDecos:
+  - item: {fileID: 0}
+    probability: 15
+  - item: {fileID: 170492, guid: 0a006f59cf0371943a894bbddcfbf4ee, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: be1702183b006a34186c27fb4ca22bd4, type: 3}
+    probability: 3
+  - item: {fileID: 170492, guid: 695ee290b98d7984fba88ec47f29f424, type: 3}
+    probability: 1
+  - item: {fileID: 170492, guid: 88afa5348f81d254fa14985769ca2944, type: 3}
+    probability: 2
+  - item: {fileID: 170492, guid: 6a9e67ff017751c49ab95e54131caf2f, type: 3}
+    probability: 1
+  dungeonCorridorFloors:
+  - item: {fileID: 170492, guid: 14e7657ca7b5f6b42bc3746f114d8721, type: 3}
+    probability: 1
+  playerCorridorParticles: {fileID: 4310809315154537236, guid: b37daf0336e8c3c45980410b4fd8f660,
+    type: 3}
+  dungeonGateway: {fileID: 170492, guid: 7717dcc2669907246a00e7e832b79b6d, type: 3}
+  player: {fileID: 7941783385590199139, guid: f4eee62e59924fa4b9b801ba9c9382fb, type: 3}
+  enemyPacks:
+  - enemies:
+    - {fileID: 3914512871002406622, guid: 5a37c800d90d0054687a08e7e8cf2e6a, type: 3}
+    - {fileID: 7318080954582039609, guid: 23d5e4d942b1f9e49981b6d20709d7d4, type: 3}
+    - {fileID: 9217898153457032286, guid: faf9b39a860bfc446ac3f08083ad1d98, type: 3}
+    - {fileID: 6761725785093711239, guid: a3e19ddd6d1f05b4dac865cde3281370, type: 3}
+    stock: 100
+    minRoomFloorsWidth: 0
+    minRoomFloorsHeight: 0
+    maxRoomFloorsWidth: 1000
+    maxRoomFloorsHeight: 1000
+  treasure: {fileID: 4528958197017009291, guid: 6bd4d51cc4c2b974d846e15706945e95,
+    type: 3}
+  bossRoom: {fileID: 170492, guid: d1d8985b3b9cf414fbdb952e7182d600, type: 3}
+  initialCorridor: {fileID: 1572115446923078345, guid: 812fe123eba09744198d1e5a67649e75,
+    type: 3}
+  dungeonRoomsParent: {fileID: 1403184905427494535}
+  dungeonCorridorsParent: {fileID: 1403184904892740545}
+  dungeonCamera: {fileID: 8610930163838314838}
+  currentRoom: {fileID: 0}
+  previousRoom: {fileID: 0}
+  roomsCompleted: 0
+--- !u!1 &8950835656357922183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7812252352885890929}
+  - component: {fileID: 8610930163838314838}
+  - component: {fileID: 4072601152883772381}
+  - component: {fileID: 3735668704887701520}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7812252352885890929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8950835656357922183}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1403184906628289017}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &8610930163838314838
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8950835656357922183}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 6
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &4072601152883772381
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8950835656357922183}
+  m_Enabled: 1
+--- !u!114 &3735668704887701520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8950835656357922183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9b1074d0e377f469b1e34bb46824d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
