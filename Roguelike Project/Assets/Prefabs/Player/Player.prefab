@@ -483,7 +483,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 4025949689559072613, guid: 96ffd4ab0b5b82f408550b95a0e3d09b,
+  m_Sprite: {fileID: -8542676398023535629, guid: 5bfff16e466d61245b932d271c0868e0,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -586,10 +586,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7851c38115f684e0ea101d5838aaa5d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spUp: {fileID: -3959724885599438534, guid: 96ffd4ab0b5b82f408550b95a0e3d09b, type: 3}
-  spDown: {fileID: 4025949689559072613, guid: 96ffd4ab0b5b82f408550b95a0e3d09b, type: 3}
-  spLeft: {fileID: -2788678064984699229, guid: 96ffd4ab0b5b82f408550b95a0e3d09b, type: 3}
-  spRight: {fileID: -5755555720233945264, guid: 96ffd4ab0b5b82f408550b95a0e3d09b,
+  spUp: {fileID: -1488113097662919353, guid: 5bfff16e466d61245b932d271c0868e0, type: 3}
+  spDown: {fileID: -8542676398023535629, guid: 5bfff16e466d61245b932d271c0868e0, type: 3}
+  spLeft: {fileID: -1122385081762360084, guid: 5bfff16e466d61245b932d271c0868e0, type: 3}
+  spRight: {fileID: -6179443405221187775, guid: 5bfff16e466d61245b932d271c0868e0,
     type: 3}
   spDeath: {fileID: 0}
   animator: {fileID: 183807082801774960}

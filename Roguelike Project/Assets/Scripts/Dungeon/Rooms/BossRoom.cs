@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class BossRoom : RoomController
 {
-    [SerializeField] private Transform _roomCorridorsHolder = default;
+    public Transform bossInitialPosition;
     public GameObject firstPortalStop;
     public GameObject roomClosedWall;
     public GameObject firstTile;
     public GameObject lastTile;
-    private int[,] bossRoomLayers;
 
+    [SerializeField] private Transform _roomCorridorsHolder = default;
+    
+    private int[,] bossRoomLayers;
+    
     public void Initialize(DungeonController dungeonController, GameObject[,] tiles, int id)
     {
         clsDungeonController = dungeonController;
@@ -29,6 +32,7 @@ public class BossRoom : RoomController
         Destroy(_roomCorridorsHolder.gameObject);
         transform.position = new Vector3(0f, 0f, 0f);
         transform.position -= firstTile.transform.position;
+        Instantiate(clsDungeonController.boss, bossInitialPosition.position, Quaternion.identity);
         GameManager.Instance.player.transform.position = firstPortalStop.transform.position;
         GameManager.Instance.tilesLayers = bossRoomLayers;
     }

@@ -33,16 +33,16 @@ public class PlayerController : MovingObject
 
     private void PlayerInputDebug()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            spellLine.enabled = true;
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            DrawSpellLine(_mainCamera.ScreenToWorldPoint(Input.mousePosition));
-        }
-
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     spellLine.enabled = true;
+        // }
+        //
+        // if (Input.GetMouseButton(0))
+        // {
+        //     DrawSpellLine(_mainCamera.ScreenToWorldPoint(Input.mousePosition));
+        // }
+        
         if (Input.GetMouseButtonUp(0))
         {
             spellLine.enabled = false;
@@ -110,8 +110,8 @@ public class PlayerController : MovingObject
         int index = (int) ((Mathf.Round(lookAngle / 90f) + 4) % 4);
         
         _clsSpriteManager.UpdateSpriteToDirection(index);
-        GameObject shootedSpell = Instantiate(spell, spellShooter.transform.position, spellShooter.transform.rotation);
-        Vector3 cameraShootPosition = _mainCamera.ScreenToWorldPoint(shootPosition);
-        shootedSpell.GetComponent<BulletConfig>().targetPosition = new Vector3(cameraShootPosition.x, cameraShootPosition.y);
+        // GameObject shootedSpell = Instantiate(spell, spellShooter.transform.position, spellShooter.transform.rotation);
+        // Vector3 cameraShootPosition = _mainCamera.ScreenToWorldPoint(shootPosition);
+        // shootedSpell.GetComponent<BulletConfig>().targetPosition = new Vector3(cameraShootPosition.x, cameraShootPosition.y);
     }
 }

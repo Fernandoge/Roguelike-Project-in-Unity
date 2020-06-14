@@ -35,6 +35,7 @@ public abstract class MovingObject : MonoBehaviour
     public void Move(int xDir, int yDir)
     {
         Vector3 positionToCheck = transform.position + new Vector3(xDir, yDir, 0f);
+        _clsSpriteManager.CheckMovement(xDir, yDir);
         //if (Physics2D.OverlapBox(_destiny, new Vector2(0.95f, 0.95f), 0f, blockingLayers) == null)
         if (((1 << GameManager.Instance.tilesLayers[(int)positionToCheck.x, (int)positionToCheck.y]) & blockingLayers) == 0)
         {
@@ -51,7 +52,6 @@ public abstract class MovingObject : MonoBehaviour
 
             moving = true;
             _clsSpriteManager.animator.enabled = true;
-            _clsSpriteManager.CheckMovement(xDir, yDir);
             StartCoroutine(SmoothMovement(destinyPosition));
         }  
     }

@@ -31,6 +31,7 @@ public class DungeonController : MonoBehaviour
     public GameObject player;
     public List<DungeonEnemyPack> enemyPacks;
     public GameObject treasure;
+    public GameObject boss;
     public GameObject bossRoom;
     public GameObject initialCorridor;
     [Header ("Controller References")]
