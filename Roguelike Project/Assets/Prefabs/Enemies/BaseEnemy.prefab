@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 6978326576728948576}
   - component: {fileID: 5006262955719001528}
   - component: {fileID: 4848892119370078338}
-  m_Layer: 16
+  m_Layer: 11
   m_Name: BaseEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ MonoBehaviour:
   _clsSpriteManager: {fileID: 6978326576728948576}
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 1376768
+    m_Bits: 31232
   moveTime: 0.5
   canMove: 1
   moving: 0
@@ -233,7 +233,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.8888889, y: 0.8888889}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -266,7 +266,6 @@ MonoBehaviour:
   weaponLeftSprRender: {fileID: 2150515960138168098}
   direction: 0
   clsEnemyController: {fileID: 2533875942306066360}
-  _clsEnemyWeapon: {fileID: 8674482474884631650}
   _deathParticles: {fileID: 8278757029764318106, guid: 0be9c20e8ddaf23449d57234c1be28e1,
     type: 3}
 --- !u!212 &5006262955719001528

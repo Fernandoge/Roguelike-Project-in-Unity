@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 21244900}
   - component: {fileID: 2203584405958779241}
   - component: {fileID: 8881628396480096185}
-  m_Layer: 18
+  m_Layer: 13
   m_Name: WaterPot
   m_TagString: GlobalWallAttached
   m_Icon: {fileID: 0}

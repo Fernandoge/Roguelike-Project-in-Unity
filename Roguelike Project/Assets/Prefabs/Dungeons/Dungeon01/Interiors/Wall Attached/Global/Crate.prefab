@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 21244900}
   - component: {fileID: 8881628396480096185}
   - component: {fileID: 4672081468072279699}
-  m_Layer: 18
+  m_Layer: 13
   m_Name: Crate
   m_TagString: GlobalWallAttached
   m_Icon: {fileID: 0}

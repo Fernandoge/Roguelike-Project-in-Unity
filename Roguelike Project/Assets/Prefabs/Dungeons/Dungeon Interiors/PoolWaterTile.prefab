@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7856817470977030685}
   - component: {fileID: 6939663482668356308}
-  m_Layer: 20
+  m_Layer: 14
   m_Name: PoolWaterTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

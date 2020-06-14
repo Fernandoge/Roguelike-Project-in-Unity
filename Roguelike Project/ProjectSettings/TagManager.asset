@@ -31,17 +31,17 @@ TagManager:
   - 
   - Player
   - Obstacle
-  - 
-  - 
-  - 
-  - 
-  - 
   - Floor
   - Enemy
   - NoFloorTile
   - DestroyableObstacle
-  - GatewayChecker
   - FloorTrigger
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

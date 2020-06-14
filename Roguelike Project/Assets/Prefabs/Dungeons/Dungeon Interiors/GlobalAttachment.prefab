@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6480857619320814549}
-  m_Layer: 17
+  m_Layer: 12
   m_Name: GlobalAttachment
   m_TagString: GlobalAttachment
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
