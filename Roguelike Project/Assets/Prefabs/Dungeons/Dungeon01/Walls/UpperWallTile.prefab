@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7459011167722533473}
   - component: {fileID: 8662901260970231379}
   - component: {fileID: 8096358668841147250}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: UpperWallTile
-  m_TagString: Untagged
+  m_TagString: TopWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +181,12 @@ PrefabInstance:
     - target: {fileID: 8129277118753452308, guid: f3d274ccc1651ee4fadf9e6b4cb828bd,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129277118753452308, guid: f3d274ccc1651ee4fadf9e6b4cb828bd,
+        type: 3}
+      propertyPath: m_TagString
+      value: TopWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3d274ccc1651ee4fadf9e6b4cb828bd, type: 3}
@@ -206,7 +211,12 @@ PrefabInstance:
     - target: {fileID: 7295499907302412873, guid: a24c61f4dcbe5f34aa6d844c58ef3af1,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295499907302412873, guid: a24c61f4dcbe5f34aa6d844c58ef3af1,
+        type: 3}
+      propertyPath: m_TagString
+      value: TopWall
       objectReference: {fileID: 0}
     - target: {fileID: 7569384390103519120, guid: a24c61f4dcbe5f34aa6d844c58ef3af1,
         type: 3}

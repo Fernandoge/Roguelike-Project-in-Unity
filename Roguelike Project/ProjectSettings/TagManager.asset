@@ -15,6 +15,11 @@ TagManager:
   - GatewayChecker
   - GlobalWallAttached
   - GlobalAttachment
+  - TopWall
+  - TopLeftCorner
+  - TopRightCorner
+  - BottomLeftCorner
+  - BottomRightCorner
   layers:
   - Default
   - TransparentFX
@@ -26,11 +31,11 @@ TagManager:
   - 
   - Player
   - Obstacle
-  - TopWall
-  - TopLeftCorner
-  - TopRightCorner
-  - BottomLeftCorner
-  - BottomRightCorner
+  - 
+  - 
+  - 
+  - 
+  - 
   - Floor
   - Enemy
   - NoFloorTile
