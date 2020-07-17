@@ -797,6 +797,7 @@ public class DungeonController : MonoBehaviour
 
     void Start()
     {
+        int generationFailedCount = 0;
         _roomSideSize = Mathf.CeilToInt(Mathf.Sqrt(averageMinRoomTiles));
         _roomHolder = Resources.Load<GameObject>("Room");
         _corridorHolder = Resources.Load<GameObject>("Corridor");
@@ -818,9 +819,7 @@ public class DungeonController : MonoBehaviour
                 DrawRoomWalls(rootSubDungeon);
                 DebugController.Instance.StopMeasuringMethod("Walls draw:");
 
-                DebugController.Instance.StartMeasuringMethod();
                 SpawnPlayer();
-                DebugController.Instance.StopMeasuringMethod("Player spawn:");
 
                 DebugController.Instance.StartMeasuringMethod();
                 DefineRooms();
@@ -833,24 +832,27 @@ public class DungeonController : MonoBehaviour
                 DebugController.Instance.StartMeasuringMethod();
                 GenerateGateways();
                 DebugController.Instance.StopMeasuringMethod("Gateways draw:");
-                
+
                 DebugController.Instance.StartMeasuringMethod();
                 DrawWallAttachedObjects();
                 DebugController.Instance.StopMeasuringMethod("Attached objects draw:");
-                
+
                 DebugController.Instance.StartMeasuringMethod();
                 DrawWallDecos();
                 DebugController.Instance.StopMeasuringMethod("Wall decos draw:");
-                
+
                 GameManager.Instance.InitializeDungeon(this);
                 GameManager.Instance.ManageLoadingScreen(false);
             }
 
             else
             {
+                generationFailedCount += 1;
                 Debug.Log("Generation Failed");
+                if (generationFailedCount >= 1000)
+                    Debug.LogError("Couldn't generate dungeon with current config");
             }
 
-        } while (GameManager.Instance.generationFailed);
+        } while (GameManager.Instance.generationFailed && generationFailedCount < 1000);
     }
 }
