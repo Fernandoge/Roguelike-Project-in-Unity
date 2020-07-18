@@ -740,7 +740,7 @@ public class DungeonController : MonoBehaviour
     private bool CheckAvailableSpace(GameObject obj, Vector3 instancePosition)
     {
         Vector3 originalObjectPosition = obj.transform.position;
-        if (instancePosition.x >= 0 && instancePosition.x < boardRows && instancePosition.y >= 0 && instancePosition.y < boardColumns)
+        if (instancePosition.x >= 0 && instancePosition.x < boardColumns && instancePosition.y >= 0 && instancePosition.y < boardRows)
         {
             //Instantiate wall attached objects in any floor unless there is an object that isn't a floor in that position
             if (obj.CompareTag("GlobalWallAttached") && tilesPosition[(int)instancePosition.x, (int)instancePosition.y].GetComponent<SpriteRenderer>() == null)
@@ -754,7 +754,7 @@ public class DungeonController : MonoBehaviour
         obj.transform.position = instancePosition;
         foreach (Transform child in obj.transform)
         {
-            if (child.position.x >= 0 && child.position.x < boardRows && child.position.y >= 0 && child.position.y < boardColumns)
+            if (child.position.x >= 0 && child.position.x < boardColumns && child.position.y >= 0 && child.position.y < boardRows)
             {
                 if (tilesPosition[(int)child.position.x, (int)child.position.y] == null ||
                     (child.CompareTag("GatewayChecker") == false && tilesPosition[(int)child.position.x, (int)child.position.y].layer != LayerMask.NameToLayer("Floor")) ||
@@ -809,8 +809,8 @@ public class DungeonController : MonoBehaviour
         do
         {
             GameManager.Instance.generationFailed = false;
-            SubDungeon rootSubDungeon = new SubDungeon(new Rect(0, 0, boardRows, boardColumns));
-            tilesPosition = new GameObject[boardRows, boardColumns];
+            SubDungeon rootSubDungeon = new SubDungeon(new Rect(0, 0, boardColumns, boardRows));
+            tilesPosition = new GameObject[boardColumns, boardRows];
             SpacePartition(rootSubDungeon);
             rootSubDungeon.CreateRoom(minRoomWidth, minRoomHeight, maxRoomWidth, maxRoomHeight, roomSizeRandomness);
             if (GameManager.Instance.generationFailed == false)
